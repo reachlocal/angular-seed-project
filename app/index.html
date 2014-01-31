@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width">
+    <!-- styles -->
+    <link rel="stylesheet" href="">
+    <script src='RlLoader.js'></script>
+  </head>
+  <body>
+
+    <!-- Add your site or application content here -->
+    This is a test.<br>
+    5 + 5 = {{ 5 + 5 }}
+    <br>
+    <div ng-controller="Sample">
+      <ng-include src="'modules/main/controllers/sample.html'"></ng-include>
+    </div>
+    <div ng-controller="Sample2">
+      <ng-include src="'modules/main/controllers/sample.html'"></ng-include>
+    </div>
+    <div ng-controller="Sample3">
+      <ng-include src="'modules/main/controllers/sample.html'"></ng-include>
+    </div>
+    <div class="container" ng-view=""></div>
+</body>
+</html>

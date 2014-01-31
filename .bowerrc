@@ -1,0 +1,7 @@
+{
+  "directory": "app/bower_components",
+  "registry": {
+    "search": ["http://bower.dev.wh.reachlocal.com","https://bower.herokuapp.com"],
+    "register": "http://bower.dev.wh.reachlocal.com"
+  }
+}

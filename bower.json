@@ -1,0 +1,21 @@
+{
+  "name": "cpi-angular",
+  "version": "0.0.0",
+  "authors": [
+    "Tom Hood <tom.hood@reachlocal.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.10",
+    "angular-resource": "~1.2.10",
+    "angular-sanitize": "~1.2.10"
+  }
+}

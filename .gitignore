@@ -1,2 +1,5 @@
 # IntelliJ and/or RubyMine ignores
 .idea/
+.project_files.json
+node_modules/
+dist/
