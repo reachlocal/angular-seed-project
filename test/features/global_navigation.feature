@@ -3,7 +3,7 @@ Feature: Each dashboard should have a consistent global navigation function
   @JIRA-CPI-23 @dashboard @filter
   Scenario: View campaign-level dashboard
 
-    Given a campaign with publishers participating ("Google", "Yahoo/Bing")
+    Given a typical campaign exists
     When a user filters using All AdGroups
     Then the dashboard should be filtered to include all data for the campaign
 
@@ -11,7 +11,7 @@ Feature: Each dashboard should have a consistent global navigation function
   @JIRA-CPI-25 @dashboard @header
   Scenario:  View campaign basic data in the dashboard header
 
-    Given a campaign has been created
+    Given a typical campaign exists
     When a user views the campaign dashboard
     Then the user should see a campaign header
     And the header should contain the "Campaign Name"
