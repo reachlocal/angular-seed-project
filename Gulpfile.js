@@ -59,7 +59,10 @@ gulp.task('sass', function () {
     var minifyCss = require('gulp-minify-css');
     var concat = require('gulp-concat');
     gulp.src(config.APPLICATION_STYLES)
-        .pipe(sass())
+        .pipe(sass({includePaths: [
+            'app/bower_components/core-bootstrap-styles/app/sass',
+            'app/bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap'
+        ]}))
         .pipe(minifyCss())
         .pipe(concat('app.css'))
         .pipe(gulp.dest(config.MINIFY_DESTINATION))

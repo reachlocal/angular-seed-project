@@ -16,7 +16,8 @@
   "dependencies": {
     "angular": "~1.2.11",
     "angular-resource": "~1.2.11",
-    "angular-sanitize": "~1.2.11"
+    "angular-sanitize": "~1.2.11",
+    "core-bootstrap-styles": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.11"
