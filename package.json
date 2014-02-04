@@ -15,7 +15,7 @@
     "gulp-livereload": "~0.2.0",
     "glob": "~3.2.8",
     "q": "~1.0.0",
-    "gulp-filename": "git+http://github.com/vanjacosic/gulp-filename.git",
-    "gulp": "~3.5.1"
+    "gulp": "~3.5.1",
+    "connect-livereload": "~0.3.2"
   }
 }
