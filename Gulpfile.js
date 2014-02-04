@@ -1,7 +1,10 @@
 var gulp = require('gulp');
 
 /**
+ * ###############################
+ * CONFIG
  * Configuration options for our application.
+ * ###############################
  */
 // When you run the 'serve' task, what port should we use?
 var WEB_SERVER_PORT = 4000;
@@ -19,13 +22,17 @@ var APPLICATION_STYLES = APPLICATION_ROOT + '/modules/**/*.scss';
 // Use this for wathcers that monitor ALL application files
 var APPLICATION_FILES = [APPLICATION_SCRIPTS, APPLICATION_VIEWS, APPLICATION_STYLES];
 
-
+/**
+ * Matchers for our bower files - managed by the application developers
+ */
+var BOWER_FILES = require(APPLICATION_ROOT + '/bower_files').map(function (file) {
+    return 'app/' + file;
+});
 
 /**
- * Start the live-reload server.
+ * Matchers for test libraries (for jasmine-style tests)
  */
-var refresh = require('gulp-livereload');
-var lrServer = require('tiny-lr')();
+var TEST_LIBRARIES = ['app/bower_components/angular-mocks/angular-mocks.js'];
 
 gulp.task('default', function () {});
 
@@ -68,6 +75,19 @@ gulp.task('_build_project_file', function () {
     return deferred.promise;
 });
 
+
+/**
+ * ###############################
+ * SERVER tasks
+ * And all things related to tests
+ * ###############################
+ */
+/**
+ * Start the live-reload server.
+ */
+var refresh = require('gulp-livereload');
+var lrServer = require('tiny-lr')();
+
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
@@ -91,3 +111,42 @@ gulp.task('serve', ['build_project_file'], function () {
     startExpress();
     gulp.watch(APPLICATION_FILES, ['build_project_file']);
 });
+
+
+//var runJasmineTests = require('ci/runJasmineTests.js');
+/**
+ * ###############################
+ * TESTS
+ * And all things related to tests
+ * ###############################
+ */
+/**
+ * Example:  runTests('unit') will run tests in 'test/unit/** /*.spec.js'
+ **/
+var karmaPort = 9876;
+function runJasmineTests (testDirectory) {
+    // Note:  These must be in order:  Bower, project, test
+    var all_test_files = BOWER_FILES
+        .concat(APPLICATION_SCRIPTS)
+        .concat(TEST_LIBRARIES)
+        .concat(['test/' + testDirectory + '/**/*.spec.js']);
+
+    var karma = require('gulp-karma');
+    gulp.src(all_test_files)
+        .pipe(karma({
+            frameworks: ['jasmine'],
+            browsers: ['PhantomJS'],
+            action: 'run',
+            port: karmaPort++
+        }));
+}
+
+gulp.task('test:unit', ['build_project_file'], function () {
+    runJasmineTests('unit');
+});
+
+gulp.task('test:integration', ['build_project_file'], function () {
+    runJasmineTests('integration');
+});
+
+gulp.task('test', ['test:unit', 'test:integration']);

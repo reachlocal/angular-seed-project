@@ -14,6 +14,7 @@ var RlModule = new function() {
     var modules = {};
     var namespaces = {};
 
+    // TODO: Allow infinate params - pass param 3+ through to angular.module
     this.module = function(moduleName, depsArray) {
         modules[moduleName] = depsArray;
         addNamespace(moduleName);
