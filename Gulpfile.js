@@ -30,7 +30,7 @@ gulp.task('build_project_file', ['_build_project_file'], function () {
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
-gulp.task('serve', ['build_project_file'], function () {
+gulp.task('serve', ['build_project_file', 'sass'], function () {
     var express = require('express');
     var app = express();
     app.use(require('connect-livereload')());
@@ -39,6 +39,7 @@ gulp.task('serve', ['build_project_file'], function () {
     lrServer.listen(config.LIVERELOAD_PORT);
 
     gulp.watch(config.APPLICATION_FILES, ['build_project_file']);
+    gulp.watch(config.APPLICATION_STYLES, ['sass']);
 });
 
 // Test tasks...
@@ -52,3 +53,15 @@ gulp.task('test:integration', ['build_project_file'], function () {
 });
 
 gulp.task('test', ['test:unit', 'test:integration']);
+
+gulp.task('sass', function () {
+    var sass = require('gulp-sass');
+    var minifyCss = require('gulp-minify-css');
+    var concat = require('gulp-concat');
+    gulp.src(config.APPLICATION_STYLES)
+        .pipe(sass())
+        .pipe(minifyCss())
+        .pipe(concat('app.css'))
+        .pipe(gulp.dest(config.MINIFY_DESTINATION))
+        .pipe(refresh(lrServer));
+});

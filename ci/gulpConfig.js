@@ -4,7 +4,8 @@
  * Configuration options for our application.
  * ###############################
  */
-var APPLICATION_ROOT = __dirname + '/../app';
+var PROJECT_ROOT = __dirname + '/..';
+var APPLICATION_ROOT = PROJECT_ROOT + '/app';
 var config = {
     // When you run the 'serve' task, what port should we use?
     WEB_SERVER_PORT: 4000,
@@ -13,7 +14,8 @@ var config = {
     APPLICATION_SCRIPTS: APPLICATION_ROOT + '/modules/**/*.js',
     APPLICATION_VIEWS: APPLICATION_ROOT + '/modules/**/*.html',
     APPLICATION_STYLES: APPLICATION_ROOT + '/modules/**/*.scss',
-    TEST_LIBRARIES: ['app/bower_components/angular-mocks/angular-mocks.js']
+    TEST_LIBRARIES: ['app/bower_components/angular-mocks/angular-mocks.js'],
+    MINIFY_DESTINATION: PROJECT_ROOT + '/dist'
 };
 
 // Use this for wathcers that monitor ALL application files
