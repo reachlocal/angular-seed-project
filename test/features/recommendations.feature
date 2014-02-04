@@ -40,7 +40,7 @@ Feature: Surface recommendations
     Given a typical campaign exists
     And the campaign has 6 creatives defined
     When the recommendation engine encounters the ad group
-    And 1 ad has a conversion rate XX% greater than the next highest conversion rate for an ad within the same ad group (GRACE:  how much higher?)
+    And 1 creative has a conversion rate XX% greater than the next highest conversion rate for an creative within the same ad group (GRACE:  how much higher?)
     Then surface a recommendation to review the ad group
     When a CP dismisses the recommendation
     Then a reason for dismissal is collected (GRACE:  yes?  for machine learning)
