@@ -1,1 +1,0 @@
-angular.module('rl.cpi.ads.controllers.myCtrl', []);

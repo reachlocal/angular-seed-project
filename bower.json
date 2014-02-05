@@ -17,9 +17,13 @@
     "angular": "~1.2.11",
     "angular-resource": "~1.2.11",
     "angular-sanitize": "~1.2.11",
-    "core-bootstrap-styles": "*"
+    "core-bootstrap-styles": "*",
+    "angular-ui-router": "0.2.8-bowratic-tedium"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.11"
+  },
+  "resolutions": {
+    "angular": "1.2.11"
   }
 }

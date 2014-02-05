@@ -9,7 +9,7 @@ var config = require('./ci/gulpConfig');
 var refresh = require('gulp-livereload');
 var lrServer = require('tiny-lr')();
 
-gulp.task('default', function () {});
+gulp.task('default', ['build_project_file', 'sass', 'test'],function () {});
 
 /**
  * Automatically rebuild the .project_files.json file
@@ -40,6 +40,14 @@ gulp.task('serve', ['build_project_file', 'sass'], function () {
 
     gulp.watch(config.APPLICATION_FILES, ['build_project_file']);
     gulp.watch(config.APPLICATION_STYLES, ['sass']);
+    var rootFiles = [
+        config.APPLICATION_ROOT + '/*.html',
+        config.APPLICATION_ROOT + '/*.html'
+    ];
+    gulp.watch(rootFiles, function() {
+        gulp.src(rootFiles)
+            .pipe(refresh(lrServer));
+    })
 });
 
 // Test tasks...
