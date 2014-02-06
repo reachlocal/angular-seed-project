@@ -4,3 +4,4 @@
 node_modules/
 dist/
 cpi-client.iml
+app/app.css

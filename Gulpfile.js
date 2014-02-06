@@ -74,5 +74,6 @@ gulp.task('sass', function () {
         .pipe(minifyCss())
         .pipe(concat('app.css'))
         .pipe(gulp.dest(config.MINIFY_DESTINATION))
+        .pipe(gulp.dest(config.APPLICATION_ROOT))
         .pipe(refresh(lrServer));
 });
