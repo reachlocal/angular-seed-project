@@ -95,7 +95,8 @@ gulp.task('ngTemplates', function () {
     var templateCache = require('gulp-angular-templatecache');
     var stream = gulp.src('app/modules/**/*.html')
         .pipe(templateCache({
-            module: 'rl'
+            root: 'modules',
+            module: 'templates'
         }))
         .pipe(gulp.dest('dist'));
     return stream;
