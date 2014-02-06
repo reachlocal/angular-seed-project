@@ -43,4 +43,4 @@ Feature: Surface recommendations
     And 1 creative has a conversion rate XX% greater than the next highest conversion rate for an creative within the same ad group (GRACE:  how much higher?)
     Then surface a recommendation to review the ad group
     When a CP dismisses the recommendation
-    Then a reason for dismissal is collected (GRACE:  yes?  for machine learning)
+    Then a reason for dismissal is collected.
