@@ -27,6 +27,12 @@ gulp.task('build_project_file', ['_build_project_file'], function () {
         .pipe(refresh(lrServer));
 });
 
+gulp.task('clean', function () {
+    var clean = require('gulp-clean');
+    gulp.src('dist')
+        .pipe(clean());
+});
+
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
@@ -52,11 +58,11 @@ gulp.task('serve', ['build_project_file', 'sass'], function () {
 
 // Test tasks...
 var runJasmineTestsFunc = require('./ci/runJasmineTests.js');
-gulp.task('test:unit', ['build_project_file', 'ngTemplates'], function () {
+gulp.task('test:unit', ['build'], function () {
     runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['build_project_file', 'ngTemplates'], function () {
+gulp.task('test:integration', ['build'], function () {
     runJasmineTestsFunc('integration');
 });
 
@@ -65,6 +71,9 @@ gulp.task('test', ['test:unit', 'test:integration']);
 gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
     gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
 });
+
+// build tasks
+gulp.task('build', ['clean', 'build_project_file', 'ngTemplates', 'sass']);
 
 gulp.task('sass', function () {
     var sass = require('gulp-sass');
