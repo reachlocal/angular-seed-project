@@ -6,7 +6,7 @@ angular
             scope: {},
             restrict: 'E',
             controller: function ($scope, AdGroups) {
-                $scope.adGroups = AdGroups.get();
+                $scope.publishers = AdGroups.get();
             }
         };
 

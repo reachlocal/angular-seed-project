@@ -1,71 +1,25 @@
 describe('Add Group Filter Nav', function () {
 
     var directive;
-    var adGroupsData = {
-        publishers: [{
+    var publishers = [{
             name: "Google",
-            adGroups: [{
-                name: "Local Roto-rooting",
-                id:  123,
-                creatives: [{
-                    name: "Rooting 24/7",
-                    id: 123
-                }, {
-                    name: "Best Prices",
-                    id: 145
-                }]
-            }, {
-                name: "DMA Roto-rooting",
-                id: 456,
-                creatives: [{
-                    name: "Rooting 24/7",
-                    id: 123
-                }, {
-                    name: "Best Prices",
-                    id: 145
-                }]
-            }]
+            adGroups: [
+                { name: "Local Roto-rooting", id:  123 },
+                { name: "DMA Roto-rooting", id: 456 }]
         }, {
             name: "Bing",
-            adGroups: [{
-                name: "Local Roto-rooting",
-                id:  123,
-                creatives: [{
-                    name: "Rooting 24/7",
-                    id: 123
-                }, {
-                    name: "Best Prices",
-                    id: 145
-                }]
-            }]
+            adGroups: [
+                { name: "Local Roto-rooting", id:  123 }]
         }, {
             name: "ALL",
-            adGroups: [{
-                name: "Local Roto-rooting",
-                id:  123,
-                creatives: [{
-                    name: "Rooting 24/7",
-                    id: 123
-                }, {
-                    name: "Best Prices",
-                    id: 145
-                }]
-            }, {
-                name: "DMA Roto-rooting",
-                id: 456,
-                creatives: [{
-                    name: "Rooting 24/7",
-                    id: 123
-                }, {
-                    name: "Best Prices",
-                    id: 145
-                }]
-            }]
-        }]
-    };
+            adGroups: [
+                { name: "Local Roto-rooting", id:  123 },
+                { name: "DMA Roto-rooting", id: 456 }]
+        }];
+
     var mockAdGroupsService = {
         get: function () {
-            return adGroupsData;
+            return publishers;
         }
     };
 
@@ -79,11 +33,12 @@ describe('Add Group Filter Nav', function () {
 
     it("should fetch ad group data", function () {
         var eScope = directive.element.isolateScope();
-        expect(eScope.adGroups).toBe(adGroupsData);
+        expect(eScope.publishers).toBe(publishers);
     });
 
     it("should display all publishers", function () {
         expect(directive.element.html()).toContain('Google');
+        expect(directive.element.html()).toContain('Local Roto-rooting');
     });
 
 });
