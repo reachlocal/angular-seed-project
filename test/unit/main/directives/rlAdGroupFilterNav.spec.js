@@ -1,7 +1,6 @@
 describe('Add Group Filter Nav', function () {
 
-    var scope;
-    var element;
+    var directive;
     var adGroupsData = {
         publishers: [{
             name: "Google",
@@ -70,21 +69,21 @@ describe('Add Group Filter Nav', function () {
         }
     };
 
+    // Load the template cache, it's in the 'rl' module
+    beforeEach(module('rl'));
     beforeEach(mockDependency('rl.cpi.main.services.adGroups', 'AdGroups').toBe(mockAdGroupsService));
     beforeEach(module('rl.cpi.main.directives.rlAdGroupFilterNav'));
-    beforeEach(inject(function ($rootScope, $compile) {
-        scope = $rootScope.$new();
+    beforeEach(function () {
+        directive = compileDirective('<rl-ad-group-filter-nav></rl-ad-group-filter-nav>');
+    });
 
-        element = '<rl-ad-group-filter-nav></rl-ad-group-filter-nav>';
-        element = $compile(element)(scope);
-        scope.$digest();
-    }));
-
-    it ("should fetch ad group data", function () {
-        var eScope = element.isolateScope();
-
+    it("should fetch ad group data", function () {
+        var eScope = directive.element.isolateScope();
         expect(eScope.adGroups).toBe(adGroupsData);
+    });
 
+    it("should display all publishers", function () {
+        expect(directive.element.html()).toContain('Google');
     });
 
 });

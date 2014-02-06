@@ -19,6 +19,7 @@ var RlModule = new function() {
         modules[moduleName] = depsArray;
         addNamespace(moduleName);
         var module = angular.module(moduleName, depsArray);
+        buildModuleBundle();
         return module;
     };
 
@@ -34,7 +35,7 @@ var RlModule = new function() {
             }
             namespaces[nsString].push(moduleName);
         }
-    };
+    }
 
     function buildModuleBundle() {
         for (var ns in namespaces) {
@@ -46,6 +47,14 @@ var RlModule = new function() {
             }
             angular.module(ns, deps);
         }
+
+    }
+
+    /**
+     * Find the 'rl-app' node in the HTML and bootstrap the angular app.
+     */
+    function bootstrap() {
+        buildModuleBundle();
 
         // Bootstrap using the 'rl-app="rl.myModule"', if defined
         // It looks like a directive...  but it's not.  :)
@@ -73,7 +82,7 @@ var RlModule = new function() {
 
     // Don't build modules and bootstrap until RlLoader has loaded everything
     // If we use ngApp, it auto-bootstraps too early (sometimes)  :S
-    document.addEventListener('RlLoaderFinished', buildModuleBundle);
+    document.addEventListener('RlLoaderFinished', bootstrap);
 
 }
 

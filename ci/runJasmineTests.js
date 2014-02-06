@@ -15,7 +15,8 @@ module.exports = function (testDirectory) {
     var all_test_files = config.BOWER_FILES
         .concat(config.APPLICATION_SCRIPTS)
         .concat(config.TEST_LIBRARIES)
-        .concat(['test/helpers/**/*.js',
+        .concat(['dist/templates.js',
+                 'test/helpers/**/*.js',
                  'test/' + testDirectory + '/**/*.spec.js']);
 
     var karma = require('gulp-karma');

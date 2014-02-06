@@ -52,15 +52,19 @@ gulp.task('serve', ['build_project_file', 'sass'], function () {
 
 // Test tasks...
 var runJasmineTestsFunc = require('./ci/runJasmineTests.js');
-gulp.task('test:unit', ['build_project_file'], function () {
+gulp.task('test:unit', ['build_project_file', 'ngTemplates'], function () {
     runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['build_project_file'], function () {
+gulp.task('test:integration', ['build_project_file', 'ngTemplates'], function () {
     runJasmineTestsFunc('integration');
 });
 
 gulp.task('test', ['test:unit', 'test:integration']);
+
+gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
+    gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
+});
 
 gulp.task('sass', function () {
     var sass = require('gulp-sass');
@@ -76,4 +80,14 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(config.MINIFY_DESTINATION))
         .pipe(gulp.dest(config.APPLICATION_ROOT))
         .pipe(refresh(lrServer));
+});
+
+gulp.task('ngTemplates', function () {
+    var templateCache = require('gulp-angular-templatecache');
+    gulp.src('app/modules/**/*.html')
+        .pipe(templateCache({
+            module: 'rl'
+        }))
+        .pipe(gulp.dest('dist'));
+
 });
