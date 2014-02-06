@@ -1,7 +1,7 @@
 <nav class="global-nav row col-md-2" id="accordion">
     <ul>
-        <li ng-repeat="publisher in publishers"><a href="#"><strong>{{ publisher.name }}</strong></a>
-            <ul class="panel-collapse collapse">
+        <li ng-repeat="publisher in publishers"><a href="#" ng-click="publisher.showAdGroups = !publisher.showAdGroups"><strong>{{ publisher.name }}</strong></a>
+            <ul collapse="!publisher.showAdGroups">
                 <li ng-repeat="adGroup in publisher.adGroups"><a href="#">{{ adGroup.name }}</a></li>
             </ul>
         </li>
