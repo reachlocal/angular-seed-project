@@ -93,10 +93,10 @@ gulp.task('sass', function () {
 
 gulp.task('ngTemplates', function () {
     var templateCache = require('gulp-angular-templatecache');
-    gulp.src('app/modules/**/*.html')
+    var stream = gulp.src('app/modules/**/*.html')
         .pipe(templateCache({
             module: 'rl'
         }))
         .pipe(gulp.dest('dist'));
-
+    return stream;
 });
