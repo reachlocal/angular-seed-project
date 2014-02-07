@@ -1,4 +1,4 @@
-describe('Add Group Filter Nav', function () {
+describe('Publisher Filter Nav', function () {
 
     var directive;
     var publishers = [{
@@ -17,18 +17,18 @@ describe('Add Group Filter Nav', function () {
                 { name: "DMA Roto-rooting", id: 456 }]
         }];
 
-    var mockAdGroupsService = {
-        get: function () {
+    var mockPublishersService = {
+        query: function () {
             return publishers;
         }
     };
 
     // Load the template cache, it's in the 'rl' module
     beforeEach(module('rl'));
-    beforeEach(mockDependency('rl.cpi.main.services.adGroups', 'AdGroups').toBe(mockAdGroupsService));
-    beforeEach(module('rl.cpi.main.directives.rlAdGroupFilterNav'));
+    beforeEach(mockDependency('rl.cpi.main.services.publishers', 'Publishers').toBe(mockPublishersService));
+    beforeEach(module('rl.cpi.main.directives.rlPublisherFilterNav'));
     beforeEach(function () {
-        directive = compileDirective('<rl-ad-group-filter-nav></rl-ad-group-filter-nav>');
+        directive = compileDirective('<rl-publisher-filter-nav></rl-publisher-filter-nav>');
     });
 
     it("should fetch ad group data", function () {
