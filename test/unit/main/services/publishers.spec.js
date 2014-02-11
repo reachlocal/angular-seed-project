@@ -19,7 +19,6 @@ describe("Publishers", function () {
         var publishersData = [{
             id: 312,
             name: 'Google'
-
         }];
         httpResolver.$httpBackend.expectGET('/publishers').respond(publishersData);
         var myPublishers = publishers.query();

@@ -1,23 +1,29 @@
 angular.rlmodule('rl.cpi.main.controllers.campaign',
         ['rl.cpi.main.directives',
          'rl.cpi.main.services.publishers',
+         'rl.cpi.main.services.campaignOverview',
          'ui.router'])
 
-    .controller('Campaign', function ($scope, $rootScope, publishers) {
+    .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.publishers = publishers;
+        $scope.campaignOverview = campaignOverview;
     })
 
     .config(function ($stateProvider) {
         $stateProvider
-            .state('campaign/:campaignId', {
+            .state('campaign', {
                 resolve: {
                     publishers: function(Publishers) {
                         var publishers = Publishers.query();
                         return publishers.$promise;
+                    },
+                    campaignOverview: function(CampaignOverview, $stateParams) {
+                        var campaignOverview = CampaignOverview.get({campaignId: $stateParams.campaignId});
+                        return campaignOverview.$promise;
                     }
                 },
-                url: '/campaign',
+                url: '^/campaign/:campaignId',
                 templateUrl: 'modules/main/controllers/campaign.html',
                 controller: 'Campaign'
             });
