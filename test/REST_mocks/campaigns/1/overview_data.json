@@ -1,15 +1,31 @@
-{"name": "A Quality 1st Plumbing- Plumbing  20100222", "id": 1, "masterCampaignId": 1, "masterCampaign": {
+{
+  "name": "A Quality 1st Plumbing- Plumbing  20100222",
+  "id": 1,
+  "masterCampaignId": 1,
+  "masterCampaign": {
     "rel": "rel",
     "href": "http://localhost:8080/campaign-service/rest/v1/campaigns/713896"
-}, "productId": "1:4:1", "advertiserId": 64657, "status": "DRAFT", "budget": 1800.00, "amountSpent": 0.00, "duration": 30, "feeType": "RECURRING", "renewalInfo": {
+  },
+  "productId": "1:4:1",
+  "advertiserId": 64657,
+  "status": "DRAFT",
+  "budget": 1800.00,
+  "amountSpent": 0.00,
+  "duration": 30,
+  "feeType": "RECURRING",
+  "renewalInfo": {
     "autoRenewType": "BUDGET",
     "autoRenewStatus": "PENDING",
     "numberOfRenewals": 1,
     "cyclesRequested": 3
-}, "campaignOwnerId": 21958, "advertiser": {
+  },
+  "campaignOwnerId": 21958,
+  "advertiser": {
     "rel": "rel",
     "href": "http://localhost:8080/advertiser-service/rest/v1/advertiser/64657"
-}, "link": {
+  },
+  "link": {
     "rel": "self",
     "href": "http://localhost:8080/campaign-service/rest/v1/campaigns/713896"
-}}
+  }
+}
