@@ -14,12 +14,11 @@ var RlModule = new function() {
     var modules = {};
     var namespaces = {};
 
-    // TODO: Allow infinate params - pass param 3+ through to angular.module
+    // TODO: Allow infinite params - pass param 3+ through to angular.module
     this.module = function(moduleName, depsArray) {
         modules[moduleName] = depsArray;
         addNamespace(moduleName);
         var module = angular.module(moduleName, depsArray);
-        buildModuleBundle();
         return module;
     };
 

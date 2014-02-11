@@ -2,7 +2,6 @@ describe("Publishers", function () {
 
     var publishers;
 
-
     beforeEach(mockDependency('rl.cpi.main.config', 'Config').toBe({gatewayBaseUrl: ''}));
 
     beforeEach(function () {

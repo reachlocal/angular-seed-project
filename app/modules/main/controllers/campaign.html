@@ -1,22 +1,11 @@
 <div class="campaign">
 
-    <header>
-        <ul class="basic-info">
-            <li>Mr Plow Woodland Hills, CA</li>
-            <li>Advertiser Name</li>
-            <li>MCID - 1234556</li>
-            <li>Current CID - 12364535</li>
-            <li>Total Cycle Budget: $1500</li>
-            <li>Total Contract Length: unlimited</li>
-            <li>Spend to Date this cycle: $1345</li>
-            <li>Currently in 6th Cycle</li>
-        </ul>
-    </header>
+    <rl-campaign-header campaign="campaign"></rl-campaign-header>
 
 
     <main class="container">
 
-       <rl-ad-group-filter-nav ></rl-ad-group-filter-nav>
+       <rl-publisher-filter-nav publishers="publishers"></rl-publisher-filter-nav>
 
 
         <article class="col-md-10">
@@ -25,67 +14,30 @@
                 <p>Your campaign have <b class="text-warning">4</b> active recommendations.</p>
                 <div class="panel-group" id="accordion">
 
-                    <div>
-                        <div>
-                            <i class="fa fa-exclamation-circle"></i>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                Add sitelinks to this campaign to improve the quality score across all ad groups.
-                            </a>
-
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>We notice that there are no sitelinks saved to the campaign, please choose an option belllow.</p>
-                                <button type="button" class="btn btn-success">Go to client's campaign to improve it.</button>
-                                <button type="button" class="btn btn-danger">Dismiss</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-
-                            <i class="fa fa-exclamation-circle"></i>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                Add additional ad groups to increase the granularity of each ad group and improve the quality score of each ad group.
-                            </a>
-
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>Looks like there are fewer than 6 active master ad groups in a campaign. Please check.</p>
-                                <button type="button" class="btn btn-success">Go to client's campaign to improve it.</button>
-                                <button type="button" class="btn btn-danger">Dismiss</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <i class="fa fa-exclamation-circle"></i>
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                Add additional keywords to improve the quality score of each ad group.
-                            </a>
-                        </div>
-
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. </p>
-                                <button type="button" class="btn btn-success">Go to client's campaign to improve it.</button>
-                                <button type="button" class="btn btn-danger">Dismiss</button>
-                            </div>
-                        </div>
-                    </div>
+                <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                <rl-recommendation recommendation="recommendation"></rl-recommendation>
 
                 </div>
             </section>
 
-            <section class="trend">
-                <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="An impression is counted each time your ad is shown on a search result page or other site on the Google Network.">Imp</br>1800</button>
-                <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="The Clicks column in your reports indicates how many times your advertisements were clicked by visitors">Clicks</br>45</button>
-                <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="Click Through Rate">CTR</br>9%</button>
-                <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="Actual Cost-Per-Click is the amount you’ll actually pay for a click on your ad.">CPC</br>$6.87</button>
-                <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="Cost-Per-Lead is the amount of money paid per qualified lead.">CPL</br>$67.90</button>
+            <section>
+                <rl-metric-button btn-name="'Imp'"
+                                  btn-value="'1800'"
+                                  hinttext="'An impression is counted each time your ad is shown on a search result page or other site on the Google Network.'"></rl-metric-button>
+                <rl-metric-button btn-name="'Clicks'"
+                                  btn-value="'45'"
+                                  hinttext="'The Clicks column in your reports indicates how many times your advertisements were clicked by visitors'"></rl-metric-button>
+                <rl-metric-button btn-name="'CTR'"
+                                  btn-value="'9%'"
+                                  hinttext="'Click Through Rate'"></rl-metric-button>
+                <rl-metric-button btn-name="'CPC'"
+                                  btn-value="'$6.87'"
+                                  hinttext="'Actual Cost-Per-Click is the amount you’ll actually pay for a click on your ad.'"></rl-metric-button>
+                <rl-metric-button btn-name="'CPL'"
+                                  btn-value="'$67.90'"
+                                  hinttext="'Cost-Per-Lead is the amount of money paid per qualified lead.'"></rl-metric-button>
             </section>
 
             <section class="tabular-data">

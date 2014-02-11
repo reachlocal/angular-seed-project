@@ -36,14 +36,13 @@ gulp.task('clean', function () {
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
-gulp.task('serve', ['build_project_file', 'sass'], function () {
-    var express = require('express');
-    var app = express();
-    app.use(require('connect-livereload')());
-    app.use(express.static(config.APPLICATION_ROOT, {hidden: true}));
-    app.listen(config.WEB_SERVER_PORT);
+gulp.task('serve:app', ['build_project_file', 'sass'], function () {
+    // Serve app
+    var httpServer = require('./ci/httpServer');
+    httpServer(config.APPLICATION_ROOT, config.WEB_SERVER_PORT);
     lrServer.listen(config.LIVERELOAD_PORT);
 
+    // Set watchers to trigger live reload
     gulp.watch(config.APPLICATION_FILES, ['build_project_file']);
     gulp.watch(config.APPLICATION_STYLES, ['sass']);
     var rootFiles = [
@@ -53,8 +52,21 @@ gulp.task('serve', ['build_project_file', 'sass'], function () {
     gulp.watch(rootFiles, function() {
         gulp.src(rootFiles)
             .pipe(refresh(lrServer));
-    })
+    });
 });
+
+/**
+ * Start a basic rest server that will serve mocks out of the mock directory
+ */
+gulp.task('serve:rest', function() {
+    var httpRestServer = require('./ci/httpRestServer');
+    httpRestServer();
+});
+
+/**
+ * Static web server AND mock rest web server
+ **/
+gulp.task('serve', ['serve:app', 'serve:rest']);
 
 // Test tasks...
 var runJasmineTestsFunc = require('./ci/runJasmineTests.js');

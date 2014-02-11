@@ -1,3 +1,5 @@
+/*jslint browser: true*/
+/*global angular*/
 angular.rlmodule('rl.cpi.main.controllers.sample', []).
     controller('Sample', function($scope) {
         $scope.sample = 'Your app is working.';

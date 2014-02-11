@@ -22,9 +22,4 @@ config.APPLICATION_FILES = [
     config.APPLICATION_STYLES
 ];
 
-//Matchers for our bower files - managed by the application developers
-config.BOWER_FILES = require(PROJECT_ROOT + '/bower_files').map(function (file) {
-    return 'app/' + file;
-});
-
 module.exports = config;

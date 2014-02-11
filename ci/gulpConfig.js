@@ -7,10 +7,11 @@
 var PROJECT_ROOT = __dirname + '/..';
 var APPLICATION_ROOT = PROJECT_ROOT + '/app';
 var config = {
-    // When you run the 'serve' task, what port should we use?
     WEB_SERVER_PORT: 4000,
+    REST_SERVER_PORT: 3000,
     APPLICATION_ROOT: APPLICATION_ROOT,
     LIVERELOAD_PORT: 35729,
+    PROJECT_ROOT: PROJECT_ROOT,
     APPLICATION_SCRIPTS: APPLICATION_ROOT + '/modules/**/*.js',
     APPLICATION_VIEWS: APPLICATION_ROOT + '/modules/**/*.html',
     APPLICATION_STYLES: APPLICATION_ROOT + '/modules/**/*.scss',

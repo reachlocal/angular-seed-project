@@ -1,0 +1,24 @@
+.rl-campaign-header {
+  header {
+    color: white;
+    display: block;
+    border-bottom: 1px solid #333333;
+    padding: 15px 0;
+    margin-bottom: 15px;
+    line-height: 2.1428571435;
+    background-color:#666666;
+    z-index: 1;
+
+    ul:first-child li:first-child {
+      font-weight: bold;
+    }
+
+    .basic-info {
+      column-count:4;
+      -moz-column-count:4; /* Firefox */
+      -webkit-column-count:4; /* Safari and Chrome */
+    }
+
+  }
+
+}
