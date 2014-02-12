@@ -4,7 +4,7 @@ angular
         return {
             templateUrl: "modules/main/directives/rlCampaignHeader.html",
             scope: {
-                campaign: '='
+                overview: '='
             },
             restrict: 'E'
         };
