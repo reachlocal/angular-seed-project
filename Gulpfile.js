@@ -23,13 +23,13 @@ gulp.task('_build_project_file', buildProjectFileFunc);
  * It notifies live-reload once .project_files.json has been rebuilt.
  */
 gulp.task('build_project_file', ['_build_project_file'], function () {
-    gulp.src(config.APPLICATION_SCRIPTS)
+    return gulp.src(config.APPLICATION_SCRIPTS)
         .pipe(refresh(lrServer));
 });
 
 gulp.task('clean', function () {
     var clean = require('gulp-clean');
-    gulp.src('dist')
+    return gulp.src('dist')
         .pipe(clean());
 });
 
@@ -50,7 +50,7 @@ gulp.task('serve:app', ['build_project_file', 'sass'], function () {
         config.APPLICATION_ROOT + '/*.html'
     ];
     gulp.watch(rootFiles, function() {
-        gulp.src(rootFiles)
+        return gulp.src(rootFiles)
             .pipe(refresh(lrServer));
     });
 });
@@ -68,20 +68,29 @@ gulp.task('serve:rest', function() {
  **/
 gulp.task('serve', ['serve:app', 'serve:rest']);
 
-// Test tasks...
+/**
+ * Test Tasks
+ **/
 var runJasmineTestsFunc = require('./ci/runJasmineTests.js');
 gulp.task('test:unit', ['build'], function () {
-    runJasmineTestsFunc('unit');
+    return runJasmineTestsFunc('unit');
 });
 
 gulp.task('test:integration', ['build'], function () {
-    runJasmineTestsFunc('integration');
+    return runJasmineTestsFunc('integration');
 });
 
 gulp.task('test', ['test:unit', 'test:integration']);
 
 gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
     gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
+});
+
+gulp.task('test:cucumber', ['serve'], function() {
+    // Start web-driver and cucumber
+    var webDriver = require('./ci/webDriver');
+    var cucumber = require('./ci/cucumber');
+    webDriver.startWebDriver(cucumber.startCucumber);
 });
 
 // build tasks
@@ -91,7 +100,7 @@ gulp.task('sass', function () {
     var sass = require('gulp-sass');
     var minifyCss = require('gulp-minify-css');
     var concat = require('gulp-concat');
-    gulp.src(config.APPLICATION_STYLES)
+    return gulp.src(config.APPLICATION_STYLES)
         .pipe(sass({includePaths: [
             'app/bower_components/core-bootstrap-styles/app/sass',
             'app/bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap'
@@ -105,11 +114,10 @@ gulp.task('sass', function () {
 
 gulp.task('ngTemplates', function () {
     var templateCache = require('gulp-angular-templatecache');
-    var stream = gulp.src('app/modules/**/*.html')
+    return gulp.src('app/modules/**/*.html')
         .pipe(templateCache({
             root: 'modules',
             module: 'templates'
         }))
         .pipe(gulp.dest('dist'));
-    return stream;
 });

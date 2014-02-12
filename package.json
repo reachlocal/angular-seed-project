@@ -32,6 +32,8 @@
     "gulp-minify-css": "~0.2.0",
     "gulp-concat": "~2.1.7",
     "gulp-angular-templatecache": "~1.0.3",
-    "gulp-clean": "~0.2.4"
+    "gulp-clean": "~0.2.4",
+    "protractor": "~0.18.1",
+    "cucumber": "~0.3.3"
   }
 }

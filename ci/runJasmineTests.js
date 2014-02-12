@@ -20,7 +20,7 @@ module.exports = function (testDirectory) {
                  'test/' + testDirectory + '/**/*.spec.js']);
 
     var karma = require('gulp-karma');
-    gulp.src(all_test_files)
+    return gulp.src(all_test_files)
         .pipe(karma({
             frameworks: ['jasmine'],
             browsers: ['PhantomJS'],
