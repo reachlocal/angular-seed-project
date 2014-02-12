@@ -2,7 +2,7 @@
     <ul>
         <li ng-repeat="publisher in publishers"><a href="#" ng-click="publisher.showAdGroups = !publisher.showAdGroups"><strong>{{ publisher.name }}</strong></a>
             <ul collapse="!publisher.showAdGroups">
-                <li ng-repeat="adGroup in publisher.adGroups"><a href="#">{{ adGroup.name }}</a></li>
+                <li ng-repeat="adGroup in publisher.ad_groups"><a href="#">{{ adGroup.name }}</a></li>
             </ul>
         </li>
     </ul>

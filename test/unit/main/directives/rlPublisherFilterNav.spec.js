@@ -4,16 +4,16 @@ describe('Publisher Filter Nav', function () {
     var mockScope = {
         CtrlPublishers: [{
             name: "Google",
-            adGroups: [
+            ad_groups: [
                 { name: "Local Roto-rooting", id:  123 },
                 { name: "DMA Roto-rooting", id: 456 }]
         }, {
             name: "Bing",
-            adGroups: [
+            ad_groups: [
                 { name: "Local Roto-rooting", id:  123 }]
         }, {
             name: "ALL",
-            adGroups: [
+            ad_groups: [
                 { name: "Local Roto-rooting", id:  123 },
                 { name: "DMA Roto-rooting", id: 456 }]
         }]

@@ -20,8 +20,8 @@ describe("Publishers", function () {
             id: 312,
             name: 'Google'
         }];
-        httpResolver.$httpBackend.expectGET('/publishers').respond(publishersData);
-        var myPublishers = publishers.query();
+        httpResolver.$httpBackend.expectGET('/campaigns/1234/web_publisher_campaigns').respond(publishersData);
+        var myPublishers = publishers.query({ campaignId: 1234 });
         httpResolver.resolve();
         expect(myPublishers[0].id).toEqual(publishersData[0].id);
     });
