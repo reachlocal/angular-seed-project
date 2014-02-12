@@ -1,8 +1,8 @@
 <nav class="rl-publisher-filter-nav global-nav row col-md-2" id="accordion">
     <ul>
-        <li ng-repeat="publisher in publishers"><a href="#" ng-click="publisher.showAdGroups = !publisher.showAdGroups"><strong>{{ publisher.name }}</strong></a>
+        <li ng-repeat="publisher in publishers"><a ng-click="publisher.showAdGroups = !publisher.showAdGroups"><strong>{{ publisher.name }}</strong></a>
             <ul collapse="!publisher.showAdGroups">
-                <li ng-repeat="adGroup in publisher.ad_groups"><a href="#">{{ adGroup.name }}</a></li>
+                <li ng-repeat="adGroup in publisher.ad_groups"><a>{{ adGroup.name }}</a></li>
             </ul>
         </li>
     </ul>

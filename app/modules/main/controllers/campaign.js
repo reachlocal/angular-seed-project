@@ -15,7 +15,7 @@ angular.rlmodule('rl.cpi.main.controllers.campaign',
             .state('campaign', {
                 resolve: {
                     publishers: function(Publishers, $stateParams) {
-                        var publishers = Publishers.query($stateParams);
+                        var publishers = Publishers.query({campaignId: $stateParams.campaignId});
                         return publishers.$promise;
                     },
                     campaignOverview: function(CampaignOverview, $stateParams) {

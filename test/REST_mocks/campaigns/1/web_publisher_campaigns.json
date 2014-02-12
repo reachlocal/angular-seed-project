@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Google",
+        "ad_groups": [
+            {
+                "name": "Local Roto-rooting",
+                "id": 123
+            },
+            {
+                "name": "DMA Roto-rooting",
+                "id": 456
+            }
+        ]
+    },
+    {
+        "name": "Bing",
+        "ad_groups": [
+            {
+                "name": "Local Roto-rooting",
+                "id": 123
+            }
+        ]
+    },
+    {
+        "name": "ALL",
+        "ad_groups": [
+            {
+                "name": "Local Roto-rooting",
+                "id": 123
+            },
+            {
+                "name": "DMA Roto-rooting",
+                "id": 456
+            }
+        ]
+    }
+]
