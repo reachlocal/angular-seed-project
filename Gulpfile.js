@@ -11,9 +11,7 @@ var lrServer = require('tiny-lr')();
 
 gulp.task('default', ['build']);
 
-gulp.task('build:prebuild', ['clean', 'test']);
-
-gulp.task('build', ['build:prebuild', 'style', 'js'], function() {
+gulp.task('dist', ['clean', 'style', 'js'], function() {
     var copyFiles = [
         config.APPLICATION_ROOT + '/index.html',
         config.APPLICATION_ROOT + '/RlLoader.js'
@@ -23,8 +21,10 @@ gulp.task('build', ['build:prebuild', 'style', 'js'], function() {
         .pipe(refresh(lrServer));
 });
 
-gulp.task('build:watch', [], function () {
-    gulp.watch([config.APPLICATION_FILES], ['build']);
+gulp.task('build', ['dist', 'test']);
+
+gulp.task('dist:watch', [], function () {
+    gulp.watch([config.APPLICATION_FILES], ['dist']);
 });
 
 /**
