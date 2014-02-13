@@ -3,14 +3,15 @@ describe('Campaign Header', function () {
 
   var mockScope = {
     CampaignOverview: {
-      "name": "Ghost Busters, Inc.",
+      "name": "Get rid of ghosts!",
+      "advertiser_name": "Ghost Busters, Inc.",
       "master_campaign_id": 789,
       "current_campaign_id": 123,
       "total_cycle_budget": 1900,
       "total_contract_length": 10,
       "spent_to_date_this_cycle": 500,
       "current_cycle": 6,
-    } 
+    }
   }
 
   // Load the template cache, it's in the 'rl' module
@@ -23,6 +24,7 @@ describe('Campaign Header', function () {
   it("should display all publishers", function () {
     var result = directive.element.html();
 
+    expect(result).toContain("Get rid of ghosts!");
     expect(result).toContain("Ghost Busters, Inc");
     expect(result).toContain("MCID - 789");
     expect(result).toContain("Current CID - 123");
