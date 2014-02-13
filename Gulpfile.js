@@ -12,6 +12,7 @@ var lrServer = require('tiny-lr')();
 gulp.task('default', ['build']);
 
 gulp.task('build:prebuild', ['clean', 'test']);
+
 gulp.task('build', ['build:prebuild', 'style', 'js'], function() {
     var copyFiles = [
         config.APPLICATION_ROOT + '/index.html',
@@ -20,6 +21,10 @@ gulp.task('build', ['build:prebuild', 'style', 'js'], function() {
     return gulp.src(copyFiles)
         .pipe(gulp.dest(config.MINIFY_DESTINATION ))
         .pipe(refresh(lrServer));
+});
+
+gulp.task('build:watch', [], function () {
+    gulp.watch([config.APPLICATION_FILES], ['build']);
 });
 
 /**
