@@ -3,12 +3,12 @@
  * Push array of files to the .project_files.js file.
  * @returns promise
  */
-module.exports = function () {
+module.exports = function (searchPattern) {
     var config = require('./gulpConfig');
     var deferred = require('q').defer();
     var glob = require('glob');
     // Search for project files
-    glob(config.APPLICATION_SCRIPTS, {}, function (err, project_files) {
+    glob(searchPattern, {}, function (err, project_files) {
         if (err) {
             deffered.reject('Could not glob-search for project files. ' + err.message);
         } else {
@@ -20,7 +20,7 @@ module.exports = function () {
 
             // Write to file.
             project_files = JSON.stringify(project_files);
-            require('fs').writeFile(config.APPLICATION_ROOT + '/.project_files.json', project_files, function(err) {
+            require('fs').writeFile(config.APPLICATION_ROOT + '/.project_scripts.json', project_files, function(err) {
                 if (err) {
                     deferred.reject('Could not build project files.' + err.message);
                 } else {

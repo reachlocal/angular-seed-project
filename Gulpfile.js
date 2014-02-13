@@ -9,18 +9,31 @@ var config = require('./ci/gulpConfig');
 var refresh = require('gulp-livereload');
 var lrServer = require('tiny-lr')();
 
-gulp.task('default', ['build_project_file', 'sass', 'test'],function () {});
+gulp.task('default', ['build']);
+
+gulp.task('build:prebuild', ['clean', 'test']);
+gulp.task('build', ['build:prebuild', 'style', 'js'], function() {
+    var copyFiles = [
+        config.APPLICATION_ROOT + '/index.html',
+        config.APPLICATION_ROOT + '/RlLoader.js'
+    ];
+    return gulp.src(copyFiles)
+        .pipe(gulp.dest(config.MINIFY_DESTINATION ))
+        .pipe(refresh(lrServer));
+});
 
 /**
- * Automatically rebuild the .project_files.json file
+ * Automatically rebuild the .project_scripts.json file
  * Runs async. Resolves the returned promise when file is written.
  * @return promise
  */
-var buildProjectFileFunc = require('./ci/buildProjectFile');
-gulp.task('_build_project_file', buildProjectFileFunc);
+gulp.task('_build_project_file', function() {
+    var buildProjectFileFunc = require('./ci/buildProjectFile');
+    return buildProjectFileFunc(config.APPLICATION_SCRIPTS);
+});
 /**
  * Public version of the above task.  (Use this one.)
- * It notifies live-reload once .project_files.json has been rebuilt.
+ * It notifies live-reload once .project_scripts.json has been rebuilt.
  */
 gulp.task('build_project_file', ['_build_project_file'], function () {
     return gulp.src(config.APPLICATION_SCRIPTS)
@@ -29,30 +42,42 @@ gulp.task('build_project_file', ['_build_project_file'], function () {
 
 gulp.task('clean', function () {
     var clean = require('gulp-clean');
-    return gulp.src('dist')
+    return gulp.src(config.MINIFY_DESTINATION)
         .pipe(clean());
 });
 
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
-gulp.task('serve:app', ['build_project_file', 'sass'], function () {
+gulp.task('serve:app', ['build_project_file', 'style'], function () {
     // Serve app
     var httpServer = require('./ci/httpServer');
     httpServer(config.APPLICATION_ROOT, config.WEB_SERVER_PORT);
     lrServer.listen(config.LIVERELOAD_PORT);
 
     // Set watchers to trigger live reload
-    gulp.watch(config.APPLICATION_FILES, ['build_project_file']);
-    gulp.watch(config.APPLICATION_STYLES, ['sass']);
+    gulp.watch(config.APPLICATION_SCRIPTS, ['build_project_file']);
+    gulp.watch(config.APPLICATION_STYLES, ['style']);
     var rootFiles = [
         config.APPLICATION_ROOT + '/*.html',
-        config.APPLICATION_ROOT + '/*.html'
+        config.APPLICATION_ROOT + '/*.js'
     ];
     gulp.watch(rootFiles, function() {
         return gulp.src(rootFiles)
             .pipe(refresh(lrServer));
     });
+});
+/**
+ * Start a basic web server for the dest/ folder - try out your build
+ */
+gulp.task('serve:dist', ['build'], function () {
+    // Serve app
+    var httpServer = require('./ci/httpServer');
+    httpServer(config.MINIFY_DESTINATION, config.WEB_SERVER_PORT);
+    lrServer.listen(config.LIVERELOAD_PORT);
+
+    // Set watchers to trigger live reload
+    gulp.watch(config.APPLICATION_FILES, ['build']);
 });
 
 /**
@@ -72,11 +97,11 @@ gulp.task('serve', ['serve:app', 'serve:rest']);
  * Test Tasks
  **/
 var runJasmineTestsFunc = require('./ci/runJasmineTests.js');
-gulp.task('test:unit', ['build'], function () {
+gulp.task('test:unit', ['build_project_file', 'ngTemplates'], function () {
     return runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['build'], function () {
+gulp.task('test:integration', ['build_project_file', 'ngTemplates'], function () {
     return runJasmineTestsFunc('integration');
 });
 
@@ -93,14 +118,16 @@ gulp.task('test:cucumber', ['serve'], function() {
     webDriver.startWebDriver(cucumber.startCucumber);
 });
 
-// build tasks
-gulp.task('build', ['clean', 'build_project_file', 'ngTemplates', 'sass']);
-
-gulp.task('sass', function () {
+/**
+ * Create minified css file
+ */
+gulp.task('style', ['style:bower_css']);
+gulp.task('style:minify', function () {
     var sass = require('gulp-sass');
     var minifyCss = require('gulp-minify-css');
     var concat = require('gulp-concat');
-    return gulp.src(config.APPLICATION_STYLES)
+
+    var sassPipe = gulp.src(config.APPLICATION_STYLES)
         .pipe(sass({includePaths: [
             'app/bower_components/core-bootstrap-styles/app/sass',
             'app/bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap'
@@ -110,8 +137,68 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(config.MINIFY_DESTINATION))
         .pipe(gulp.dest(config.APPLICATION_ROOT))
         .pipe(refresh(lrServer));
+    return sassPipe;
+});
+// Insert a stub-file for bower_css so we don't get 404s.
+// TODO: Make it so this file isn't requested from dist in the first place
+gulp.task('style:bower_css', ['style:minify'], function() {
+    var fs = require('fs');
+    fs.writeFileSync(config.MINIFY_DESTINATION + '/bower_css.json', JSON.stringify([]));
 });
 
+/**
+ * Minify JS (app and vendor)
+ */
+gulp.task('js', ['js:app', 'js:vendor']);
+
+// Minify app js files
+gulp.task('js:app', ['js:app:json', 'js:app:minify']);
+gulp.task('js:app:minify', ['ngTemplates'], function() {
+    var uglify = require('gulp-uglify');
+    var concat = require('gulp-concat');
+
+    return gulp.src([config.APPLICATION_SCRIPTS, config.MINIFY_DESTINATION + '/templates.js'])
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest(config.MINIFY_DESTINATION))
+        .pipe(concat('app.min.js'))
+        // TODO: ngmin doesn't like our 'rlmodule' - skip mangling variable names for now...
+        .pipe(uglify({mangle: false}))
+        .pipe(gulp.dest(config.MINIFY_DESTINATION));
+});
+gulp.task('js:app:json', ['js:app:minify'], function() {
+        var deferred = require('q').defer();
+        var glob = require('glob');
+        // Write project file.
+        var project_files = JSON.stringify(['app.min.js']);
+        require('fs').writeFile(config.MINIFY_DESTINATION + '/.project_scripts.json', project_files, function(err) {
+            if (err) {
+                deferred.reject('Could not build project file.' + err.message);
+            } else {
+                deferred.resolve();
+            }
+        });
+        return deferred.promise;
+});
+
+// Minify vendor files
+gulp.task('js:vendor', ['js:vendor:minify', 'js:vendor:json']);
+gulp.task('js:vendor:minify', function() {
+    var uglify = require('gulp-uglify');
+    var concat = require('gulp-concat');
+
+    return gulp.src(config.BOWER_SCRIPTS)
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest(config.MINIFY_DESTINATION))
+        .pipe(concat('vendor.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(config.MINIFY_DESTINATION));
+});
+gulp.task('js:vendor:json', ['js:vendor:minify'], function() {
+    var fs = require('fs');
+    fs.writeFileSync(config.MINIFY_DESTINATION + '/bower_scripts.json', JSON.stringify(['vendor.js']));
+});
+
+// Minify templates
 gulp.task('ngTemplates', function () {
     var templateCache = require('gulp-angular-templatecache');
     return gulp.src('app/modules/**/*.html')
@@ -119,5 +206,5 @@ gulp.task('ngTemplates', function () {
             root: 'modules',
             module: 'templates'
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest(config.MINIFY_DESTINATION));
 });

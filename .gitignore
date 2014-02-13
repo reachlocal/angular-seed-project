@@ -1,6 +1,6 @@
 # IntelliJ and/or RubyMine ignores
 .idea/
-.project_files.json
+.project_scripts.json
 node_modules/
 dist/
 cpi-client.iml

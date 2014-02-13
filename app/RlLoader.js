@@ -12,14 +12,23 @@
      * @return void
      **/
     function loadFile(filename) {
-        jsFileQueue.push(filename);
+        fileQueue.push(filename);
         loadNextQueuedFile();
     };
 
     /**
+     * Get the file extension so we can stick it in the proper tag
+     * @return String       ex: 'js', 'css'
+     */
+    var pattern = /\.([0-9a-z]+)(?:[\?#]|$)/i;
+    function fileExtension(filename) {
+        return filename.match(pattern)[1];
+    }
+
+    /**
      * We'll load scripts synchronously.  We'll keep track of our queue here.
      **/
-    var jsFileQueue = [];
+    var fileQueue = [];
     /**
      * Keep track of our ready-state.
      **/
@@ -29,24 +38,40 @@
      * Load the next file from the queue.  (Continue loading until queue is empty.)
      **/
     function loadNextQueuedFile() {
-        if (ready && jsFileQueue.length > 0) {
+        if (ready && fileQueue.length > 0) {
             ready = false;
+            var self = this;
 
-            var s = document.createElement('script'),
-                self = this;
-            s.src = jsFileQueue.shift();
-            s.async = true;
-            s.onreadystatechange = s.onload = function() {
-                ready = true;
-                if (jsFileQueue.length === 0) {
-                    var event = new Event('RlLoaderFinished');
-                    // Listen for the event.
-                    document.dispatchEvent(event);
+            try {
+                var s;
+                var filename = fileQueue.shift();
+
+                var callback = function() {
+                    ready = true;
+                    if (fileQueue.length === 0) {
+                        var event = new Event('RlLoaderFinished');
+                        // Listen for the event.
+                        document.dispatchEvent(event);
+                    } else {
+                        loadNextQueuedFile();
+                    }
+                };
+
+                if (fileExtension(filename) === 'js') {
+                    s = document.createElement('script');
+                    s.src = filename;
+                } else if (fileExtension(filename) === 'css') {
+                    s = document.createElement("link");
+                    s.setAttribute("href", filename);
+                    s.setAttribute("rel", "stylesheet");
                 } else {
-                    loadNextQueuedFile();
+                    throw {message: "Cannot load file.  Unknown type: " + filename};
                 }
+                s.onreadystatechange = s.onload = callback;
+                document.getElementsByTagName('head')[0].appendChild(s);
+            } catch (err) {
+                console.error(err.message);
             }
-            document.getElementsByTagName('head')[0].appendChild(s);
         }
     }
 
@@ -78,15 +103,16 @@
                 }
 
             }
-        }
+        };
 
         httpcli.open('GET', url, true);
         httpcli.send();
     }
 
     // Load the vendor files
-    loadFilesFromConfig('bower_files.json');
+    loadFilesFromConfig('bower_css.json');
+    loadFilesFromConfig('bower_scripts.json');
 
     // Load the user's files
-    loadFilesFromConfig('.project_files.json');
+    loadFilesFromConfig('.project_scripts.json');
 })();

@@ -1,2 +1,2 @@
 angular.module('templates', []);
-angular.rlmodule('rl', ['templates']);
+angular.rlmodule('rl.cpi', ['templates']);

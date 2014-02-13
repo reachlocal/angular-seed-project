@@ -14,7 +14,7 @@ describe('Campaign Header', function () {
   }
 
   // Load the template cache, it's in the 'rl' module
-  beforeEach(module('rl'));
+  beforeEach(module('rl.cpi'));
   beforeEach(module('rl.cpi.main.directives.rlCampaignHeader'));
   beforeEach(function () {
     directive = compileDirective('<rl-campaign-header overview="CampaignOverview"></rl-campaign-header>', mockScope);

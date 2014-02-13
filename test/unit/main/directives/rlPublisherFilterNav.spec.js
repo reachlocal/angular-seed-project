@@ -20,7 +20,7 @@ describe('Publisher Filter Nav', function () {
     };
 
     // Load the template cache, it's in the 'rl' module
-    beforeEach(module('rl'));
+    beforeEach(module('rl.cpi'));
     beforeEach(module('rl.cpi.main.directives.rlPublisherFilterNav'));
     beforeEach(function () {
         directive = compileDirective('<rl-publisher-filter-nav publishers="CtrlPublishers"></rl-publisher-filter-nav>', mockScope);
