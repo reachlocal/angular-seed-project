@@ -1,7 +1,7 @@
-angular.rlmodule('rl.cpi.main.controllers.campaign',
+angular.rlmodule('rl.cpi.main.controllers.Campaign',
         ['rl.cpi.main.directives',
-         'rl.cpi.main.services.publishers',
-         'rl.cpi.main.services.campaignOverview',
+         'rl.cpi.main.services.Publishers',
+         'rl.cpi.main.services.CampaignOverview',
          'ui.router'])
 
     .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview) {

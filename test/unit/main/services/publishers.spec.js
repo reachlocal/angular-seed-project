@@ -2,10 +2,10 @@ describe("Publishers", function () {
 
     var publishers;
 
-    beforeEach(mockDependency('rl.cpi.main.config', 'Config').toBe({gatewayBaseUrl: ''}));
+    beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
 
     beforeEach(function () {
-        module("rl.cpi.main.services.publishers");
+        module("rl.cpi.main.services.Publishers");
         inject(function (Publishers) {
             publishers = Publishers;
         });

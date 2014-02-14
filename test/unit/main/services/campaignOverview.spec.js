@@ -2,10 +2,10 @@ describe("CampaignOverview", function () {
 
     var campaignOverview;
 
-    beforeEach(mockDependency('rl.cpi.main.config', 'Config').toBe({gatewayBaseUrl: ''}));
+    beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
 
     beforeEach(function () {
-        module("rl.cpi.main.services.campaignOverview");
+        module("rl.cpi.main.services.CampaignOverview");
         inject(function (CampaignOverview) {
             campaignOverview = CampaignOverview;
         });
@@ -18,11 +18,11 @@ describe("CampaignOverview", function () {
     it("should fetch overview data for a given campaign", function () {
       var overviewData = {
         id: 1,
-        name: "A Quality 1st Plumbing- Plumbing",
-      }
+        name: "A Quality 1st Plumbing- Plumbing"
+      };
       httpResolver.$httpBackend.expectGET('/campaigns/1/overview_data').respond(overviewData);
 
-      var result = campaignOverview.get({ campaignId: 1})
+      var result = campaignOverview.get({ campaignId: 1});
 
       httpResolver.resolve();
 
