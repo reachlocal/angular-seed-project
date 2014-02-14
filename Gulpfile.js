@@ -121,11 +121,20 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
  * Note:  You can pass cucumber-js command line params through with this task
  * ex: gulp test:cucumber --format pretty --tags @CPI-25
  */
-gulp.task('test:cucumber', ['serve'], function() {
-    // Start web-driver and cucumber
-    var webDriver = require('./ci/webDriver');
-    var cucumber = require('./ci/cucumber');
-    webDriver.startWebDriver(cucumber.startCucumber);
+gulp.task('test:cucumber', ['serve:app'], function() {
+    // Ensure rest server is running on localhost
+    var portscanner = require('portscanner');
+    portscanner.checkPortStatus(config.REST_SERVER_PORT, '127.0.0.1', function(error, status) {
+        if (status === 'open') {
+            // Start web-driver and cucumber
+            var webDriver = require('./ci/webDriver');
+            var cucumber = require('./ci/cucumber');
+            webDriver.startWebDriver(cucumber.startCucumber);
+        } else {
+            console.error('Cannot run tests. Gateway must be running at port 8001');
+            process.exit(1);
+        }
+    });
 });
 
 /**

@@ -3,7 +3,7 @@ module.exports = function() {
     this.World = require('../support/world.js').World;
 
     this.Given('a typical campaign exists', function(callback) {
-        browser.get('http://localhost:4000/#campaign/1');
+        browser.get('http://localhost:4000/#campaign/713896');
         browser.getTitle()
             .then(function(title) {
                 assert.equal(title, 'Campaign Overview');
