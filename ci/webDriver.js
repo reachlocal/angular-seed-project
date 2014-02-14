@@ -35,7 +35,7 @@ module.exports = new function() {
     function spawnWebDriver() {
         return runCommand(['node_modules/.bin/webdriver-manager', 'start'], function() {
             running = false;
-        });
+        }, true);
     }
 
 };

@@ -3,21 +3,24 @@
  * The supplied callback will be called when the process exits.
  * @param options
  * @param callback
+ * @param quiet boolean     If true, suppress stdout.
  * @return process
  */
 var child_process = require('child_process');
 
-module.exports = function(options, callback) {
+module.exports = function(options, callback, quiet) {
 
-    var process = child_process.spawn('node', options)
+    var cProcess = child_process.spawn('node', options)
         .on('exit', callback);
-    process.stdout.on('data', function(d) {
-        console.log(String(d));
+    if (!quiet) {
+        cProcess.stdout.on('data', function(d) {
+            process.stdout.write(String(d));
+        });
+    }
+
+    cProcess.stderr.on('data', function(d) {
+        process.stderr.write(String(d));
     });
 
-    process.stderr.on('data', function(d) {
-        console.error(String(d));
-    });
-
-    return process;
+    return cProcess;
 };

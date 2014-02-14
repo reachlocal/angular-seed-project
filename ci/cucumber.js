@@ -6,7 +6,11 @@ module.exports = new function() {
     var runCommand = require('./runCommand');
 
     this.startCucumber = function() {
-        runCommand(['node_modules/.bin/cucumber-js', './test/features/', '-f', 'pretty'], function() {});
+        var options = process.argv;
+        options.splice(0, 3); // Trim 'gulp' and 'test:cucumber' off param list
+        options = ['node_modules/.bin/cucumber-js', './test/features/'].concat(options);
+
+        runCommand(options, function() {});
     };
 
 };

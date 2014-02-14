@@ -116,6 +116,11 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
     gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
 });
 
+/**
+ * Run web driver and cucumber-js
+ * Note:  You can pass cucumber-js command line params through with this task
+ * ex: gulp test:cucumber --format pretty --tags @CPI-25
+ */
 gulp.task('test:cucumber', ['serve'], function() {
     // Start web-driver and cucumber
     var webDriver = require('./ci/webDriver');
