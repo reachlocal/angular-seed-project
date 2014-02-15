@@ -14,7 +14,7 @@ gulp.task('default', ['sass'], function () {});
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
-gulp.task('serve', ['sass'], function () {
+gulp.task('serve', ['style'], function () {
     var express = require('express');
     var app = express();
     app.use(require('connect-livereload')());
@@ -29,7 +29,7 @@ gulp.task('serve', ['sass'], function () {
     });
 });
 
-gulp.task('sass', function () {
+gulp.task('style', function () {
     var sass = require('gulp-sass');
     var minifyCss = require('gulp-minify-css');
     var concat = require('gulp-concat');

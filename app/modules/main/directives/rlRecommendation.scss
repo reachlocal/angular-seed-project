@@ -1,7 +1,8 @@
+@import "rl_variables";
 .rl-recommendation {
 
   .fa-exclamation-circle {
-    color: #F16724;
+    color: $brand-warning;
   }
 
   a {
@@ -10,6 +11,29 @@
 
   .btn {
     margin: 0 20px 10px 0;
+  }
+
+  details {
+    background-color: $gray-lighter;
+    border: 1px solid $gray-light;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+  }
+
+  details .close {
+    float: none;
+    font-size: 16px;
+    color: $brand-danger;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    line-height: 30px;
   }
 
 }
