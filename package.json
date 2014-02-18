@@ -37,6 +37,7 @@
     "cucumber": "~0.3.3",
     "bower": "~1.2.8",
     "gulp-uglify": "~0.2.1",
-    "selenium-webdriver": "~2.39.0"
+    "selenium-webdriver": "~2.39.0",
+    "portscanner": "~0.2.2"
   }
 }
