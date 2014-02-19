@@ -83,7 +83,7 @@ var RlModule = new function() {
     // If we use ngApp, it auto-bootstraps too early (sometimes)  :S
     document.addEventListener('RlLoaderFinished', bootstrap);
 
-}
+};
 
 angular.rlmodule = RlModule.module;
 /**

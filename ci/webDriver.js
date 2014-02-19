@@ -19,7 +19,7 @@ module.exports = new function() {
                 console.log("Waiting for WebDriver to Start.");
                 process.stdout.on('data', function(d) {
                     if (String(d).match('Started SocketListener')) {
-                        console.log("WebDriver is Running!")
+                        console.log("WebDriver is Running!");
                         callback();
                         callback = function() {}; // Only call it once.
                     }

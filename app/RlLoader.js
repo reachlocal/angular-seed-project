@@ -14,7 +14,7 @@
     function loadFile(filename) {
         fileQueue.push(filename);
         loadNextQueuedFile();
-    };
+    }
 
     /**
      * Get the file extension so we can stick it in the proper tag

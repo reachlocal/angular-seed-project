@@ -12,7 +12,7 @@ describe('Campaign Header', function () {
       "spent_to_date_this_cycle": 500,
       "current_cycle": 6,
     }
-  }
+  };
 
   // Load the template cache, it's in the 'rl' module
   beforeEach(module('rl.cpi'));
