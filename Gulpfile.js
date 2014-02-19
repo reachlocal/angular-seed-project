@@ -137,6 +137,17 @@ gulp.task('test:cucumber', ['serve:app'], function() {
     });
 });
 
+gulp.task('lint', function () {
+    var jshint = require('gulp-jshint');
+    gulp.src([
+         './**/*.js',
+         '!./app/bower_components/**/*.js',
+         '!./node_modules/**/*.js',
+         '!./dist/**/*.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
+});
+
 /**
  * Create minified css file
  */
