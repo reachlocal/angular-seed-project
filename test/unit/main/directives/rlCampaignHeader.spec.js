@@ -26,12 +26,12 @@ describe('Campaign Header', function () {
 
     expect(result).toContain("Get rid of ghosts!");
     expect(result).toContain("Ghost Busters, Inc");
-    expect(result).toContain("MCID - 789");
-    expect(result).toContain("Current CID - 123");
+    expect(result).toContain("MCID: 789");
+    expect(result).toContain("Current CID: 123");
     expect(result).toContain("Total Cycle Budget: $1900");
-    expect(result).toContain("Total Contract Length: 10 months");
+    expect(result).toContain("Total Contract Length: 10");
     expect(result).toContain("Spend to Date this cycle: $500");
-    expect(result).toContain("Currently in 6th Cycle");
+    expect(result).toContain("Currently Cycle: 6");
   });
 
 });

@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReachLocal Bootstrap</title>
+    <title>ReachLocal Bootstrap 1</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="core-bootstrap.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
-    
-    <header>
-        <ul class="campaign-info">
-          <li>Mr Plow Woodland Hills, CA</li>
-          <li>Advertiser Name</li>
-          <li>MCID - 1234556</li>
-          <li>Current CID - 12364535</li>
-          <li>Total Cycle Budget: $1500</li>
-          <li>Total Contract Length: unlimited</li>
-          <li>Spend to Date this cycle: $1345</li>
-          <li>Currently in 6th Cycle</li>  
-        </ul>        
+
+    <header class="rl-page-header">
+        Page Header!
         <ul class="settings">
           <li>Your name</li>
           <li>
@@ -37,7 +27,7 @@
     <main class="container">
 
 
-<!-- calendar dropdown 
+<!-- calendar dropdown
       <section class="col-md-12 daterange">
         <div id="reportrange" class="pull-right col-md-12">
           <i class="fa fa-calendar"></i>
@@ -48,8 +38,16 @@
 
     <nav class="global-nav row col-md-2 accordion">
       <ul class="sidebar">
-          <li><a href="#"><strong>ALL</strong></a></li>
-          <li><a data-toggle="collapse" data-parent="#accordion" href="#publisher1"><strong>Google</strong></a>
+          <li class="nav-group"><a data-toggle="collapse" data-parent="#accordion" href="#all"><b>ALL</b></a>
+            <ul id="all" class="panel-collapse collapse">
+                <li><a href="#">Ads (all)</a></li>
+                <li><a href="#">Leak detection</a></li>
+                <li><a href="#">General Plumbing</a></li>
+                <li><a href="#">Hot Water Heaters</a></li>
+                <li><a href="#">Septic Tank Cleaning</a></li>
+            </ul>
+          </li>
+          <li class="nav-group"><a data-toggle="collapse" data-parent="#accordion" href="#publisher1"><b>Google</b></a>
               <ul id="publisher1" class="panel-collapse collapse">
                   <li><a href="#">Ad Group 1</a></li>
                   <li><a href="#">Ad Group 2</a></li>
@@ -58,7 +56,7 @@
                   <li><a href="#">Ad Group 5</a></li>
               </ul>
           </li>
-          <li><a data-toggle="collapse" data-parent="#accordion" href="#publisher2"><strong>Yahoo</strong></a>
+          <li class="nav-group"><a data-toggle="collapse" data-parent="#accordion" href="#publisher2"><b>Yahoo</b></a>
               <ul id="publisher2" class="panel-collapse collapse">
                   <li><a href="#">Ad Group 1</a></li>
                   <li><a href="#">Ad Group 2</a></li>
@@ -67,7 +65,7 @@
                   <li><a href="#">Ad Group 5</a></li>
               </ul>
           </li>
-          <li><a data-toggle="collapse" data-parent="#accordion" href="#publisher3"><strong>Bing</strong></a>
+          <li class="nav-group"><a data-toggle="collapse" data-parent="#accordion" href="#publisher3"><b>Bing</b></a>
               <ul id="publisher3" class="panel-collapse collapse">
                   <li><a href="#">Ad Group 1</a></li>
                   <li><a href="#">Ad Group 2</a></li>
@@ -84,7 +82,7 @@
     <article class="col-md-10">
 
       <section class="recommendations">
-        <p>Your campaign have <strong>4</strong> active recommendations.</p>
+        <p>Your campaign have <b class="text-warning">4</b> active recommendations to improve performance.</p>
         <ul>
           <li>
             <details class="animated">
@@ -94,11 +92,7 @@
                <p>
                   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
               </p>
-              <p>
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Dismiss x</button>
-              </p>
-              
-            </details>
+           </details>
           </li>
           <li>
             <details class="animated">
@@ -121,26 +115,20 @@
             </details>
           </li>
         </ul>
+        <!-- Recommendations Empty Message
+        <div class="bg-info">
+          No active recommendations. <b class="text-info">Well done! </b>
+        </div>
+        // Recommendations Empty Message -->
       </section>
-
-
-
-      <section class="trend">
-        <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="An impression is counted each time your ad is shown on a search result page or other site on the Google Network.">Imp</br>1800</button>
-        <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="The Clicks column in your reports indicates how many times your advertisements were clicked by visitors">Clicks</br>45</button>
-        <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="Click Through Rate">CTR</br>9%</button>
-        <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="Actual Cost-Per-Click is the amount you’ll actually pay for a click on your ad.">CPC</br>$6.87</button>
-        <button type="button" class="tip btn btn-info" data-toggle="tooltip" data-placement="bottom" title data-original-title="Cost-Per-Lead is the amount of money paid per qualified lead.">CPL</br>$67.90</button>        
-      </section>
-
     </article>
-    
-  </main> 
+
+  </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="http://denis-sokolov.github.io/details-tag/jquery.details-1.7.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
   </body>
-</html>            
+</html>
 
 

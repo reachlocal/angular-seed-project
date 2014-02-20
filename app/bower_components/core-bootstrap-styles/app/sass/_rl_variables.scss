@@ -1,4 +1,47 @@
-$brand-warning:          #F16724 !default;
-$state-warning-text:     #F16724 !default;
+// Orange color for 'warning' based styles
+$state-warning-text:     #f0ad4e !default;
+
+$link-color:             #666666 !default;
 
 @import "variables";
+
+
+//== Colors
+
+$gray-darker:            #333333 !default;
+$gray-dark:              lighten(#333333, 20%) !default;
+$gray:                   lighten(#333333, 33.5%) !default;
+$gray-light:             lighten(#333333, 60%) !default;   // #999
+$gray-lighter:           #fafafa !default; 
+
+$brand-primary:         #F16724 !default;
+$brand-success:         #99CC00 !default;
+$brand-info:            #3399CC !default;
+$brand-warning:         #f0ad4e !default;
+$brand-danger:          #d9534f !default;
+
+
+//== Global text definitions
+
+$text-color: $gray-darker !default;
+
+$font-family-sans-serif: Open Sans, Helvetica, Arial, sans-serif !default;
+$font-family-serif: Open Sans, "Times New Roman", Times, serif !default;
+
+$border-radius-base: 2px !default;
+$border-radius-large: 4px !default;
+
+$container-tablet: 98% !default;
+$container-desktop: 98% !default;
+$container-large-desktop: 98% !default;
+
+
+
+
+
+
+
+
+
+
+

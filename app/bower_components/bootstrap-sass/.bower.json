@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-sass",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "homepage": "https://github.com/twbs/bootstrap-sass",
   "authors": [
     "Thomas McDonald",
@@ -29,13 +29,13 @@
     "Rakefile",
     "Gemfile"
   ],
-  "_release": "3.1.0",
+  "_release": "3.1.1",
   "_resolution": {
     "type": "version",
-    "tag": "v3.1.0",
-    "commit": "41c5dfb8c8c659831b634868688c9ef4e908813f"
+    "tag": "v3.1.1",
+    "commit": "cd4062f43dcb5293da8b10ee455a5c6d0aab0b91"
   },
   "_source": "git://github.com/twbs/bootstrap-sass.git",
-  "_target": "~3.1.0",
+  "_target": "3.1.1",
   "_originalSource": "git://github.com/twbs/bootstrap-sass.git"
 }

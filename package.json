@@ -40,6 +40,8 @@
     "selenium-webdriver": "~2.39.0",
     "portscanner": "~0.2.2",
     "gulp-jshint": "~1.4.2",
-    "jshint-stylish": "~0.1.5"
+    "jshint-stylish": "~0.1.5",
+    "gulp-bower": "0.0.2",
+    "run-sequence": "~0.3.6"
   }
 }

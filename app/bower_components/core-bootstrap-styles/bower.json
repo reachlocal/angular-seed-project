@@ -4,6 +4,7 @@
   "authors": [
     "Ju Dorneles <julianadorneles@gmail.com>"
   ],
+  "main": "dist/core-bootstrap.css",
   "description": "Custom Bootstrap CSS (SASS-based) for ReachLocal",
   "license": "MIT",
   "ignore": [
@@ -14,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#~3.1.0",
-    "font-awesome": "~4.0.3"
+    "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#3.1.1",
+    "font-awesome": "4.0.3"
   }
 }

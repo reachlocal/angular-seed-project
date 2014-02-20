@@ -9,7 +9,18 @@ var config = require('./ci/gulpConfig');
 var refresh = require('gulp-livereload');
 var lrServer = require('tiny-lr')();
 
-gulp.task('default', ['sass'], function () {});
+gulp.task('default', ['style']);
+
+gulp.task('bower', ['bower:clean'], function() {
+  var bower = require('gulp-bower');
+  return bower();
+});
+
+gulp.task('bower:clean', function() {
+  var clean = require('gulp-clean');
+  return gulp.src(config.APPLICATION_ROOT + '/bower_components')
+      .pipe(clean());
+});
 
 /**
  * Start a static server that will live-reload when any file is changed.
@@ -22,18 +33,18 @@ gulp.task('serve', ['style'], function () {
     app.listen(config.WEB_SERVER_PORT);
     lrServer.listen(config.LIVERELOAD_PORT);
 
-    gulp.watch(config.APPLICATION_STYLES, ['sass']);
+    gulp.watch(config.ALL_STYLES, ['style']);
     gulp.watch(config.APPLICATION_VIEWS, function () {
         gulp.src(config.APPLICATION_VIEWS)
             .pipe(refresh(lrServer));
     });
 });
 
-gulp.task('style', function () {
+gulp.task('style', ['bower'], function () {
     var sass = require('gulp-sass');
     var minifyCss = require('gulp-minify-css');
     var concat = require('gulp-concat');
-    gulp.src(config.APPLICATION_STYLES)
+    return gulp.src(config.APPLICATION_STYLES)
         .pipe(sass({includePaths: ['./bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap']}))
         .pipe(minifyCss())
         .pipe(concat('core-bootstrap.css'))

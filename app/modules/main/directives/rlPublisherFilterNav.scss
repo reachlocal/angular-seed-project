@@ -1,3 +1,33 @@
-.rl-publisher-filter-nav {
+@import '_rl_variables';
 
+rl-publisher-filter-nav {
+  nav {
+    ul li {
+      a {
+        color: $gray;
+      }
+      a:hover {
+        color: $gray-darker;
+        text-decoration: underline;
+      }
+
+      line-height: 2.1428571435;
+      list-style: none;
+    }
+
+    ul {
+      padding: 0 20px 0 15px;
+    }
+
+    ul li ul {
+      padding-left: 10px;
+    }
+
+    .nav-group:before {
+      font-family: 'FontAwesome';
+      -webkit-font-smoothing: antialiased;
+      content: '\f067';
+      padding-right: 5px;
+    }
+  }
 }

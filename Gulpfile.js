@@ -4,6 +4,7 @@
  */
 var gulp = require('gulp');
 var config = require('./ci/gulpConfig');
+var runSequence = require('run-sequence');
 
 // Live-reload stuff that will be used by multiple consumers
 var refresh = require('gulp-livereload');
@@ -11,13 +12,19 @@ var lrServer = require('tiny-lr')();
 
 gulp.task('default', ['build']);
 
-gulp.task('dist', ['clean', 'style', 'js'], function() {
+gulp.task('dist', function(callback) {
+    runSequence('clean',
+                ['style', 'js'],
+                'dist:copy',
+                callback);
+});
+gulp.task('dist:copy', function() {
     var copyFiles = [
         config.APPLICATION_ROOT + '/index.html',
         config.APPLICATION_ROOT + '/RlLoader.js'
     ];
     return gulp.src(copyFiles)
-        .pipe(gulp.dest(config.MINIFY_DESTINATION ))
+        .pipe(gulp.dest(config.MINIFY_DESTINATION))
         .pipe(refresh(lrServer));
 });
 
@@ -25,6 +32,17 @@ gulp.task('build', ['dist', 'test']);
 
 gulp.task('dist:watch', [], function () {
     gulp.watch([config.APPLICATION_FILES], ['dist']);
+});
+
+gulp.task('bower', ['bower:clean'], function() {
+    var bower = require('gulp-bower');
+    return bower();
+});
+
+gulp.task('bower:clean', function() {
+    var clean = require('gulp-clean');
+    return gulp.src(config.APPLICATION_ROOT + '/bower_components')
+        .pipe(clean());
 });
 
 /**
@@ -65,6 +83,7 @@ gulp.task('serve:app', ['build_project_file', 'style'], function () {
     gulp.watch(config.APPLICATION_STYLES, ['style']);
     var rootFiles = [
         config.APPLICATION_ROOT + '/*.html',
+        config.APPLICATION_ROOT + '/**/*.html',
         config.APPLICATION_ROOT + '/*.js'
     ];
     gulp.watch(rootFiles, function() {

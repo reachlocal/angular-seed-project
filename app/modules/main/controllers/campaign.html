@@ -1,4 +1,4 @@
-<div class="campaign">
+<div class="rl-campaign-ctrl">
 
     <rl-campaign-header overview="campaignOverview"></rl-campaign-header>
 
@@ -7,21 +7,23 @@
        <rl-publisher-filter-nav publishers="publishers"></rl-publisher-filter-nav>
 
 
-        <article class="col-md-10">
+        <article class="col-md-10 mockup">
 
             <section class="recommendations" id="accordion">
                 <p>Your campaign have <b class="text-warning">4</b> active recommendations.</p>
                 <div class="panel-group" id="accordion">
 
-                <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                    <ul>
+                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
+                    </ul>
 
                 </div>
             </section>
 
-            <section>
+            <section class="">
                 <rl-metric-button btn-name="'Imp'"
                                   btn-value="'1800'"
                                   hinttext="'An impression is counted each time your ad is shown on a search result page or other site on the Google Network.'"></rl-metric-button>
