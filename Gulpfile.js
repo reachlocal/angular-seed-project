@@ -72,10 +72,11 @@ gulp.task('clean', function () {
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
-gulp.task('serve:app', ['build_project_file', 'style'], function () {
+gulp.task('serve:app', ['build_project_file', 'style', 'l10n'], function () {
     // Serve app
     var httpServer = require('./ci/httpServer');
     httpServer(config.APPLICATION_ROOT, config.WEB_SERVER_PORT);
+    console.log("Web server running on: http://localhost:" + config.WEB_SERVER_PORT);
     lrServer.listen(config.LIVERELOAD_PORT);
 
     // Set watchers to trigger live reload
@@ -86,6 +87,7 @@ gulp.task('serve:app', ['build_project_file', 'style'], function () {
         config.APPLICATION_ROOT + '/**/*.html',
         config.APPLICATION_ROOT + '/*.js'
     ];
+    gulp.watch(config.APPLICATION_ROOT + '/**/lang-*.json', ['l10n']);
     gulp.watch(rootFiles, function() {
         return gulp.src(rootFiles)
             .pipe(refresh(lrServer));
@@ -256,4 +258,25 @@ gulp.task('ngTemplates', function () {
             module: 'templates'
         }))
         .pipe(gulp.dest(config.MINIFY_DESTINATION));
+});
+
+// Concat translation files
+gulp.task('l10n', function() {
+    var eventStream = require('event-stream');
+    var concatJson = require('./ci/concatJson');
+
+    // Create all the streams for our supported locales
+    var jsonStreams = [];
+    for (var i in config.LOCALES) {
+        var locale = config.LOCALES[i];
+        var l10nPipe = gulp.src(config.APPLICATION_ROOT + '/**/lang-' + locale + '.json')
+            .pipe(concatJson('lang-' + locale + '.json'))
+            .pipe(gulp.dest(config.APPLICATION_ROOT + '/.l10n/'))
+            .pipe(gulp.dest(config.MINIFY_DESTINATION + '/.l10n/'))
+            .pipe(refresh(lrServer));
+        jsonStreams.push(l10nPipe);
+    }
+
+    // Group them and return them
+    return eventStream.concat.apply(this, jsonStreams);
 });

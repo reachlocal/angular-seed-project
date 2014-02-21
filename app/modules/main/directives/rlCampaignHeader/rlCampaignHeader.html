@@ -1,0 +1,33 @@
+<header class="rl-campaign-header rl-page-header">
+    <ul class="campaign-info">
+        <li>
+            {{ overview.name }}
+        </li>
+        <li>
+            {{ overview.advertiser_name }}
+        </li>
+        <li>
+            {{ "rlCampaignHeader.Master Campaign ID: {master_campaign_id}" |
+               translate:overview }}
+        </li>
+        <li>
+            {{ "rlCampaignHeader.Current Campaign ID: {current_campaign_id}" |
+               translate:overview }}
+        </li>
+        <li>
+            {{ "rlCampaignHeader.Total Cycle Budget: {total_cycle_budget}" |
+               translate:overview }}
+        </li>
+        <li>
+            {{ "rlCampaignHeader.Total Contract Length" |
+               translate:{cycles: overview.total_contract_length}:"messageformat" }}
+        </li>
+        <li>
+            {{ "rlCampaignHeader.Spend to Date this Cycle: {spent_to_date_this_cycle}" |
+               translate:overview }}
+        </li>
+        <li>
+            {{ "rlCampaignHeader.Currently Cycle: {current_cycle}" | translate:overview }}
+        </li>
+    </ul>
+</header>

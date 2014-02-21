@@ -16,7 +16,8 @@ var config = {
     APPLICATION_VIEWS: APPLICATION_ROOT + '/modules/**/*.html',
     APPLICATION_STYLES: [APPLICATION_ROOT + '/modules/**/*.scss', APPLICATION_ROOT + '/modules/**/*.css'],
     TEST_LIBRARIES: ['app/bower_components/angular-mocks/angular-mocks.js'],
-    MINIFY_DESTINATION: PROJECT_ROOT + '/dist'
+    MINIFY_DESTINATION: PROJECT_ROOT + '/dist',
+    LOCALES: ['en', 'pt']
 };
 
 // Use this for wathcers that monitor ALL application files
