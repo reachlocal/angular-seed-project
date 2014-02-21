@@ -19,6 +19,7 @@ var RlModule = new function() {
         modules[moduleName] = depsArray;
         addNamespace(moduleName);
         var module = angular.module(moduleName, depsArray);
+        buildModuleBundle();
         return module;
     };
 
