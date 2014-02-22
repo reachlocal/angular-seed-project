@@ -7,3 +7,5 @@ cpi-client.iml
 app/app.css
 .*.sw?
 app/.l10n
+.vagrant
+tmp
