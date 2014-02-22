@@ -5,6 +5,7 @@ angular
             'chieffancypants.loadingBar',
             'pascalprecht.translate',
             'tmh.dynamicLocale',
+            'rl.l10n.MultiInterpolator',
             'ngAnimate'
         ]
     )
@@ -27,8 +28,7 @@ angular
         $translateProvider.fallbackLanguage('en');
 
         // Allow use of message format interpolation for parametrized translations
-        $translateProvider.addInterpolation('$translateMessageFormatInterpolation');
-        //$translateProvider.useMessageFormatInterpolation();
+        $translateProvider.useInterpolation('MultiInterpolator');
     })
     // Configure angular-dynamic-locale (for number/currency/date formatting)
     .config(function(tmhDynamicLocaleProvider) {
