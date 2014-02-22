@@ -5,6 +5,6 @@
         "Current Campaign ID: {current_campaign_id}": "Current Campaign ID: {{ current_campaign_id | filter:number }}",
         "Currently Cycle: {current_cycle}": "Currently Cycle: {{ current_cycle | filter:number }}",
         "Spend to Date this Cycle: {spent_to_date_this_cycle}": "Spend to Date this Cycle: {{ spent_to_date_this_cycle | currency:'$' }}",
-        "Total Contract Length": "Total Contract Length: { cycles } { cycles, plural, one{Cycle} other{Cycles} }"
+        "Total Contract Length: {cycles}": "Total Contract Length: { cycles } { cycles, plural, one{Cycle} other{Cycles} }"
     }
 }
