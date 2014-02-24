@@ -87,14 +87,14 @@ gulp.task('serve:app:nocompile', function () {
     gulp.watch(config.APPLICATION_STYLES, ['style']);
     var rootFiles = [
         config.APPLICATION_ROOT + '/*.html',
-        config.APPLICATION_ROOT + '/**/*.html',
+        config.APPLICATION_ROOT + '/modules/**/*.html',
         config.APPLICATION_ROOT + '/*.js'
     ];
-    gulp.watch(config.APPLICATION_ROOT + '/**/lang-*.json', ['l10n']);
+    gulp.watch(config.APPLICATION_ROOT + '/modules/**/lang-*.json', ['l10n']);
     gulp.watch(rootFiles, function() {
         return gulp.src(rootFiles)
             .pipe(refresh(lrServer));
-    });
+    }); 
 });
 /**
  * Start a basic web server for the dest/ folder - try out your build
@@ -272,7 +272,7 @@ gulp.task('l10n', ['l10n:support'], function () {
     var jsonStreams = [];
     for (var i in config.LOCALES) {
         var locale = config.LOCALES[i];
-        var l10nPipe = gulp.src(config.APPLICATION_ROOT + '/**/lang-' + locale + '.json')
+        var l10nPipe = gulp.src(config.APPLICATION_ROOT + '/modules/**/lang-' + locale + '.json')
             .pipe(concatJson('lang-' + locale + '.json'))
             .pipe(gulp.dest(config.APPLICATION_ROOT + '/.l10n/'))
             .pipe(gulp.dest(config.MINIFY_DESTINATION + '/.l10n/'))
