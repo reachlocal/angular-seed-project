@@ -11,11 +11,27 @@ body {
   padding-top: 0;
 }
 
+.rl_breadcrumb {
+  padding: 8px 15px 8px 0;
+  margin-bottom: 20px;
+  list-style: none;
+  font-size: 0.9em;
+  color: $gray-light;
+  li {
+    display: inline-block;
+  }
+}
+
+.rl_breadcrumb>li+li:before {
+  content: '\f054';
+  padding: 0 5px;  
+}
+
 summary {
   outline: none;
 }
 
-summary:before, .settings:before {
+summary:before, .settings:before, .nav-group:before,  .nav-group-open:before, .rl_breadcrumb>li+li:before {
   font-family: 'FontAwesome';
   -webkit-font-smoothing: antialiased;
 }
@@ -51,13 +67,21 @@ summary:hover, .recommendations strong {
   color: $brand-success;
 }
 
-.recommendations details {
+.recommendations details, .recommendations-done {
   background-color: $gray-lighter;
   border: 1px solid $gray-light;
   margin-bottom: 20px;
   border-radius: 3px;
   margin: 10px 0 10px 0;
   padding: 10px;
+}
+
+.recommendations-done {
+  border: 1px solid #3399CC;
+}
+
+.recommendations .text-success {
+  font-size: 1.5em;
 }
 
 .recommendations details .close {
@@ -70,8 +94,16 @@ summary:hover, .recommendations strong {
   padding: 0;
 }
 
-// Possibly delete this nav section
 nav {
+  background-color: #3399CC;
+  box-shadow: inset -10px 0 10px -10px #2980b9;
+  margin-left: -35px;
+  margin-right: 15px;
+
+  a, a:hover {
+    color: white;
+  }  
+  
   ul li {
     line-height: 2.1428571435;
     list-style: none;
@@ -85,33 +117,28 @@ nav {
     padding-left: 10px;
   }
 
+  .nav-group-open:before {
+      content: '\f068';
+      padding-right: 5px;
+      color: white;
+  }
+
   .nav-group:before {
-    font-family: 'FontAwesome';
-    -webkit-font-smoothing: antialiased;
     content: '\f067';
     padding-right: 5px;
+    color: white;
+  } 
+
+  .sidebar {
+    margin-top: 63px;
   }
+
 }
 
 section {
   margin-bottom: 30px;
 }
 
-.btn {
-  border-radius: 2px;
-}
-
-footer {
-  height: 60px;
-  font-style: italic;
-  text-align: center;
-  padding: 40px 0 40px 0;
-
-}
-
-.panel-body {
-  background-color: $gray-light;
-}
 
 
 

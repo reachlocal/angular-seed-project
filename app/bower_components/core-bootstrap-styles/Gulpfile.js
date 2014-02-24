@@ -32,6 +32,7 @@ gulp.task('serve', ['style'], function () {
     app.use(express.static(config.APPLICATION_ROOT, {hidden: true}));
     app.listen(config.WEB_SERVER_PORT);
     lrServer.listen(config.LIVERELOAD_PORT);
+    console.log('Server running on: http://localhost:' + config.WEB_SERVER_PORT);
 
     gulp.watch(config.ALL_STYLES, ['style']);
     gulp.watch(config.APPLICATION_VIEWS, function () {

@@ -14,7 +14,7 @@ gulp.task('default', ['build']);
 
 gulp.task('dist', function(callback) {
     runSequence('clean',
-                ['style', 'js'],
+                ['style', 'js', 'l10n'],
                 'dist:copy',
                 callback);
 });
@@ -261,7 +261,7 @@ gulp.task('ngTemplates', function () {
 });
 
 // Concat translation files
-gulp.task('l10n', function() {
+gulp.task('l10n', ['l10n:support'], function () {
     var eventStream = require('event-stream');
     var concatJson = require('./ci/concatJson');
 
@@ -279,4 +279,13 @@ gulp.task('l10n', function() {
 
     // Group them and return them
     return eventStream.concat.apply(this, jsonStreams);
+});
+
+// Copy supporting, lazy-loaded files for l10n
+gulp.task('l10n:support', function () {
+    var supportFiles = [
+        config.APPLICATION_ROOT + '/bower_components/angular-i18n/*.js'
+    ]
+    return gulp.src(supportFiles)
+        .pipe(gulp.dest(config.MINIFY_DESTINATION + '/bower_components/angular-i18n'));
 });

@@ -1,12 +1,7 @@
 // Orange color for 'warning' based styles
-$state-warning-text:     #f0ad4e !default;
+$state-warning-text:     #FAA92A !default;
 
 $link-color:             #666666 !default;
-
-@import "variables";
-
-
-//== Colors
 
 $gray-darker:            #333333 !default;
 $gray-dark:              lighten(#333333, 20%) !default;
@@ -17,11 +12,9 @@ $gray-lighter:           #fafafa !default;
 $brand-primary:         #F16724 !default;
 $brand-success:         #99CC00 !default;
 $brand-info:            #3399CC !default;
-$brand-warning:         #f0ad4e !default;
+$brand-warning:         #FAA92A !default;
 $brand-danger:          #d9534f !default;
 
-
-//== Global text definitions
 
 $text-color: $gray-darker !default;
 
@@ -35,8 +28,7 @@ $container-tablet: 98% !default;
 $container-desktop: 98% !default;
 $container-large-desktop: 98% !default;
 
-
-
+@import "variables";
 
 
 
