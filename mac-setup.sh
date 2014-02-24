@@ -29,6 +29,12 @@ check_executable npm '1.3.14'
 check_executable bower '1.2.8'
 check_executable gulp '3.5.2'
 
+check_gem capistrano '3.1.0'
+check_gem capistrano-rails '1.1.1'
+check_gem capistrano-bundler '1.1.2'
+check_gem capistrano-rvm '0.1.1'
+check_gem capistrano3-unicorn '0.1.1'
+
 install_node_packages
 install_bower_packages
 
