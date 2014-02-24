@@ -1,0 +1,8 @@
+<a ng-click="publisher.showAdGroups = !publisher.showAdGroups">
+  <strong>{{ publisher.name }} ({{publisher.geoType | capitalize }})</strong>
+</a>
+<ul collapse="!publisher.showAdGroups">
+    <li ng-repeat="adGroup in publisher.ad_groups">
+        <a>{{ adGroup.name }}</a>
+    </li>
+</ul>

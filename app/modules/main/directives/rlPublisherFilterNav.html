@@ -1,15 +1,11 @@
 <nav class="col-md-2">
     <ul>
-        <li class="nav-group"
-            ng-repeat="publisher in publishers">
-            <a ng-click="publisher.showAdGroups = !publisher.showAdGroups">
-              <strong>{{ publisher.name }} ({{publisher.geoType | capitalize }})</strong>
-            </a>
-            <ul collapse="!publisher.showAdGroups">
-                <li ng-repeat="adGroup in publisher.ad_groups">
-                    <a>{{ adGroup.name }}</a>
-                </li>
-            </ul>
-        </li>
+      <li class="nav-group">
+        <rl-publisher-menu-item item="publishers.all"></rl-publisher-menu-item>
+      </li>
+      <li class="nav-group"
+          ng-repeat="publisher in publishers.web_publisher_campaigns | orderBy:'name'">
+          <rl-publisher-menu-item item="publisher"></rl-publisher-menu-item>
+       </li>
     </ul>
 </nav>

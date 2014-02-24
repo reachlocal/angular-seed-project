@@ -1,6 +1,21 @@
-[
+{
+  "all": {
+        "name": "ALL",
+        "ad_groups": [
+            {
+                "name": "Local Roto-rooting",
+                "id": 123
+            },
+            {
+                "name": "DMA Roto-rooting",
+                "id": 456
+            }
+        ]
+    },
+  "web_publisher_campaigns": [
     {
         "name": "Google",
+        "geoType": "CITY",
         "ad_groups": [
             {
                 "name": "Local Roto-rooting",
@@ -14,24 +29,13 @@
     },
     {
         "name": "Bing",
+        "geoType": "NATIONAL",
         "ad_groups": [
             {
                 "name": "Local Roto-rooting",
                 "id": 123
-            }
-        ]
-    },
-    {
-        "name": "ALL",
-        "ad_groups": [
-            {
-                "name": "Local Roto-rooting",
-                "id": 123
-            },
-            {
-                "name": "DMA Roto-rooting",
-                "id": 456
             }
         ]
     }
-]
+  ]
+}
