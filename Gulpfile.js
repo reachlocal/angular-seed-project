@@ -14,7 +14,7 @@ gulp.task('default', ['build']);
 
 gulp.task('dist', function(callback) {
     runSequence('clean',
-                ['style', 'js', 'l10n'],
+                'style', 'js', 'l10n',
                 'dist:copy',
                 callback);
 });
@@ -72,7 +72,10 @@ gulp.task('clean', function () {
 /**
  * Start a static server that will live-reload when any file is changed.
  **/
-gulp.task('serve:app', ['build_project_file', 'style', 'l10n'], function () {
+gulp.task('serve:app', function () {
+    runSequence('build_project_file', 'style', 'l10n', 'serve:app:nocompile');
+});
+gulp.task('serve:app:nocompile', function () {
     // Serve app
     var httpServer = require('./ci/httpServer');
     httpServer(config.APPLICATION_ROOT, config.WEB_SERVER_PORT);
