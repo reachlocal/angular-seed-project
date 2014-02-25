@@ -1,0 +1,30 @@
+<table class="table table-hover table-condensed">
+    <thead>
+    <tr>
+        <th>{{ "rlTabularData.Ad Text" | translate }}</th>
+        <th>{{ "rlTabularData.Ad Group" | translate }}</th>
+        <th>{{ "rlTabularData.Publisher" | translate }}</th>
+        <th ng-repeat="header in headers" ng-hide="header.hidden">
+            {{ "rlTabularData." + header.name | translate }}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in data">
+        <td>
+            <div ng-repeat="headLine in row.creative.headLines">
+                <b>{{ headLine }}</b>
+            </div>
+            <div ng-repeat="descriptiveLine in row.creative.descriptiveLines">
+                {{ descriptiveLine }}<br>
+            </div>
+            <a href="{{ row.creative.linkURL }}">{{ row.creative.displayURL }}</a>
+        </td>
+        <td>{{ row.creative.adGroupName }}</td>
+        <td>{{ row.creative.publisherName }}</td>
+        <td ng-repeat="(key, header) in headers" ng-hide="header.hidden">
+            {{ row.reporting[key] }}
+        </td>
+    </tr>
+    </tbody>
+</table>

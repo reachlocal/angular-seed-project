@@ -1,0 +1,44 @@
+[
+    {
+        "creative": {
+            "headLines": ["Ad Title Number One"],
+            "descriptiveLines": ["First line of your ad", "and another one as required."],
+            "linkURL": "http://www.google.com",
+            "displayURL": "www.linktowebsite.com",
+            "adGroupName": "Bob's Ad Group",
+            "publisherName": "Google National"
+        },
+        "reporting": {
+            "impressionShareToPercentServed": 8.2,
+            "impressions": 4538,
+            "clicks": 64,
+            "clickThroughRate": "%16",
+            "costPerLead": "$67.90",
+            "leadCount": 18,
+            "clickToLeadConversionPercent": "%3.2",
+            "averagePosition": 1.4,
+            "qualityScore": 4.5
+        }
+    },
+    {
+        "creative": {
+            "headLines": ["Ad Title Number One"],
+            "descriptiveLines": ["First line of your ad", "and another one as required."],
+            "linkURL": "http://www.google.com",
+            "displayURL": "www.linktowebsite.com",
+            "adGroupName": "Bob's Ad Group",
+            "publisherName": "Google National"
+        },
+        "reporting": {
+            "impressionShareToPercentServed": 8.2,
+            "impressions": 458,
+            "clicks": 64,
+            "clickThroughRate": "%16",
+            "costPerLead": "$67.90",
+            "leadCount": 18,
+            "clickToLeadConversionPercent": "%3.2",
+            "averagePosition": 1.4,
+            "qualityScore": 4.5
+        }
+    }
+]
