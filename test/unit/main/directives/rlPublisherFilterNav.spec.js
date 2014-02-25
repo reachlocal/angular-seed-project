@@ -2,21 +2,30 @@ describe('Publisher Filter Nav', function () {
 
     var directive;
     var mockScope = {
-        CtrlPublishers: [{
-            name: "Google",
-            ad_groups: [
-                { name: "Local Roto-rooting", id:  123 },
-                { name: "DMA Roto-rooting", id: 456 }]
-        }, {
-            name: "Bing",
-            ad_groups: [
-                { name: "Local Roto-rooting", id:  123 }]
-        }, {
-            name: "ALL",
-            ad_groups: [
-                { name: "Local Roto-rooting", id:  123 },
-                { name: "DMA Roto-rooting", id: 456 }]
-        }]
+        CtrlPublishers: {
+            "all": {
+                name: "ALL",
+                ad_groups: [
+                    { name: "Local Roto-rooting", id: 123 },
+                    { name: "DMA Roto-rooting", id: 456 }
+                ]
+            },
+            "web_publisher_campaigns": [
+                {
+                    name: "Google",
+                    ad_groups: [
+                        { name: "Local Roto-rooting", id: 123 },
+                        { name: "DMA Roto-rooting", id: 456 }
+                    ]
+                },
+                {
+                    name: "Bing",
+                    ad_groups: [
+                        { name: "Local Roto-rooting", id: 123 }
+                    ]
+                }
+            ]
+        }
     };
 
     // Load the template cache, it's in the 'rl' module
