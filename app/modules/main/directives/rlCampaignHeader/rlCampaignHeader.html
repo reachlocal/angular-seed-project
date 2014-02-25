@@ -4,7 +4,7 @@
             {{ overview.name }}
         </li>
         <li>
-            {{ overview.advertiser_name }}
+            {{ overview.advertiserName }}
         </li>
         <li>
             {{ "rlCampaignHeader.Master Campaign ID: {master_campaign_id}" |
@@ -18,9 +18,12 @@
             {{ "rlCampaignHeader.Total Cycle Budget: {total_cycle_budget}" |
                translate:overview }}
         </li>
-        <li>
+        <li ng-hide="overview.unlimitedRenewals">
             {{ "rlCampaignHeader.Total Contract Length: {cycles}" |
-               translate:{cycles: overview.total_contract_length} }}
+               translate:{cycles: overview.totalContractLength} }}
+        </li>
+        <li ng-show="overview.unlimitedRenewals">
+            {{ "rlCampaignHeader.Total Contract Length: Unlimited" | translate }}
         </li>
         <li>
             {{ "rlCampaignHeader.Spend to Date this Cycle: {spent_to_date_this_cycle}" |

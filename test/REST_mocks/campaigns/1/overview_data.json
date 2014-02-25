@@ -1,10 +1,11 @@
 {
   "name": "Get rid of ghosts!",
-  "advertiser_name": "Ghost Busters, Inc.",
-  "master_campaign_id": 789,
-  "current_campaign_id": 123,
-  "total_cycle_budget": 1900,
-  "total_contract_length": 10,
-  "spent_to_date_this_cycle": 500,
-  "current_cycle": 6
+  "advertiserName": "Ghost Busters, Inc.",
+  "masterCampaignId": 789,
+  "currentCampaignId": 123,
+  "totalCycleBudget": 1900,
+  "totalContractLength": 10,
+  "spentToDateThisCycle": 500,
+  "currentCycle": 6,
+  "unlimitedRenewals": false
 }

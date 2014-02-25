@@ -1,16 +1,15 @@
 describe('Campaign Header', function () {
-    var directive;
 
     var mockScope = {
         CampaignOverview: {
             "name": "Get rid of ghosts!",
-            "advertiser_name": "Ghost Busters, Inc.",
-            "master_campaign_id": 789,
-            "current_campaign_id": 123,
-            "total_cycle_budget": 1900,
-            "total_contract_length": 10,
-            "spent_to_date_this_cycle": 500,
-            "current_cycle": 6,
+            "advertiserName": "Ghost Busters, Inc.",
+            "masterCampaignId": 789,
+            "currentCampaignId": 123,
+            "totalCycleBudget": 1900,
+            "totalContractLength": 10,
+            "spentToDateThisCycle": 500,
+            "currentCycle": 6
         }
     };
 
@@ -18,11 +17,9 @@ describe('Campaign Header', function () {
     beforeEach(localeFixture);
     beforeEach(module('rl.cpi'));
     beforeEach(module('rl.cpi.main.directives.rlCampaignHeader'));
-    beforeEach(function () {
-        directive = compileDirective('<rl-campaign-header overview="CampaignOverview"></rl-campaign-header>', mockScope);
-    });
 
-    it("should display all publishers", function () {
+    it("should display all summary data", function () {
+        var directive = compileDirective('<rl-campaign-header overview="CampaignOverview"></rl-campaign-header>', mockScope);
         var result = directive.element.html();
 
         expect(result).toContain("Get rid of ghosts!");
