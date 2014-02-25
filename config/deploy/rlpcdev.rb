@@ -17,7 +17,14 @@ server "www.#{ENV['OS_USERNAME']}.cpi.dev.wh.reachlocal.com", roles: [:web]
 namespace :deploy do
   after :updated, :dist do
     on roles :web do
-      info "DIST DIST DIST"
+      within release_path do
+        # Temporary hack to change the config; this will be removed when config
+        # is revisited in cpi-client
+        execute %[sed -i 's/gatewayBaseUrl: "http:\\/\\/localhost:8001"/gatewayBaseUrl: "http:\\/\\/gateway.#{ENV['OS_USERNAME']}.cpi.dev.wh.reachlocal.com"/' #{release_path}/app/modules/main/config.js]
+
+        # Generate the 'dist' directory
+        execute './ci/default.sh'
+      end
     end
   end
 end
