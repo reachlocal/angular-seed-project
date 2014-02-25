@@ -1,0 +1,20 @@
+[
+  {
+    "id": 4567,
+    "type": "simple_dismiss",
+    "title": "Add 2 more keywords",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula."
+  },
+  {
+    "id": 9090,
+    "type": "dismiss_with_action",
+    "title": "Improve the description of the creative",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula."
+  },
+  {
+    "id": 1000,
+    "type": "dismiss_and_take_action",
+    "title": "Create more moon wells",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula."
+  }
+]
