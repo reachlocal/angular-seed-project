@@ -317,4 +317,5 @@ gulp.task('l10n:testify', ['l10n'], function () {
             });
         }
     });
+    return deferred.promise;
 });
