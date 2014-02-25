@@ -10,15 +10,17 @@
         <article class="col-md-10 mockup">
 
             <section class="recommendations" id="accordion">
-                <p>Your campaign have <b class="text-warning">4</b> active recommendations.</p>
+                <p>
+                  Your campaign has
+                  <b class="text-warning">{{ recommendations.length }}</b>
+                  active recommendations.
+                </p>
+
                 <div class="panel-group" id="accordion">
 
-                    <ul>
-                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                        <rl-recommendation recommendation="recommendation"></rl-recommendation>
-                    </ul>
+                    <accordion close-others="false">
+                        <rl-recommendation ng-repeat="recommendation in recommendations" recommendation="recommendation"></rl-recommendation>
+                    </accordion>
 
                 </div>
             </section>
