@@ -25,7 +25,6 @@ angular
         });
 
         $translateProvider.preferredLanguage('en');
-        $translateProvider.fallbackLanguage('en');
 
         // Allow use of message format interpolation for parametrized translations
         $translateProvider.useInterpolation('MultiInterpolator');

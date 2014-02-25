@@ -10,4 +10,5 @@ module.exports = function(webRoot, port) {
     app.use(require('connect-livereload')());
     app.use(express.static(webRoot, {hidden: true}));
     app.listen(port);
+    return app;
 };

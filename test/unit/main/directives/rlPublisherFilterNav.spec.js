@@ -20,6 +20,7 @@ describe('Publisher Filter Nav', function () {
     };
 
     // Load the template cache, it's in the 'rl' module
+    beforeEach(localeFixture);
     beforeEach(module('rl.cpi'));
     beforeEach(module('rl.cpi.main.directives.rlPublisherFilterNav'));
     beforeEach(function () {

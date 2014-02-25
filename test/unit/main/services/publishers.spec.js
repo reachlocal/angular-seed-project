@@ -3,8 +3,8 @@ describe("Publishers", function () {
     var publishers;
 
     beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
-
     beforeEach(function () {
+        localeFixture();
         module("rl.cpi.main.services.Publishers");
         inject(function (Publishers) {
             publishers = Publishers;

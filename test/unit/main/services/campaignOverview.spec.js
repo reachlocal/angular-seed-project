@@ -5,6 +5,7 @@ describe("CampaignOverview", function () {
     beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
 
     beforeEach(function () {
+        localeFixture();
         module("rl.cpi.main.services.CampaignOverview");
         inject(function (CampaignOverview) {
             campaignOverview = CampaignOverview;

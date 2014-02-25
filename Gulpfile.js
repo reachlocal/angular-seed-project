@@ -126,11 +126,11 @@ gulp.task('serve', ['serve:app', 'serve:rest']);
  * Test Tasks
  **/
 var runJasmineTestsFunc = require('./ci/runJasmineTests.js');
-gulp.task('test:unit', ['build_project_file', 'ngTemplates'], function () {
+gulp.task('test:unit', ['build_project_file', 'ngTemplates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['build_project_file', 'ngTemplates'], function () {
+gulp.task('test:integration', ['build_project_file', 'ngTemplates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('integration');
 });
 
@@ -291,4 +291,30 @@ gulp.task('l10n:support', function () {
     ]
     return gulp.src(supportFiles)
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/bower_components/angular-i18n'));
+});
+
+// Setup test stubs for translations
+gulp.task('l10n:testify', ['l10n'], function () {
+    var deferred = require('q').defer();
+    var fs = require('fs');
+    fs.readFile(config.APPLICATION_ROOT + '/.l10n/lang-en.json', function(err, data) {
+        if (err) {
+            console.log("Could not build test l10n files.");
+            deferred.reject();
+            throw err;
+        } else {
+            data = "// This file is generated automatically by the gulp l10n:testify task.\n" +
+                "// Do not edit it.\n" +
+                'var translations = ' + data + ';';
+            fs.writeFile('test/helpers/l10n.js', data, function () {
+                if (err) {
+                    console.log("Could not write test l10n file.");
+                    deferred.reject();
+                    throw err;
+                } else {
+                    deferred.resolve();
+                }
+            });
+        }
+    });
 });
