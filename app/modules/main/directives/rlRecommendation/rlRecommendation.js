@@ -3,7 +3,7 @@ angular
     .directive('rlRecommendation', function () {
         return {
             require: '^accordion',
-            templateUrl: "modules/main/directives/rlRecommendation.html",
+            templateUrl: "modules/main/directives/rlRecommendation/rlRecommendation.html",
             scope: {
                 recommendation: '='
             },
