@@ -83,47 +83,50 @@ Feature: Surface recommendations
 
 
 
+  @JIRA-CPI-26
+  Scenario: Surface Automated recommendations with the right dismissal options
+
+
+    Given an "Automated" recommendation for a campaign is available
+    When the recommendation is surfaced to the user
+    Then the user is presented with one or more line items of recommendations that can be individually implemented or dismissed
+    And the user is presented with the option to implement all remaining recommendation line items
+    And the user is presented with the option to dismiss all remaining recommendation line items
+
+
+  @JIRA-CPI-26
+  Scenario: Implement and/or dismiss a single automated recommendation line item
+
+    Given an "Automated" recommendation for a campaign is available
+    When the recommendation is surfaced to the user
+    And the the user is presented with one or more line items of recommendations that can be individually implemented or dismissed
+    And the user selects the "Implement this" option for a single line item
+    Then the recommendation change is made to the campaign
+    And the line item is removed from the recommendation line item list
+    And the user action is recorded
+    When the user selects the "Dismiss this" option for a single line item
+    Then the recommendation is dismissed from the campaign
+    And the line item is removed from the recommendation line item list
+    And the user action is recorded
+
+
+  @JIRA-CPI-26
+  Scenario: Implement and/or dismiss multiple automated recommendation line items
+
+    Given an "Automated" recommendation for a campaign is available
+    When the recommendation is surfaced to the user
+    And the the user is presented with one or more line items of recommendations that can be individually implemented or dismissed
+    And the user selects the option to dismiss all recommendations as Not Implemented
+    Then the entire list is dismissed
+    And the recommendation is dismissed
+    And the user action is recorded
+    When the user selects the option to Implement all recommendations
+    Then the entire list is implemented
+    And the recommendation is dismissed
+    And the user action is recorded
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-  @sitelinks @JIRA-CPI-66
-  Scenario: Surface a recommendation to add site links when none exist
-
-    Given a typical campaign exists
-    When the recommendation engine encounters a campaign without site links implemented
-    And a previous recommendation was not dismissed by a CP
-    Then surface a recommendation to add site links to the campaign
-
-
-  @adgroups @JIRA-CPI-67
-  Scenario:  Surface a recommendation to add ad groups when there are fewer than 6
-
-    Given a typical campaign exists
-    When the recommendation engine encounters a campaign with less than 6 Ad Groups defined
-    And a previous recommendation was not dismissed by a CP
-    Then surface a recommendation to make sure 6 Ad Groups are defined for the campaign
-
-
-  @ads @adgroups @performance @JIRA-CPI-68
-  Scenario:  Surface a recommendation to request review of an ad when it outperforms compared to others within the same ad group
-
-
-    Given a typical campaign exists
-    And the campaign has 6 creatives defined
-    When the recommendation engine encounters the ad group
-    And 1 creative has a conversion rate XX% greater than the next highest conversion rate for an creative within the same ad group (GRACE:  how much higher?)
-    Then surface a recommendation to review the ad group
-    When a CP dismisses the recommendation
-    Then a reason for dismissal is collected.
