@@ -13,7 +13,7 @@ describe('Recommendation', function () {
     // Load the template cache, it's in the 'rl' module
     beforeEach(localeFixture);
     beforeEach(module('rl.cpi'));
-    beforeEach(module('rl.cpi.main.directives.rlCampaignHeader'));
+    beforeEach(module('rl.cpi.main.directives.rlRecommendation'));
     beforeEach(module('ui.bootstrap'));
     beforeEach(function () {
         directive = compileDirective(
