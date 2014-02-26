@@ -2,7 +2,7 @@
   <strong>{{ publisher.name }} {{publisher.geoType | capitalize | surroundWithParenthesis }}</strong>
 </a>
 <ul collapse="!publisher.showAdGroups">
-    <li ng-repeat="adGroup in publisher.ad_groups">
+    <li ng-repeat="adGroup in publisher.adGroups">
         <a>{{ adGroup.name }}</a>
     </li>
 </ul>

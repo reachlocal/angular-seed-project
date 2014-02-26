@@ -1,10 +1,10 @@
 <nav class="col-md-2">
     <ul>
       <li class="nav-group">
-        <rl-publisher-menu-item item="publishers.all"></rl-publisher-menu-item>
+        <rl-publisher-menu-item item="publishers.allAdGroups"></rl-publisher-menu-item>
       </li>
       <li class="nav-group"
-          ng-repeat="publisher in publishers.web_publisher_campaigns | orderBy:'name'">
+          ng-repeat="publisher in publishers.webPublisherCampaigns | orderBy:'name'">
           <rl-publisher-menu-item item="publisher"></rl-publisher-menu-item>
        </li>
     </ul>
