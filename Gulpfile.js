@@ -155,7 +155,7 @@ gulp.task('test:cucumber', ['serve:app'], function() {
             var cucumber = require('./ci/cucumber');
             webDriver.startWebDriver(cucumber.startCucumber);
         } else {
-            console.error('Cannot run tests. Gateway must be running at port 8001');
+            console.error('Cannot run tests. Gateway must be running at port ' + config.REST_SERVER_PORT);
             process.exit(1);
         }
     });
