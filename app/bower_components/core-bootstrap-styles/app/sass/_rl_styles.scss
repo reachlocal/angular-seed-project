@@ -11,6 +11,19 @@ body {
   padding-top: 0;
 }
 
+section {
+  margin-bottom: 30px;
+}
+
+/* FontAwesome default definitions */
+
+.summary:before, .settings:before, .rl_breadcrumb>li+li:before, b:before {
+  font-family: 'FontAwesome';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Breadcrumb */
+
 .rl_breadcrumb {
   padding: 8px 15px 8px 0;
   margin-bottom: 20px;
@@ -27,47 +40,40 @@ body {
   padding: 0 5px;  
 }
 
-summary {
-  outline: none;
+/* Global nav and filters */
+
+nav {
+  padding-left: 0 !important;
+
+  a:hover{
+    text-decoration: none;
+    color: $brand-info;
+  }
+  
+  ul li {
+    line-height: 2;
+    list-style: none;
+    display: block;
+  }
+
+  ul li ul li {
+    font-size: 12px;
+  }
+
+  b:before {
+    content: '\f067';
+    padding-right: 5px;
+  }
+
+  ul {
+    padding: 0;
+    margin-left: 0;
+  }
 }
 
-summary:before, .settings:before, .nav-group:before,  .nav-group-open:before, .rl_breadcrumb>li+li:before {
-  font-family: 'FontAwesome';
-  -webkit-font-smoothing: antialiased;
-}
+/* Recommendation area an boxes */
 
-summary:before {
-  content: '\f06a';
-  padding-right: 5px;
-  color: $brand-success;
-}
-
-.settings:before {
-  /*content: '\f013';*/
-  display: block;
-  position: absolute;
-  top: 15px;
-  left: 0;
-  display: inline-block;
-}
-
-.settings li, .recommendations li {
-  list-style: none;
-}
-
-.recommendations li {
-  line-height: 30px;
-}
-
-summary::-webkit-details-marker {
-  display: none
-}
-
-summary:hover, .recommendations strong {
-  color: $brand-success;
-}
-
-.recommendations details, .recommendations-done {
+.recommendations .details, .recommendations-done {
   background-color: $gray-lighter;
   border: 1px solid $gray-light;
   margin-bottom: 20px;
@@ -76,15 +82,47 @@ summary:hover, .recommendations strong {
   padding: 10px;
 }
 
+.summary {
+  outline: none;
+  display: inline-block;
+  width: 80%;
+}
+
+.recommendation-actions {
+  width: 19%;
+  text-align: right;
+  display: inline-block;
+}
+
+.summary:before {
+  content: '\f055';
+  padding-right: 5px;
+  color: $brand-success;
+  font-size: 1.2em;
+}
+
+.recommendations li {
+  list-style: none;
+  line-height: 30px;
+}
+
+.summary:hover {
+  color: $brand-success;
+}
+
+.details a:hover {
+  text-decoration: none;
+}
+
 .recommendations-done {
   border: 1px solid #3399CC;
 }
 
 .recommendations .text-success {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
-.recommendations details .close {
+.recommendations .details .close {
   float: none;
   font-size: 16px;
   color: $brand-danger;
@@ -94,50 +132,11 @@ summary:hover, .recommendations strong {
   padding: 0;
 }
 
-nav {
-  background-color: #3399CC;
-  box-shadow: inset -10px 0 10px -10px #2980b9;
-  margin-left: -35px;
-  margin-right: 15px;
 
-  a, a:hover {
-    color: white;
-  }  
-  
-  ul li {
-    line-height: 2.1428571435;
-    list-style: none;
-  }
 
-  ul {
-    padding: 0 20px 0 15px;
-  }
 
-  ul li ul {
-    padding-left: 10px;
-  }
 
-  .nav-group-open:before {
-      content: '\f068';
-      padding-right: 5px;
-      color: white;
-  }
 
-  .nav-group:before {
-    content: '\f067';
-    padding-right: 5px;
-    color: white;
-  } 
-
-  .sidebar {
-    margin-top: 63px;
-  }
-
-}
-
-section {
-  margin-bottom: 30px;
-}
 
 
 

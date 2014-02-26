@@ -1,5 +1,3 @@
-// Orange color for 'warning' based styles
-$state-warning-text:     #FAA92A !default;
 
 $link-color:             #666666 !default;
 
@@ -15,6 +13,9 @@ $brand-info:            #3399CC !default;
 $brand-warning:         #FAA92A !default;
 $brand-danger:          #d9534f !default;
 
+$state-warning-text:     #FAA92A !default;
+$state-success-text:     $brand-success !default;
+$state-info-text:		 $brand-info !default;
 
 $text-color: $gray-darker !default;
 
