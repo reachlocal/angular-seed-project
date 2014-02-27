@@ -24,12 +24,24 @@ describe('Campaign Header', function () {
 
         expect(result).toContain("Get rid of ghosts!");
         expect(result).toContain("Ghost Busters, Inc");
-        expect(result).toContain("Master Campaign ID: 789");
-        expect(result).toContain("Current Campaign ID: 123");
-        expect(result).toContain("Total Cycle Budget: $1,900.00");
-        expect(result).toContain("Total Contract Length: 10");
-        expect(result).toContain("Spend to Date this Cycle: $500.00");
-        expect(result).toContain("Currently Cycle: 6");
+
+        expect(result).toContain("Master Campaign ID:");
+        expect(result).toContain("789");
+
+        expect(result).toContain("Current Campaign ID:");
+        expect(result).toContain("123");
+
+        expect(result).toContain("Total Cycle Budget:");
+        expect(result).toContain("$1,900.00");
+
+        expect(result).toContain("Total Contract Length:");
+        expect(result).toContain("10");
+
+        expect(result).toContain("Spend to Date this Cycle:");
+        expect(result).toContain("$500.00");
+
+        expect(result).toContain("Currently Cycle:");
+        expect(result).toContain(" 6");
     });
 
 });

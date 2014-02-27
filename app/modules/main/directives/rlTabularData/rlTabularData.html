@@ -1,11 +1,17 @@
 <table class="table table-hover table-condensed">
     <thead>
     <tr>
-        <th>{{ "rlTabularData.Ad Text" | translate }}</th>
-        <th>{{ "rlTabularData.Ad Group" | translate }}</th>
-        <th>{{ "rlTabularData.Publisher" | translate }}</th>
-        <th ng-repeat="header in headers" ng-hide="header.hidden">
-            {{ "rlTabularData." + header.name | translate }}
+        <th translate>
+            rlTabularData.Ad Text
+        </th>
+        <th translate>
+            rlTabularData.Ad Group
+        </th>
+        <th translate>
+            rlTabularData.Publisher
+        </th>
+        <th ng-repeat="header in headers" ng-hide="header.hidden" translate>
+            {{ "rlTabularData." + header.name }}
         </th>
     </tr>
     </thead>

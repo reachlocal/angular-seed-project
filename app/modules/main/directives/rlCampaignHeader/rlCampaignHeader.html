@@ -7,30 +7,34 @@
             {{ overview.advertiserName }}
         </li>
         <li>
-            {{ "rlCampaignHeader.Master Campaign ID: {master_campaign_id}" |
-               translate:overview }}
+            <translate>rlCampaignHeader.Master Campaign ID:</translate>
+            {{ overview.masterCampaignId | filter:number }}
         </li>
         <li>
-            {{ "rlCampaignHeader.Current Campaign ID: {current_campaign_id}" |
-               translate:overview }}
+            <translate>rlCampaignHeader.Current Campaign ID:</translate>
+            {{ overview.currentCampaignId | filter:number }}
         </li>
         <li>
-            {{ "rlCampaignHeader.Total Cycle Budget: {total_cycle_budget}" |
-               translate:overview }}
+            <translate>rlCampaignHeader.Total Cycle Budget:</translate>
+            {{ overview.totalCycleBudget | currency:'$' }}
         </li>
         <li ng-hide="overview.unlimitedRenewals">
-            {{ "rlCampaignHeader.Total Contract Length: {cycles}" |
-               translate:{cycles: overview.totalContractLength} }}
+            <translate>rlCampaignHeader.Total Contract Length:</translate>
+            <translate
+                translate-value-cycleCount="{{ overview.totalContractLength }}">
+                rlCampaignHeader.{cycleCount} Cycles
+            </translate>
         </li>
         <li ng-show="overview.unlimitedRenewals">
-            {{ "rlCampaignHeader.Total Contract Length: Unlimited" | translate }}
+            <translate>rlCampaignHeader.Total Contract Length: Unlimited</translate>
         </li>
         <li>
-            {{ "rlCampaignHeader.Spend to Date this Cycle: {spent_to_date_this_cycle}" |
-               translate:overview }}
+            <translate>rlCampaignHeader.Spend to Date this Cycle:</translate>
+            {{ overview.spentToDateThisCycle | currency:'$' }}
         </li>
         <li>
-            {{ "rlCampaignHeader.Currently Cycle: {current_cycle}" | translate:overview }}
+            <translate>rlCampaignHeader.Currently Cycle:</translate>
+            {{ overview.currentCycle | filter:number }}
         </li>
     </ul>
 </header>
