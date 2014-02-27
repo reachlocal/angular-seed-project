@@ -1,3 +1,5 @@
+
+
 Feature: Each dashboard should have a consistent global navigation function
 
   @JIRA-CPI-23 @dashboard @filter
