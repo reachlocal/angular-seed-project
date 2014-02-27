@@ -1,7 +1,7 @@
 {
-  "all": {
+  "allAdGroups": {
         "name": "ALL",
-        "ad_groups": [
+        "adGroups": [
             {
                 "name": "Local Roto-rooting",
                 "id": 123
@@ -12,11 +12,11 @@
             }
         ]
     },
-  "web_publisher_campaigns": [
+  "webPublisherCampaigns": [
     {
         "name": "Google",
         "geoType": "CITY",
-        "ad_groups": [
+        "adGroups": [
             {
                 "name": "Local Roto-rooting",
                 "id": 123
@@ -30,7 +30,7 @@
     {
         "name": "Bing",
         "geoType": "NATIONAL",
-        "ad_groups": [
+        "adGroups": [
             {
                 "name": "Local Roto-rooting",
                 "id": 123
