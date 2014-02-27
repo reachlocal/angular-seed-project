@@ -44,6 +44,7 @@
     "gulp-bower": "0.0.2",
     "run-sequence": "~0.3.6",
     "event-stream": "~3.1.0",
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "underscore": "~1.6.0"
   }
 }

@@ -1,16 +1,15 @@
-var World, driver, ptor;
-
 var path = require('path');
 var protractor = require('protractor');
 var webdriver = require('selenium-webdriver');
-var rlasserter = require('./assert');
+var asserts = require('./assert');
+var underscore = require('underscore');
 
-driver = new webdriver.Builder().usingServer('http://localhost:4444/wd/hub').withCapabilities(webdriver.Capabilities.chrome()).build();
+var driver = new webdriver.Builder().usingServer('http://localhost:4444/wd/hub').withCapabilities(webdriver.Capabilities.chrome()).build();
 driver.manage().timeouts().setScriptTimeout(100000);
 
-ptor = protractor.wrapDriver(driver);
+var ptor = protractor.wrapDriver(driver);
 
-World = (function () {
+var World = (function () {
     function World(callback) {
         // Pull reference to protractor into scope
         this.protractor = protractor;
@@ -40,7 +39,11 @@ World = (function () {
             return By.xpath(baseXpath + '//*[contains(text(),"' + text + '")]');
         };
 
-        assert = rlasserter;
+        assert = asserts.assert;
+        expect = asserts.expect;
+        expectCallback = asserts.expectCallback;
+
+        _ = underscore;
         callback();
     }
 
