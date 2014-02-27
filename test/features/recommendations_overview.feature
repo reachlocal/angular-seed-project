@@ -27,6 +27,7 @@ Feature: Surface recommendations
 
   For all recommendation types:
   The user can select an option to dismiss the recommendation with a negative "No, I did not implement this" option.
+  When the user expands one recommendation box the other recomendation's buttons become gray. So the user will focus only at that expanded recommendation.
 
 
 
