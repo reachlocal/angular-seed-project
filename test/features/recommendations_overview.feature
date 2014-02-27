@@ -4,7 +4,8 @@ Feature: Surface recommendations
   These scenarios try to explain the overall concept of a "Guided" and "Automated" Recommendation.
 
   Guided recommendation: A recommendation that gives direction to the user to make an adjustment to a campaign.  It provides
-  an option to navigate to the functional area of CPI related to the recommendation itself.
+  an option to navigate to the functional area of CPI  or an external tool related to the
+  recommendation itself.
 
   Automated recommendations:  A recommendation that provides to the user a recommendation to make an adjustment to a campaign,
   and provides the option to make the adjustment within the recommendation itself.
@@ -12,7 +13,7 @@ Feature: Surface recommendations
 
 
   For guided recommendations:
-  If the user chooses the option to navigate, then the user is taken to the functional area of CPI related to the recommended
+  If the user chooses the option to navigate, then the user is taken to the functional area of CPI or external tool related to the recommended
   adjustment.  For example, if the recommendation is to add sitelinks to a campaign, then selecting the Navigate option
   will take the user to the Add Sitelinks view in CPI, and the navigate option changes to a positive "Yes, I implemented this"
   option.
