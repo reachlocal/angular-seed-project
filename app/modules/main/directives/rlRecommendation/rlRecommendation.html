@@ -1,9 +1,8 @@
-<accordion-group class="rl-recommendation">
-  <accordion-heading>
+<div class="details">
+  <a class="summary" ng-click="expanded = !expanded">
     {{ recommendation.title }}
-  </accordion-heading>
-
-  <div>
+  </a>
+  <div ng-show="expanded == true">
     {{ recommendation.description }}
   </div>
-</accordion-group>
+</div>
