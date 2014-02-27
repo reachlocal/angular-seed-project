@@ -2,23 +2,60 @@
 module.exports = function() {
     this.World = require('../support/world.js').World;
 
+   // var assertIsEqualByBinding = function(table_value, binding_value) {
+   //   browser.findElement(By.binding(binding_value)).getText().then(function(text) {
+   //     assert.equal(table_value, text);
+   //   });
+   // };
+
+    this.Given(/^campaign with id "([^"]*)" exists$/, function(campaign_id, callback) {
+      callback();
+    });
+
     this.Given('a typical campaign exists', function(callback) {
-        browser.get('http://localhost:4000/#campaign/713896');
-        browser.getTitle()
-            .then(function(title) {
-                assert.equal(title, 'Campaign Overview');
-            })
-            .then(callback);
+      callback();
     });
 
-    this.When(/^a user filters using All AdGroups$/, function(callback) {
-        // express the regexp above with the code you wish you had
-        callback.pending();
+    this.When(/^a user views the campaign id "([^"]*)" dashboard$/, function(campaign_id, callback) {
+      browser.get('http://localhost:4000/#campaign/' + campaign_id);
+      callback();
     });
 
-    this.Then(/^the dashboard should be filtered to include all data for the campaign$/, function(callback) {
-        // express the regexp above with the code you wish you had
-        callback.pending();
+    this.Then(/^the user should see a campaign header:$/, function(table, callback) {
+      var hash = table.hashes()[0];
+
+      assert.equal(browser.isElementPresent(By.xpath('//rl-campaign-header//*[contains(text(),"' + hash["Advertiser Name"] + '")]')), true, "Advertiser Name is not present");
+      assert.equal(browser.isElementPresent(By.xpath('//rl-campaign-header//*[contains(text(),"' + hash["Campaign Name"] + '")]')), true, "Campaign Name is not present");
+      assert.callback(callback);
+     // browser.findElement(By.binding('overview.advertiserName')).getText().then(function(text) {
+     //   assert.equal(hash['Advertiser Name'], text);
+     //   callback();
+     // });
+
+     // browser.findElement(By.binding('overview.advertiserName')).getText().then(function(text) {
+     //   assert.equal(hash['Advertiser Name'], text);
+     // });
+     // assertIsEqualByBinding(hash["Advertiser Name"], "overview.advertiserName").then(function() {
+     //   callback();
+     // });
+
     });
+
+
+      // _.forEach(table.hashes(), function(hash) {
+      // });
+
+     // browser.findElement(By.binding('overview.name')).getText().then(function(value) {
+     //   //console.log(table.hashes());
+     //   assert.equal(table.rows()['
+     //   assert.equal(table.rows["Campaign Name"], value);
+     // });
+
+   // this.Then(/^the user should see a campaign header$/, function(callback) {
+   //   browser.isElementPresent(By.className('campaign-info')).then(function(present) {
+   //     assert.equal(present, true, 'Element campaign-info was not found');
+   //     callback();
+   //   });
+   // });
 
 };
