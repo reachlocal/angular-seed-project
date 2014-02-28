@@ -23,7 +23,6 @@ describe('Campaign Header', function () {
         var result = directive.element.html();
 
         expect(result).toContain("Get rid of ghosts!");
-        expect(result).toContain("Ghost Busters, Inc");
 
         expect(result).toContain("Master Campaign ID:");
         expect(result).toContain("789");
