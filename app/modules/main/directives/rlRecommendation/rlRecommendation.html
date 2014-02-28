@@ -2,6 +2,10 @@
   <a class="summary" ng-click="expanded = !expanded">
     {{ recommendation.title }}
   </a>
+  <div class="recommendation-actions">
+    <button type="button" ng-click="apply()"   class="btn btn-success btn-sm">Apply</button>
+    <button type="button" ng-click="dismiss()" class="btn btn-danger btn-sm">Dismiss</button>
+  </div>
   <div class="slide-down" ng-show="expanded == true">
     {{ recommendation.description }}
   </div>
