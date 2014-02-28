@@ -16,5 +16,5 @@ Feature: Each dashboard should have a consistent global navigation function
     Given campaign with id "713896" exists
     When a user views the campaign id "713896" dashboard
     Then the user should see a campaign header:
-      | name                                      | advertiserName         | masterCampaignId   | currentCampaignId   | totalCycleBudget | spentToDateThisCycle | currentCycle |
-      | A Quality 1st Plumbing- Plumbing 20100222 | A Quality 1st Plumbing | 713896             | 713896              | $1,800.00        | $0.00                | 1            |
+      | name                                      | masterCampaignId   | currentCampaignId   | totalCycleBudget | spentToDateThisCycle | currentCycle |
+      | A Quality 1st Plumbing- Plumbing 20100222 | 713896             | 713896              | $1,800.00        | $0.00                | 1            |
