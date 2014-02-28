@@ -1,5 +1,10 @@
 rl-campaign-header {
 
+  li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   ul:first-child li:first-child {
     font-weight: bold;
   }
