@@ -32,12 +32,12 @@ Feature: Surface recommendations
 
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-26 @WIP
   Scenario:  Surface recommendations on the CPI dashboard
 
-    Given a typical campaign exists
-    And the campaign contains non-dismissed recommendations
-    When the campaign dashboard is viewed
+    Given campaign with id "713896" exists
+    And campaign with id "731896" contains non-dismissed recommendations
+    When a user views the campaign id "713896" dashboard
     Then the list of recommendations is displayed
     And the recommendations are sorted by date descending
     And the recommendations contain a single line of descriptive text
