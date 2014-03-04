@@ -39,7 +39,7 @@ describe('Campaign Header', function () {
         expect(result).toContain("Spend to Date this Cycle:");
         expect(result).toContain("$500.00");
 
-        expect(result).toContain("Currently Cycle:");
+        expect(result).toContain("Current Cycle:");
         expect(result).toContain(" 6");
     });
 

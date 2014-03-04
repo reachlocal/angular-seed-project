@@ -20,7 +20,7 @@ describe('Creatives Service', function() {
             creative: { headLines: "Blah" },
             reporting: { clicks: 55 }
         }];
-        httpResolver.$httpBackend.expectGET('/campaigns/1/ad_groups/1/text_creatives').respond(creatives);
+        httpResolver.$httpBackend.expectGET('/campaigns/1/text_creatives').respond(creatives);
 
         var result = service.query({campaignId: 1});
         httpResolver.resolve();

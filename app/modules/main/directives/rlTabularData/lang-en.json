@@ -3,8 +3,27 @@
         "Ad Text": "Translated Ad Text",
         "Ad Group": "Ad Group",
         "Publisher": "Publisher",
+        "Status": "Status",
+        "NEW": "New",
+        "ACTIVE": "Active",
+        "DISABLED": "Disabled",
+        "PAUSED": "Paused",
+        "UNPAUSED": "Unpaused",
+        "PENDING": "Pending",
+        "EDITED": "Edited",
+        "NATIONAL": "National",
+        "GLOBAL": "Global",
+        "DMA": "DMA",
+        "CITY": "City",
+        "ZIPCODE": "Zip Code",
+        "STATE": "State",
         "Click Through Rate": "Click Through Rate",
         "Clicks": "Clicks",
-        "Impressions": "Impressions"
+        "Impressions": "Impressions",
+        "Conversions": "Conversions",
+        "Average Position": "Average Position",
+        "Impression Share": "Impression Share",
+        "Lead Count": "Lead Count",
+        "Quality Score": "Quality Score"
     }
 }

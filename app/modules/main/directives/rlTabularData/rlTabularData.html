@@ -5,6 +5,9 @@
             rlTabularData.Ad Text
         </th>
         <th translate>
+            rlTabularData.Status
+        </th>
+        <th translate>
             rlTabularData.Ad Group
         </th>
         <th translate>
@@ -24,12 +27,16 @@
             <div ng-repeat="descriptiveLine in row.creative.descriptiveLines">
                 {{ descriptiveLine }}<br>
             </div>
-            <a href="{{ row.creative.linkURL }}">{{ row.creative.displayURL }}</a>
+            <a href="{{ row.creative.targetUrl }}">{{ row.creative.displayUrl }}</a>
         </td>
-        <td>{{ row.creative.adGroupName }}</td>
-        <td>{{ row.creative.publisherName }}</td>
+        <td translate>rlTabularData.{{ row.creative.status }}</td>
+        <td>{{ row.creative.adgroup.name }}</td>
+        <td>
+            {{ row.creative.publisher.publisherName }}
+            ({{ 'rlTabularData.' + row.creative.publisher.geoType | translate}})
+        </td>
         <td ng-repeat="(key, header) in headers" ng-hide="header.hidden">
-            {{ row.reporting[key] }}
+            {{ row.report[key] | flexnumber:header.format }}
         </td>
     </tr>
     </tbody>
