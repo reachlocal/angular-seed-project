@@ -10,7 +10,7 @@ module.exports = function (webRoot, port) {
     var express = require('express');
     var app = express();
     gutil.log("Starting web server running on:", gutil.colors.yellow("http://localhost:" + port));
-    app.use(require('connect-livereload')())
+    var server = app.use(require('connect-livereload')())
         .use(express.static(webRoot, {hidden: true}))
         .listen(port)
         .on('error', function (err) {
@@ -22,5 +22,5 @@ module.exports = function (webRoot, port) {
                 throw err;
             }
         });
-    return app;
+    return server;
 };

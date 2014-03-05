@@ -1,4 +1,6 @@
 var gutil = require('gulp-util');
+var runCommand = require('./runCommand');
+var http = require('http');
 
 /**
  * Start web driver in a child-thread
@@ -6,6 +8,7 @@ var gutil = require('gulp-util');
 module.exports = new function() {
 
     var running = false;
+    var processHandle;
 
     /**
      * Start the webdriver and call the callback when it's ready for business.
@@ -16,23 +19,34 @@ module.exports = new function() {
             running = true;
 
             // Update, then run.
+            gutil.log(gutil.colors.magenta("Updating Selenium Drivers "),  gutil.colors.red("-- this takes a few minutes the first time --"));
             runCommand(['node_modules/.bin/webdriver-manager', 'update', '--standalone'], function() {
-                var process = spawnWebDriver();
-                gutil.log(gutil.colors.magenta("Waiting for WebDriver to Start..."));
-                process.stdout.on('data', function(d) {
+                processHandle = spawnWebDriver();
+                gutil.log(gutil.colors.magenta("Waiting for WebDriver Server to Start..."));
+                processHandle.stdout.on('data', function(d) {
                     if (String(d).match('Started SocketListener')) {
-                        gutil.log(gutil.colors.cyan("WebDriver is Running!"));
+                        gutil.log(gutil.colors.cyan("WebDriver Server is Running!"));
                         callback();
                         callback = function() {}; // Only call it once.
                     }
                 });
             });
         }
-
     };
 
-    // Import the cmd function.
-    var runCommand = require('./runCommand');
+    /**
+     * Stop the webdriver
+     * Note:  This will not kill any sessions that are left open.  :(
+     */
+    this.close = function() {
+        if (processHandle.kill) {
+            // If you kill the webdriver-manager without sending the kill command to the server
+            // It leaves a hanging child process
+            http.get('http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer');
+            processHandle.kill('SIGKILL');
+            gutil.log(gutil.colors.cyan("WebDriver Server Stopped"));
+        }
+    };
 
     function spawnWebDriver() {
         return runCommand(['node_modules/.bin/webdriver-manager', 'start'], function() {

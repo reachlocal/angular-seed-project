@@ -1,16 +1,29 @@
 /**
  * Object for running cucumber tests
  */
-module.exports = new function() {
+var gutil = require('gulp-util');
+
+module.exports = new function () {
 
     var runCommand = require('./runCommand');
+    var callback = function () {};
 
-    this.startCucumber = function() {
+    this.setCallback = function (callbackIn) {
+        if (callbackIn && typeof callbackIn === 'function') {
+            callback = callbackIn;
+        } else {
+            var message = "Cucumber callback function is not a function!\n" + typeof callbackIn;
+            gutil.log(gutil.colors.red(message));
+            throw message;
+        }
+    };
+
+    this.startCucumber = function () {
         var options = process.argv;
         options.splice(0, 3); // Trim 'gulp' and 'test:cucumber' off param list
         options = ['node_modules/.bin/cucumber-js', './test/features/'].concat(options);
 
-        runCommand(options, function() {});
+        runCommand(options, callback);
     };
 
 };

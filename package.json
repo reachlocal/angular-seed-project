@@ -41,7 +41,7 @@
     "portscanner": "~0.2.2",
     "gulp-jshint": "~1.4.2",
     "jshint-stylish": "~0.1.5",
-    "gulp-bower": "0.0.2",
+    "gulp-bower": "~0.0.2",
     "run-sequence": "~0.3.6",
     "event-stream": "~3.1.0",
     "through": "~2.3.4",
