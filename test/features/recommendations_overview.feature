@@ -47,7 +47,6 @@ Feature: Surface recommendations
   @JIRA-CPI-26
   Scenario: Surface Guided recommendations with the right dismissal options
 
-
     Given a "Guided" recommendation for a campaign is available
     When the recommendation is surfaced to the user
     Then the user is presented with an option to navigate where the recommendation can be implemented
