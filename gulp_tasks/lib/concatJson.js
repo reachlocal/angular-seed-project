@@ -33,7 +33,7 @@ module.exports = function (fileName, opt) {
 
     function endStream() {
         if (!firstFile) {
-            console.error(buffer);
+            gutil.log(gutil.colors.red(buffer));
         }
         var joinedPath = path.join(firstFile.base, fileName);
 

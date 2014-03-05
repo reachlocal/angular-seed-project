@@ -23,7 +23,6 @@ describe('Campaign Header', function () {
         var result = directive.element.html();
 
         expect(result).toContain("Get rid of ghosts!");
-        expect(result).toContain("Ghost Busters, Inc");
 
         expect(result).toContain("Master Campaign ID:");
         expect(result).toContain("789");
@@ -40,7 +39,7 @@ describe('Campaign Header', function () {
         expect(result).toContain("Spend to Date this Cycle:");
         expect(result).toContain("$500.00");
 
-        expect(result).toContain("Currently Cycle:");
+        expect(result).toContain("Current Cycle:");
         expect(result).toContain(" 6");
     });
 

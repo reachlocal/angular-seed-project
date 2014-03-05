@@ -10,7 +10,7 @@
 var gulp = require('gulp');
 var karmaPort = 9876;
 module.exports = function (testDirectory) {
-    var config = require('./gulpConfig');
+    var config = require('../config/config');
     // Note:  These must be in order:  Bower, project, test
     var all_test_files = config.BOWER_SCRIPTS
         .concat(config.APPLICATION_SCRIPTS)

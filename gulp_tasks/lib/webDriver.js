@@ -1,3 +1,5 @@
+var gutil = require('gulp-util');
+
 /**
  * Start web driver in a child-thread
  */
@@ -16,10 +18,10 @@ module.exports = new function() {
             // Update, then run.
             runCommand(['node_modules/.bin/webdriver-manager', 'update', '--standalone'], function() {
                 var process = spawnWebDriver();
-                console.log("Waiting for WebDriver to Start.");
+                gutil.log(gutil.colors.magenta("Waiting for WebDriver to Start..."));
                 process.stdout.on('data', function(d) {
                     if (String(d).match('Started SocketListener')) {
-                        console.log("WebDriver is Running!");
+                        gutil.log(gutil.colors.cyan("WebDriver is Running!"));
                         callback();
                         callback = function() {}; // Only call it once.
                     }

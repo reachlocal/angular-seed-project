@@ -4,7 +4,7 @@
  * Configuration options for our application.
  * ###############################
  */
-var PROJECT_ROOT = __dirname + '/..';
+var PROJECT_ROOT = __dirname + '/../..';
 var APPLICATION_ROOT = PROJECT_ROOT + '/app';
 var config = {
     WEB_SERVER_PORT: 4000,

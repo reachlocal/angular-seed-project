@@ -1,3 +1,6 @@
 {
-  "rlRecommendation": {}
+  "rlRecommendation": {
+    "Apply": "Apply",
+    "Dismiss": "Dismiss"
+  }
 }

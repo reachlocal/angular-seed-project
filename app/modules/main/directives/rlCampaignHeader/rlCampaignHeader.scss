@@ -1,19 +1,29 @@
 rl-campaign-header {
-
-  ul:first-child li:first-child {
-    font-weight: bold;
+  
+  li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-
+  .campaign-name {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 18px;
+    width: 49%;
+    line-height: 75px;
+    padding-left: 25px;
+  }
   .campaign-info {
-    column-count: 4;
-    -moz-column-count: 4;
-    -webkit-column-count: 4;
+    column-count:3;
+    -moz-column-count:3; 
+    -webkit-column-count:3;
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 100%;      
     margin-right: 15px;
-    margin-left: 25px;
+    font-size: 12px;
+    display: inline-block;
     padding: 15px;
+    width: 50%;
   }
-
 }

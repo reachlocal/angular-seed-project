@@ -1,11 +1,8 @@
 <header class="rl-campaign-header rl-page-header">
+    <p class="campaign-name">
+        {{ overview.name }}
+    </p>
     <ul class="campaign-info">
-        <li>
-            {{ overview.name }}
-        </li>
-        <li>
-            {{ overview.advertiserName }}
-        </li>
         <li>
             <translate>rlCampaignHeader.Master Campaign ID:</translate>
             {{ overview.masterCampaignId | filter:number }}
@@ -33,7 +30,7 @@
             {{ overview.spentToDateThisCycle | currency:'$' }}
         </li>
         <li>
-            <translate>rlCampaignHeader.Currently Cycle:</translate>
+            <translate>rlCampaignHeader.Current Cycle:</translate>
             {{ overview.currentCycle | filter:number }}
         </li>
     </ul>

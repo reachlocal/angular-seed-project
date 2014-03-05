@@ -4,7 +4,7 @@
  * @returns promise
  */
 module.exports = function (searchPattern) {
-    var config = require('./gulpConfig');
+    var config = require('../config/config');
     var deferred = require('q').defer();
     var glob = require('glob');
     // Search for project files

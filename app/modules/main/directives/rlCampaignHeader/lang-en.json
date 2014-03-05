@@ -3,7 +3,7 @@
         "Master Campaign ID:": "Master Campaign ID:",
         "Total Cycle Budget:": "Total Cycle Budget:",
         "Current Campaign ID:": "Current Campaign ID:",
-        "Currently Cycle:": "Currently Cycle:",
+        "Current Cycle:": "Current Cycle:",
         "Spend to Date this Cycle:": "Spend to Date this Cycle:",
         "Total Contract Length:": "Total Contract Length:",
         "{cycleCount} Cycles": "{ cyclecount } { cyclecount, plural, one{Cycle} other{Cycles} }",

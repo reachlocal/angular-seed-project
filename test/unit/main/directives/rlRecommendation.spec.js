@@ -16,11 +16,7 @@ describe('Recommendation', function () {
     beforeEach(module('rl.cpi.main.directives.rlRecommendation'));
     beforeEach(module('ui.bootstrap'));
     beforeEach(function () {
-        directive = compileDirective(
-          '<accordion>'+
-          '  <rl-recommendation recommendation="Recommendation"></rl-recommendation>'+
-          '</accordion>'
-        , mockScope);
+        directive = compileDirective('<rl-recommendation recommendation="Recommendation"></rl-recommendation>', mockScope);
     });
 
     it("displays title and description for that recommendation", function () {

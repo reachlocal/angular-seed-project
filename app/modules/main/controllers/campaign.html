@@ -7,7 +7,7 @@
        <rl-publisher-filter-nav publishers="publishers"></rl-publisher-filter-nav>
 
 
-        <article class="col-md-10 mockup">
+        <article class="col-md-10">
 
             <section class="recommendations" id="accordion">
                 <p>
@@ -18,9 +18,7 @@
 
                 <div class="panel-group" id="accordion">
 
-                    <accordion close-others="false">
-                        <rl-recommendation ng-repeat="recommendation in recommendations" recommendation="recommendation"></rl-recommendation>
-                    </accordion>
+                    <rl-recommendation ng-repeat="recommendation in recommendations" recommendation="recommendation"></rl-recommendation>
 
                 </div>
             </section>
