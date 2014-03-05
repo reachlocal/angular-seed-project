@@ -1,9 +1,11 @@
+var gutil = require('gulp-util');
+
 module.exports = function() {
 
     // How long to delay before responding
     var delay = 500;
 
-    var config = require('./gulpConfig');
+    var config = require('../config/config');
 
     /**
      * Middleware for express.
@@ -38,8 +40,18 @@ module.exports = function() {
         next();
     }
 
+    gutil.log("Starting REST server running on:", gutil.colors.yellow("http://localhost:" + config.REST_SERVER_PORT));
     var REST = require('express')();
     REST.use(CORS);
     REST.use(RESTResponder);
-    REST.listen(config.REST_SERVER_PORT);
+    REST.listen(config.REST_SERVER_PORT)
+        .on('error', function (err) {
+            if (err.errno === 'EADDRINUSE') {
+                var message = 'REST Port already in use. Is the server already running?';
+                gutil.log(gutil.colors.red(message));
+                throw message;
+            } else {
+                throw err;
+            }
+        });
 };
