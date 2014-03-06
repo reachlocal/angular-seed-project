@@ -10,7 +10,7 @@ var config = {
     // When you run the 'serve' task, what port should we use?
     WEB_SERVER_PORT: 4001,
     APPLICATION_ROOT: APPLICATION_ROOT,
-    LIVERELOAD_PORT: 35729,
+    LIVERELOAD_PORT: 38905,
     APPLICATION_VIEWS: APPLICATION_ROOT + '/**/*.html',
     ALL_STYLES: APPLICATION_ROOT + '/**/*.scss',
     APPLICATION_STYLES: APPLICATION_ROOT + '/sass/rl_bootstrap.scss',

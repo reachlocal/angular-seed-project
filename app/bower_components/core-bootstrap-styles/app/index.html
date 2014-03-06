@@ -11,14 +11,15 @@
   <body>
 
     <header class="rl-page-header">
-        <ul class="basic-info">
-          <li>Mr Plow Woodland Hills, CA</li>
-          <li>Advertiser Name</li>
+        <p class="campaign-name">
+          Mr Plow Woodland Hills, CA
+        </p>
+        <ul class="campaign-info">
           <li>MCID - 1234556</li>
           <li>Current CID - 12364535</li>
-          <li>Total Cycle Budget: $1500</li>
+          <li>Total Cycle Budget: $1.456,34</li>
           <li>Total Contract Length: unlimited</li>
-          <li>Spend to Date this cycle: $1345</li>
+          <li>Spend to Date this cycle: $1.345,15</li>
           <li>Currently in 6th Cycle</li>  
         </ul>  
         <ul class="settings">
@@ -43,7 +44,7 @@
       </section>
  //calendar dropdown -->
     <section>
-      <ol class="rl_breadcrumb">
+      <ol class="rl-breadcrumb">
         <li><a href="#" title="Return to home to select a different campaign.">Home</a></li>
         <li class="active">Campaign</li>
       </ol>
@@ -260,7 +261,7 @@
     <!-- main content -->
     <article class="col-md-10">
       <section class="recommendations">
-        <p>Your campaign have <b class="text-success">3</b> active recommendations to improve performance.</p>
+        <p>Your campaign has <b class="text-success">3</b> active recommendations to improve performance.</p>
         <ul class="accordion">
           <li>
             <div class="details">
@@ -282,7 +283,7 @@
                 We recommend you to add new keywords to this campaign...
               </a>
               <div class="recommendation-actions">
-                <button type="button" class="btn btn-success btn-sm">Apply All</button>
+                <button type="button" class="btn btn-success btn-sm">Add</button>
                 <button type="button" class="btn btn-danger btn-sm">Dismiss</button>
               </div>
               <div id="rec2" class="collapse">
@@ -319,7 +320,6 @@
                     Water
                   </li>
                 </ul>
-                <button type="button" class="btn btn-success btn-xs">Add now</button>
               </div>
             </div>
           </li>
@@ -338,10 +338,15 @@
             </div>
           </li>
         </ul>
-        <div class="recommendations-done">
-          <p>No active recommendations. <b class="text-info">Well done! </b></p>
-        </div>        
       </section>
+
+<!-- display when there's no active recommendations -->
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <strong>Well done!</strong> You have no active recommendations.
+        </div>  
+<!-- /display when there's no active recommendations -->     
+
     </article>
 
   </main>

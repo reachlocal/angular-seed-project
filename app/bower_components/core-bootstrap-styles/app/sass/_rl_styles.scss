@@ -17,14 +17,14 @@ section {
 
 /* FontAwesome default definitions */
 
-.summary:before, .settings:before, .rl_breadcrumb>li+li:before, b:before {
+.summary:before, .settings:before, .rl-breadcrumb>li+li:before, b:before {
   font-family: 'FontAwesome';
   -webkit-font-smoothing: antialiased;
 }
 
 /* Breadcrumb */
 
-.rl_breadcrumb {
+.rl-breadcrumb {
   padding: 8px 15px 8px 0;
   margin-bottom: 20px;
   list-style: none;
@@ -35,7 +35,7 @@ section {
   }
 }
 
-.rl_breadcrumb>li+li:before {
+.rl-breadcrumb>li+li:before {
   content: '\f054';
   padding: 0 5px;  
 }
@@ -71,7 +71,7 @@ nav {
   }
 }
 
-/* Recommendation area an boxes */
+/* Recommendation area and boxes */
 
 .recommendations .details, .recommendations-done {
   background-color: $gray-lighter;
@@ -106,6 +106,10 @@ nav {
   line-height: 30px;
 }
 
+.recommendations h2 {
+  font-size: 1.5em;
+}
+
 .summary:hover {
   color: $brand-success;
 }
@@ -118,8 +122,8 @@ nav {
   border: 1px solid #3399CC;
 }
 
-.recommendations .text-success {
-  font-size: 1.2em;
+.recommendations p {
+  font-size: 1.3em;
 }
 
 .recommendations .details .close {
