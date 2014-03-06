@@ -1,8 +1,0 @@
-{
-  "rlRecommendation": {
-      "Apply": "Apply",
-      "Dismiss": "Dismiss",
-      "Your campaign has { recommendationsLength } active recommendations":
-          "Your campaign has <b class='text-warning'>{ recommendationslength }</b> active { recommendationslength , plural, one{recommendation} other{recommendations} }."
-  }
-}

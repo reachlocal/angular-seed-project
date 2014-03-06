@@ -1,0 +1,8 @@
+{
+  "rlRecommendations": {
+      "Apply": "Apply",
+      "Dismiss": "Dismiss",
+      "Your campaign has { count } active recommendations":
+          "Your campaign has <b class='text-warning'>{ count }</b> active { count , plural, one{recommendation} other{recommendations} }."
+  }
+}
