@@ -1,6 +1,8 @@
 {
   "rlRecommendation": {
     "Apply": "Aplicar",
-    "Dismiss": "Descartar"
+    "Dismiss": "Descartar",
+    "Your campaign has { recommendationsLength } active recommendations":
+        "Sua campanha tem <b class='text-warning'>{ recommendationslength }</b> { recommendationslength , plural, one{recomendação ativa} other{recomendações ativas} }."
   }
 }

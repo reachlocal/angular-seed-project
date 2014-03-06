@@ -11,9 +11,11 @@
 
             <section class="recommendations" id="accordion">
                 <p>
-                  Your campaign has
-                  <b class="text-warning">{{ recommendations.length }}</b>
-                  active recommendations.
+                    <translate
+                    translate-value-recommendationsLength="{{ recommendations.length }}">
+                        rlRecommendation.Your campaign has { recommendationsLength } active recommendations
+                    </translate>
+
                 </p>
 
                 <div class="panel-group" id="accordion">
