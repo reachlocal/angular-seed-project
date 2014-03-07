@@ -1,0 +1,11 @@
+{
+  "name": "Get rid of ghosts!",
+  "advertiserName": "Ghost Busters, Inc.",
+  "masterCampaignId": 789,
+  "currentCampaignId": 123,
+  "totalCycleBudget": 1900,
+  "totalContractLength": 10,
+  "spentToDateThisCycle": 500,
+  "currentCycle": 6,
+  "unlimitedRenewals": false
+}
