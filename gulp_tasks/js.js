@@ -66,5 +66,5 @@ gulp.task('js:vendor:minify', function() {
  */
 gulp.task('js:vendor:json', ['js:vendor:minify'], function() {
     var fs = require('fs');
-    fs.writeFileSync(config.MINIFY_DESTINATION + '/bower_scripts.json', JSON.stringify(['vendor.js']));
+    fs.writeFileSync(config.MINIFY_DESTINATION + '/bower_scripts.json', JSON.stringify(['vendor.min.js']));
 });

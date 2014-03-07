@@ -1,9 +1,23 @@
 /**
  * A replacement for angular.module - this will bundle namespaced components together
  * in an awesome way.
- * TODO:  Document!
+ *
+ * Given a bunch of 'nested' modules:
+ *   angular.rlmodule('myapp.controllers.FooCtrl', []).controller('FooCtrl', ...);
+ *   angular.rlmodule('myapp.controllers.BarCtrl', []).controller('BarCtrl', ...);
+ *   angular.rlmodule('myapp.directives.rlDaFunk', []).directive('rlDaFunk', ...);
+ *
+ * When I reference a parent module:
+ *   angular.module('myapp.controllers');
+ *   OR
+ *   angular.module('myapp');
+ *   OR
+ *   angular.rlmodule('myapp.controllers.AllDirectives', ['myapp.directives']).controller('AllDirectives', ...);
+ *   OR
+ *   <body rl-app='myapp'></body>
+ *
+ * Then I should get all components declared on child modules
  **/
-//window.name = 'NG_DEFER_BOOTSTRAP!';
 var RlModule = new function() {
 
     // These are the modules that are explicitly defined
@@ -14,11 +28,11 @@ var RlModule = new function() {
     var modules = {};
     var namespaces = {};
 
-    // TODO: Allow infinite params - pass param 3+ through to angular.module
     this.module = function(moduleName, depsArray) {
+        var args = Array.prototype.slice.call(arguments);
         modules[moduleName] = depsArray;
         addNamespace(moduleName);
-        var module = angular.module(moduleName, depsArray);
+        var module = angular.module.apply(null, args);
         buildModuleBundle();
         return module;
     };
@@ -80,14 +94,10 @@ var RlModule = new function() {
         }
     }
 
-    // Don't build modules and bootstrap until RlLoader has loaded everything
+    // Don't bootstrap until RlLoader has loaded everything
     // If we use ngApp, it auto-bootstraps too early (sometimes)  :S
     document.addEventListener('RlLoaderFinished', bootstrap);
 
 };
 
 angular.rlmodule = RlModule.module;
-/**
-var module = RlModule.module('rl.cpi.main.controllers.sample', ['$Resource']);
-module.controller(function('Sample', $scope) {});
-**/

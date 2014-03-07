@@ -17,15 +17,31 @@ gulp.task('dist', function(callback) {
         callback);
 });
 
+gulp.task('dist:copy', ['dist:copy:static', 'dist:copy:js']);
 /**
  * Helper task to copy special files from the application root
  */
-gulp.task('dist:copy', function() {
+gulp.task('dist:copy:static', function() {
     var copyFiles = [
-        config.APPLICATION_ROOT + '/index.html',
-        config.APPLICATION_ROOT + '/RlLoader.js'
+        config.APPLICATION_ROOT + '/index.html'
     ];
     return gulp.src(copyFiles)
+        .pipe(gulp.dest(config.MINIFY_DESTINATION))
+        .pipe(refresh(lrServer));
+});
+/**
+ * Helper task to copy special files from the application root
+ * And uglify them...  because OVERKILL IS FUN!  :)
+ */
+gulp.task('dist:copy:js', function() {
+    var uglify = require('gulp-uglify');
+
+    var copyFiles = [
+        config.APPLICATION_ROOT + '/RlLoader.js',
+        config.APPLICATION_ROOT + '/config.js'
+    ];
+    return gulp.src(copyFiles)
+        .pipe(uglify())
         .pipe(gulp.dest(config.MINIFY_DESTINATION))
         .pipe(refresh(lrServer));
 });
