@@ -10,7 +10,7 @@ angular
         //tmhDynamicLocaleProvider.defaultLocale('en');
     })
     .run(function(tmhDynamicLocale, Config) {
-        if (Config.defaultLanguage) {
-            tmhDynamicLocale.set(Config.defaultLanguage);
+        if (Config.defaultLocale) {
+            tmhDynamicLocale.set(Config.defaultLocale);
         }
     });

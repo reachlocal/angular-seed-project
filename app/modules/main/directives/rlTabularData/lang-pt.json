@@ -1,0 +1,30 @@
+{
+    "rlTabularData": {
+        "": "",
+        "Ad Text": "Texto do anúncio",
+        "Ad Group": "Grupo de anúncios",
+        "Publisher": "Publisher",
+        "Status": "Estado",
+        "NEW": "Novo",
+        "ACTIVE": "Ativo",
+        "DISABLED": "Desativado",
+        "PAUSED": "Pausada",
+        "UNPAUSED": "Retirada da Pausa",
+        "PENDING": "Pendente",
+        "EDITED": "Editado",
+        "NATIONAL": "Nacional",
+        "GLOBAL": "Global",
+        "DMA": "DMA",
+        "CITY": "Cidade",
+        "ZIPCODE": "Código Postal",
+        "STATE": "Estado",
+        "Click Through Rate": "Taxa de Cliques",
+        "Clicks": "Cliques",
+        "Impressions": "Impressions",
+        "Conversions": "Conversões",
+        "Average Position": "Posição Média",
+        "Impression Share": "Parcela de Impressão",
+        "Lead Count": "Contagem Chumbo",
+        "Quality Score": "Índice de Qualidade"
+    }
+}

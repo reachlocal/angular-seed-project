@@ -4,5 +4,6 @@
 var rlConfig = {
     // Where is the cpi-gateway?
     gatewayBaseUrl: "http://localhost:8001",
-    defaultLanguage: 'en'
+    defaultLocale: 'en',
+    locales: ['en', 'pt']
 };

@@ -4,6 +4,7 @@ angular
          'rl.cpi.main.services.Publishers',
          'rl.cpi.main.services.CampaignOverview',
          'rl.cpi.main.services.Creatives',
+         'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
     .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview, recommendations, creatives, $filter) {
         $rootScope.pageTitle = "Campaign Overview";

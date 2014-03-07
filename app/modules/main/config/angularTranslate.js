@@ -16,7 +16,7 @@ angular
         $translateProvider.useInterpolation('MultiInterpolator');
     })
     .run(function($translate, Config) {
-        if (Config.defaultLanguage) {
-            $translate.use(Config.defaultLanguage);
+        if (Config.defaultLocale) {
+            $translate.use(Config.defaultLocale);
         }
     });
