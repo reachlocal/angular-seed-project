@@ -6,11 +6,6 @@
 angular
     .rlmodule('rl.cpi.main.config.dynamicLocale', ['tmh.dynamicLocale'])
     .config(function(tmhDynamicLocaleProvider) {
+        // Tell tmh how to find angular's locale files for i18n filter goodness
         tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
-        //tmhDynamicLocaleProvider.defaultLocale('en');
-    })
-    .run(function(tmhDynamicLocale, Config) {
-        if (Config.defaultLocale) {
-            tmhDynamicLocale.set(Config.defaultLocale);
-        }
     });

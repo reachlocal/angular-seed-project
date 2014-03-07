@@ -14,7 +14,7 @@ gulp.task('l10n', ['l10n:support'], function () {
 
     // Create all the streams for our supported locales
     var jsonStreams = [];
-    gutil.log('Building l10n files for locales specified in config.js:', gutil.colors.yellow(config.LOCALES));
+    gutil.log('Building l10n files for locales specified in gulp\'s config.js:', gutil.colors.yellow(config.LOCALES));
     for (var i in config.LOCALES) {
         var locale = config.LOCALES[i];
         var l10nPipe = gulp.src(config.APPLICATION_ROOT + '/modules/**/lang-' + locale + '.json')
