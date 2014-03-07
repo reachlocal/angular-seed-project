@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "gulp-util": "~2.2.13",
+    "gulp-util": "~2.2.14",
     "express": "~3.4.8",
     "tiny-lr": "0.0.5",
     "gulp-livereload": "~0.2.0",
@@ -27,7 +27,7 @@
     "requirejs": "~2.1.10",
     "karma-requirejs": "~0.2.1",
     "karma": "~0.10.9",
-    "gulp-karma": "0.0.2",
+    "gulp-karma": "git+https://github.com/networkerror/gulp-karma.git",
     "gulp-sass": "~0.6.0",
     "gulp-minify-css": "~0.2.0",
     "gulp-concat": "~2.1.7",

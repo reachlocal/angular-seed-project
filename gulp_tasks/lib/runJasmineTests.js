@@ -8,6 +8,7 @@
  * Example:  runTests('unit') will run tests in 'test/unit/** /*.spec.js'
  **/
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var karmaPort = 9876;
 module.exports = function (testDirectory) {
     var config = require('../config/config');
@@ -26,6 +27,12 @@ module.exports = function (testDirectory) {
             frameworks: ['jasmine'],
             browsers: ['PhantomJS'],
             action: 'run',
+            reporters: ['dots'],
+            singleRun: true,
             port: karmaPort++
-        }));
+        }))
+        .on('error', function(err) {
+            gutil.log(gutil.colors.red("TESTS FAILED! DO THE PANIC DANCE!"));
+            throw err;
+        });
 };
