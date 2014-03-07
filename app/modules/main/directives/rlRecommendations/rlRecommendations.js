@@ -4,7 +4,6 @@ angular
         return {
             templateUrl: "modules/main/directives/rlRecommendations/rlRecommendations.html",
             scope: {
-                expanded: '=?',
                 recommendations: '='
             },
             restrict: 'E'
