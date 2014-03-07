@@ -2,7 +2,7 @@
 .idea/
 .project_scripts.json
 node_modules/
-dist/
+/dist/
 cpi-client.iml
 app/app.css
 .*.sw?
