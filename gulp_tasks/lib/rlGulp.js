@@ -32,4 +32,4 @@ gulp.task = rlTask;
 
 gulp.getTaskHelp = function () {
     return tasks;
-}
+};

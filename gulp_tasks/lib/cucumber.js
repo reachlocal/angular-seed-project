@@ -3,7 +3,7 @@
  */
 var gutil = require('gulp-util');
 
-module.exports = new function () {
+function Cucumber() {
 
     var runCommand = require('./runCommand');
     var callback = function () {};
@@ -26,4 +26,5 @@ module.exports = new function () {
         runCommand(options, callback);
     };
 
-};
+}
+module.exports = new Cucumber();

@@ -33,7 +33,7 @@ gulp.task('l10n', ['l10n:support'], function () {
 gulp.task('l10n:support', function () {
     var supportFiles = [
         config.APPLICATION_ROOT + '/bower_components/angular-i18n/*.js'
-    ]
+    ];
     return gulp.src(supportFiles)
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/bower_components/angular-i18n'));
 });

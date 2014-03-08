@@ -5,7 +5,7 @@ var http = require('http');
 /**
  * Start web driver in a child-thread
  */
-module.exports = new function() {
+function WebDriver() {
 
     var running = false;
     var processHandle;
@@ -54,4 +54,6 @@ module.exports = new function() {
         }, true);
     }
 
-};
+}
+
+module.exports = new WebDriver();

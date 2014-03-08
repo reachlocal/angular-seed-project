@@ -1,3 +1,4 @@
+/*global assert:true,expect:true,expectCallback:true,_:true*/
 var path = require('path');
 var asserts = require('./assert');
 var underscore = require('underscore');

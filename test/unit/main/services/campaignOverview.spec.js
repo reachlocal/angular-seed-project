@@ -17,18 +17,18 @@ describe("CampaignOverview", function () {
 
 
     it("should fetch overview data for a given campaign", function () {
-      var overviewData = {
-        id: 1,
-        name: "A Quality 1st Plumbing- Plumbing"
-      };
-      httpResolver.$httpBackend.expectGET('/campaigns/1/overview_data').respond(overviewData);
+        var overviewData = {
+            id: 1,
+            name: "A Quality 1st Plumbing- Plumbing"
+        };
+        httpResolver.$httpBackend.expectGET('/campaigns/1/overview_data').respond(overviewData);
 
-      var result = campaignOverview.get({ campaignId: 1});
+        var result = campaignOverview.get({ campaignId: 1});
 
-      httpResolver.resolve();
+        httpResolver.resolve();
 
-      expect(result.id).toEqual(overviewData.id);
-      expect(result.name).toEqual(overviewData.name);
+        expect(result.id).toEqual(overviewData.id);
+        expect(result.name).toEqual(overviewData.name);
 
     });
 

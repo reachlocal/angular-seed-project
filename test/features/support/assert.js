@@ -1,16 +1,14 @@
 var webdriver = require('selenium-webdriver');
 /**
+ * Provide a wrapped version of the assert library with a few handy
+ * extensions.  See the assert API for usage details.
+ * Also include a subset of the 'expect(...).to(...)' style assertion methods
+ *
  * Usage:
  * assert.equal(truePromise, true);
  * assert.callback(callback);
- **/
-var asserts = {};
-
-/**
- * Provide a wrapped version of the assert library with a few handy
- * extensions.  See the assert API for usage details.
  */
-asserts.assert = new function () {
+function Assert() {
 
     var assert = require('assert');
     var queueCount = 0;
@@ -32,9 +30,9 @@ asserts.assert = new function () {
      * Note:  Argument[0] can be a promise, a webdriver element, or a js object
      *        If it's a webdriver element, we'll call getText() automatically
      * @param assertFunc
-     * @param arguments
+     * @param assertArgs
      */
-    this.queueAssertion = function (assertFunc, arguments) {
+    this.queueAssertion = function (assertFunc, assertArgs) {
         var args = Array.prototype.slice.call(arguments);
         var promise = args[0];
         var ass = assertFunc;
@@ -52,7 +50,7 @@ asserts.assert = new function () {
         } else {
             ass.apply(this, args);
         }
-    }
+    };
 
     this.callback = function (callback) {
         callbacks.push(callback);
@@ -97,7 +95,7 @@ asserts.assert = new function () {
             var index = haystack.indexOf(needle);
             assert.isTruthy(index !== -1, message);
         }, arguments);
-    }
+    };
     this.notEqual = function () {
         this.queueAssertion(assert.notEqual, arguments);
     };
@@ -123,7 +121,7 @@ asserts.assert = new function () {
         this.queueAssertion(assert.ifError, arguments);
     };
 
-};
+}
 
 /**
  * Provide a jasmine - expect().to__() style API that wraps assert
@@ -131,7 +129,7 @@ asserts.assert = new function () {
  * Note:  This is a vary partial implementation.  'Cause promises are hard.
  * Example:  asserts.expect(true).toBeTruthy();
  **/
-var to = function(actualValue) {
+var To = function(actualValue) {
 
     var actual = actualValue;
 
@@ -150,11 +148,15 @@ var to = function(actualValue) {
         asserts.assert.isFalsy(actual, message);
     };
 
-}
+};
 
-asserts.expect =  function(actual) {
-    return new to(actual);
-}
+var asserts = {};
+asserts.assert = new Assert();
+
+asserts.expect = function(actual) {
+    return new To(actual);
+};
+
 // Alias assert.callback
 asserts.expectCallback = asserts.assert.callback;
 

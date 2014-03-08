@@ -17,9 +17,7 @@
  *
  * That's it.
  */
-angular.rlmodule('rl.l10n.MultiInterpolator', [
-    'pascalprecht.translate',
-    'tmh.dynamicLocale'])
+angular.rlmodule('rl.l10n.MultiInterpolator', ['pascalprecht.translate', 'tmh.dynamicLocale'])
     .factory('MultiInterpolator', function ($interpolate, $translateMessageFormatInterpolation) {
         var $locale;
         return {

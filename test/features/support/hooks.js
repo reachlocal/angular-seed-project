@@ -1,4 +1,4 @@
-/*global module,browser,assert,By */
+/*global browser:true,by:true*/
 /**
  * Kill the browser after every scenario
  */
@@ -20,7 +20,7 @@ module.exports = function() {
         browser = protractor.wrapDriver(driver);
 
         // Protractor's locators
-        By = protractor.By;
+        by = protractor.By;
 
         callback();
     });

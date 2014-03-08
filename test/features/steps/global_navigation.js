@@ -19,7 +19,7 @@ module.exports = function () {
         var hash = table.hashes()[0];
 
         _.each(hash, function (expectedValue, bindingName) {
-            var element = browser.findElement(By.binding('overview.' + bindingName));
+            var element = browser.findElement(by.binding('overview.' + bindingName));
             expect(element).toContain(expectedValue);
         }, this);
 

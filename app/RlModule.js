@@ -18,7 +18,7 @@
  *
  * Then I should get all components declared on child modules
  **/
-var RlModule = new function() {
+(function() {
 
     // These are the modules that are explicitly defined
     // These must not be clobbered when we compile the namespaces
@@ -97,7 +97,6 @@ var RlModule = new function() {
     // Don't bootstrap until RlLoader has loaded everything
     // If we use ngApp, it auto-bootstraps too early (sometimes)  :S
     document.addEventListener('RlLoaderFinished', bootstrap);
+    angular.rlmodule = this.module;
 
-};
-
-angular.rlmodule = RlModule.module;
+}());

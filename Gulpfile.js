@@ -36,7 +36,7 @@ gulp.task('default', ['build']);
 /**
  * Build task:  Run tests and compile assets into 'dist/' directory
  */
-gulp.task('build', ['dist', 'test']);
+gulp.task('build', ['dist', 'test', 'lint:failhard']);
 
 /**
  * Magic loader that pulls in all tasks from the gulp_tasks directory

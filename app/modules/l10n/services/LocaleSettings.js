@@ -5,7 +5,7 @@
 angular
     .rlmodule('rl.cpi.l10n.services.LocaleSettings', ['rl.cpi.main.Config', 'pascalprecht.translate', 'tmh.dynamicLocale'])
     .service('LocaleSettings', function(Config, $translate, tmhDynamicLocale) {
-        return new function () {
+        function LocaleSettings() {
 
             var current = $translate.use();
             var fallback = Config.defaultLocale;
@@ -58,7 +58,8 @@ angular
                 return fallback;
             };
 
-        }();
+        }
+        return new LocaleSettings();
     })
     .run(function(LocaleSettings, Config) {
         LocaleSettings.locale(Config.defaultLocale);

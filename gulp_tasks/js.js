@@ -30,7 +30,6 @@ gulp.task('js:app:minify', ['ngtemplates'], function() {
  */
 gulp.task('js:app:json', ['js:app:minify'], function() {
     var deferred = require('q').defer();
-    var glob = require('glob');
     // Write project file.
     var project_files = JSON.stringify(['app.min.js']);
     require('fs').writeFile(config.MINIFY_DESTINATION + '/.project_scripts.json', project_files, function(err) {
