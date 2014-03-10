@@ -3,6 +3,8 @@
     "Apply": "Aplicar",
     "Dismiss": "Descartar",
     "Your campaign has { count } active recommendations":
-        "{ count, plural, one{Existe} other{Existem} } <b class='text-warning'>{ count }</b> { count , plural, one{recomendação ativa} other{recomendações ativas} } para sua campanha."
+        "{ count, plural, one{Existe} other{Existem} } <b class='text-warning'>{ count }</b> { count , plural, one{recomendação ativa} other{recomendações ativas} } para sua campanha.",
+    "Well done": "Muito bem!",
+    "You have no active recommendations": "Não existem recomendações ativas para sua campanha."
   }
 }
