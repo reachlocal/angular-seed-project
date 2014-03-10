@@ -14,13 +14,17 @@ angular
          * It creates a global object called 'rlConfig'.
          * If that variable exists, return that.  If it does not exist, PANIC!
          */
-        var config = {};
+        var configDefaults = {
+            gatewayBaseUrl: "http://localhost:8001",
+            defaultLocale: 'en',
+            locales: ['en', 'pt']
+        };
         if (typeof rlConfig !== 'undefined' && angular.isObject(rlConfig)) {
-            config = rlConfig;
+            angular.forEach(rlConfig, function(value, key) {
+                configDefaults[key] = value;
+            }, this);
         } else {
-            console.error("FATAL ERROR!\n" +
-                "Could not find configuration object: rlConfig.\n" +
-                "Make sure app/config.js exists and is being loaded.");
+            console.warn("WARNING: No config.js found for client app - using defaults");
         }
-        return config;
+        return configDefaults;
     });
