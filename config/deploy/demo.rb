@@ -12,7 +12,7 @@ set :ssh_options,
     forward_agent: true, # don't forget to ssh-add your keys so git-clone works
     compression: 'none'  # avoid 'stream was freed prematurely' errors
 
-server "www.#{ENV['OS_USERNAME']}.cpi.dev.wh.reachlocal.com", roles: [:web]
+server "demo-client-cpi.dev.wh.reachlocal.com", roles: [:web]
 
 namespace :deploy do
   after :updated, :dist do
