@@ -45,7 +45,7 @@ Feature: Surface recommendations
     Then the recommendation section is expanded to include the full details of the recommendation
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-116
   Scenario: Surface Guided recommendations with the right dismissal options
 
     Given a "Guided" recommendation for a campaign is available
@@ -55,7 +55,7 @@ Feature: Surface recommendations
 
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-116
   Scenario: Navigate a guided recommendation
 
     Given a "Guided" recommendation for a campaign is available
@@ -64,7 +64,7 @@ Feature: Surface recommendations
     Then the user is navigated to the functional area for the recommendation
     And the option to navigate changes to an option to dismiss the recommendation as "Yes, I implemented this"
 
-  @JIRA-CPI-26
+  @JIRA-CPI-116
   Scenario: Dismiss a Guided Recommendation with positive result
 
     Given a "Guided" recommendation
@@ -74,7 +74,7 @@ Feature: Surface recommendations
     Then the recommendation is dismissed from the campaign
     And the user action is recorded for analysis
 
-  @JIRA-CPI-26
+  @JIRA-CPI-116
   Scenario: Dismiss a Guided Recommendation with negative result
 
     Given a "Guided" recommendation
