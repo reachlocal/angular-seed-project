@@ -20,7 +20,7 @@ namespace :deploy do
       # Install NVM, node_modules, and run gulp task for deployment
       execute <<-EOC
         cd #{release_path}
-        ./deploy.sh
+        ./ci/deploy.sh
       EOC
 
       # Symlink the config
