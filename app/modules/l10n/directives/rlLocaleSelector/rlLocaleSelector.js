@@ -6,9 +6,8 @@ angular
             scope: {},
             restrict: 'E',
             controller: function($scope, LocaleSettings) {
-                $scope.locales = LocaleSettings.locales();
-                $scope.currentLocale = LocaleSettings.locale();
-
+                $scope.locales = LocaleSettings.locales;
+                $scope.currentLocale = LocaleSettings.locale;
                 $scope.chooseLocale = LocaleSettings.locale;
             }
         };
