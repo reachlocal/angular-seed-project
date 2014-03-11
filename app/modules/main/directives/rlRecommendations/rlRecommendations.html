@@ -1,11 +1,11 @@
-<p class="count" ng-show="recommendations.length > 0">
-    <translate translate-value-count="{{ recommendations.length }}">
+<p class="count" ng-show="recommendations.hasActiveRecommendations()">
+    <translate translate-value-count="{{ recommendations.count() }}">
         rlRecommendations.Your campaign has { count } active recommendations
     </translate>
 </p>
 
-<div ng-repeat="recommendation in recommendations" class="details">
-  <a class="summary" ng-click="expanded = !expanded">
+<div ng-repeat="recommendation in recommendations.items" class="details">
+  <a class="summary" ng-click="recommendation.toggleExpanded()">
     {{ recommendation.title }}
   </a>
   <div class="recommendation-actions">
@@ -16,12 +16,12 @@
       <translate>rlRecommendations.Dismiss</translate>
     </button>
   </div>
-  <div class="slide-down" ng-show="expanded == true">
+  <div class="slide-down" ng-show="recommendation.isExpanded()">
     {{ recommendation.description }}
   </div>
 </div>
 
-<div class="congratulations alert alert-success alert-dismissable" ng-show="recommendations.length == 0">
+<div class="congratulations alert alert-success alert-dismissable" ng-hide="recommendations.hasActiveRecommendations()">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <strong>
       <translate>rlRecommendations.Well done</translate>

@@ -3,14 +3,17 @@ angular
         ['rl.cpi.main.directives',
          'rl.cpi.main.services.Publishers',
          'rl.cpi.main.services.CampaignOverview',
+         'rl.cpi.main.services.Recommendations',
          'rl.cpi.main.services.Creatives',
+         'rl.cpi.main.models.Recommendations',
          'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
-    .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview, recommendations, creatives, $filter) {
+    .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview,
+                                      recommendations, creatives, RecommendationsModel, $filter) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.publishers = publishers;
         $scope.campaignOverview = campaignOverview;
-        $scope.recommendations = recommendations;
+        $scope.recommendations = RecommendationsModel.build(recommendations);
         $scope.creatives = creatives;
 
         $scope.creativeHeaders = {

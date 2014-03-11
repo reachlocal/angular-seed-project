@@ -15,7 +15,6 @@ function compileDirective(html, scopeData) {
         }
         directive.element = $compile(directiveHtml)(directive.scope);
         directive.scope.$digest();
-        directive.jq_element = function () { return jQuery(directive.element, document); };
     });
     return directive;
 }
