@@ -16,7 +16,7 @@
                     <uniqueVersion>false</uniqueVersion>
                     <repositoryId>rl-snapshots</repositoryId>
                     <url>http://artifacts.reachlocal.com/nexus/content/repositories/rl-snapshots</url>
-                    <file>${basedir}/dist.tgz</file>
+                    <file>${basedir}/dist.tar.gz</file>
                     <classifier>${vcs.rev}</classifier>
                     <version>${version}</version>
                 </configuration>
