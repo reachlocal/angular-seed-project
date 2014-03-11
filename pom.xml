@@ -1,0 +1,38 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <version>@artifact-version@</version>
+    <groupId>com.reachlocal</groupId>
+    <artifactId>cpi-client</artifactId>
+    <build>
+        <plugins>
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <groupId>${groupId}</groupId>
+                    <artifactId>${artifactId}</artifactId>
+                    <packaging>tgz</packaging>
+                    <uniqueVersion>false</uniqueVersion>
+                    <repositoryId>rl-snapshots</repositoryId>
+                    <url>http://artifacts.reachlocal.com/nexus/content/repositories/rl-snapshots</url>
+                    <file>${basedir}/dist.tgz</file>
+                    <classifier>${vcs.rev}</classifier>
+                    <version>${version}</version>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>rl-releases</id>
+            <name>ReachLocal Latest</name>
+            <url>http://artifacts.reachlocal.com/nexus/content/repositories/rl-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>rl-snapshots</id>
+            <name>ReachLocal Snapshots</name>
+            <url>http://artifacts.reachlocal.com/nexus/content/repositories/rl-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
