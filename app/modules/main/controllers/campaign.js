@@ -5,15 +5,14 @@ angular
          'rl.cpi.main.services.CampaignOverview',
          'rl.cpi.main.services.Recommendations',
          'rl.cpi.main.services.Creatives',
-         'rl.cpi.main.models.Recommendations',
          'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
     .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview,
-                                      recommendations, creatives, RecommendationsModel, $filter) {
+                                      recommendations, creatives, $filter) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.publishers = publishers;
         $scope.campaignOverview = campaignOverview;
-        $scope.recommendations = RecommendationsModel.build(recommendations);
+        $scope.recommendations = recommendations;
         $scope.creatives = creatives;
 
         $scope.creativeHeaders = {
@@ -79,7 +78,7 @@ angular
                     },
                     recommendations: function(Recommendations, $stateParams) {
                         var recommendations = Recommendations.query({campaignId: $stateParams.campaignId});
-                        return recommendations.$promise;
+                        return recommendations;
                     },
                     creatives: function(Creatives, $stateParams) {
                         var creatives = Creatives.query({campaignId: $stateParams.campaignId});

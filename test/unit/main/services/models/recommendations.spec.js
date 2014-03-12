@@ -2,7 +2,7 @@ describe("Recommendations Model", function () {
     var factory;
 
     beforeEach(function () {
-        module("rl.cpi.main.models.Recommendations");
+        module("rl.cpi.main.services.Recommendations");
         inject(function(RecommendationsModel) {
             factory = RecommendationsModel;
         });

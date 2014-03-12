@@ -2,6 +2,21 @@ describe("Recommendations", function () {
 
     var recommendations;
 
+    var recommendation1 = {
+        id: 4567,
+        type: "simple_dismiss",
+        title: "Add 2 more keywords",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula."
+    };
+    var recommendation2 = {
+        id: 7899,
+        type: "simple_dismiss",
+        title: "Create more moon wells",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula."
+    };
+
+    var payload = [ recommendation1, recommendation2 ];
+
     beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
 
     beforeEach(function () {
@@ -15,27 +30,21 @@ describe("Recommendations", function () {
 
     afterEach(httpResolver.afterEach);
 
-    it("should fetch recommendations for a given campaign", function () {
-        var recommendations_payload = [
-            {
-                id: 4567,
-                type: "simple_dismiss",
-                title: "Add 2 more keywords",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula."
-            }
-        ];
+    it("fetches recommendations for a given campaign", function () {
+        httpResolver.$httpBackend.expectGET('/campaigns/1/recommendations').respond(payload);
 
-        httpResolver.$httpBackend.expectGET('/campaigns/1/recommendations').respond(recommendations_payload);
-
-        var results = recommendations.query({ campaignId: 1 });
+        var queryPromise = recommendations.query({ campaignId: 1 });
 
         httpResolver.resolve();
 
-        expect(results[0].id).toEqual(recommendations_payload[0].id);
-        expect(results[0].type).toEqual(recommendations_payload[0].type);
-        expect(results[0].title).toEqual(recommendations_payload[0].title);
-        expect(results[0].description).toEqual(recommendations_payload[0].description);
-
+        queryPromise.then(function(result) {
+            expect(result.items.length).toBe(2);
+            expect(result.items[0].id).toEqual(4567);
+            expect(result.items[0].type).toEqual("simple_dismiss");
+            expect(result.items[0].title).toEqual("Add 2 more keywords");
+            expect(result.items[0].description).toEqual("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo risus volutpat venenatis vehicula.");
+        });
     });
+
 
 });
