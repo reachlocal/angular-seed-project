@@ -84,7 +84,7 @@ Feature: Surface recommendations
 
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-141
   Scenario: Surface Automated recommendations with the right dismissal options
 
 
@@ -95,7 +95,7 @@ Feature: Surface recommendations
     And the user is presented with the option to dismiss all remaining recommendation line items
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-141
   Scenario: Implement and/or dismiss a single automated recommendation line item
 
     Given an "Automated" recommendation for a campaign is available
@@ -111,7 +111,7 @@ Feature: Surface recommendations
     And the user action is recorded
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-141
   Scenario: Implement and/or dismiss multiple automated recommendation line items
 
     Given an "Automated" recommendation for a campaign is available
