@@ -3,11 +3,34 @@
 Feature: Each dashboard should have a consistent global navigation function
 
   @JIRA-CPI-23 @dashboard @filter
-  Scenario: View campaign-level dashboard
+  Scenario: View Global Nav Bar with Publisher AdGroups
 
     Given a typical campaign exists
-    When a user filters using All AdGroups
-    Then the dashboard should be filtered to include all data for the campaign
+    And the campaign has AdGroups assigned to at least 1 publisher
+    When a user views the Global Nav Filter
+    Then the AdGroups should be displayed under the All Ad Groups section
+    And the Publisher should be displayed as its own section in the Nav Filter
+    And the AdGroup should also be displayed under the Publisher section
+
+  @JIRA-CPI-23 @dashboard @filter
+  Scenario: Select an AdGroup in Global Nav Bar under All Ad Groups
+
+    Given a typical campaign exists
+    And the campaign has AdGroups assigned to at least 1 publisher
+    When the user selects an AdGroup under the All Ad Groups section
+    Then the campaign dashboard should show the data table of Creatives under that AdGroup across all publishers
+
+  @JIRA-CPI-23 @dashboard @filter
+  Scenario: Select an AdGroup in Global Nav Bar under a specific publisher
+
+    Given a typical campaign exists
+    And the campaign has AdGroups assigned to at least 1 publisher
+    When the user selects an AdGroup under a publisher section
+    Then the campaign dashboard should show the data table of Creatives under that AdGroup under that specific publisher
+
+
+
+
 
 
   @JIRA-CPI-25 @dashboard @header
