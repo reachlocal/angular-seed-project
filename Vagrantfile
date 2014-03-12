@@ -53,7 +53,7 @@ Vagrant.configure '2' do |config|
     os.server_name  = "www.#{ENV['OS_USERNAME']}.cpi.dev.wh.reachlocal.com"
     os.endpoint     = "#{ENV['OS_AUTH_URL']}tokens"
     os.image        = '0611d777-a8d6-4298-b807-f626d614de81'
-    os.flavor       = 'm1.tiny'
+    os.flavor       = 'm1.small'
     os.metadata     = {
       puppetEnv:     'cpi',
       puppetClasses: 'apps_cpi_client',
