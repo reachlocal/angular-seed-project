@@ -31,8 +31,6 @@ describe("Recommendations Model", function () {
             item_model.toggleExpanded();
             expect(item_model.isExpanded()).toBe(false);
         });
-
-
     });
 
     describe("build", function() {
@@ -59,6 +57,13 @@ describe("Recommendations Model", function () {
             it("has no active recommendations", function() {
                 expect(model.hasActiveRecommendations()).toBe(false);
             });
+            it("shows the 'Well done...' message", function() {
+                expect(model.showWellDoneMessage()).toBe(true);
+            });
+            it("'Well done...' message can be closed", function() {
+                model.closeWellDoneMessage();
+                expect(model.showWellDoneMessage()).toBe(false);
+            });
 
         });
 
@@ -69,6 +74,9 @@ describe("Recommendations Model", function () {
 
             it("has active recommendations", function() {
                 expect(model.hasActiveRecommendations()).toBe(true);
+            });
+            it("does not show the 'Well done...' message", function() {
+                expect(model.showWellDoneMessage()).toBe(false);
             });
         });
 

@@ -21,8 +21,9 @@
   </div>
 </div>
 
-<div class="congratulations alert alert-success alert-dismissable" ng-hide="recommendations.hasActiveRecommendations()">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+<div class="congratulations alert alert-success alert-dismissable"
+     ng-show="recommendations.showWellDoneMessage()">
+    <button ng-click="recommendations.closeWellDoneMessage()" type="button" class="close" aria-hidden="true">×</button>
     <strong>
       <translate>rlRecommendations.Well done</translate>
     </strong>
