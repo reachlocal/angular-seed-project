@@ -27,11 +27,11 @@ angular
                 return items.length > 0;
             };
             that.showWellDoneMessage = function() {
-                return (items.length == 0) && showWellDoneMessage;
-            }
+                return (items.length === 0) && showWellDoneMessage;
+            };
             that.closeWellDoneMessage = function() {
                 showWellDoneMessage = false;
-            }
+            };
             that.count = function() {
                 return items.length;
             };
