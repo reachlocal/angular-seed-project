@@ -10,3 +10,4 @@ app/.l10n
 .vagrant
 tmp
 test/helpers/l10n.js
+test-results.xml

@@ -27,7 +27,7 @@ module.exports = function (testDirectory) {
             frameworks: ['jasmine'],
             browsers: ['PhantomJS'],
             action: 'run',
-            reporters: ['dots'],
+            reporters: ['dots', 'junit'],
             singleRun: true,
             port: karmaPort++
         }))

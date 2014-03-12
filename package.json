@@ -46,6 +46,7 @@
     "event-stream": "~3.1.0",
     "through": "~2.3.4",
     "underscore": "~1.6.0",
-    "gulp-task-listing": "~0.2.2"
+    "gulp-task-listing": "~0.2.2",
+    "karma-junit-reporter": "^0.2.1"
   }
 }
