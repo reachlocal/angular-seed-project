@@ -29,11 +29,16 @@ function Assert() {
      * Given an assertion function and some arguments
      * Note:  Argument[0] can be a promise, a webdriver element, or a js object
      *        If it's a webdriver element, we'll call getText() automatically
-     * @param assertFunc
-     * @param assertArgs
+     * @param assertFunc  The assertion function you want to execute.  Ex: assert.ok
+     * @param assertArgs  The arguments to pass to the assertion function
+     *                    The first argument must be the actual result (or promise)
+     *                    The rest of the arguments will be passed as-is to the assertion
+     *                    function.
+     *                    ex: [myPromise, myExpected, myMessage, myOptions]
+     *                    ex: [myProimse, myExpected]
      */
     this.queueAssertion = function (assertFunc, assertArgs) {
-        var args = Array.prototype.slice.call(arguments);
+        var args = assertArgs;
         var promise = args[0];
         var ass = assertFunc;
         if (promise instanceof webdriver.promise.Promise) {
