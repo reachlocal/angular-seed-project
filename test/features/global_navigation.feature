@@ -1,37 +1,36 @@
-
-
 Feature: Each dashboard should have a consistent global navigation function
 
   @JIRA-CPI-23 @dashboard @filter
   Scenario: View Global Nav Bar with Publisher AdGroups
 
     Given a typical campaign exists
-    And the campaign has AdGroups assigned to at least 1 publisher
+    And the campaign has the following AdGroups:
+      | AdGroup       | Publisher     |
+      | First AdGroup | Google        |
     When a user views the Global Nav Filter
-    Then the AdGroups should be displayed under the All Ad Groups section
-    And the Publisher should be displayed as its own section in the Nav Filter
-    And the AdGroup should also be displayed under the Publisher section
+    Then he should see 'First AdGroup' under the 'All AdGroups' section
+    And he should see a section only for the publisher 'Google'
+    And the 'First AdGroup' should be listed under 'Google' section
 
   @JIRA-CPI-23 @dashboard @filter
   Scenario: Select an AdGroup in Global Nav Bar under All Ad Groups
 
     Given a typical campaign exists
-    And the campaign has AdGroups assigned to at least 1 publisher
-    When the user selects an AdGroup under the All Ad Groups section
-    Then the campaign dashboard should show the data table of Creatives under that AdGroup across all publishers
+    And the campaign has the following AdGroups:
+      | AdGroup       | Publisher     |
+      | First AdGroup | Google        |
+    When the user selects 'First AdGroup' under the all AdGroups section
+    Then the campaign dashboard should show the data table of Creatives under 'First AdGroup' across all publishers
 
   @JIRA-CPI-23 @dashboard @filter
   Scenario: Select an AdGroup in Global Nav Bar under a specific publisher
 
     Given a typical campaign exists
-    And the campaign has AdGroups assigned to at least 1 publisher
-    When the user selects an AdGroup under a publisher section
-    Then the campaign dashboard should show the data table of Creatives under that AdGroup under that specific publisher
-
-
-
-
-
+    And the campaign has the following AdGroups:
+      | AdGroup       | Publisher     |
+      | First AdGroup | Google        |
+    When the user selects 'First AdGroup' under its publisher 'Google'
+    Then the campaign dashboard should show the data table of Creatives under 'First AdGroup' only for the publisher 'Google'
 
   @JIRA-CPI-25 @dashboard @header
   Scenario:  View campaign basic data in the dashboard header
