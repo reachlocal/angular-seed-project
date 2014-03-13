@@ -49,11 +49,10 @@ gulp.task('serve:dist', ['dist'], function () {
  * Start a basic rest server that will serve mocks out of the mock directory
  */
 gulp.task('serve:rest', function() {
-    var httpRestServer = require('./lib/httpRestServer');
-    httpRestServer();
+  console.log('[DEPRECATED] Go to the cpi-gateway and run it from there.');
 });
 
 /**
  * Static web server AND mock rest web server
  **/
-gulp.task('serve', ['serve:app', 'serve:rest']);
+gulp.task('serve', ['serve:app']);
