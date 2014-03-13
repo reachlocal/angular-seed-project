@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <version>@artifact-version@</version>
     <groupId>com.reachlocal</groupId>
-    <artifactId>cpi-client</artifactId>
+    <artifactId>cpiclient</artifactId>
     <build>
         <plugins>
              <plugin>
