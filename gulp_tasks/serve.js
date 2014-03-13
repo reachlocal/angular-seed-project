@@ -49,7 +49,7 @@ gulp.task('serve:dist', ['dist'], function () {
  * Start a basic rest server that will serve mocks out of the mock directory
  */
 gulp.task('serve:rest', function() {
-  console.log('[DEPRECATED] Go to the cpi-gateway and run it from there.');
+    console.log('[DEPRECATED] Go to the cpi-gateway and run it from there.');
 });
 
 /**
