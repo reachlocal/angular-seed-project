@@ -41,6 +41,7 @@ namespace :deploy do
         execute <<-EOC
           rm -rf #{release_path}/dist
           curl -s "#{artifact}" | tar -C #{release_path} -zxvf -
+          echo "#{fetch :build_name}" > #{release_path}/dist/version.txt
         EOC
       end
 
