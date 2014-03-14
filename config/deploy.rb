@@ -2,7 +2,6 @@
 lock '3.1.0'
 
 set :application, 'cpi_client'
-set :repo_url,    'ssh://git@stash.lax.reachlocal.com/cpi/cpi-client.git'
 set :deploy_to,   '/rl/product/cpi_client'
 set :user,        'appuser'
 set :rails_env,   'development'
@@ -12,7 +11,28 @@ set :ssh_options,
     forward_agent: true, # don't forget to ssh-add your keys so git-clone works
     compression: 'none'  # avoid 'stream was freed prematurely' errors
 
+Rake::Task["deploy:check"].clear
+Rake::Task["deploy:updating"].clear
+
 namespace :deploy do
+  task :check do
+    on release_roles :all do
+      execute :mkdir, '-pv', repo_path
+      execute :echo, "'This deployment uses Nexus, a git checkout is not needed' > #{repo_path}/README"
+    end
+    invoke 'deploy:check:directories'
+    invoke 'deploy:check:linked_dirs'
+    invoke 'deploy:check:make_linked_dirs'
+    invoke 'deploy:check:linked_files'
+  end
+
+  task :updating => :new_release_path do
+    on release_roles :all do
+      execute :mkdir, '-pv', release_path
+    end
+    invoke 'deploy:symlink:shared'
+  end
+
   after :updated, :dist do
     on roles :web do
 
