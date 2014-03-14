@@ -18,10 +18,10 @@ module.exports = function () {
     });
 
     this.Then(/^the list of recommendations is displayed$/, function (callback) {
-      browser.findElements(by.repeater('recommendation in recommendations')).then(function(arr) {
-        expect(arr.length).to.equal(3);
-        callback();
-      });
+        browser.findElements(by.repeater('recommendation in recommendations')).then(function(arr) {
+            expect(arr.length).to.equal(3);
+            callback();
+        });
 
     });
 
