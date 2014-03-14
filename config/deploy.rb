@@ -3,33 +3,29 @@ lock '3.1.0'
 
 set :application, 'cpi_client'
 set :repo_url, 'ssh://git@stash.lax.reachlocal.com/cpi/cpi-client.git'
+set :deploy_to,        '/rl/product/cpi_client'
+set :user,             'appuser'
+set :rails_env,        'development'
 
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :ssh_options,
+    user: 'appuser',
+    forward_agent: true, # don't forget to ssh-add your keys so git-clone works
+    compression: 'none'  # avoid 'stream was freed prematurely' errors
 
-# Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+namespace :deploy do
+  after :updated, :dist do
+    on roles :web do
+      # Install NVM, node_modules, and run gulp task for deployment
+      execute <<-EOC
+        cd #{release_path}
+        ./ci/deploy.sh
+      EOC
 
-# Default value for :scm is :git
-# set :scm, :git
-
-# Default value for :format is :pretty
-# set :format, :pretty
-
-# Default value for :log_level is :debug
-# set :log_level, :debug
-
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
-
-# Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
+      # Symlink the config
+      execute <<-EOC
+        rm #{release_path}/dist/config.js
+        ln -s /rl/data/shared/configs/cpi_client_config.js #{release_path}/dist/config.js
+      EOC
+    end
+  end
+end
