@@ -18,13 +18,10 @@ module.exports = function () {
     });
 
     this.Then(/^the list of recommendations is displayed$/, function (callback) {
-        browser.findElements(by.repeater('recommendation in recommendations'))
-            .then(function (arr) {
-
-                expect(arr.length).toEqual(3);
-
-                expectCallback(callback);
-            });
+      browser.findElements(by.repeater('recommendation in recommendations')).then(function(arr) {
+        expect(arr.length).to.equal(3);
+        callback();
+      });
 
     });
 
@@ -37,11 +34,11 @@ module.exports = function () {
         browser.findElements(by.repeater('recommendation in recommendations'))
             .then(function (arr) {
 
-                expect(arr[0].getText()).toContain('Add 2 more keywords');
-                expect(arr[1].getText()).toContain('Improve the description of the creative');
-                expect(arr[2].getText()).toContain('Create more moon wells');
+                expect(arr[0].getText()).to.eventually.include('Add 2 more keywords');
+                expect(arr[1].getText()).to.eventually.include('Improve the description of the creative');
+                expect(arr[2].getText()).to.eventually.include('Create more moon wells');
 
-                expectCallback(callback);
+                callback();
             });
     });
 

@@ -20,9 +20,9 @@ module.exports = function () {
 
         _.each(hash, function (expectedValue, bindingName) {
             var element = browser.findElement(by.binding('overview.' + bindingName));
-            expect(element).toContain(expectedValue);
+            expect(element.getText()).to.eventually.include(expectedValue);
         }, this);
 
-        expectCallback(callback);
+        callback();
     });
 };
