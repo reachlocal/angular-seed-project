@@ -19,19 +19,23 @@ var World = (function () {
         // This will setup a success and failure action for the promises
         // ex: all([expect(...), expect(...)]).then(callback);
         all = function(promiseArray) {
+            // If it's not an array, make it an array
+            promiseArray = [].concat(promiseArray);
             var promise = Q.all(promiseArray);
 
             return {
                 then: function(callback) {
                     promise
+                        // Pass this step
                         .then(function() {
                             callback();
                         })
+                        // Fail this step
                         .fail(function(results) {
                             callback(results.message);
                         });
                 }
-            }
+            };
         };
 
         callback();
