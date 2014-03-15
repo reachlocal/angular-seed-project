@@ -1,4 +1,4 @@
-/*global module,browser,assert,By,expect,expectCallback */
+/*global module,browser,assert,By,expect,all,q */
 module.exports = function () {
     this.World = require('../support/world.js').World;
 
@@ -11,18 +11,22 @@ module.exports = function () {
     });
 
     this.When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
-        browser.get('http://localhost:4000/#campaign/' + campaign_id);
-        callback();
+        browser.get('http://localhost:4000/#campaign/' + campaign_id)
+            .then(function() {
+                callback();
+            });
     });
 
     this.Then(/^the user should see a campaign header:$/, function (table, callback) {
         var hash = table.hashes()[0];
 
+        var expectPromises = [];
         _.each(hash, function (expectedValue, bindingName) {
             var element = browser.findElement(by.binding('overview.' + bindingName));
-            expect(element.getText()).to.eventually.include(expectedValue);
+            var expectPromise = expect(element.getText()).to.eventually.include(expectedValue);
+            expectPromises.push(expectPromise);
         }, this);
 
-        callback();
+        all(expectPromises).then(callback);
     });
 };

@@ -4,6 +4,7 @@ var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 var underscore = require('underscore');
 chai.use(chaiAsPromised);
+var Q = require('q');
 
 var World = (function () {
     function World(callback) {
@@ -12,6 +13,26 @@ var World = (function () {
         assert = chai.assert;
         expect = chai.expect;
         _ = underscore;
+        q = Q;
+
+        // Use this to bundle 'expects' to the cucumberjs callback
+        // This will setup a success and failure action for the promises
+        // ex: all([expect(...), expect(...)]).then(callback);
+        all = function(promiseArray) {
+            var promise = Q.all(promiseArray);
+
+            return {
+                then: function(callback) {
+                    promise
+                        .then(function() {
+                            callback();
+                        })
+                        .fail(function(results) {
+                            callback(results.message);
+                        });
+                }
+            }
+        };
 
         callback();
     }

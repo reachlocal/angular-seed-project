@@ -1,4 +1,4 @@
-/*global module,browser,assert,By,expect,expectCallback */
+/*global module,browser,assert,By,expect,all,q */
 module.exports = function () {
     this.World = require('../support/world.js').World;
 
@@ -8,8 +8,9 @@ module.exports = function () {
     });
 
     this.When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
-        browser.get('http://localhost:4000/#campaign/' + campaign_id);
-        callback();
+        browser.get('http://localhost:4000/#campaign/' + campaign_id).then(function() {
+            callback();
+        });
     });
 
     this.Given(/^campaign with id "([^"]*)" contains non\-dismissed recommendations$/, function (arg1, callback) {
@@ -18,10 +19,11 @@ module.exports = function () {
     });
 
     this.Then(/^the list of recommendations is displayed$/, function (callback) {
-        browser.findElements(by.repeater('recommendation in recommendations')).then(function(arr) {
-            expect(arr.length).to.equal(3);
-            callback();
-        });
+        browser.findElements(by.repeater('recommendation in recommendations'))
+            .then(function(arr) {
+                expect(arr.length).to.equal(3);
+                callback();
+            });
 
     });
 
@@ -34,11 +36,11 @@ module.exports = function () {
         browser.findElements(by.repeater('recommendation in recommendations'))
             .then(function (arr) {
 
-                expect(arr[0].getText()).to.eventually.include('Add 2 more keywords');
-                expect(arr[1].getText()).to.eventually.include('Improve the description of the creative');
-                expect(arr[2].getText()).to.eventually.include('Create more moon wells');
-
-                callback();
+                all([
+                    expect(arr[0].getText()).to.eventually.include('Add 2 more keywords'),
+                    expect(arr[1].getText()).to.eventually.include('Improve the description of the creative'),
+                    expect(arr[2].getText()).to.eventually.include('Create more moon wells')
+                ]).then(callback);
             });
     });
 
