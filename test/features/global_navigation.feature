@@ -32,6 +32,9 @@ Feature: Each dashboard should have a consistent global navigation function
     When the user selects 'First AdGroup' under its publisher 'Google'
     Then the campaign dashboard should show the data table of Creatives under 'First AdGroup' only for the publisher 'Google'
 
+
+
+
   @JIRA-CPI-25 @dashboard @header
   Scenario:  View campaign basic data in the dashboard header
 
