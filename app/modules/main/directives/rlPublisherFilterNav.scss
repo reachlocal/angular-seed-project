@@ -1,22 +1,8 @@
-@import '_rl_variables';
-
 rl-publisher-filter-nav {
   nav {
     ul li {
-      a {
-        color: $gray;
-      }
-      a:hover {
-        color: $gray-darker;
-        text-decoration: underline;
-      }
-
-      line-height: 2.1428571435;
+      line-height: 2;
       list-style: none;
-    }
-
-    ul {
-      padding: 0 20px 0 15px;
     }
 
     ul li ul {

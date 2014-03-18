@@ -17,11 +17,11 @@
     "bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#3.1.1",
     "font-awesome": "4.0.3"
   },
-  "_release": "1ded0b7dd5",
+  "_release": "113e302820",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "1ded0b7dd5e53c79fcd6be985c40677ffa5349d5"
+    "commit": "113e302820d7153a3c9f8ff09021c3fe97dd5582"
   },
   "_source": "ssh://git@stash.lax.reachlocal.com/cpi/core-bootstrap-styles.git",
   "_target": "*",
