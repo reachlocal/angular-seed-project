@@ -1,0 +1,57 @@
+rl-creative-cell {
+
+  $yellow-bg: #f3ffc6;
+  $width: 20em;
+
+  .cell {
+    position: relative;
+  }
+
+  .view {
+    padding-top: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    position: relative;
+
+    i {
+      display: none;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+    }
+
+    div, b {
+      white-space: nowrap;
+      overflow: hidden;
+      width: $width - 1em;
+      text-overflow: ellipsis;
+    }
+
+    &:hover {
+      background: $yellow-bg;
+      i {
+        display: block;
+      }
+    }
+  }
+
+  .edit {
+    position: absolute;
+    background: $yellow-bg;
+    min-width: $width + 1em;
+    z-index: 99;
+    border: 1px solid #c6c6c6;
+    padding: .5em;
+    -webkit-box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
+
+    .buttons {
+      padding-top: .7em;
+    }
+
+    input {
+      width: 90%;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="cell">
+
+    <div class="edit" ng-show="edit">
+        <div ng-repeat="headLine in creative.headLines">
+            <input ng-model="creative.headLines[$index]">
+        </div>
+        <div ng-repeat="descriptiveLine in creative.descriptiveLines">
+            <input ng-model="creative.descriptiveLines[$index]" type="text">
+        </div>
+        <a href="{{ creative.targetUrl }}">{{ creative.displayUrl }}</a>
+        <div class="buttons">
+            <button class="btn btn-primary" translate>rlCreativeCell.Save</button>
+            <button class="btn" translate>rlCreativeCell.Cancel</button>
+        </div>
+    </div>
+
+    <div class="view" ng-click="toggleEdit()">
+        <i class="fa fa-pencil"></i>
+        <div ng-repeat="headLine in creative.headLines">
+            <b>{{ headLine }}</b>
+        </div>
+        <div ng-repeat="descriptiveLine in creative.descriptiveLines">
+            {{ descriptiveLine }}
+        </div>
+        <a href="{{ creative.targetUrl }}">{{ creative.displayUrl }}</a>
+    </div>
+
+</div>

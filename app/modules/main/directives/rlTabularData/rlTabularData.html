@@ -21,13 +21,7 @@
     <tbody>
     <tr ng-repeat="row in data">
         <td>
-            <div ng-repeat="headLine in row.creative.headLines">
-                <b>{{ headLine }}</b>
-            </div>
-            <div ng-repeat="descriptiveLine in row.creative.descriptiveLines">
-                {{ descriptiveLine }}<br>
-            </div>
-            <a href="{{ row.creative.targetUrl }}">{{ row.creative.displayUrl }}</a>
+            <rl-creative-cell creative="row.creative"></rl-creative-cell>
         </td>
         <td translate>rlTabularData.{{ row.creative.status }}</td>
         <td>{{ row.creative.adGroup.name }}</td>
