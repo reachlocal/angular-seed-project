@@ -4,8 +4,9 @@ header.rl-page-header {
   min-height: 80px;
   display: block;
   overflow: hidden;
-  box-shadow: inset 0 -10px 10px -10px #000;
-  background-color: $gray-darker;
+  box-shadow: inset 0 -10px 10px -10px #333;
+  background-color: #666;
+  margin-bottom: 30px;
   .campaign-name {
     display: inline-block;
     font-weight: bold;
