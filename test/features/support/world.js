@@ -15,6 +15,12 @@ var World = (function () {
         _ = underscore;
         q = Q;
 
+        promiseFor = function(value) {
+            var deferred = q.defer();
+            deferred.resolve(value);
+            return deferred.promise;
+        };
+
         // Use this to bundle 'expects' to the cucumberjs callback
         // This will setup a success and failure action for the promises
         // ex: all([expect(...), expect(...)]).then(callback);

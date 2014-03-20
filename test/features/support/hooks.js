@@ -18,9 +18,13 @@ module.exports = function() {
 
         // Protractor-wrapped driver
         browser = protractor.wrapDriver(driver);
-
-        // Protractor's locators
-        by = protractor.By;
+        global.driver = driver;
+        global.protractor = protractor;
+        global.browser = browser;
+        global.$ = browser.$;
+        global.$$ = browser.$$;
+        global.element = element = browser.element;
+        global.by = global.By = by = protractor.By;
 
         callback();
     });

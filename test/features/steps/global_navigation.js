@@ -12,9 +12,7 @@ module.exports = function () {
 
     this.When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
         browser.get('http://localhost:4000/#campaign/' + campaign_id)
-            .then(function() {
-                callback();
-            });
+            .then(callback);
     });
 
     this.Then(/^the user should see a campaign header:$/, function (table, callback) {

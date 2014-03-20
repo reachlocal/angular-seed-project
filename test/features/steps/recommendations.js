@@ -7,12 +7,6 @@ module.exports = function () {
         callback();
     });
 
-    this.When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
-        browser.get('http://localhost:4000/#campaign/' + campaign_id).then(function() {
-            callback();
-        });
-    });
-
     this.Given(/^campaign with id "([^"]*)" contains non\-dismissed recommendations$/, function (arg1, callback) {
         // express the regexp above with the code you wish you had
         callback();
