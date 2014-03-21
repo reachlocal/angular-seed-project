@@ -12,7 +12,7 @@ Feature: Each dashboard should have a consistent global navigation function
     And he should see a section only for the publisher 'Google'
     And the 'First AdGroup' should be listed under 'Google' section
 
-  @JIRA-CPI-23 @dashboard @filter
+  @JIRA-CPI-151 @dashboard @filter
   Scenario: Select an AdGroup in Global Nav Bar under All Ad Groups
 
     Given a typical campaign exists
@@ -22,7 +22,7 @@ Feature: Each dashboard should have a consistent global navigation function
     When the user selects 'First AdGroup' under the all AdGroups section
     Then the campaign dashboard should show the data table of Creatives under 'First AdGroup' across all publishers
 
-  @JIRA-CPI-23 @dashboard @filter
+  @JIRA-CPI-151 @dashboard @filter
   Scenario: Select an AdGroup in Global Nav Bar under a specific publisher
 
     Given a typical campaign exists
