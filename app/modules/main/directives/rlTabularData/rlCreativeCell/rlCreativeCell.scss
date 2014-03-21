@@ -1,7 +1,10 @@
+@import "main/styles/mixins";
+
 rl-creative-cell {
 
   $yellow-bg: #f3ffc6;
   $width: 20em;
+  $shadow: rgba(0, 0, 0, 0.075);
 
   .cell {
     position: relative;
@@ -36,22 +39,20 @@ rl-creative-cell {
   }
 
   .edit {
+    @include box-shadow(3px,3px,20px,rgba(0,0,0,0.25));
     position: absolute;
     background: $yellow-bg;
     min-width: $width + 1em;
     z-index: 99;
     border: 1px solid #c6c6c6;
     padding: .5em;
-    -webkit-box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
-    box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
 
     .buttons {
       padding-top: .7em;
     }
 
     input {
-      width: 90%;
+      width: 100%;
     }
   }
 }

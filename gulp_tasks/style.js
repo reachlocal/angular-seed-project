@@ -16,7 +16,8 @@ gulp.task('style:minify', function () {
     var sassPipe = gulp.src(config.APPLICATION_STYLES)
         .pipe(sass({includePaths: [
             'app/bower_components/core-bootstrap-styles/app/sass',
-            'app/bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap'
+            'app/bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap',
+            'app/modules'
         ]}))
         .pipe(minifyCss())
         .pipe(concat('app.css'))
