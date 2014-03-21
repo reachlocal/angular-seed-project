@@ -4,7 +4,7 @@ angular.rlmodule('rl.auth', ['http-auth-interceptor'])
     var directive = { restrict: 'E' };
 
     directive.link = function (scope, element) {
-        var template = '<iframe ng-if="realm" src="{{ realm }}" height="500" width="500"></iframe>';
+        var template = '<iframe id="authFrame" ng-if="realm" src="{{ realm }}" scrolling="no"></iframe>';
         element.append($compile(template)(scope));
     };
 
