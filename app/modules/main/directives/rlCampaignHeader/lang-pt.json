@@ -1,13 +1,12 @@
 {
     "rlCampaignHeader": {
         "Master Campaign ID:": "ID da Campanha Mestre:",
-        "Total Cycle Budget:": "Total Cycle Budget:",
-        "Total Cycle Budget:": "Orçamento Total por Ciclo:",
+        "Cycle Budget:": "Orçamento do Ciclo:",
         "Current Campaign ID:": "ID da Campanha Atual:",
         "Current Cycle:": "Ciclo Atual:",
         "Spend to Date this Cycle:": "Gasto neste Ciclo:",
-        "Total Contract Length:": "Tamanho Total do Contrato:",
+        "Contract Length:": "Duração do Contrato:",
         "{cycleCount} Cycles": "{ cycleCount } { cycleCount, plural, one{Ciclo} other{Ciclos} }",
-        "Total Contract Length: Unlimited": "Duração Total do Contrato: Ilimitada"
+        "Contract Length: Unlimited": "Duração do Contrato: Ilimitada"
     }
 }

@@ -1,12 +1,12 @@
 {
     "rlCampaignHeader": {
         "Master Campaign ID:": "Master Campaign ID:",
-        "Total Cycle Budget:": "Total Cycle Budget:",
+        "Cycle Budget:": "Cycle Budget:",
         "Current Campaign ID:": "Current Campaign ID:",
         "Current Cycle:": "Current Cycle:",
         "Spend to Date this Cycle:": "Spend to Date this Cycle:",
-        "Total Contract Length:": "Total Contract Length:",
+        "Contract Length:": "Contract Length:",
         "{cycleCount} Cycles": "{ cyclecount } { cyclecount, plural, one{Cycle} other{Cycles} }",
-        "Total Contract Length: Unlimited": "Total Contract Length: Unlimited"
+        "Contract Length: Unlimited": "Contract Length: Unlimited"
     }
 }

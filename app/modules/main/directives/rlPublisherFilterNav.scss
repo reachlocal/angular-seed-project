@@ -6,7 +6,17 @@ rl-publisher-filter-nav {
     label {
       cursor: pointer;
       position: relative;
+      font-weight: normal !important;
+      margin-bottom: 0 !important;
+      color: #666;
+      -webkit-font-smoothing: antialiased;
     }
+
+    input[type=checkbox]:checked+label:before {
+      font-family: 'FontAwesome';
+      -webkit-font-smoothing: antialiased;
+    }
+
     input[type=checkbox]:checked+label:before {
       content: '\f00c' ;
       padding-right: 3px;
@@ -58,7 +68,7 @@ rl-publisher-filter-nav {
         border-left-color: #39C;
       }
 
-      & > a {
+      & a {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
