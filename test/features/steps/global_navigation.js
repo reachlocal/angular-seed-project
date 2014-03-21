@@ -6,6 +6,10 @@ module.exports = function () {
         callback();
     });
 
+    this.Given(/^the campaign has the following AdGroups:$/, function (table, callback) {
+        callback();
+    });
+
     this.Given('a typical campaign exists', function (callback) {
         callback();
     });
@@ -15,6 +19,24 @@ module.exports = function () {
             .then(function() {
                 callback();
             });
+    });
+
+    this.When(/^the user selects the web publisher campaign "([^"]*)"$/, function(wpc_name, callback) {
+        browser.findElement(by.css('rl-publisher-filter-nav'))
+               .findElement(by.partialLinkText(wpc_name))
+               .click()
+               .then(function() {
+                 callback();
+               });
+    });
+
+    this.Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function(adgroup_name, wpc_name, callback) {
+        browser.findElement(by.xpath("//rl-publisher-menu-item/ul/li/label[text()='"+ adgroup_name +"']"))
+               .getInnerHtml()
+               .then(function(value) {
+                  expect(value).to.be.equal(adgroup_name);
+                  callback();
+               });
     });
 
     this.Then(/^the user should see a campaign header:$/, function (table, callback) {
