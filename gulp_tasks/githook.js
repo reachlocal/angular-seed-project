@@ -9,7 +9,7 @@ var q = require('q');
 
 var commitHook = "" +
     "#!/bin/bash\n" +
-    "gulp build\n" +
+    "node_modules/.bin/gulp build\n" +
     "RETVAL=$?\n" +
     "if [ $RETVAL -ne 0 ]\n" +
     "  then\n" +
