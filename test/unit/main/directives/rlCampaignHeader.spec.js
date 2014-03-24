@@ -30,10 +30,10 @@ describe('Campaign Header', function () {
         expect(result).toContain("Current Campaign ID:");
         expect(result).toContain("123");
 
-        expect(result).toContain("Total Cycle Budget:");
+        expect(result).toContain("Cycle Budget:");
         expect(result).toContain("$1,900.00");
 
-        expect(result).toContain("Total Contract Length:");
+        expect(result).toContain("Contract Length:");
         expect(result).toContain("10");
 
         expect(result).toContain("Spend to Date this Cycle:");

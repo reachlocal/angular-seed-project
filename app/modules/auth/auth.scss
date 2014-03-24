@@ -1,0 +1,13 @@
+#authFrame {
+  $width: 500px;
+  $height: 688px;
+
+  border: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -($height / 2);
+  margin-left: -($width / 2);
+  width: $width;
+  height: $height;
+}

@@ -34,8 +34,10 @@ function prettyPrint(string, colorFunc) {
 
 module.exports = function(options, callback, quiet) {
 
-    var cProcess = child_process.spawn('node', options)
-        .on('exit', callback);
+    var cProcess = child_process.spawn('node', options);
+    if (!!callback) {
+        cProcess.on('exit', callback);
+    }
     if (!quiet) {
         cProcess.stdout.on('data', function(d) {
             process.stdout.write(String(d), gutil.colors.blue);

@@ -4,6 +4,11 @@ rl-campaign-header {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    list-style: none;
   }
   .campaign-name {
     display: inline-block;
@@ -13,17 +18,34 @@ rl-campaign-header {
     line-height: 75px;
     padding-left: 25px;
   }
+
   .campaign-info {
     column-count:3;
     -moz-column-count:3; 
     -webkit-column-count:3;
+    line-height: 2.1428571435;
     position: absolute;
     height: 100%;
-    width: 100%;      
-    margin-right: 15px;
-    font-size: 12px;
+    width: 60%;     
+    font-size: .83em;
+    padding: 15px 0;
+    right: 15px;
     display: inline-block;
-    padding: 15px;
-    width: 50%;
+    column-rule: 1px outset #fff;
+    -moz-column-rule: 1px outset #fff; 
+    -webkit-column-rule: 1px inset #fff; 
+    column-gap: 30px;
+    -moz-column-gap: 30px;
+    -webkit-column-gap: 30px;
+    text-align: right;
+  }
+
+  .campaign-info li {
+    column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    list-style: none;
+
   }
 }

@@ -1,9 +1,21 @@
 angular
     .rlmodule('rl.cpi.main.directives.rlCreativeCell', ['ui.bootstrap'])
     .controller('rlCreativeCellCtrl', function($scope) {
+        var originalCreative;
         $scope.edit = false;
-        $scope.toggleEdit = function() {
-            $scope.edit = !$scope.edit;
+
+        $scope.enterEditMode = function() {
+            originalCreative = angular.copy($scope.creative);
+            $scope.edit = true;
+        };
+
+        $scope.cancelEditMode = function() {
+            $scope.creative = originalCreative;
+            $scope.edit = false;
+        };
+
+        $scope.save = function() {
+            $scope.edit = false;
         };
     })
     .directive('rlCreativeCell', function() {

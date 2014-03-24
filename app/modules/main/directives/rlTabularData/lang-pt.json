@@ -2,12 +2,12 @@
     "rlTabularData": {
         "Ad Text": "Texto do anúncio",
         "Ad Group": "Grupo de anúncios",
-        "Publisher": "Publisher",
-        "Status": "Estado",
+        "Publisher": "Editor",
+        "Status": "Status",
         "NEW": "Novo",
         "ACTIVE": "Ativo",
         "DISABLED": "Desativado",
-        "PAUSED": "Pausada",
+        "PAUSED": "Pausado",
         "UNPAUSED": "Retirada da Pausa",
         "PENDING": "Pendente",
         "EDITED": "Editado",
@@ -19,11 +19,11 @@
         "STATE": "Estado",
         "Click Through Rate": "Taxa de Cliques",
         "Clicks": "Cliques",
-        "Impressions": "Impressions",
+        "Impressions": "Impressões",
         "Conversions": "Conversões",
         "Average Position": "Posição Média",
         "Impression Share": "Parcela de Impressão",
-        "Lead Count": "Contagem Chumbo",
+        "Lead Count": "Contagem de leads ",
         "Quality Score": "Índice de Qualidade"
     }
 }

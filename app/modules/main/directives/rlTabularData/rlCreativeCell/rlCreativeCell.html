@@ -1,20 +1,31 @@
 <div class="cell">
 
     <div class="edit" ng-show="edit">
-        <div ng-repeat="headLine in creative.headLines">
-            <input ng-model="creative.headLines[$index]">
+
+        <div class="edit-buttons">
+            <i class="fa fa-check" ng-click="save()"></i>
+            <i class="fa fa-times" ng-click="cancelEditMode()"></i>
         </div>
-        <div ng-repeat="descriptiveLine in creative.descriptiveLines">
-            <input ng-model="creative.descriptiveLines[$index]" type="text">
+
+        <div class="underline" ng-repeat="headLine in creative.headLines track by $index">
+            <div class="white-bg">
+                <input class="headline" ng-model="creative.headLines[$index]" maxlength="255">
+            </div>
         </div>
-        <a href="{{ creative.targetUrl }}">{{ creative.displayUrl }}</a>
+
+        <div class="underline" ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
+            <div class="white-bg">
+                <input ng-model="creative.descriptiveLines[$index]" maxlength="255">
+            </div>
+        </div>
+        <!--
         <div class="buttons">
-            <button class="btn btn-primary" translate>rlCreativeCell.Save</button>
-            <button class="btn" translate>rlCreativeCell.Cancel</button>
-        </div>
+            <button class="btn btn-primary" ng-click="save()" translate>rlCreativeCell.Save</button>
+            <button class="btn" ng-click="cancelEditMode()"   translate>rlCreativeCell.Cancel</button>
+        </div>-->
     </div>
 
-    <div class="view" ng-click="toggleEdit()">
+    <div class="view" ng-click="enterEditMode()">
         <i class="fa fa-pencil"></i>
         <div ng-repeat="headLine in creative.headLines">
             <b>{{ headLine }}</b>
@@ -22,7 +33,7 @@
         <div ng-repeat="descriptiveLine in creative.descriptiveLines">
             {{ descriptiveLine }}
         </div>
-        <a href="{{ creative.targetUrl }}">{{ creative.displayUrl }}</a>
+        <a href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
     </div>
 
 </div>

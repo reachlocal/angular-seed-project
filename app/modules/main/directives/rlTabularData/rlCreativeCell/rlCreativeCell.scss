@@ -1,7 +1,14 @@
+@import "main/styles/mixins";
+@import "rl_variables";
+
 rl-creative-cell {
 
-  $yellow-bg: #f3ffc6;
-  $width: 20em;
+  $underline-inactive: #CCC;
+  $underline-active: #09C;
+  $hover-bg: desaturate(lighten($underline-active, 50), 60);
+  $width-view: 20em;
+  $width-edit: 30em;
+  $shadow: rgba(0, 0, 0, 0.075);
 
   .cell {
     position: relative;
@@ -23,12 +30,12 @@ rl-creative-cell {
     div, b {
       white-space: nowrap;
       overflow: hidden;
-      width: $width - 1em;
+      width: $width-view;
       text-overflow: ellipsis;
     }
 
     &:hover {
-      background: $yellow-bg;
+      background: $hover-bg;
       i {
         display: block;
       }
@@ -36,22 +43,83 @@ rl-creative-cell {
   }
 
   .edit {
+    @include box-shadow(3px, 3px, 8px, rgba(0,0,0,0.13));
     position: absolute;
-    background: $yellow-bg;
-    min-width: $width + 1em;
+    top: -5px;
+    left: -10px;
+    background: white;
+    min-width: $width-edit;
     z-index: 99;
-    border: 1px solid #c6c6c6;
+    border-right: 1px solid rgb(206, 217, 233);
     padding: .5em;
-    -webkit-box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
-    box-shadow: 3px 3px 22px -4px rgba(0,0,0,0.75);
+
+    .edit-buttons {
+      position: absolute;
+      z-index: 100;
+      left: -1.3em;
+      width: 1.3em;
+      top: .8em;
+      text-align: center;
+      padding-top: 1px;
+      border-left: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+      border-top: 1px solid lightgray;
+      .fa-check {
+        color: desaturate($brand-info, 10%);
+        &:hover {
+          color: $brand-info;
+        }
+      }
+      .fa-times {
+        color: desaturate($brand-danger, 10%);
+        &:hover {
+          color: $brand-danger;
+        }
+      }
+    }
+
+    .underline {
+      border-left: 1px solid $underline-inactive;
+      border-right: 1px solid $underline-inactive;
+      border-bottom: 1px solid $underline-inactive;
+      position: relative;
+      height: 1.3em;
+      margin-bottom: .5em;
+
+      &:hover {
+        border-left: 1px solid $underline-active;
+        border-right: 1px solid $underline-active;
+        border-bottom: 1px solid $underline-active;
+      }
+
+      .white-bg {
+        background: #fff;
+        position: absolute;
+        width: 102%;
+        left: -5px;
+        top: -6px;
+        height: 1.35em;
+
+        input {
+          margin: .3em;
+          background: #fff;
+          border: 0;
+          left: 2px;
+          line-height: 1em;
+          position: relative;
+        }
+        .headline {
+          font-weight: bold;
+        }
+      }
+    }
 
     .buttons {
       padding-top: .7em;
     }
 
     input {
-      width: 90%;
+      width: 95%;
     }
   }
 }

@@ -1,0 +1,10 @@
+<a ng-click="publisher.showAdGroups = !publisher.showAdGroups" title="{{ publisher.name }} {{publisher.geoType | capitalize | surroundWithParenthesis }}">
+    {{ publisher.name }} {{publisher.geoType | capitalize | surroundWithParenthesis }}
+    <span class="badge" ng-show="publisher.adGroups.length > 0">{{ publisher.adGroups.length }}</span>
+</a>
+<ul collapse="!publisher.showAdGroups">
+    <li ng-repeat="adGroup in publisher.adGroups">
+        <input type="checkbox" id="input-{{ adGroup.id }}" />
+        <label for="input-{{ adGroup.id }}">{{ adGroup.name }}</label>
+    </li>
+</ul>

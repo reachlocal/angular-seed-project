@@ -12,18 +12,18 @@
             {{ overview.currentCampaignId | filter:number }}
         </li>
         <li>
-            <translate>rlCampaignHeader.Total Cycle Budget:</translate>
+            <translate>rlCampaignHeader.Cycle Budget:</translate>
             {{ overview.totalCycleBudget | currency:'$' }}
         </li>
         <li ng-hide="overview.unlimitedRenewals">
-            <translate>rlCampaignHeader.Total Contract Length:</translate>
+            <translate>rlCampaignHeader.Contract Length:</translate>
             <translate
                 translate-value-cycleCount="{{ overview.totalContractLength }}">
                 rlCampaignHeader.{cycleCount} Cycles
             </translate>
         </li>
         <li ng-show="overview.unlimitedRenewals">
-            <translate>rlCampaignHeader.Total Contract Length: Unlimited</translate>
+            <translate>rlCampaignHeader.Contract Length: Unlimited</translate>
         </li>
         <li>
             <translate>rlCampaignHeader.Spend to Date this Cycle:</translate>

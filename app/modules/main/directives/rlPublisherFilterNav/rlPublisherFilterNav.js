@@ -2,7 +2,7 @@ angular
     .rlmodule('rl.cpi.main.directives.rlPublisherFilterNav', ['ui.bootstrap'])
     .directive('rlPublisherFilterNav', function () {
         return {
-            templateUrl: "modules/main/directives/rlPublisherFilterNav.html",
+            templateUrl: "modules/main/directives/rlPublisherFilterNav/rlPublisherFilterNav.html",
             scope: {
                 publishers: '='
             },
