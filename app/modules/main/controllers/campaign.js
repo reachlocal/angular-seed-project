@@ -85,7 +85,7 @@ angular
                         return creatives.$promise;
                     }
                 },
-                url: '^/campaign/:campaignId',
+                url: '^/campaign/:campaignId?adgroups',
                 templateUrl: 'modules/main/controllers/campaign.html',
                 controller: 'Campaign'
             });
