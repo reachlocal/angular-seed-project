@@ -26,10 +26,10 @@ rl-campaign-header {
     line-height: 2.1428571435;
     position: absolute;
     height: 100%;
-    width: 100%;      
+    width: 60%;     
     font-size: .83em;
-    padding: 15px;
-    width: 60%;
+    padding: 15px 0;
+    right: 15px;
     display: inline-block;
     column-rule: 1px outset #fff;
     -moz-column-rule: 1px outset #fff; 
@@ -37,9 +37,15 @@ rl-campaign-header {
     column-gap: 30px;
     -moz-column-gap: 30px;
     -webkit-column-gap: 30px;
-    column-width: 68px;
-    -moz-column-width: 68px;
-    -webkit-column-width: 68px;
     text-align: right;
+  }
+
+  .campaign-info li {
+    column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    list-style: none;
+
   }
 }
