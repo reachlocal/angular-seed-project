@@ -18,8 +18,11 @@ describe("toArray", function () {
     it("parse arrays from strings", function () {
         expect(toArrayService('["foo"]')).toEqual(['foo']);
     });
-    it("parse non-array strings as empty array", function () {
-        expect(toArrayService('not an array!')).toEqual([]);
+    it("parses arrays from strings with commas", function() {
+        expect(toArrayService('foo,foo2')).toEqual(['foo', 'foo2']);
+    });
+    it("parse non-array strings as single-element arrays", function () {
+        expect(toArrayService('not an array!')).toEqual(['not an array!']);
     });
     it("parses null as empty array", function () {
         expect(toArrayService(null)).toEqual([]);

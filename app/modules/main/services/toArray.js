@@ -15,7 +15,12 @@ angular
                 if (angular.isArray(possibleArray)) {
                     array = possibleArray;
                 }
-            } catch (ignored) { }
+            } catch (ignored) {
+                // Let's just split on ','
+                if (angular.isString(arrayIn)) {
+                    array = arrayIn.split(',');
+                }
+            }
             return array;
         };
     });
