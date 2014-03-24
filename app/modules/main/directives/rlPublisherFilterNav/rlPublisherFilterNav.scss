@@ -1,44 +1,13 @@
+@import "_rl_variables";
+
 rl-publisher-filter-nav {
 
   nav {
     padding-left: 0 !important;
 
-    label {
-      cursor: pointer;
-      position: relative;
-      font-weight: normal !important;
-      margin-bottom: 0 !important;
-      color: #666;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    input[type=checkbox]:checked+label:before {
-      font-family: 'FontAwesome';
-      -webkit-font-smoothing: antialiased;
-    }
-
-    input[type=checkbox]:checked+label:before {
-      content: '\f00c' ;
-      padding-right: 3px;
-      display: block;
-      width: 12px;
-      height: 12px;
-      position: absolute;
-      left: 0;
-      color: #9C0;
-    }
-
-    input[type=checkbox]+label {
-    padding-left: 15px;  
-    }
-
-    input[type=checkbox] {
-      display: none;
-    }
-
     a:hover{
       text-decoration: none;
-      color: #39C;
+      color: $brand-info;
     }
 
     li {
@@ -51,21 +20,14 @@ rl-publisher-filter-nav {
       padding-left: 0;
     }
 
-    li ul li {
-    font-size: 0.9em;
-    }
-    li ul li:last-child {
-      margin-bottom: 10px;
-    }
-
     .nav-group {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid $gray;
       border-left: 4px solid transparent;
       padding-left: 10px;
       overflow: hidden;
 
       &:hover {
-        border-left-color: #39C;
+        border-left-color: $brand-info;
       }
 
       & a {
