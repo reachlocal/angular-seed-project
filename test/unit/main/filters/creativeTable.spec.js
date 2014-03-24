@@ -22,14 +22,6 @@ describe('Creative Table filter', function () {
             $stateParams.adgroups = [];
             expect(filter(rows)).toEqual(rows);
         });
-        it('handles string input', function () {
-            $stateParams.adgroups = "[]";
-            expect(filter(rows)).toEqual(rows);
-        });
-        it('handles null input', function () {
-            $stateParams.adgroups = null;
-            expect(filter(rows)).toEqual(rows);
-        });
     });
 
     describe('One adgroup is active', function() {
@@ -37,21 +29,11 @@ describe('Creative Table filter', function () {
             $stateParams.adgroups = [123];
             expect(filter(rows)).toEqual([rows[0]]);
         });
-
-        it('handles string input', function() {
-            $stateParams.adgroups = "[123]";
-            expect(filter(rows)).toEqual([rows[0]]);
-        });
     });
 
     describe('Multiple adgroups are active', function() {
         it('shows selected adgroups', function () {
             $stateParams.adgroups = [123, 456];
-            expect(filter(rows)).toEqual([rows[0], rows[1]]);
-        });
-
-        it('handles string input', function() {
-            $stateParams.adgroups = "[123, 456]";
             expect(filter(rows)).toEqual([rows[0], rows[1]]);
         });
     });
