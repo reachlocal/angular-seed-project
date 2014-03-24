@@ -2,8 +2,8 @@
  * Take supplied input and give back an array no matter what!
  */
 angular
-    .rlmodule('rl.cpi.main.services.toArray', [])
-    .factory('toArray', function() {
+    .rlmodule('rl.cpi.main.services.toArray', ['underscore'])
+    .factory('toArray', function(_) {
         return function(arrayIn) {
             if (angular.isArray(arrayIn)) {
                 return arrayIn;
@@ -14,6 +14,8 @@ angular
                 var possibleArray = JSON.parse(arrayIn);
                 if (angular.isArray(possibleArray)) {
                     array = possibleArray;
+                } else {
+                    array = [possibleArray.toString()];
                 }
             } catch (ignored) {
                 // Let's just split on ','
@@ -21,6 +23,6 @@ angular
                     array = arrayIn.split(',');
                 }
             }
-            return array;
+            return _.without(array, '');
         };
     });

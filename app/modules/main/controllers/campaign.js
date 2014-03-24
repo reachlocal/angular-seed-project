@@ -87,6 +87,7 @@ angular
                 },
                 url: '^/campaign/:campaignId?adgroups',
                 templateUrl: 'modules/main/controllers/campaign.html',
-                controller: 'Campaign'
+                controller: 'Campaign',
+                reloadOnSearch: false
             });
     });

@@ -1,6 +1,6 @@
 angular
-    .rlmodule('rl.cpi.main.filters.CreativeTable', ['ui.router', 'rl.cpi.main.services.toArray'])
-    .filter('CreativeTable', function ($stateParams, toArray) {
+    .rlmodule('rl.cpi.main.filters.CreativeTable', ['ui.router', 'rl.cpi.main.services.toArray', 'underscore'])
+    .filter('CreativeTable', function ($stateParams, toArray, _) {
         return function (input) {
             // Parse out search filter
             var adgroups = toArray($stateParams.adgroups);
@@ -10,7 +10,7 @@ angular
                 return input;
             }
             return input.filter(function (row) {
-                return adgroups.indexOf(row.creative.adGroup.id) > -1;
+                return _.contains(adgroups, row.creative.adGroup.id.toString());
             });
         };
     });

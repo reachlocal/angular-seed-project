@@ -15,17 +15,23 @@ describe("toArray", function () {
     it("handles non-empty arrays", function () {
         expect(toArrayService(['foo'])).toEqual(['foo']);
     });
-    it("parse arrays from strings", function () {
+    it("parses arrays from strings", function () {
         expect(toArrayService('["foo"]')).toEqual(['foo']);
     });
     it("parses arrays from strings with commas", function() {
         expect(toArrayService('foo,foo2')).toEqual(['foo', 'foo2']);
     });
-    it("parse non-array strings as single-element arrays", function () {
-        expect(toArrayService('not an array!')).toEqual(['not an array!']);
+    it("parses non-array strings as single-element arrays", function () {
+        expect(toArrayService('foo')).toEqual(['foo']);
+    });
+    iit("parses everything as a string strings as single-element arrays", function () {
+        expect(toArrayService(123)).toEqual(['123']);
     });
     it("parses null as empty array", function () {
         expect(toArrayService(null)).toEqual([]);
+    });
+    it("parses an empty string and returns an empty array", function () {
+        expect(toArrayService("")).toEqual([]);
     });
 
 });
