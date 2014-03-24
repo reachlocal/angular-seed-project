@@ -22,7 +22,18 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
  * Note:  You can pass cucumber-js command line params through with this task
  * ex: gulp test:cucumber --format pretty --tags @CPI-25
  */
-gulp.task('test:cucumber', ['build_project_file', 'ngtemplates', 'l10n', 'style'], function() {
+gulp.task('test:cucumber', function() {
+    var runSequence = require('run-sequence');
+    runSequence(
+        'build_project_file',
+        'ngtemplates',
+        'l10n',
+        'style',
+        'test:cucumber:do'
+    );
+});
+
+gulp.task('test:cucumber:do', [], function() {
     // Ensure rest server is running on localhost
     var portscanner = require('portscanner');
     portscanner.checkPortStatus(config.REST_SERVER_PORT, '127.0.0.1', function(error, status) {
