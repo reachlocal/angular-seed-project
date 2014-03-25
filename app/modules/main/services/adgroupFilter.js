@@ -10,7 +10,6 @@ angular
         function AdgroupFilter() {
             function getCurrent() {
                 var result = toArray($location.search().adgroups);
-                console.log(result);
                 return result;
             }
             this.isFiltering = function() {
