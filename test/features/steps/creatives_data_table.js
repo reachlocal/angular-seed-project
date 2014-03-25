@@ -15,6 +15,12 @@ function CreativePageObject(browser, by) {
                 return rows[0];
             });
     };
+    this.firstCreative = function() {
+        return this.firstDataRow()
+          .then(function(row) {
+            return row.findElement(by.tagName("rl-creative-cell"));
+        });
+    };
 
     this.headerRow = function() {
         return table.findElement(by.css("thead > tr"));
@@ -50,10 +56,20 @@ module.exports = function () {
         });
     });
 
-    this.Then(/^the data table's first creative has the following values:$/, function(table, callback) {
-        CreativeTable.firstDataRow().then(function(row) {
-            var exp = [];
+    this.Then(/^the first creative is displayed$/, function(table, callback) {
+        CreativeTable.firstCreative().then(function(creative) {
+            var exp = table.raw().map(function(table_row) {
+                return expect(creative.getText()).to.eventually.contain(table_row[0]);
+            });
+            all(exp).then(callback);
+        });
+    });
 
+    this.Then(/^the report data for the first creative is displayed$/, function(table, callback) {
+        CreativeTable.firstDataRow().then(function(row) {
+            var exp = table.raw().map(function(table_row) {
+                return expect(row.getText()).to.eventually.contain(table_row[0]);
+            });
             all(exp).then(callback);
         });
     });

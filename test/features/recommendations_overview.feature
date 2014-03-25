@@ -32,7 +32,7 @@ Feature: Surface recommendations
 
 
 
-  @JIRA-CPI-26 @WIP
+  @JIRA-CPI-26
   Scenario:  Surface recommendations on the CPI dashboard
 
     Given campaign with id "713896" exists
