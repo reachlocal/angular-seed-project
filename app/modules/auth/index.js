@@ -1,28 +1,30 @@
 angular.rlmodule('rl.auth', ['http-auth-interceptor'])
 
-.directive('body', function ($compile) {
+.directive('body', function () {
     var directive = { restrict: 'E' };
 
-    directive.link = function (scope, element) {
-        var template = '<iframe id="authFrame" ng-if="realm" src="{{ realm }}" scrolling="no"></iframe>';
-        element.append($compile(template)(scope));
+    directive.compile = function (element) {
+        var template = angular.element('<iframe id="authFrame" ng-if="realm" ng-src="{{ realm }}" scrolling="no"></iframe>');
+        element.append(template);
     };
 
     directive.controller = function ($scope, $window, authService) {
         $scope.$on('event:auth-loginRequired', function (event, response) {
-            $scope.realm = response.data.realm;
+            $scope.realm = $scope.realm || response.data.realm;
         });
 
-        angular.element($window).bind('message', function (event) {
-            data = JSON.parse(event.data);
-            if (data.type !== 'token') return;
-            $window.sessionStorage.token = data.value;
+        $window.addEventListener('message', function (event) {
+            if (event.data.type !== 'token') return;
 
-            // http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html#ExampleJWT
-            // var userDetails = JSON.parse($window.atob(data.value.split('.')[1]));
-            authService.loginConfirmed();
+            var token = event.data.value;
+            $window.sessionStorage.setItem('token', token);
+            authService.loginConfirmed(dataFrom(token));
             delete $scope.realm;
-        });
+        }, false);
+
+        function dataFrom (token) { // Spec: http://goo.gl/i3eTMS
+            return JSON.parse($window.atob(token.split('.')[1]));
+        }
     };
 
     return directive;
