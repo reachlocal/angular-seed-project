@@ -29,7 +29,7 @@ module.exports = function () {
     });
 
     this.Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function(adgroup_name, wpc_name, callback) {
-        browser.findElement(by.xpath("//rl-publisher-menu-item/ul/li/label[text()='"+ adgroup_name +"']"))
+        browser.findElement(by.xpath("//rl-publisher-menu-item//*[text()='"+ adgroup_name +"']"))
                .getInnerHtml()
                .then(function(value) {
                     expect(value).to.be.equal(adgroup_name);
