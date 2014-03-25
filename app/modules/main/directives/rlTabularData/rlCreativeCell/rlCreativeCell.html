@@ -27,10 +27,10 @@
 
     <div class="view" ng-click="enterEditMode()">
         <i class="fa fa-pencil"></i>
-        <div ng-repeat="headLine in creative.headLines">
+        <div ng-repeat="headLine in creative.headLines track by $index">
             <b>{{ headLine }}</b>
         </div>
-        <div ng-repeat="descriptiveLine in creative.descriptiveLines">
+        <div ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
             {{ descriptiveLine }}
         </div>
         <a href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
