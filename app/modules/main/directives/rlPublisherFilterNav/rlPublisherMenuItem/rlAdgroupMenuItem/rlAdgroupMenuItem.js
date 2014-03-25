@@ -1,24 +1,15 @@
 angular
-    .rlmodule('rl.cpi.main.directives.rlAdgroupMenuItem', ['ui.bootstrap', 'ui.router', 'rl.cpi.main.services.toArray', 'underscore'])
-    .controller('rlAdgroupMenuItemCtrl', function ($scope, $state, toArray, $location, _) {
-        var subjectAdgroup = $scope.adgroup.id.toString();
-        function isInFilter() {
-            return _.contains(toArray($location.search().adgroups), subjectAdgroup);
-        }
+    .rlmodule('rl.cpi.main.directives.rlAdgroupMenuItem', ['ui.bootstrap', 'rl.cpi.main.services.AdgroupFilter'])
+    .controller('rlAdgroupMenuItemCtrl', function ($scope, AdgroupFilter) {
+        var id = $scope.adgroup.id;
+        $scope.checked = AdgroupFilter.isDisplayed(id);
 
         function watchSelected(selected) {
-            var currentAdgroups = toArray($location.search().adgroups);
-
-            var newAdgroups;
             if (selected) {
-                currentAdgroups.push(subjectAdgroup);
-                newAdgroups = _.uniq(currentAdgroups);
+                AdgroupFilter.add(id);
             } else {
-                newAdgroups = _.without(currentAdgroups, subjectAdgroup);
+                AdgroupFilter.remove(id);
             }
-
-            $location.search('adgroups', newAdgroups.toString());
-            $state.go($state.current);
         }
 
         $scope.$watch('selected', watchSelected);
