@@ -2,4 +2,53 @@ angular
     .rlmodule('rl.cpi.main.services.Creatives', ['ngResource', 'rl.cpi.main.Config'])
     .factory('Creatives', function($resource, Config) {
         return $resource(Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives');
+    })
+    .factory('CreativeHeaders', function() {
+        return {
+            impressionsShare: {
+                name: "Impression Share",
+                shortName: "iShare",
+                format: "percent"
+            },
+            impressions: {
+                name: "Impressions",
+                shortName: "Imp",
+                description: "An impression is counted every time the creative is displayed",
+                format: "integer"
+            },
+            clicks: {
+                name: "Clicks",
+                description: "The Clicks column in your reports indicates how many times your advertisements were clicked by visitors",
+                format: "integer"
+            },
+            clickThroughRate: {
+                name: "Click Through Rate",
+                shortName: "CTR",
+                description: "Click through rate",
+                format: "percent"
+            },
+            leadCount: {
+                name: "Lead Count",
+                shortName: "LEADS",
+                format: "integer"
+            },
+            conversions: {
+                name: "Conversions",
+                shortName: "CONV",
+                description: "How often users who click through an ad convert to potential leads",
+                format: "percent"
+            },
+            averagePosition: {
+                name: "Average Position",
+                shortName: "POS",
+                description: "When a list of ads is shown, this ad shows up in this row",
+                format: "decimal"
+            },
+            qualityScore: {
+                name: "Quality Score",
+                shortName: "QSCORE",
+                description: "How much google loves you",
+                format: "integer"
+            }
+        };
     });
