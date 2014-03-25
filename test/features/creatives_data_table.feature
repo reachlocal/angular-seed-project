@@ -21,5 +21,8 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | Impression Share    |
       | Lead Count          |
       | Quality Score       |
+    And the first creative has "Driveway Coating and More" as headline
+    And the first creative has "Driveway and Sidewalk Sealcoating, Repairs and Maintenance. Call Now." as descriptive lines
+    And the first creative has th
 
 

@@ -50,4 +50,12 @@ module.exports = function () {
         });
     });
 
+    this.Then(/^the data table's first creative has the following values:$/, function(table, callback) {
+        CreativeTable.firstDataRow().then(function(row) {
+            var exp = [];
+
+            all(exp).then(callback);
+        });
+    });
+
 };
