@@ -8,31 +8,6 @@ describe("Recommendations Model", function () {
         });
     });
 
-    describe("item expansion", function() {
-        var item_model;
-        var item = { oneKey: 'bla', otherKey: 'ble' };
-
-        beforeEach(function() {
-            item_model = factory.build([item]).items[0];
-        });
-
-        it("simply keep the object keys as they were", function() {
-            expect(item_model.oneKey).toBe('bla');
-            expect(item_model.otherKey).toBe('ble');
-        });
-
-        it("begins not expanded",function() {
-            expect(item_model.isExpanded()).toBe(false);
-        });
-
-        it("expanded state is toggable", function() {
-            item_model.toggleExpanded();
-            expect(item_model.isExpanded()).toBe(true);
-            item_model.toggleExpanded();
-            expect(item_model.isExpanded()).toBe(false);
-        });
-    });
-
     describe("build", function() {
         var model = null;
 

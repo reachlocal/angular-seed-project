@@ -5,7 +5,7 @@
 </p>
 
 <div ng-repeat="recommendation in recommendations.items" class="details">
-  <a class="summary" ng-click="recommendation.toggleExpanded()">
+  <a class="summary" ng-click="toggleItemExpanded($index)">
     {{ recommendation.title }}
   </a>
   <div class="recommendation-actions">
@@ -16,7 +16,7 @@
       <translate>rlRecommendations.Apply</translate>
     </button>
   </div>
-  <div class="slide-down" ng-show="recommendation.isExpanded()">
+  <div class="slide-down" ng-show="isItemExpanded($index)">
     {{ recommendation.description }}
   </div>
 </div>

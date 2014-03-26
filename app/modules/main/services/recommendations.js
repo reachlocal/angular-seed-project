@@ -6,22 +6,10 @@ angular
             ]
     )
     .factory('RecommendationsModel', function() {
-        function Recommendation(item) {
-            var expanded = false;
-            item.toggleExpanded = function() {
-                expanded = !expanded;
-            };
-            item.isExpanded = function() {
-                return expanded;
-            };
-            return item;
-        }
-
         function Recommendations(items) {
             var that = {};
-            var showWellDoneMessage = true;
 
-            that.items = items.map(Recommendation);
+            that.items = items;
 
             that.hasActiveRecommendations = function() {
                 return items.length > 0;

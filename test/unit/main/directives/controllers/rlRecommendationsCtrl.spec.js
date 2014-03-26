@@ -1,6 +1,7 @@
 describe('Creative View/Editing Controller', function () {
     var mockRecommendations = {
         hasActiveRecommendations: null,
+        items: [ 1, 2, 3 ]
     };
 
     var $scope;
@@ -15,6 +16,19 @@ describe('Creative View/Editing Controller', function () {
         $scope.recommendations = mockRecommendations;
         $controller('rlRecommendationsCtrl', { $scope: $scope });
     }));
+
+    describe("item expanded/collapsed state", function() {
+        it("items begin in collapsed state", function() {
+            expect($scope.isItemExpanded(0)).toBe(false);
+        });
+        it("item state can be toggled between expanded/collapsed", function() {
+            expect($scope.isItemExpanded(0)).toBe(false);
+            $scope.toggleItemExpanded(0);
+            expect($scope.isItemExpanded(0)).toBe(true);
+            $scope.toggleItemExpanded(0);
+            expect($scope.isItemExpanded(0)).toBe(false);
+        });
+    });
 
     describe("well done message", function() {
         it("is displayed when there are no recommendations", function() {
