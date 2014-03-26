@@ -14,7 +14,7 @@
     </button>
     <button type="button" ng-click="apply()"   class="btn btn-success btn-sm">
       <translate>rlRecommendations.Apply</translate>
-    </button>    
+    </button>
   </div>
   <div class="slide-down" ng-show="recommendation.isExpanded()">
     {{ recommendation.description }}
@@ -22,8 +22,8 @@
 </div>
 
 <div class="congratulations alert alert-success alert-dismissable"
-     ng-show="recommendations.showWellDoneMessage()">
-    <button ng-click="recommendations.closeWellDoneMessage()" type="button" class="close" aria-hidden="true">×</button>
+     ng-show="showWellDoneMessage()">
+    <button ng-click="closeWellDoneMessage()" type="button" class="close" aria-hidden="true">×</button>
     <strong>
       <translate>rlRecommendations.Well done</translate>
     </strong>

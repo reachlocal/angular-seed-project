@@ -57,14 +57,6 @@ describe("Recommendations Model", function () {
             it("has no active recommendations", function() {
                 expect(model.hasActiveRecommendations()).toBe(false);
             });
-            it("shows the 'Well done...' message", function() {
-                expect(model.showWellDoneMessage()).toBe(true);
-            });
-            it("'Well done...' message can be closed", function() {
-                model.closeWellDoneMessage();
-                expect(model.showWellDoneMessage()).toBe(false);
-            });
-
         });
 
         describe("single item list", function() {
@@ -74,9 +66,6 @@ describe("Recommendations Model", function () {
 
             it("has active recommendations", function() {
                 expect(model.hasActiveRecommendations()).toBe(true);
-            });
-            it("does not show the 'Well done...' message", function() {
-                expect(model.showWellDoneMessage()).toBe(false);
             });
         });
 
