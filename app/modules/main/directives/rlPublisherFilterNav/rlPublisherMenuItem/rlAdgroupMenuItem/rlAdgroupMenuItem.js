@@ -1,8 +1,11 @@
 angular
     .rlmodule('rl.cpi.main.directives.rlAdgroupMenuItem', ['ui.bootstrap', 'rl.cpi.main.services.AdgroupFilter'])
     .controller('rlAdgroupMenuItemCtrl', function ($scope, AdgroupFilter) {
-        var id = $scope.adgroup.id;
-        $scope.checked = AdgroupFilter.isDisplayed(id);
+        var id   = $scope.adgroup.id;
+        var name = $scope.adgroup.name;
+
+        AdgroupFilter.registerAdgroup(name, id);
+        $scope.selected = AdgroupFilter.isDisplayed(id);
 
         function watchSelected(selected) {
             if (selected) {

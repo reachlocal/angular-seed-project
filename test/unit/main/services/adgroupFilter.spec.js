@@ -1,4 +1,4 @@
-ddescribe("AdgroupFilter", function() {
+describe("AdgroupFilter", function() {
     var $state;
     var location;
     var service;
@@ -67,6 +67,45 @@ ddescribe("AdgroupFilter", function() {
             expect(service.isDisplayed('999')).toBe(false);
             expect(service.isDisplayed('789')).toBe(false);
             expect($state.go).toHaveBeenCalled();
+        });
+    });
+
+    describe("registering adgroups", function() {
+        it("registers an adgroup", function() {
+            service.registerAdgroup("mom", 1);
+            expect(service.allRegisteredNames()).toEqual(["mom"]);
+        });
+        it("registers multiple adgroups with the same name", function() {
+            service.registerAdgroup("mom", 1);
+            service.registerAdgroup("mom", 9);
+            expect(service.allRegisteredNames()).toEqual(["mom"]);
+        });
+        it("registers multiple, distint adgroups", function() {
+            service.registerAdgroup("mom", 1);
+            service.registerAdgroup("mom", 9);
+            service.registerAdgroup("dad", 10);
+            expect(service.allRegisteredNames()).toEqual(["mom", "dad"]);
+        });
+    });
+
+    describe("toggling by name", function() {
+        beforeEach(function() {
+            service.registerAdgroup("mom", 1);
+            service.registerAdgroup("mom", 2);
+            service.registerAdgroup("dad", 3);
+        });
+        it("enables all by name", function() {
+            service.addAllByName("mom");
+            expect(service.isDisplayed(1)).toBe(true);
+            expect(service.isDisplayed(2)).toBe(true);
+            expect(service.isDisplayed(3)).toBe(false);
+        });
+        it("disables all by name", function() {
+            service.addAllByName("mom");
+            service.removeAllByName("mom");
+            expect(service.isDisplayed(1)).toBe(false);
+            expect(service.isDisplayed(2)).toBe(false);
+            expect(service.isDisplayed(3)).toBe(false);
         });
     });
 });
