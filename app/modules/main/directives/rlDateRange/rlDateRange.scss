@@ -1,0 +1,39 @@
+rl-date-range {
+    position: relative;
+    margin-right: 3em;
+    label {
+        padding-left: 1em;
+    }
+    .dropdown-menu {
+        left: auto !important;
+        right: 0px;
+    }
+    .form-control {
+        display: inline;
+        width: 8em;
+    }
+    // Make the days in the calendar look nicer
+    .btn-sm {
+        border-radius: 0px;
+    }
+    // Add padding between the header of the table and the rest of the table
+    table > thead > tr:nth-child(1) > th {
+        padding-bottom: 10px;
+    }
+    // Fix the icons to use font awesome
+    .glyphicon {
+        display: inline-block;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .glyphicon-chevron-right:before {
+        content: "\f054";
+    }
+    .glyphicon-chevron-left:before {
+        content: "\f053";
+    }
+}

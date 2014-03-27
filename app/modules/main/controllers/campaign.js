@@ -39,7 +39,7 @@ angular
                     },
                     creativeHeaders: 'CreativeHeaders'
                 },
-                url: '^/campaign/:campaignId?adgroups',
+                url: '^/campaign/:campaignId',
                 templateUrl: 'modules/main/controllers/campaign.html',
                 controller: 'Campaign',
                 reloadOnSearch: false
