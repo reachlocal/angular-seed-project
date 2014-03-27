@@ -1,4 +1,4 @@
-ddescribe('rlAdgroupMenuItem Controller', function () {
+describe('rlAdgroupMenuItem Controller', function () {
 
     var adgroup = {
             "id": 2365864,
