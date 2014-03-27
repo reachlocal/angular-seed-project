@@ -4,7 +4,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   Scenario: View creatives and their metrics for a specific AdGroup
 
     Given a typical campaign exists
-    When a user views the campaign id "1422307" dashboard
+    When a user views the campaign id "713896" dashboard
     When the AdGroup is selected in the Global Nav Bar
     Then the list of creatives belonging to the selected AdGroup is listed in the data table
     And the data table should contain these data elements as columns:
@@ -22,9 +22,9 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | Lead Count          |
       | Quality Score       |
     And the first creative is displayed
-      | Driveway Coating and More          |
-      | Driveway and Sidewalk Sealcoating, |
-      | Repairs and Maintenance. Call Now. |
+      | AdGroup2 Creative1  |
+      | The Way Network     |
+      | Duarte, CA          |
     And the report data for the first creative is displayed
       |   1.46 |
       | 38.13% |

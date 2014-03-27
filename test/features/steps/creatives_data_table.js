@@ -41,7 +41,7 @@ module.exports = function () {
         // For now, check that we have 1 or more creatives in the table
         CreativeTable.dataRows()
             .then(function(items) {
-                var exp = expect(promiseFor(items.length)).to.eventually.be.above(1);
+                var exp = expect(promiseFor(items.length)).to.eventually.be.above(0);
                 all(exp).then(callback);
             });
     });
