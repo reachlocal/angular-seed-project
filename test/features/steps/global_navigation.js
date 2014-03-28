@@ -1,25 +1,23 @@
-/*global module,browser,assert,By,expect,all,q */
 module.exports = function () {
-    this.World = require('../support/world.js').World;
 
-    this.Given(/^campaign with id "([^"]*)" exists$/, function (campaign_id, callback) {
+    Given(/^campaign with id "([^"]*)" exists$/, function (campaign_id, callback) {
         callback();
     });
 
-    this.Given(/^the campaign has the following AdGroups:$/, function (table, callback) {
+    Given(/^the campaign has the following AdGroups:$/, function (table, callback) {
         callback();
     });
 
-    this.Given('a typical campaign exists', function (callback) {
+    Given('a typical campaign exists', function (callback) {
         callback();
     });
 
-    this.When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
-        browser.get('http://localhost:4000/#campaign/' + campaign_id)
+    When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
+        browser.get('/#campaign/' + campaign_id)
             .then(callback);
     });
 
-    this.When(/^the user selects the web publisher campaign "([^"]*)"$/, function(wpc_name, callback) {
+    When(/^the user selects the web publisher campaign "([^"]*)"$/, function(wpc_name, callback) {
         browser.findElement(by.css('rl-publisher-filter-nav'))
                .findElement(by.partialLinkText(wpc_name))
                .click()
@@ -28,7 +26,7 @@ module.exports = function () {
                 });
     });
 
-    this.Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function(adgroup_name, wpc_name, callback) {
+    Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function(adgroup_name, wpc_name, callback) {
         browser.findElement(by.xpath("//rl-publisher-menu-item//*[text()='"+ adgroup_name +"']"))
                .getInnerHtml()
                .then(function(value) {
@@ -37,7 +35,7 @@ module.exports = function () {
                 });
     });
 
-    this.Then(/^the user should see a campaign header:$/, function (table, callback) {
+    Then(/^the user should see a campaign header:$/, function (table, callback) {
         var hash = table.hashes()[0];
 
         var expectPromises = [];

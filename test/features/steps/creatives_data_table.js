@@ -1,5 +1,3 @@
-/*global module,browser,assert,By,expect,all,q */
-
 var CreativeTable;
 function CreativePageObject(browser, by) {
 
@@ -29,15 +27,14 @@ function CreativePageObject(browser, by) {
 }
 
 module.exports = function () {
-    this.World = require('../support/world.js').World;
 
-    this.When(/^the AdGroup is selected in the Global Nav Bar$/, function (callback) {
+    When(/^the AdGroup is selected in the Global Nav Bar$/, function (callback) {
         // express the regexp above with the code you wish you had
         CreativeTable = new CreativePageObject(browser, by);
         callback();
     });
 
-    this.Then(/^the list of creatives belonging to the selected AdGroup is listed in the data table$/, function (callback) {
+    Then(/^the list of creatives belonging to the selected AdGroup is listed in the data table$/, function (callback) {
         // For now, check that we have 1 or more creatives in the table
         CreativeTable.dataRows()
             .then(function(items) {
@@ -46,7 +43,7 @@ module.exports = function () {
             });
     });
 
-    this.Then(/^the data table should contain these data elements as columns:$/, function (table, callback) {
+    Then(/^the data table should contain these data elements as columns:$/, function (table, callback) {
         CreativeTable.headerRow().then(function(row) {
             var expectedHeaders = _.pluck(table.hashes(), 'Column Name').join(' ');
             var actualHeaders = row.getText();
@@ -56,7 +53,7 @@ module.exports = function () {
         });
     });
 
-    this.Then(/^the first creative is displayed$/, function(table, callback) {
+    Then(/^the first creative is displayed$/, function(table, callback) {
         CreativeTable.firstCreative().then(function(creative) {
             var exp = table.raw().map(function(table_row) {
                 return expect(creative.getText()).to.eventually.contain(table_row[0]);
@@ -65,7 +62,7 @@ module.exports = function () {
         });
     });
 
-    this.Then(/^the report data for the first creative is displayed$/, function(table, callback) {
+    Then(/^the report data for the first creative is displayed$/, function(table, callback) {
         CreativeTable.firstDataRow().then(function(row) {
             var exp = table.raw().map(function(table_row) {
                 return expect(row.getText()).to.eventually.contain(table_row[0]);

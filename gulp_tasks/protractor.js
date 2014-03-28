@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var config = require('./config/config');
 var gutil = require('gulp-util');
 
 /**
