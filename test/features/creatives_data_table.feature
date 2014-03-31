@@ -61,8 +61,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   Scenario: Edit a creative's status in the data table
 
     Given a typical campaign exists
-    When a user selects a creative for editing in the data table
-    And the user changes the status of the creative
+    When the user changes the status of the creative
     Then the creative's status change is staged for publishing
 
 
