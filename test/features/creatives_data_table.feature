@@ -36,3 +36,15 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       |      6 |
 
 
+
+  @JIRA-CPI-132 @JIRA-CPI-133
+  Scenario: Edit a creative in the data table
+
+    Given a typical campaign exists
+    When a user selects a creative for editing in the data table
+    And the user makes a change to the creative's headline or descriptive lines
+    And the user selects the option to save
+    Then the creative's edits are staged
+
+
+
