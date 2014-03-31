@@ -44,7 +44,27 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     When a user selects a creative for editing in the data table
     And the user makes a change to the creative's headline or descriptive lines
     And the user selects the option to save
-    Then the creative's edits are staged
+    Then the creative's edits are staged for publishing
+
+  @JIRA-CPI-132 @JIRA-CPI-133
+  Scenario: Cancel an edit on a creative in the data table
+
+    Given a typical campaign exists
+    When a user selects a creative for editing in the data table
+    And the user makes a change to the creative's headline or descriptive lines
+    And the user selects the option to cancel
+    Then the creative's edits are not saved
+    And the creative reverts to its original state
+
+
+  @JIRA-CPI-138
+  Scenario: Edit a creative's status in the data table
+
+    Given a typical campaign exists
+    When a user selects a creative for editing in the data table
+    And the user changes the status of the creative
+    Then the creative's status change is staged for publishing
+
 
 
 
