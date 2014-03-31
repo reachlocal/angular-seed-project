@@ -5,15 +5,17 @@ angular
          'rl.cpi.main.services.CampaignOverview',
          'rl.cpi.main.services.Recommendations',
          'rl.cpi.main.services.Creatives',
+         'rl.cpi.main.services.TextCreativeReports',
          'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
     .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview,
-                                      recommendations, creatives, creativeHeaders, $filter) {
+                                      recommendations, creatives, reports, creativeHeaders, $filter) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.publishers = publishers;
         $scope.campaignOverview = campaignOverview;
         $scope.recommendations = recommendations;
         $scope.creatives = creatives;
+        $scope.reports = reports;
         $scope.creativeHeaders = creativeHeaders;
     })
 
@@ -36,6 +38,10 @@ angular
                     creatives: function(Creatives, $stateParams) {
                         var creatives = Creatives.query({campaignId: $stateParams.campaignId});
                         return creatives.$promise;
+                    },
+                    reports: function(TextCreativeReports, $stateParams) {
+                        var reports = TextCreativeReports.query({campaignId: $stateParams.campaignId});
+                        return reports.$promise;
                     },
                     creativeHeaders: 'CreativeHeaders'
                 },

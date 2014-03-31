@@ -5,7 +5,7 @@ function CreativePageObject(browser, by) {
     var table = global.browser.findElement(global.by.tagName("rl-tabular-data"));
 
     this.dataRows = function() {
-        return table.findElements(by.repeater("row in data"));
+        return table.findElements(by.repeater("row in table"));
     };
     this.firstDataRow = function() {
         return this.dataRows()

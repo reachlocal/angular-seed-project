@@ -16,17 +16,15 @@ describe('Creatives Service', function() {
     afterEach(httpResolver.afterEach);
 
     it('should fetch creatives from gateway', function () {
-        var creatives = [{
-            creative: { headLines: "Blah" },
-            reporting: { clicks: 55 }
-        }];
+        var creatives = [
+            { headLines: "Blah" },
+        ];
         httpResolver.$httpBackend.expectGET('/campaigns/1/text_creatives').respond(creatives);
 
         var result = service.query({campaignId: 1});
         httpResolver.resolve();
 
-        expect(result[0].creative).toEqual({ headLines: "Blah" });
-        expect(result[0].reporting).toEqual({ clicks: 55 });
+        expect(result[0].headLines).toEqual("Blah");
     });
 
 });
