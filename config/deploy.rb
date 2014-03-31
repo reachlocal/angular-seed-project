@@ -1,8 +1,8 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
-set :application, 'cpi_client'
-set :deploy_to,   '/rl/product/cpi_client'
+set :application, 'cpiclient'
+set :deploy_to,   '/rl/product/cpiclient'
 set :user,        'appuser'
 set :rails_env,   'development'
 
