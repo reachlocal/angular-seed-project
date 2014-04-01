@@ -1,9 +1,5 @@
-<div class="dropdown dropup">
-    {{ 'rlLocaleSelector.Locale' | translate }}:
-    <a style="cursor: pointer;" class="dropdown-toggle">{{ "rlLocaleSelector." + currentLocale() | translate }}</a>
-    <ul class="dropdown-menu dropdown-menu-right">
-        <li ng-repeat="locale in locales()">
-            <a ng-click="chooseLocale(locale)" translate>rlLocaleSelector.{{ locale }}</a>
-        </li>
-    </ul>
-</div>
+<label>{{ 'rlLocaleSelector.Locale' | translate }}:
+  <select ng-change="chooseLocale(locale)" ng-model="locale" ng-init="locale=currentLocale()">
+    <option ng-repeat="locale in locales()" value="{{ locale }}" translate> rlLocaleSelector.{{ locale }}</option>
+  </select>
+</label>

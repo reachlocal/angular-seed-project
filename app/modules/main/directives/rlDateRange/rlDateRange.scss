@@ -1,39 +1,81 @@
-rl-date-range {
-    position: relative;
-    margin-right: 3em;
-    label {
-        padding-left: 1em;
+@import "../../../cpi";
+.rl-date-range {
+
+  table {
+    background-color: $color-light;
+    color: $color-brand-dark;
+    box-shadow: 7.5px 7.5px 0 $color-shadow;
+    border: 1px inset $color-med;
+  }
+
+  thead {
+    font-weight: 400;
+
+    th button {
+      width: 100%;
+      &:hover, &:focus {
+        color: $color-brand-dark;
+        background-color: $color-light;
+        box-shadow: none;
+      }
     }
-    .dropdown-menu {
-        left: auto !important;
-        right: 0px;
+  }
+
+  input {
+    width: 100px;
+  }
+
+
+  th, td {
+    padding: 0;
+    text-align: center;
+  }
+
+  button {
+    border-radius: 0;
+    background-color: $color-light;
+    color: $color-brand-dark;
+
+    &.btn-info, &:hover {
+      background-color: $color-info;
+      color: $color-light;
     }
-    .form-control {
-        display: inline;
-        width: 8em;
+
+    &:focus {
+      box-shadow: none;
     }
-    // Make the days in the calendar look nicer
-    .btn-sm {
-        border-radius: 0px;
+
+    &:disabled, &:disabled:hover {
+      color: $color-med;
+      background-color: $color-light;
     }
-    // Add padding between the header of the table and the rest of the table
-    table > thead > tr:nth-child(1) > th {
-        padding-bottom: 10px;
-    }
-    // Fix the icons to use font awesome
-    .glyphicon {
-        display: inline-block;
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    .glyphicon-chevron-right:before {
-        content: "\f054";
-    }
-    .glyphicon-chevron-left:before {
-        content: "\f053";
-    }
+  }
+
+  .glyphicon-chevron-right:before,
+  .glyphicon-chevron-left:before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: $arrow-image;
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .glyphicon-chevron-right:before {
+    transform: rotate(-90deg);
+  }
+
+  .glyphicon-chevron-left:before {
+    transform: rotate(90deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    left: auto !important;
+    right: 0;
+    margin-top: $default-spacing / 2;
+  }
+
 }

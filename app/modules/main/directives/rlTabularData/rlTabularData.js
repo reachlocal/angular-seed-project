@@ -20,6 +20,7 @@ angular
                 reports: '='
             },
             restrict: 'E',
-            controller: 'rlTabularDataCtrl'
+            controller: 'rlTabularDataCtrl',
+            replace: true
         };
     });

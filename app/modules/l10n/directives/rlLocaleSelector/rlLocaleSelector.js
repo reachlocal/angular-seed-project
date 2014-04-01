@@ -9,6 +9,7 @@ angular
                 $scope.locales = LocaleSettings.locales;
                 $scope.currentLocale = LocaleSettings.locale;
                 $scope.chooseLocale = LocaleSettings.locale;
-            }
+            },
+            replace: true
         };
     });

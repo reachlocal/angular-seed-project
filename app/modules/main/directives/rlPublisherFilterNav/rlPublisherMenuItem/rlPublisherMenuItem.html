@@ -1,9 +1,0 @@
-<a ng-click="toggleCollapsed()"
-   title="{{ publisher.name }} {{publisher.geoType | capitalize | surroundWithParenthesis }}">
-    {{ publisher.name }} {{publisher.geoType | capitalize | surroundWithParenthesis }}
-</a>
-<ul collapse="collapsed">
-    <li ng-repeat="adGroup in publisher.adGroups">
-        <rl-adgroup-menu-item adgroup="adGroup"></rl-adgroup-menu-item>
-    </li>
-</ul>

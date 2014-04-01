@@ -11,6 +11,5 @@
   },
   "_source": "git://github.com/andresesfm/angular-underscore-module.git",
   "_target": "*",
-  "_originalSource": "angular-underscore-module",
-  "_direct": true
+  "_originalSource": "angular-underscore-module"
 }

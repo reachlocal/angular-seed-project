@@ -39,6 +39,5 @@ config.BOWER_SCRIPTS = require(APPLICATION_ROOT + '/bower_scripts').map(function
 config.BOWER_CSS = require(APPLICATION_ROOT + '/bower_css').map(function (file) {
     return 'app/' + file;
 });
-config.APPLICATION_STYLES = config.APPLICATION_STYLES.concat(config.BOWER_CSS);
 
 module.exports = config;

@@ -27,6 +27,7 @@ angular
             templateUrl: "modules/main/directives/rlDateRange/rlDateRange.html",
             scope: {},
             restrict: 'E',
-            controller: 'rlDateRangeCtrl'
+            controller: 'rlDateRangeCtrl',
+            replace: true
         };
     });

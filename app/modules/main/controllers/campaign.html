@@ -1,30 +1,25 @@
-<div class="rl-campaign-ctrl">
+<rl-campaign-header overview="campaignOverview"></rl-campaign-header>
+<main>
+  <rl-publisher-filter-nav publishers="publishers"></rl-publisher-filter-nav>
 
-    <rl-campaign-header overview="campaignOverview"></rl-campaign-header>
+  <article>
+    <section class="chart">
+      <form>
+        <input type="checkbox" id="impressions" name="chart-options"><label for="impressions">Imp 1800</label>
+        <input type="checkbox" id="clicks" name="chart-options"><label for="clicks">Clicks 45</label>
+        <input type="checkbox" id="ctr" name="chart-options"><label for="ctr">CTR 9%</label>
+        <input type="checkbox" id="cpc" name="chart-options"><label for="cpc">CPC $6.87</label>
+        <input type="checkbox" id="cpl" name="chart-options"><label for="cpl">CPL $67.90</label>
+      </form>
+      <img src="http://dealloc.me/img/posts/jqline.png">
+    </section>
 
-    <rl-date-range class="pull-right"></rl-date-range>
-    <main class="container">
+    <rl-recommendations recommendations="recommendations"></rl-recommendations>
+    <rl-tabular-data headers="creativeHeaders" creatives="creatives" reports="reports"></rl-tabular-data>
 
-       <rl-publisher-filter-nav publishers="publishers"></rl-publisher-filter-nav>
+  </article>
 
-
-        <article class="col-md-10">
-
-            <section class="recommendations" id="accordion">
-                <rl-recommendations recommendations="recommendations" />
-            </section>
-
-
-            <section class="tabular-data">
-                <rl-tabular-data headers="creativeHeaders" creatives="creatives" reports="reports"></rl-tabular-data>
-            </section>
-
-        </article>
-
-        <footer class="col-md-12">
-            Campaign Performance Interface
-            <rl-locale-selector class="pull-right"></rl-locale-selector>
-        </footer>
-
-    </main>
-</div>
+</main>
+<footer>
+  <rl-locale-selector></rl-locale-selector>
+</footer>

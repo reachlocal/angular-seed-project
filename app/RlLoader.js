@@ -68,7 +68,9 @@
                     throw {message: "Cannot load file.  Unknown type: " + filename};
                 }
                 s.onreadystatechange = s.onload = callback;
-                document.getElementsByTagName('head')[0].appendChild(s);
+
+                var head = document.getElementsByTagName('head')[0];
+                head.insertBefore(s, head.childNodes[0]);
             } catch (err) {
                 console.error(err.message);
             }

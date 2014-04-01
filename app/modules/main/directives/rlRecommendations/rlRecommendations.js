@@ -24,6 +24,7 @@ angular
                 recommendations: '='
             },
             restrict: 'E',
-            controller: 'rlRecommendationsCtrl'
+            controller: 'rlRecommendationsCtrl',
+            replace: true
         };
     });

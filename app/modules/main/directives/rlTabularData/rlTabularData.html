@@ -1,38 +1,30 @@
-{{ loaded }}
-<table class="table table-hover table-condensed">
-    <thead>
-    <tr>
-        <th translate>
-            rlTabularData.Ad Text
-        </th>
-        <th translate>
-            rlTabularData.Status
-        </th>
-        <th translate>
-            rlTabularData.Ad Group
-        </th>
-        <th translate>
-            rlTabularData.Publisher
-        </th>
-        <th ng-repeat="header in headers" ng-hide="header.hidden" translate>
-            {{ "rlTabularData." + header.name }}
-        </th>
-    </tr>
-    </thead>
+<section class="creative-metrics">
+  <table>
+    <thead><tr>
+      <th translate>rlTabularData.Ad Text</th>
+      <th translate>rlTabularData.Status</th>
+      <th translate>rlTabularData.Ad Group</th>
+      <th translate>rlTabularData.Publisher</th>
+      <th ng-repeat="header in headers" ng-hide="header.hidden" translate>
+        {{ "rlTabularData." + header.name }}
+      </th>
+    </tr></thead>
+
     <tbody>
     <tr ng-repeat="row in table | CreativeTable">
-        <td>
-            <rl-creative-cell creative="row.creative"></rl-creative-cell>
-        </td>
-        <td translate>rlTabularData.{{ row.creative.status }}</td>
-        <td>{{ row.creative.adGroup.name }}</td>
-        <td>
-            {{ row.creative.publisher.publisherName }}
-            ({{ 'rlTabularData.' + row.creative.publisher.geoType | translate}})
-        </td>
-        <td ng-repeat="(key, header) in headers" ng-hide="header.hidden">
-            {{ row.report[key] | flexnumber:header.format }}
-        </td>
+      <td>
+        <rl-creative-cell creative="row.creative"></rl-creative-cell>
+      </td>
+      <td translate>rlTabularData.{{ row.creative.status }}</td>
+      <td>{{ row.creative.adGroup.name }}</td>
+      <td>
+        {{ row.creative.publisher.publisherName }}
+        ({{ 'rlTabularData.' + row.creative.publisher.geoType | translate}})
+      </td>
+      <td ng-repeat="(key, header) in headers" ng-hide="header.hidden">
+        {{ row.report[key] | flexnumber:header.format }}
+      </td>
     </tr>
     </tbody>
-</table>
+  </table>
+</section>

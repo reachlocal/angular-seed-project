@@ -6,6 +6,7 @@ angular
             scope: {
                 publishers: '='
             },
-            restrict: 'E'
+            restrict: 'E',
+            replace: true
         };
     });

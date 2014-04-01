@@ -1,32 +1,28 @@
-<p class="count" ng-show="recommendations.hasActiveRecommendations()">
-    <translate translate-value-count="{{ recommendations.count() }}">
-        rlRecommendations.Your campaign has { count } active recommendations
-    </translate>
-</p>
+<section class="recommendations">
+  <p ng-show="recommendations.hasActiveRecommendations()">
+      <translate translate-value-count="{{ recommendations.count() }}">
+          rlRecommendations.Your campaign has { count } active recommendations
+      </translate>
+  </p>
 
-<div ng-repeat="recommendation in recommendations.items" class="details">
-  <a class="summary" ng-click="toggleItemExpanded($index)">
-    {{ recommendation.title }}
-  </a>
-  <div class="recommendation-actions">
-    <button type="button" ng-click="dismiss()" class="btn btn-danger btn-sm">
-      <translate>rlRecommendations.Dismiss</translate>
-    </button>
-    <button type="button" ng-click="apply()"   class="btn btn-success btn-sm">
-      <translate>rlRecommendations.Apply</translate>
-    </button>
-  </div>
-  <div class="slide-down" ng-show="isItemExpanded($index)">
-    {{ recommendation.description }}
-  </div>
-</div>
+  <ul>
+    <li ng-repeat="recommendation in recommendations.items">
+      <details class="{{ recommendation.severity || 'warning' }}">
+        <summary>
+          {{ recommendation.title }}
+          <button><translate>rlRecommendations.Apply</translate></button>
+          <button><translate>rlRecommendations.Dismiss</translate></button>
+        </summary>
+        <p>{{ recommendation.description }}</p>
+      </details>
+    </li>
+  </ul>
 
-<div class="congratulations alert alert-success alert-dismissable"
-     ng-show="showWellDoneMessage()">
-    <button ng-click="closeWellDoneMessage()" type="button" class="close" aria-hidden="true">×</button>
+  <div ng-show="showWellDoneMessage()">
+    <button ng-click="closeWellDoneMessage()" type="button" aria-hidden="true">×</button>
     <strong>
       <translate>rlRecommendations.Well done</translate>
     </strong>
     <translate>rlRecommendations.You have no active recommendations</translate>
-</div>
-
+  </div>
+</section>

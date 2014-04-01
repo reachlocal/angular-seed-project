@@ -1,32 +1,32 @@
-<div class="cell">
+<div>
 
-    <div class="edit" ng-show="edit">
+    <div ng-show="edit">
 
-        <div class="edit-buttons">
-            <i class="fa fa-check" ng-click="save()"></i>
-            <i class="fa fa-times" ng-click="cancelEditMode()"></i>
+        <div>
+            <i ng-click="save()"></i>
+            <i ng-click="cancelEditMode()"></i>
         </div>
 
-        <div class="underline" ng-repeat="headLine in creative.headLines track by $index">
-            <div class="white-bg">
-                <input class="headline" ng-model="creative.headLines[$index]" maxlength="255">
+        <div ng-repeat="headLine in creative.headLines track by $index">
+            <div>
+                <input ng-model="creative.headLines[$index]" maxlength="255">
             </div>
         </div>
 
-        <div class="underline" ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
-            <div class="white-bg">
+        <div ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
+            <div>
                 <input ng-model="creative.descriptiveLines[$index]" maxlength="255">
             </div>
         </div>
         <!--
-        <div class="buttons">
-            <button class="btn btn-primary" ng-click="save()" translate>rlCreativeCell.Save</button>
-            <button class="btn" ng-click="cancelEditMode()"   translate>rlCreativeCell.Cancel</button>
+        <div>
+            <button ng-click="save()" translate>rlCreativeCell.Save</button>
+            <button ng-click="cancelEditMode()"   translate>rlCreativeCell.Cancel</button>
         </div>-->
     </div>
 
-    <div class="view" ng-click="enterEditMode()">
-        <i class="fa fa-pencil"></i>
+    <div ng-click="enterEditMode()">
+        <i></i>
         <div ng-repeat="headLine in creative.headLines track by $index">
             <b>{{ headLine }}</b>
         </div>

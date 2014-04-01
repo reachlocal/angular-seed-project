@@ -3,7 +3,7 @@
       "Apply": "Apply",
       "Dismiss": "Dismiss",
       "Your campaign has { count } active recommendations":
-          "Your campaign has <b class='text-success'>{ count }</b> active { count , plural, one{recommendation} other{recommendations} }.",
+          "Your campaign has <em>{ count }</em> active { count , plural, one{recommendation} other{recommendations} }.",
       "Well done": "Well done!",
       "You have no active recommendations": "You have no active recommendations."
   }

@@ -6,6 +6,7 @@ angular
             scope: {
                 overview: '='
             },
-            restrict: 'E'
+            restrict: 'E',
+            replace: true
         };
     });

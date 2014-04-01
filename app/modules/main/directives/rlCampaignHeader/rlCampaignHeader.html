@@ -1,8 +1,6 @@
-<header class="rl-campaign-header rl-page-header">
-    <p class="campaign-name">
-        {{ overview.name }}
-    </p>
-    <ul class="campaign-info">
+<header>
+    <h1>{{ overview.name }}</h1>
+    <ul>
         <li>
             <translate>rlCampaignHeader.Master Campaign ID:</translate>
             {{ overview.masterCampaignId | filter:number }}
