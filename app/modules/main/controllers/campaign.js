@@ -6,17 +6,29 @@ angular
          'rl.cpi.main.services.Recommendations',
          'rl.cpi.main.services.Creatives',
          'rl.cpi.main.services.TextCreativeReports',
+         'rl.cpi.main.services.DateRange',
          'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
-    .controller('Campaign', function ($scope, $rootScope, publishers, campaignOverview,
-                                      recommendations, creatives, reports, creativeHeaders, $filter) {
+    .controller('Campaign', function ($scope, $rootScope, $filter,
+                                      publishers, campaignOverview, recommendations, creatives,
+                                      TextCreativeReports, CreativeHeaders, DateRange, $stateParams) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.publishers = publishers;
         $scope.campaignOverview = campaignOverview;
         $scope.recommendations = recommendations;
         $scope.creatives = creatives;
-        $scope.reports = reports;
-        $scope.creativeHeaders = creativeHeaders;
+        $scope.creativeHeaders = CreativeHeaders;
+
+        function getReports() {
+            var params = {
+                campaignId: $stateParams.campaignId,
+                from:       DateRange.from().format('YYYY-MM-DD'),
+                to:         DateRange.to().format('YYYY-MM-DD')
+            };
+            $scope.reports = TextCreativeReports.query(params);
+        }
+        getReports();
+        $scope.$on('rl:dateRange:updated', getReports);
     })
 
     .config(function ($stateProvider) {
@@ -38,12 +50,7 @@ angular
                     creatives: function(Creatives, $stateParams) {
                         var creatives = Creatives.query({campaignId: $stateParams.campaignId});
                         return creatives.$promise;
-                    },
-                    reports: function(TextCreativeReports, $stateParams) {
-                        var reports = TextCreativeReports.query({campaignId: $stateParams.campaignId});
-                        return reports.$promise;
-                    },
-                    creativeHeaders: 'CreativeHeaders'
+                    }
                 },
                 url: '^/campaign/:campaignId',
                 templateUrl: 'modules/main/controllers/campaign.html',

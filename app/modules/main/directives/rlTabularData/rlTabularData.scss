@@ -2,12 +2,12 @@ rl-tabular-data {
 
     tr {
         &.ng-enter {
-            animation: slideInRight .5s;
-            -webkit-animation: slideInRight .5s;
+            animation: fadeIn .25s;
+            -webkit-animation: fadeIn .25s;
         }
         &.ng-leave {
-            animation: fadeOut .5s;
-            -webkit-animation: fadeOut .5s;
+            animation: fadeOut .25s;
+            -webkit-animation: fadeOut .25s;
         }
     }
 }

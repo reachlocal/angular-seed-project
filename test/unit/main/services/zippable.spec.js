@@ -1,4 +1,4 @@
-describe('Zippable factory', function() {
+ddescribe('Zippable factory', function() {
 
     var service;
 
@@ -24,39 +24,55 @@ describe('Zippable factory', function() {
     });
 
     describe("zippable objects", function() {
-        var zippable;
+        var zipped;
         beforeEach(function() {
-            zippable = factory.build(summaries, 'id', 'summary');
+            zipped = factory.build(summaries, 'id', 'summary');
         });
         it("return entry that has a certain key", function() {
-            expect(zippable.byKey(123)).toBe(summaries[0]);
+            expect(zipped.byKey(123).summary).toBe(summaries[0]);
         });
         it("modified source objects are still accessible", function() {
             var newValue = { abc: 123 };
             summaries[0].foo = newValue;
-            expect(zippable.byKey(123).foo).toBe(newValue);
+            expect(zipped.byKey(123).summary.foo).toBe(newValue);
         });
     });
 
     describe("a zipped collection of collections", function() {
-        var s, r, zipped;
+        var zippedSummaries, zippedReports;
         beforeEach(function() {
-            s = factory.build(summaries, 'id', 'summary');
-            r = factory.build(reports, 'summaryId', 'report');
-            zipped = s.zip(r);
+            zippedSummaries = factory.build(summaries, 'id', 'summary');
+            zippedReports   = factory.build(reports, 'summaryId', 'report');
+            zippedSummaries.zip(zippedReports);
         });
         it("entry on the result has references for both original collections", function() {
-            expect(zipped[0].summary).toBe(summaries[0]);
-            expect(zipped[0].report).toBe(reports[2]);
+            expect(zippedSummaries[0].summary).toBe(summaries[0]);
+            expect(zippedSummaries[0].report).toBe(reports[2]);
         });
         it("marks right-side as undefined when no match is found", function() {
-            expect(zipped[3].report).toBe(null);
+            expect(zippedSummaries[3].report).toBe(null);
         });
         it('keeps the order of the left hand object', function() {
-            expect(zipped[0].summary).toBe(summaries[0]);
-            expect(zipped[1].summary).toBe(summaries[1]);
-            expect(zipped[2].summary).toBe(summaries[2]);
-            expect(zipped[3].summary).toBe(summaries[3]);
+            expect(zippedSummaries[0].summary).toBe(summaries[0]);
+            expect(zippedSummaries[1].summary).toBe(summaries[1]);
+            expect(zippedSummaries[2].summary).toBe(summaries[2]);
+            expect(zippedSummaries[3].summary).toBe(summaries[3]);
+        });
+        it("re-zipping overwrites only the relevant sub-entry", function() {
+            var newReports = [ { 'summaryId': 123, count: 15 } ];
+            var zippedNewReports = factory.build(newReports, 'summaryId', 'report');
+
+            zippedSummaries.zip(zippedNewReports);
+
+            expect(zippedSummaries.byKey(123).summary).toBe(summaries[0]);
+            expect(zippedSummaries.byKey(456).summary).toBe(summaries[1]);
+            expect(zippedSummaries.byKey(789).summary).toBe(summaries[2]);
+            expect(zippedSummaries.byKey(999).summary).toBe(summaries[3]);
+
+            expect(zippedSummaries.byKey(123).report).toBe(newReports[0]);
+            expect(zippedSummaries.byKey(456).report).toBe(null);
+            expect(zippedSummaries.byKey(789).report).toBe(null);
+            expect(zippedSummaries.byKey(999).report).toBe(null);
         });
     });
 
