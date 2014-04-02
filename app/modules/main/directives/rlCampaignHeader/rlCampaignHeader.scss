@@ -2,7 +2,7 @@
 @import "rl_seeds/variables";
 
 body > header {
-  $header-height: 75px;
+  $header-height: $default-spacing * 4;
 
   background-color: $color-brand-secondary;
   color: $color-light;
@@ -45,7 +45,7 @@ body > header {
       white-space: nowrap;
       text-overflow: ellipsis;
       font-size: .9em;
-      line-height: 2.9em;
+      line-height: 2.3em;
     }
   }
 }
