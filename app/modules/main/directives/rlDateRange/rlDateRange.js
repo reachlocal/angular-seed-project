@@ -1,44 +1,26 @@
 angular
-    .rlmodule('rl.cpi.main.directives.rlDateRange', ['ui.bootstrap', 'rl.cpi.main.services.Moment', 'ui.router'])
+    .rlmodule('rl.cpi.main.directives.rlDateRange', ['ui.bootstrap', 'rl.cpi.main.services.Moment', 'rl.cpi.main.services.DateRange'])
 
-    .controller('rlDateRangeCtrl', function($scope, $rootScope, Moment, $state, $location) {
+    .controller('rlDateRangeCtrl', function($scope, Moment, DateRange) {
         var dateFormat = "YYYY-MM-DD";
         $scope.dateOptions = {
             "show-weeks": false
         };
-        $scope.today = Moment.build().format(dateFormat);
-        var from, to;
 
-        if (!$location.search().dateFrom) {
-            from = Moment.build().subtract('days', 30);
-        } else {
-            from = Moment.build($location.search().dateFrom);
-        }
-        if (!$location.search().dateTo) {
-            to   = Moment.build();
-        } else {
-            to = Moment.build($location.search().dateTo);
-        }
-
-        $scope.from = from.format(dateFormat);
-        $scope.to   = to.format(dateFormat);
-
-        function update() {
-            $rootScope.$broadcast('rl:dateRange:updated', { from: from, to: to });
-            $location.search('dateFrom', from.format(dateFormat));
-            $location.search('dateTo', to.format(dateFormat));
-            $state.go($state.current);
-        }
+        $scope.from = DateRange.from().format(dateFormat);
+        $scope.to   = DateRange.to().format(dateFormat);
 
         $scope.$watch('from', function(value) {
-            from = Moment.build(value);
-            update();
+            DateRange.from(value);
         });
         $scope.$watch('to', function(value) {
-            to = Moment.build(value);
-            update();
+            DateRange.to(value);
         });
-        update();
+
+        $scope.$on('rl:dateRange:updated', function(event, range) {
+            $scope.from = range.from.format(dateFormat);
+            $scope.to   = range.to.format(dateFormat);
+        });
     })
     .directive('rlDateRange', function () {
         return {

@@ -1,6 +1,6 @@
 describe('RL Date Range Selector', function () {
 
-    var $scope, controller, $state, $location;
+    var $scope, controller, service;
     var rootScope;
     var Moment;
 
@@ -8,13 +8,16 @@ describe('RL Date Range Selector', function () {
     beforeEach(module('rl.cpi'));
     beforeEach(module('rl.cpi.main.directives.rlDateRange'));
 
-    beforeEach(inject(function($controller, $rootScope, _Moment_, _$location_) {
+    beforeEach(inject(function($controller, $rootScope, _Moment_) {
         $scope = $rootScope.$new();
         rootScope = $rootScope;
         controller = $controller;
         Moment = _Moment_;
-        $state = {go: function() {}};
-        $location = _$location_;
+
+        var dummy = function() {
+            return window.moment();
+        };
+        service = { from: dummy, to: dummy };
     }));
 
     function buildController() {
@@ -22,60 +25,42 @@ describe('RL Date Range Selector', function () {
             $scope: $scope,
             $rootScope: rootScope,
             Moment: Moment,
-            $state: $state,
-            $location: $location
+            DateRange: service
         });
     }
 
     describe("when it initializes", function() {
-        var mockNow, mock30DaysAgo;
-        beforeEach(function() {
-            mockNow       = window.moment("2014-03-26");
-            mock30DaysAgo = window.moment("2014-02-24");
-
-            spyOn(Moment, 'build').andReturn(mockNow);
-            spyOn(mockNow, 'subtract').andReturn(mock30DaysAgo);
-
-            spyOn(mockNow,       'format').andReturn('puppies');
-            spyOn(mock30DaysAgo, 'format').andReturn('kittens');
-        });
-        it("starts with the last 30 days selected", function() {
-            buildController();
-
-            expect($scope.from).toEqual('kittens');
-            expect($scope.to).toEqual('puppies');
-
-            expect(mockNow.subtract).toHaveBeenCalledWith('days', 30);
-        });
-        it("broadcasts a range updated event with the default range object", function() {
-            var range = { from: mock30DaysAgo, to: mockNow };
-            spyOn(rootScope, '$broadcast');
+        it("gets its date from DateRange", function() {
+            var mockEndOfTheWorld = window.moment('2012-12-21');
+            var mockChristmas     = window.moment('2012-12-25');
+            spyOn(service, 'to').andReturn(mockChristmas);
+            spyOn(service, 'from').andReturn(mockEndOfTheWorld);
 
             buildController();
 
-            expect(rootScope.$broadcast).toHaveBeenCalledWith('rl:dateRange:updated', range);
+            expect($scope.to).toEqual('2012-12-25');
+            expect($scope.from).toEqual('2012-12-21');
+
+            expect(service.to).toHaveBeenCalled();
+            expect(service.from).toHaveBeenCalled();
+
         });
     });
 
     describe("when either from or to gets updated", function() {
         beforeEach(function () {
             buildController();
-            $scope.$digest();
+
+            spyOn(service, 'from');
+            spyOn(service, 'to');
         });
         it("a rl:dateRange:updated event is broadcast", function() {
-            var mockEndOfTheWorld = window.moment('2012-12-21');
-            var mockChristmas     = window.moment('2012-12-25');
-            var expectedRange = { from: mockEndOfTheWorld, to: mockChristmas };
-
             $scope.from = '2012-12-21';
+            $scope.to   = '2012-12-25';
             $scope.$digest();
 
-            $scope.to   = '2012-12-25';
-            rootScope.$on('rl:dateRange:updated', function(event, range) {
-                expect(range.to.toString()).toEqual(expectedRange.to.toString());
-                expect(range.from.toString()).toEqual(expectedRange.from.toString());
-            });
-            $scope.$digest();
+            expect(service.from).toHaveBeenCalledWith('2012-12-21');
+            expect(service.to).toHaveBeenCalledWith('2012-12-25');
         });
     });
 });
