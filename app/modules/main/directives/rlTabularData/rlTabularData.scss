@@ -1,0 +1,12 @@
+@import "rl_seeds/variables";
+
+.creative-metrics {
+  clear: both;
+  width: 100%;
+  overflow: auto;
+  padding: $default-spacing;
+
+  table {
+    margin: 0 auto;
+  }
+}

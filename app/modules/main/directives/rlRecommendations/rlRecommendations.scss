@@ -1,0 +1,64 @@
+@import "rl_seeds/color_palette";
+@import "rl_seeds/variables";
+@import "rl_seeds/typography";
+
+.recommendations {
+  padding: $default-spacing;
+  display: inline-block;
+  width: 50%;
+  float: left;
+
+  em {
+    color: $color-success;
+    font-weight: 900;
+  }
+
+  ul {
+    padding: $default-spacing;
+  }
+
+  li + li {
+    margin-top: $default-spacing;
+  }
+
+  details {
+    $border: 1px solid $color-med;
+    border: $border;
+    border-radius: $default-radius;
+
+    &[open] summary {
+      border-bottom: $border;
+    }
+
+    &.warning summary:before {
+      @include icon;
+      content: $font-icon-warning;
+      color: $color-success;
+      font-size: .85em;
+      margin: 0 ($default-spacing / 2);
+    }
+
+    & > p {
+      padding: $default-spacing;
+    }
+  }
+
+  summary {
+    $height: $default-spacing * 2;
+
+    user-select: none;
+    overflow: auto;
+    line-height: $height;
+
+    button {
+      border-radius: 0;
+      min-width: 5 * $default-spacing;
+      height: $height;
+      float: right;
+
+      &:not(:first-of-type):hover {
+        background-color: $color-error;
+      }
+    }
+  }
+}

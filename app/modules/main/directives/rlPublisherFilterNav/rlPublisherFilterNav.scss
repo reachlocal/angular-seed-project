@@ -1,0 +1,39 @@
+@import "rl_seeds/color_palette";
+@import "rl_seeds/variables";
+
+main > nav {
+  $nav-height: ($default-spacing * 3);
+
+  background-color: $color-info;
+  height: $nav-height;
+  text-align: right;
+  padding: ($default-spacing / 2) $default-spacing;
+  color: $color-light;
+  position: sticky;
+  top: 0;
+
+  form {
+    height: 100%;
+
+    fieldset {
+      display: inline-block;
+      height: 100%;
+
+      & + fieldset {
+        margin-left: ($default-spacing - 4px); // The magic spacing added to inline elements.
+        border-left: 1px solid $color-light;
+        padding-left: $default-spacing;
+        position: relative;
+      }
+    }
+  }
+
+  select, input {
+    height: 100%;
+    width: 150px;
+  }
+
+  select + select {
+    margin-left: $default-spacing;
+  }
+}

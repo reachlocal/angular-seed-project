@@ -1,0 +1,51 @@
+@import "rl_seeds/color_palette";
+@import "rl_seeds/variables";
+
+body > header {
+  $header-height: 75px;
+
+  background-color: $color-brand-secondary;
+  color: $color-light;
+  overflow: auto;
+  min-height: $header-height;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: inset 0 (-$default-spacing / 3) 0 $color-shadow;
+
+  & > h1, & > ul {
+    float: left;
+    padding: $default-spacing;
+  }
+
+  & > h1 {
+    width: 50%;
+    font-size: 1.5em;
+    line-height: $header-height;
+  }
+
+  & > ul {
+    width: 50%;
+    column-count: 3;
+    column-gap: 30px;
+    column-rule: 1px inset $color-light;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    & > li {
+      column-break-inside: avoid;
+      -moz-column-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      break-inside: avoid;
+
+      text-align: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: .9em;
+      line-height: 2.9em;
+    }
+  }
+}
