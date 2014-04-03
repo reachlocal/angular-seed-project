@@ -1,9 +1,9 @@
 <nav>
   <form>
     <fieldset>
-      <select ng-model="selectedPublisher" ng-options="(publisher.name + ' ' + (publisher.geoType | capitalize | surroundWithParenthesis)) for publisher in publishers.webPublisherCampaigns">
+      <select name="webPublisherCampaign" ng-model="selectedPublisher" ng-options="(publisher.name + ' ' + (publisher.geoType | capitalize | surroundWithParenthesis)) for publisher in publishers.webPublisherCampaigns">
       </select>
-      <select ng-options="adgroup.name for adgroup in selectedPublisher.adGroups" ng-model="selectedAdgroup">
+      <select name="adGroup" ng-options="adgroup.name for adgroup in selectedPublisher.adGroups" ng-model="selectedAdgroup">
       </select>
     </fieldset>
     <rl-date-range></rl-date-range>

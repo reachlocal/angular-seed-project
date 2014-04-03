@@ -1,5 +1,5 @@
 angular
-    .rlmodule('rl.cpi.main.directives.rlCreativeCell', ['ui.bootstrap'])
+    .rlmodule('rl.cpi.main.directives.rlCreativeCell', ['ui.bootstrap', 'xeditable'])
     .controller('rlCreativeCellCtrl', function($scope) {
         var originalCreative;
         $scope.edit = false;
@@ -25,6 +25,7 @@ angular
                 creative: '='
             },
             restrict: 'E',
-            controller: 'rlCreativeCellCtrl'
+            controller: 'rlCreativeCellCtrl',
+            replace: true
         };
     });

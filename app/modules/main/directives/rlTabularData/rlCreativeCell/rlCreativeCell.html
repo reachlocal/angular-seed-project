@@ -1,39 +1,14 @@
-<div>
-
-    <div ng-show="edit">
-
-        <div>
-            <i ng-click="save()"></i>
-            <i ng-click="cancelEditMode()"></i>
-        </div>
-
-        <div ng-repeat="headLine in creative.headLines track by $index">
-            <div>
-                <input ng-model="creative.headLines[$index]" maxlength="255">
-            </div>
-        </div>
-
-        <div ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
-            <div>
-                <input ng-model="creative.descriptiveLines[$index]" maxlength="255">
-            </div>
-        </div>
-        <!--
-        <div>
-            <button ng-click="save()" translate>rlCreativeCell.Save</button>
-            <button ng-click="cancelEditMode()"   translate>rlCreativeCell.Cancel</button>
-        </div>-->
-    </div>
-
-    <div ng-click="enterEditMode()">
-        <i></i>
-        <div ng-repeat="headLine in creative.headLines track by $index">
-            <b>{{ headLine }}</b>
-        </div>
-        <div ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
-            {{ descriptiveLine }}
-        </div>
-        <a href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
-    </div>
-
-</div>
+<section>
+  <p class="headline"
+    editable-text="creative.headLines[$index]"
+    blur="ignore"
+    ng-repeat="headLine in creative.headLines track by $index">
+    {{ headLine }}
+  </p>
+  <p ng-repeat="descriptiveLine in creative.descriptiveLines track by $index"
+     editable-text="creative.descriptiveLines[$index]"
+     blur="ignore">
+      {{ descriptiveLine }}
+  </p>
+  <a href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
+</section>

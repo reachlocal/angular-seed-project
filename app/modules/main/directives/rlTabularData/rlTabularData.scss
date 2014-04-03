@@ -9,4 +9,9 @@
   table {
     margin: 0 auto;
   }
+
+  .headline,
+  .headline + .editable-wrap input {
+    font-weight: 700;
+  }
 }

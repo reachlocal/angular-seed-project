@@ -16,6 +16,7 @@
     "bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js",
     "bower_components/angular-http-auth/src/http-auth-interceptor.js",
     "bower_components/angular-underscore-module/angular-underscore-module.js",
+    "bower_components/angular-xeditable/dist/js/xeditable.js",
     "bower_components/underscore/underscore.js",
     "bower_components/momentjs/moment.js"
 ]
