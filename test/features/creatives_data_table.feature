@@ -1,9 +1,11 @@
 Feature: Use a table containing a list of creatives and their metrics as a way to surface creative management functionality
 
+  Background:
+    Given a typical campaign exists
+
   @JIRA-CPI-108 @JIRA-CPI-109 @JIRA-CPI-151 @WIP
   Scenario: View creatives and their metrics for a specific AdGroup
 
-    Given a typical campaign exists
     When a user views the campaign id "713896" dashboard
     When the AdGroup is selected in the Global Nav Bar
     Then the list of creatives belonging to the selected AdGroup is listed in the data table
@@ -40,7 +42,6 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   @JIRA-CPI-132 @JIRA-CPI-133
   Scenario: Edit a creative in the data table
 
-    Given a typical campaign exists
     When a user selects a creative for editing in the data table
     And the user makes a change to the creative's headline or descriptive lines
     And the user selects the option to save
@@ -49,7 +50,6 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   @JIRA-CPI-132 @JIRA-CPI-133
   Scenario: Cancel an edit on a creative in the data table
 
-    Given a typical campaign exists
     When a user selects a creative for editing in the data table
     And the user makes a change to the creative's headline or descriptive lines
     And the user selects the option to cancel
@@ -60,7 +60,6 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   @JIRA-CPI-138
   Scenario: Edit a creative's status in the data table
 
-    Given a typical campaign exists
     When the user changes the status of the creative
     Then the creative's status change is staged for publishing
 

@@ -2,11 +2,13 @@
 Feature:  Display trend graph for campaign relevant to the level in which you're viewing
 
 
+  Background:
+    Given a typical campaign exists
+
   @trendgraph @JIRA-CPI-27
   Scenario:  Display metric buttons above trend graph
 
-    Given a typical campaign exists
-    And a campaign has historical data over 30 days
+    Given a campaign has historical data over 30 days
     And the dashboard filter is set to a single Ad Group
     And the dashboard date filter is set to "Last 30 Days"
     When the campaign dashboard is viewed
@@ -21,8 +23,7 @@ Feature:  Display trend graph for campaign relevant to the level in which you're
   @trendgraph @JIRA-CPI-30
   Scenario: Display a trend graph for the campaign
 
-    Given a typical campaign exists
-    And a campaign has historical data over 30 days
+    Given a campaign has historical data over 30 days
     And the dashboard filter is set to ALL AD GROUPS
     And the dashboard date filter is set to "Last 30 Days"
     When the campaign dashboard is viewed
@@ -34,8 +35,7 @@ Feature:  Display trend graph for campaign relevant to the level in which you're
   @trendgraph @JIRA-CPI-28
   Scenario: Toggle a trend line using the metric buttons
 
-    Given a typical campaign exists
-    And a campaign has historical data over 30 days
+    Given a campaign has historical data over 30 days
     And the dashboard filter is set to ALL AD GROUPS
     And the dashboard date filter is set to "Last 30 Days"
     When the campaign dashboard is viewed
