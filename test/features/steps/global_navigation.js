@@ -18,21 +18,14 @@ module.exports = function () {
     });
 
     When(/^the user selects the web publisher campaign "([^"]*)"$/, function(wpc_name, callback) {
-        browser.findElement(by.css('rl-publisher-filter-nav'))
-               .findElement(by.partialLinkText(wpc_name))
-               .click()
-               .then(function() {
-                    callback();
-                });
+        browser.selectOption(by.name('webPublisherCampaign'), wpc_name).then(callback);
     });
 
     Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function(adgroup_name, wpc_name, callback) {
-        browser.findElement(by.xpath("//rl-publisher-menu-item//*[text()='"+ adgroup_name +"']"))
-               .getInnerHtml()
-               .then(function(value) {
-                    expect(value).to.be.equal(adgroup_name);
-                    callback();
-                });
+        browser.findOption(by.name('adGroup'), adgroup_name).then(function (found) {
+            expect(found).to.equal(true);
+            callback();
+        });
     });
 
     Then(/^the user should see a campaign header:$/, function (table, callback) {

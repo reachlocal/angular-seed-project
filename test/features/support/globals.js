@@ -23,6 +23,40 @@ global.all = function (promiseArray) {
     }};
 };
 
+function withOption (action) {
+    return function (selector, item) {
+        var selectList, desiredOption;
+
+        selectList = this.findElement(selector);
+        selectList.click();
+
+        return selectList.findElements(protractor.By.tagName('option'))
+            .then(function findMatchingOption(options){
+                options.some(function(option){
+                    option.getText().then(function doesOptionMatch(text){
+
+                        if (item === text){
+                            desiredOption = option;
+                            return true;
+                        }
+                    });
+                });
+            })
+            .then(function () {
+                return action(desiredOption);
+            });
+    };
+}
+
 module.exports = function () {
     global.Given = global.When = global.Then = this.defineStep;
+
+    var browser = protractor.getInstance();
+    browser.selectOption =  withOption(function (desiredOption) {
+        if (desiredOption) { desiredOption.click(); }
+    }).bind(browser);
+
+    browser.findOption = withOption(function (desiredOption) {
+        return !!desiredOption;
+    }).bind(browser);
 };
