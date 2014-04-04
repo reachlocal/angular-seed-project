@@ -1,12 +1,14 @@
-<section>
+<section >
   <p class="headline"
     editable-text="creative.headLines[$index]"
+    onbeforesave="creative.$update()"
     blur="ignore"
     ng-repeat="headLine in creative.headLines track by $index">
     {{ headLine }}
   </p>
   <p ng-repeat="descriptiveLine in creative.descriptiveLines track by $index"
      editable-text="creative.descriptiveLines[$index]"
+     onbeforesave="creative.$update()"
      blur="ignore">
       {{ descriptiveLine }}
   </p>

@@ -1,7 +1,12 @@
 angular
     .rlmodule('rl.cpi.main.services.Creatives', ['ngResource', 'rl.cpi.main.Config'])
     .factory('Creatives', function($resource, Config) {
-        return $resource(Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives');
+        return $resource(Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives/:textCreativeId', {
+            'campaignId': '@campaignId',
+            'textCreativeId': '@id'
+        }, {
+                'update': { method: 'PUT' }
+            });
     })
     .factory('CreativeHeaders', function() {
         return {
