@@ -3,6 +3,7 @@ var gutil = require('gulp-util');
 var config = require('./config/config');
 var runJasmineTestsFunc = require('./lib/runJasmineTests.js');
 
+
 gulp.task('test:unit', ['build_project_file', 'ngtemplates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('unit');
 });
@@ -29,4 +30,18 @@ gulp.task('test:cucumber', ['test:cucumber:webdriver'], function () {
     }))
         .on('end', function () { serverInstance.close(); })
         .on('error', function (e) { throw e; });
+});
+
+gulp.task('test:fail_on_skipped', function() {
+    var grep = require('grep1');
+    var matchDetector = function(err, stdout, stderr) {
+        if (!err && !stderr) {
+            var message = "It looks like you have some tests disabled.";
+            gutil.log(gutil.colors.red(message));
+            gutil.log(gutil.colors.red(stdout));
+            throw message;
+        }
+    };
+    grep(['-r', 'ddescribe', 'test'], matchDetector);
+    grep(['-r', 'iit', 'test'], matchDetector);
 });
