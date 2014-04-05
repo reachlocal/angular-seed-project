@@ -1,4 +1,4 @@
-ddescribe('Zippable factory', function() {
+describe('Zippable factory', function() {
 
     var service;
 

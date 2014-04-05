@@ -1,8 +1,8 @@
 describe('Creative table controller', function () {
     var $scope;
     var mocks = {
-        zippable: { build: null },
-        creative: { zip: null },
+        zippable: { build: angular.noop },
+        creative: { zip: angular.noop },
         report: { }
     };
 
@@ -11,15 +11,18 @@ describe('Creative table controller', function () {
     beforeEach(module('rl.cpi'));
     beforeEach(module('rl.cpi.main.directives.rlTabularData'));
 
-    beforeEach(inject(function($controller, $rootScope) {
-        $scope = $rootScope.$new();
-        $controller('rlTabularDataCtrl', { $scope: $scope, Zippable: mocks.zippable });
-    }));
+    it("builds the table when reports are updated", function() {
+        spyOn(mocks.zippable, 'build').andCallFake(function(c, k, n) {
+            return mocks[n];
+        });
+        spyOn(mocks.creative, 'zip');
 
-
-    it("builds the table when creatives are updated", function() {
-        spyOn(mocks.zippable, 'build').andCallFake(function(c,k,n) { return mocks[n]; });
-        spyOn(mocks.creative, 'zip').andReturn('foo');
+        inject(function($controller, $rootScope) {
+            $scope = $rootScope.$new();
+            $scope.creatives = [];
+            $scope.reports = [];
+            $controller('rlTabularDataCtrl', { $scope: $scope, Zippable: mocks.zippable });
+        });
 
         $scope.creatives = [];
         $scope.reports = [];
@@ -28,9 +31,10 @@ describe('Creative table controller', function () {
         expect(mocks.zippable.build).toHaveBeenCalledWith($scope.creatives, 'id', 'creative');
         expect(mocks.zippable.build).toHaveBeenCalledWith($scope.reports, 'textCreativeId', 'report');
         expect(mocks.creative.zip).toHaveBeenCalledWith(mocks.report);
-        expect($scope.table).toEqual('foo');
+        // $scope.table should be assigned to the return value of creative.zip (a spy)
+        // This is not awesome...  :(
+        expect($scope.table.zip).toEqual(mocks.creative.zip);
     });
-    it("builds the table when reports are updated");
 });
 
 
