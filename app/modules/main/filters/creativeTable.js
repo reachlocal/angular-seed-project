@@ -1,12 +1,12 @@
 angular
-    .rlmodule('rl.cpi.main.filters.CreativeTable', ['rl.cpi.main.services.AdgroupFilter'])
-    .filter('CreativeTable', function (AdgroupFilter) {
+    .rlmodule('rl.cpi.main.filters.CreativeTable', ['rl.cpi.main.services.PublisherFilterService'])
+    .filter('CreativeTable', function (PublisherFilterService) {
         return function (input) {
-            if (!AdgroupFilter.isFiltering()) {
+            if (!PublisherFilterService.isFiltering()) {
                 return input;
             } else {
                 return input.filter(function (row) {
-                    return AdgroupFilter.isDisplayed(row.creative.adGroup.id);
+                    return PublisherFilterService.isDisplayed(row.creative);
                 });
             }
         };

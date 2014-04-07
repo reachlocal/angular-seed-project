@@ -2,10 +2,20 @@
   <form>
     <fieldset>
       <label> Filter by:
-        <select name="webPublisherCampaign" ng-model="selectedPublisher" ng-options="(publisher.name + ' ' + (publisher.geoType | capitalize | surroundWithParenthesis)) for publisher in publishers.webPublisherCampaigns">
+        <select name="webPublisherCampaign"
+            ng-model="selectedPublisher"
+            ng-options="(p.publisher.publisherName
+                        + ' ' +
+                        (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publishers"
+            >
+            <option value="">ANY</option>
         </select>
       </label>
-      <select name="adGroup" ng-options="adgroup.name for adgroup in selectedPublisher.adGroups" ng-model="selectedAdgroup">
+      <select name="adGroup"
+          ng-options="adGroup for adGroup in selectedPublisher.adGroups"
+          ng-model="selectedAdGroup"
+          >
+          <option value="">ANY</option>
       </select>
     </fieldset>
     <rl-date-range></rl-date-range>
