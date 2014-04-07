@@ -32,7 +32,8 @@
     "underscore": "~1.6.0",
     "ngQuickDate": "~1.3.0",
     "momentjs": "~2.5.1",
-    "prefixfree": "*"
+    "prefixfree": "*",
+    "logifill-details": "kapitancho/logifill-details"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15"

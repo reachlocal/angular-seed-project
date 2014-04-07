@@ -29,6 +29,5 @@
   },
   "_source": "git://github.com/tsarnow/prefixfree.git",
   "_target": "*",
-  "_originalSource": "prefixfree",
-  "_direct": true
+  "_originalSource": "prefixfree"
 }

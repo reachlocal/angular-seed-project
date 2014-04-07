@@ -1,0 +1,13 @@
+{
+  "name": "logifill-details",
+  "homepage": "https://github.com/kapitancho/logifill-details",
+  "_release": "20d343eb2f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "20d343eb2f40918577524eb1bf83b0153c6bf6b4"
+  },
+  "_source": "git://github.com/kapitancho/logifill-details.git",
+  "_target": "*",
+  "_originalSource": "kapitancho/logifill-details"
+}
