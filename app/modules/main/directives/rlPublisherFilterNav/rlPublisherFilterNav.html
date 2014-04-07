@@ -1,8 +1,10 @@
 <nav>
   <form>
     <fieldset>
-      <select name="webPublisherCampaign" ng-model="selectedPublisher" ng-options="(publisher.name + ' ' + (publisher.geoType | capitalize | surroundWithParenthesis)) for publisher in publishers.webPublisherCampaigns">
-      </select>
+      <label> Filter by:
+        <select name="webPublisherCampaign" ng-model="selectedPublisher" ng-options="(publisher.name + ' ' + (publisher.geoType | capitalize | surroundWithParenthesis)) for publisher in publishers.webPublisherCampaigns">
+        </select>
+      </label>
       <select name="adGroup" ng-options="adgroup.name for adgroup in selectedPublisher.adGroups" ng-model="selectedAdgroup">
       </select>
     </fieldset>

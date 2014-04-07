@@ -1,10 +1,11 @@
-@import "rl_seeds/color_palette";
-@import "rl_seeds/typography";
-@import "rl_seeds/variables";
-@import "rl_seeds/elements";
+@import "rl_seeds/all";
 
 body {
   overflow-y: scroll;
+}
+
+main > article {
+  margin-top: $default-spacing;
 }
 
 // CHART -----------------------------------------------------------------------
@@ -28,20 +29,17 @@ body {
     display: none;
 
     & + label {
+      @include button($color-muted, $color-mid);
       user-select: none;
-      cursor: pointer;
       display: inline-block;
       width: 60px;
       height: 60px;
-      background-color: $color-brand-secondary;
-      color: $color-light;
-      border-radius: $default-radius;
       text-align: center;
       padding: $default-spacing / 2;
     }
 
     &:checked + label {
-      background-color: $color-info;
+      @include button-color($color-info);
     }
   }
 
@@ -60,13 +58,13 @@ body > footer {
 .editable {
   cursor: pointer;
   border: 1px dashed transparent;
-  color: $bodycopy-color;
+  color: $color-bodycopy;
   padding: ($default-spacing / 5) 8px;
   margin-bottom: 2px;
 
   &:hover {
-    color: $bodycopy-color;
-    border-bottom-color: $color-brand-secondary;
+    color: $color-bodycopy;
+    border-bottom-color: $color-info;
   }
 }
 
@@ -87,7 +85,6 @@ body > footer {
     height: 100%;
 
     button {
-      border-radius: 0;
       margin: 0;
       height: 100%;
     }

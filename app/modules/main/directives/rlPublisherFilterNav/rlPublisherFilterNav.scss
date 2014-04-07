@@ -1,14 +1,14 @@
-@import "rl_seeds/color_palette";
-@import "rl_seeds/variables";
+@import "rl_seeds/all";
 
 main > nav {
   $nav-height: ($default-spacing * 3);
 
-  background-color: $color-info;
+  background-color: rgba($color-info, 0.9);
+  color: $color-white;
+  box-shadow: 0 ($default-spacing / 2) 0 $color-shadow;
   height: $nav-height;
   text-align: right;
   padding: ($default-spacing / 2) $default-spacing;
-  color: $color-light;
   position: sticky;
   top: 0;
 
@@ -28,12 +28,24 @@ main > nav {
     }
   }
 
-  select, input {
+  select, #{$inputs} {
     height: 100%;
-    width: 150px;
+    width: 180px;
+    border-color: transparent;
+    background-color: transparent;
+    color: $color-white;
+    cursor: pointer;
+
+    &:not(:disabled):hover {
+      border-color: $color-white;
+    }
   }
 
-  select + select {
-    margin-left: $default-spacing;
+  select {
+    background-image: $arrow-image-white;
+
+    & + select {
+      margin-left: $default-spacing;
+    }
   }
 }

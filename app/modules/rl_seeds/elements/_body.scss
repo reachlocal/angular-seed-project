@@ -1,0 +1,17 @@
+@import "../typography";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: $font-bodycopy;
+  color: $color-bodycopy;
+  background-color: $color-white;
+  min-width: 1024px;
+}

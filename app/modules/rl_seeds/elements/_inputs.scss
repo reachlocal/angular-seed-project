@@ -1,0 +1,18 @@
+$inputs: (
+  unquote('input[type="text"]'),
+  unquote('input[type="date"]'),
+  unquote('textarea')
+);
+
+#{$inputs} {
+  font: $font-bodycopy;
+  color: $color-bodycopy;
+  outline: none;
+  border: 1px solid $color-light;
+  background-color: $color-white;
+  margin: 0;
+  padding: 0;
+  min-height: 2em;
+  padding: 0 ($default-spacing / 2);
+  vertical-align: middle;
+}

@@ -2,7 +2,7 @@ angular
     .rlmodule('rl.cpi.main.directives.rlDateRange', ['ui.bootstrap', 'rl.cpi.main.services.Moment', 'rl.cpi.main.services.DateRange'])
 
     .controller('rlDateRangeCtrl', function($scope, Moment, DateRange) {
-        var dateFormat = "YYYY-MM-DD";
+        var dateFormat = "MMM, DD YYYY";
         $scope.dateOptions = {
             "show-weeks": false
         };

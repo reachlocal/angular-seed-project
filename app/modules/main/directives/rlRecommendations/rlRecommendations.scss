@@ -9,8 +9,10 @@
   float: left;
 
   em {
-    color: $color-success;
-    font-weight: 900;
+    color: $color-action;
+    font-weight: 700;
+    font-size: 1.5em;
+    vertical-align: middle;
   }
 
   ul {
@@ -18,24 +20,16 @@
   }
 
   li + li {
-    margin-top: $default-spacing;
+    margin-top: $default-spacing / 2;
   }
 
   details {
-    $border: 1px solid $color-med;
+    $border: 1px solid $color-light;
     border: $border;
     border-radius: $default-radius;
 
     &[open] summary {
       border-bottom: $border;
-    }
-
-    &.warning summary:before {
-      @include icon;
-      content: $font-icon-warning;
-      color: $color-success;
-      font-size: .85em;
-      margin: 0 ($default-spacing / 2);
     }
 
     & > p {
@@ -50,15 +44,14 @@
     overflow: auto;
     line-height: $height;
 
+    &::-webkit-details-marker {
+      color: $color-action;
+    }
+
     button {
-      border-radius: 0;
       min-width: 5 * $default-spacing;
       height: $height;
       float: right;
-
-      &:not(:first-of-type):hover {
-        background-color: $color-error;
-      }
     }
   }
 }

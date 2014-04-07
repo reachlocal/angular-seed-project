@@ -1,0 +1,17 @@
+@import "../color_palette";
+
+thead {
+  font-weight: 700;
+  border-bottom: 1px solid $color-mid;
+  text-align: left;
+}
+
+td,
+th {
+  padding: $default-spacing;
+}
+
+th,
+td {
+  vertical-align: middle;
+}

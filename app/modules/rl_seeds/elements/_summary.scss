@@ -1,0 +1,10 @@
+@import "../variables";
+
+summary {
+  cursor: pointer;
+  padding-left: $default-spacing / 2;
+
+  &:focus {
+    outline: none;
+  }
+}
