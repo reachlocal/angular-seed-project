@@ -38,8 +38,8 @@ describe('RL Date Range Selector', function () {
 
             buildController();
 
-            expect($scope.to).toEqual('2012-12-25');
-            expect($scope.from).toEqual('2012-12-21');
+            expect($scope.to).toEqual('Dec, 25 2012');
+            expect($scope.from).toEqual('Dec, 21 2012');
 
             expect(service.to).toHaveBeenCalled();
             expect(service.from).toHaveBeenCalled();
