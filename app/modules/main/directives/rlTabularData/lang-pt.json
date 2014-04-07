@@ -15,7 +15,7 @@
         "GLOBAL": "Global",
         "DMA": "DMA",
         "CITY": "Cidade",
-        "ZIPCODE": "Código Postal",
+        "ZIPCODE": "CEP",
         "STATE": "Estado",
         "Click Through Rate": "Taxa de Cliques",
         "Clicks": "Cliques",
@@ -23,7 +23,7 @@
         "Conversions": "Conversões",
         "Average Position": "Posição Média",
         "Impression Share": "Parcela de Impressão",
-        "Lead Count": "Contagem de leads ",
+        "Lead Count": "Leads ",
         "Quality Score": "Índice de Qualidade"
     }
 }

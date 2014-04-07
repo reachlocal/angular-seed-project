@@ -8,10 +8,10 @@ thead {
 
 td,
 th {
-  padding: $default-spacing;
+  padding: $default-spacing / 1.5;
 }
 
 th,
 td {
-  vertical-align: middle;
+  vertical-align: top;
 }
