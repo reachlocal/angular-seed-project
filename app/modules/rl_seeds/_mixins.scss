@@ -1,0 +1,46 @@
+@import "variables";
+
+@mixin button-color($background-color, $hover-color: null) {
+  @if $hover-color == null {
+    $hover-color: darken($background-color, 10);
+  }
+
+  background-color: $background-color;
+  &:not(:disabled) {
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &:focus {
+      box-shadow:
+        inset 0 0 0 1px $background-color,
+        inset 0 0 0 2px rgba($color-white, 0.6);
+    }
+
+    &:active {
+      box-shadow:
+        inset 0 0 0 1px $background-color,
+        inset 0 0 0 2px rgba($color-dark, 0.1);
+    }
+  }
+}
+
+@mixin button($background-color, $hover-color: null) {
+  border: none;
+  padding: 0 ($default-spacing / 2);
+  font: $font-bodycopy;
+  min-height: 2em;
+  background-color: $background-color;
+  color: $color-white;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin: 0;
+  outline: none;
+
+  &:disabled {
+    background-color: $color-light;
+    cursor: default;
+  }
+
+  @include button-color($background-color, $hover-color);
+}

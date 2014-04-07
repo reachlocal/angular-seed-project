@@ -1,6 +1,4 @@
-@import "rl_seeds/color_palette";
 @import "rl_seeds/variables";
-@import "rl_seeds/typography";
 
 .recommendations {
   padding: $default-spacing;
@@ -26,7 +24,6 @@
   details {
     $border: 1px solid $color-light;
     border: $border;
-    border-radius: $default-radius;
 
     &[open] summary {
       border-bottom: $border;

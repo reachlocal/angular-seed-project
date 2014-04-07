@@ -1,8 +1,4 @@
-$inputs: (
-  unquote('input[type="text"]'),
-  unquote('input[type="date"]'),
-  unquote('textarea')
-);
+@import "../variables";
 
 #{$inputs} {
   font: $font-bodycopy;
