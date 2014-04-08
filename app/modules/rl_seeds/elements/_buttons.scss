@@ -8,6 +8,7 @@ $primary-buttons: (
 );
 
 $reset-buttons: (
+  unquote('button[type="reset"]'),
   unquote('input[type="reset"]')
 );
 
