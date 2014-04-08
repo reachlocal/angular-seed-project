@@ -11,3 +11,4 @@ app/.l10n
 tmp
 test/helpers/l10n.js
 test-results.xml
+app/styleguide/

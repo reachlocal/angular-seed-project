@@ -17,7 +17,7 @@ gulp.task('dist', function(callback) {
         callback);
 });
 
-gulp.task('dist:copy', ['dist:copy:static', 'dist:copy:js']);
+gulp.task('dist:copy', ['dist:copy:static', 'dist:copy:js', 'dist:styleguide']);
 /**
  * Helper task to copy special files from the application root
  */

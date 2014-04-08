@@ -9,7 +9,7 @@ var runSequence = require('run-sequence');
  * Start a static server that will live-reload when any file is changed.
  **/
 gulp.task('serve:app', function () {
-    runSequence('build_project_file', 'style', 'l10n', 'serve:app:nocompile');
+    runSequence('build_project_file', 'style', 'l10n', 'serve:app:nocompile', 'styleguide');
 });
 gulp.task('serve:app:nocompile', function () {
     // Serve app
