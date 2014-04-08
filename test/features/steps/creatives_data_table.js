@@ -2,10 +2,10 @@ var CreativeTable;
 function CreativePageObject(browser, by) {
 
     var q = require('q');
-    var table = global.browser.findElement(global.by.tagName("rl-tabular-data"));
+    var table = global.browser.findElement(global.by.css(".creative-metrics > table"));
 
     this.dataRows = function() {
-        return table.findElements(by.repeater("row in table"));
+        return table.findElements(by.css("tbody > tr"));
     };
     this.firstDataRow = function() {
         return this.dataRows()
@@ -16,7 +16,7 @@ function CreativePageObject(browser, by) {
     this.firstCreative = function() {
         return this.firstDataRow()
           .then(function(row) {
-            return row.findElement(by.tagName("rl-creative-cell"));
+            return row.findElement(by.css("td:first-of-type"));
         });
     };
 
@@ -28,17 +28,12 @@ function CreativePageObject(browser, by) {
 
 module.exports = function () {
 
-    When(/^the AdGroup is selected in the Global Nav Bar$/, function (callback) {
-        // express the regexp above with the code you wish you had
-        CreativeTable = new CreativePageObject(browser, by);
-        callback();
-    });
-
     Then(/^the list of creatives belonging to the selected AdGroup is listed in the data table$/, function (callback) {
-        // For now, check that we have 1 or more creatives in the table
+        // For now, check that we have 1 creative in the table
+        CreativeTable = new CreativePageObject(browser, by);
         CreativeTable.dataRows()
             .then(function(items) {
-                var exp = expect(promiseFor(items.length)).to.eventually.be.above(0);
+                var exp = expect(promiseFor(items.length)).to.eventually.be.equal(1);
                 all(exp).then(callback);
             });
     });

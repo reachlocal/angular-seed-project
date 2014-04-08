@@ -28,6 +28,10 @@ module.exports = function () {
         });
     });
 
+    When(/^the user selects the ad group "([^"]*)"$/, function (ad_group_name, callback) {
+        browser.selectOption(by.name('adGroup'), ad_group_name).then(callback);
+    });
+
     Then(/^the user should see a campaign header:$/, function (table, callback) {
         var hash = table.hashes()[0];
 

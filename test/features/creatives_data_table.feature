@@ -3,11 +3,12 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   Background:
     Given a typical campaign exists
 
-  @JIRA-CPI-108 @JIRA-CPI-109 @JIRA-CPI-151 @WIP
+  @JIRA-CPI-108 @JIRA-CPI-109 @JIRA-CPI-151
   Scenario: View creatives and their metrics for a specific AdGroup
 
     When a user views the campaign id "713896" dashboard
-    When the AdGroup is selected in the Global Nav Bar
+    And the user selects the web publisher campaign "Local Profile (City)"
+    And the user selects the ad group "Primary Ad Group"
     Then the list of creatives belonging to the selected AdGroup is listed in the data table
     And the data table should contain these data elements as columns:
       | Column Name         |
@@ -15,14 +16,14 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | Status              |
       | Ad Group            |
       | Publisher           |
-      | Average Position    |
-      | Click Through Rate  |
+      | Avg Position        |
+      | CTR                 |
       | Clicks              |
       | Conversions         |
       | Impressions         |
       | Impression Share    |
-      | Lead Count          |
-      | Quality Score       |
+      | Leads               |
+      | QS                  |
     And the first creative is displayed
       | AdGroup2 Creative1  |
       | The Way Network     |
