@@ -12,7 +12,6 @@ angular
                                       campaignOverview, recommendations, creatives,
                                       TextCreativeReports, CreativeHeaders, DateRange, $stateParams) {
         $rootScope.pageTitle = "Campaign Overview";
-        $scope.publishers = publishers;
         $scope.campaignOverview = campaignOverview;
         $scope.recommendations = recommendations;
         $scope.creatives = creatives;
