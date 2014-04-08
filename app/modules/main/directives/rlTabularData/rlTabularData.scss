@@ -11,8 +11,73 @@
     width: 100%;
   }
 
+  th, td {
+    &:first-of-type {
+      width: 250px;
+    }
+  }
+
   .headline,
   .headline + .editable-wrap input {
     font-weight: 700;
   }
+
+  p {
+    margin: 0;
+  }
+
+  .editable {
+    cursor: pointer;
+    border: 1px dashed transparent;
+    color: $color-bodycopy;
+
+    &:hover {
+      color: $color-bodycopy;
+      border-bottom-color: $color-info;
+    }
+  }
+
+  .editable-wrap {
+    display: block;
+    width: 100%;
+    position: relative;
+    left: -($default-spacing / 2);
+    top: -3px;
+    margin-bottom: -($default-spacing / 3);
+
+    .editable-controls > input {
+      width: 100%;
+    }
+
+    .editable-buttons {
+      position: absolute;
+      direction: rtl;
+      height: 100%;
+
+      button {
+        margin: 0;
+        font-size: 0;
+        height: 100%;
+
+        &:before {
+          font-size: initial;
+          line-height: initial;
+        }
+
+        &[type="submit"]:before {
+          content: '\2714';
+        }
+
+        &[type="button"]:before {
+          content: '\2716';
+        }
+      }
+    }
+  }
+
+  .editable-wrap,
+  .editable-buttons {
+    box-shadow: ($default-spacing / 2) ($default-spacing / 2) $color-shadow;
+  }
+
 }
