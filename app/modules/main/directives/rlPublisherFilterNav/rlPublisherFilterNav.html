@@ -8,14 +8,14 @@
                         + ' ' +
                         (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publishers"
             >
-            <option value="">ANY</option>
+            <option value="">{{ 'rlPublisherFilterNav.All Campaigns' | translate }}</option>
         </select>
       </label>
       <select name="adGroup"
           ng-options="adGroup for adGroup in selectedPublisher.adGroups"
           ng-model="selectedAdGroup"
           >
-          <option value="">ANY</option>
+          <option value="">{{ 'rlPublisherFilterNav.All Ad Groups' | translate }}</option>
       </select>
     </fieldset>
     <rl-date-range></rl-date-range>
