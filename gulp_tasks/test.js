@@ -33,15 +33,15 @@ gulp.task('test:cucumber', ['test:cucumber:webdriver'], function () {
 });
 
 gulp.task('test:fail_on_skipped', function() {
-    var grep = require('grep1');
-    var matchDetector = function(err, stdout, stderr) {
-        if (!err && !stderr) {
-            var message = "It looks like you have some tests disabled.";
-            gutil.log(gutil.colors.red(message));
-            gutil.log(gutil.colors.red(stdout));
-            throw message;
-        }
+    var shell = require('shelljs');
+    var matchDetector = function(exitCode, out) {
+        if (exitCode) return;
+
+        var message = "It looks like you have some tests disabled.";
+        gutil.log(gutil.colors.red(message));
+        gutil.log(gutil.colors.red(out));
+        throw message;
     };
-    grep(['-r', 'ddescribe', 'test'], matchDetector);
-    grep(['-r', 'iit', 'test'], matchDetector);
+    shell.exec('grep -r ddescribe test', matchDetector);
+    shell.exec('grep -r iit test', matchDetector);
 });
