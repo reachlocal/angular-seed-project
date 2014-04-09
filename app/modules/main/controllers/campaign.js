@@ -1,6 +1,7 @@
 angular
     .rlmodule('rl.cpi.main.controllers.Campaign',
         ['rl.cpi.main.directives',
+         'rl.cpi.main.services.Publishers',
          'rl.cpi.main.services.CampaignOverview',
          'rl.cpi.main.services.Recommendations',
          'rl.cpi.main.services.Creatives',
@@ -9,7 +10,7 @@ angular
          'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
     .controller('Campaign', function ($scope, $rootScope, $filter,
-                                      campaignOverview, recommendations, creatives,
+                                      publishers, campaignOverview, recommendations, creatives,
                                       TextCreativeReports, CreativeHeaders, DateRange, $stateParams) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.campaignOverview = campaignOverview;
@@ -33,6 +34,10 @@ angular
         $stateProvider
             .state('campaign', {
                 resolve: {
+                    publishers: function(Publishers, $stateParams) {
+                        var publishers = Publishers.get({campaignId: $stateParams.campaignId});
+                        return publishers.$promise;
+                    },
                     campaignOverview: function(CampaignOverview, $stateParams) {
                         var campaignOverview = CampaignOverview.get({campaignId: $stateParams.campaignId});
                         return campaignOverview.$promise;
