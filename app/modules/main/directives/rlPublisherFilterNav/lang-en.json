@@ -1,6 +1,7 @@
 {
     "rlPublisherFilterNav": {
         "All Campaigns": "All Campaigns",
-        "All Ad Groups": "All Ad Groups"
+        "All Ad Groups": "All Ad Groups",
+        "Filter by:": "Filter by:"
     }
 }
