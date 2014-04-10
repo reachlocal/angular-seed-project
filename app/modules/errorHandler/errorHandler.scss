@@ -1,0 +1,43 @@
+@import "rl_seeds/variables";
+
+ol[growl] {
+  position: fixed;
+  top: $default-spacing * 3;
+  left: 50%;
+  transform: translateX(-50%);
+
+  button.close {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  .growl-item {
+    padding: $default-spacing;
+    box-shadow: ($default-spacing / 2) ($default-spacing / 2) 0 $color-shadow;
+
+    &.ng-enter,
+    &.ng-leave {
+        transition: 200ms linear all;
+    }
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+        transform: translateY(-200%);
+    }
+    &.ng-leave,
+    &.ng-enter.ng-enter-active {
+        transform: translateY(0);
+    }
+  }
+
+  .alert-error {
+    background-color: $color-danger;
+    color: $color-white;
+  }
+}

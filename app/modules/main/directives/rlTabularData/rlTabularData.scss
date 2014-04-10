@@ -35,6 +35,14 @@
       color: $color-bodycopy;
       border-bottom-color: $color-info;
     }
+
+    &.invalid + form input {
+      border-color: $color-danger;
+    }
+  }
+
+  .editable-error {
+    display: none;
   }
 
   .editable-wrap {
