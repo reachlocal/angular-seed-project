@@ -6,14 +6,13 @@ angular.rlmodule('rl.errorhandler', ['angular-growl'])
             growl.addErrorMessage('Internal server error.');
         } else {
             try {
-               error.data.forEach(function(errorMessage) {
+                error.data.forEach(function(errorMessage) {
                     growl.addErrorMessage(errorMessage.name + ': ' + errorMessage.message);
-               });
+                });
             } catch (e) {
                 growl.addErrorMessage('Unexpected error.');
             }
         }
-        //throw error;
         return $q.reject(error);
     }};
 })
