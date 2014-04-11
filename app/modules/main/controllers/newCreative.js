@@ -10,10 +10,7 @@ angular
         $scope.publishers = publishers.webPublisherCampaigns;
         // _.each($scope.publishers,function(e) { e.selected = true; });
 
-        $scope.masterCreative = {
-            headLine: "Yo",
-            descriptiveLine: [ "mama", "is nice" ]
-        };
+        $scope.masterCreative = { headLine: 'abc', descriptiveLine: ['1','2'] };
     })
     .config(function ($stateProvider) {
         $stateProvider
