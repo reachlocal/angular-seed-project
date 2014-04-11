@@ -4,15 +4,15 @@ angular.rlmodule('rl.errorhandler', ['angular-growl'])
     return { responseError: function ( error) {
         if (error.status === 500) {
             growl.addErrorMessage('Internal server error.');
-         } else {
+        } else {
             try {
-                error.data.forEach(function(errorMessage) {
+               error.data.forEach(function(errorMessage) {
                     growl.addErrorMessage(errorMessage.name + ': ' + errorMessage.message);
-                });    
+               });
             } catch (e) {
-               growl.addErrorMessage('Unexpected error.');
+                growl.addErrorMessage('Unexpected error.');
             }
-         }
+        }
         //throw error;
         return $q.reject(error);
     }};
