@@ -28,6 +28,10 @@ main > nav {
     }
   }
 
+  label {
+    line-height: 2em;
+  }
+
   select, #{$inputs} {
     height: 100%;
     width: 180px;
@@ -43,9 +47,8 @@ main > nav {
 
   select {
     background-image: $arrow-image-white;
-
-    & + select {
-      margin-left: $default-spacing;
+    &:-moz-focusring {
+      text-shadow: 0 0 0 $color-white;
     }
   }
 }

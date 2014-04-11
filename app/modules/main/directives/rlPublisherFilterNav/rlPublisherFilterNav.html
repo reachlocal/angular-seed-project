@@ -1,16 +1,15 @@
 <nav>
   <form>
     <fieldset>
-      <label><translate>rlPublisherFilterNav.Filter by:</translate>
-        <select name="webPublisherCampaign"
-            ng-model="selectedPublisher"
-            ng-options="(p.publisher.publisherName
-                        + ' ' +
-                        (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publishers"
-            >
-            <option value="">{{ 'rlPublisherFilterNav.All Campaigns' | translate }}</option>
-        </select>
-      </label>
+      <label>{{ 'rlPublisherFilterNav.Filter by:' | translate }}</label>
+      <select name="webPublisherCampaign"
+          ng-model="selectedPublisher"
+          ng-options="(p.publisher.publisherName
+                      + ' ' +
+                      (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publishers"
+          >
+          <option value="">{{ 'rlPublisherFilterNav.All Campaigns' | translate }}</option>
+      </select>
       <select name="adGroup"
           ng-options="adGroup for adGroup in selectedPublisher.adGroups"
           ng-model="selectedAdGroup"
