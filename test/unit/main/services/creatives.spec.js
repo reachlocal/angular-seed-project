@@ -2,7 +2,7 @@ describe('Creatives Service', function() {
     var creative1 = {
         headLines: 'Blah',
         descriptiveLines: [ 'Yadda yadda', 'et cetera' ]
-    }
+    };
     var service;
 
     beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
