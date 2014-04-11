@@ -11,7 +11,7 @@
           Add a master creative as a template for different publishers
         </p>
 
-        <rl-creative-card master-of="masterCreative">
+        <rl-creative-card ng-model="masterCreative">
         </rl-creative-card>
 
         <p>Publish a copy of this creative at...</p>
@@ -33,7 +33,7 @@
         </p>
         <rl-creative-card ng-repeat="publisher in filteredPublishers = ( publishers | filter:{selected:true} )"
                       publisher="publisher"
-                      based-on="masterCreative">
+                      linked-to="masterCreative">
         </rl-creative-card>
         <br style="clear: both"/>
     </section>

@@ -7,29 +7,28 @@ describe('RL Creative Card Editor', function () {
     beforeEach(module('rl.cpi'));
     beforeEach(module('rl.cpi.main.directives.rlCreativeCard'));
 
-    beforeEach(inject(function($controller, $rootScope) {
+    beforeEach(inject(function ($controller, $rootScope) {
         $scope = $rootScope.$new();
         rootScope = $rootScope;
         controller = $controller;
     }));
 
-    function buildController() {
+    function buildController () {
         controller('rlCreativeCardCtrl', {
             $scope: $scope,
             $rootScope: rootScope,
         });
+        $scope.$digest();
     }
 
-    describe("is the master creative", function() {
-        it("uses the passed creative", function() {
-            $scope.masterOf = {
+    describe('is the master creative', function () {
+        it('uses the given ngModel', function () {
+            $scope.ngModel = {
                 headLine: 'a headline',
                 descriptiveLine: [ 'one line', 'other line' ]
             };
 
             buildController();
-
-            $scope.$digest();
 
             expect($scope.creative.headLine).toBe('a headline');
             expect($scope.creative.descriptiveLine[0]).toBe('one line');
@@ -38,58 +37,57 @@ describe('RL Creative Card Editor', function () {
         });
     });
 
-    describe("is based on a master creative", function() {
+    describe('is based on a master creative', function () {
         var masterCreative;
-        beforeEach(function() {
-            masterCreative = {
+        beforeEach(function () {
+            $scope.linkedTo = masterCreative = {
                 headLine: 'a headline',
                 descriptiveLine: [ 'one line', 'other line' ]
             };
-        });
-        it("synchronizes values with master", function() {
-            $scope.basedOn = masterCreative;
-
             buildController();
-
             $scope.$digest();
+        });
 
+        it('synchronizes values with master', function () {
             expect($scope.creative.headLine).toBe('a headline');
             expect($scope.creative.descriptiveLine[0]).toBe('one line');
             expect($scope.creative.descriptiveLine[1]).toBe('other line');
+            expect($scope.isLinked).toBe(true);
         });
-        it("unlinks when user edits it", function() {
-            $scope.basedOn = masterCreative;
 
-            buildController();
-            $scope.$digest();
-
+        it('unlinks when user edits it', function () {
             $scope.creative.headLine = 'a different headline';
             $scope.$digest();
 
             expect(masterCreative.headLine).toBe('a headline');
-            expect($scope.creative.headLine).toBe('a different headline');
 
             masterCreative.headLine = 'yet another headline';
             $scope.$digest();
 
-            expect(masterCreative.headLine).toBe('yet another headline');
             expect($scope.creative.headLine).toBe('a different headline');
+            expect($scope.isLinked).toBe(false);
         });
-        xit("user explicitly link creative again", function() {
-            $scope.basedOn = masterCreative;
 
-            buildController();
-            $scope.$digest();
-
+        it('user explicitly link creative again', function () {
             $scope.creative.headLine = 'a different headline';
             $scope.$digest();
 
-            $scope.linkWithMaster();
+            $scope.link();
             masterCreative.headLine = 'yet another headline';
             $scope.$digest();
 
             expect($scope.creative.headLine).toBe('yet another headline');
+            expect($scope.isLinked).toBe(true);
+        });
 
+        it('user explicitly unlinks creative', function () {
+            $scope.unlink();
+
+            masterCreative.headLine = 'a different headline';
+            $scope.$digest();
+
+            expect($scope.creative.headLine).toBe('a headline');
+            expect($scope.isLinked).toBe(false);
         });
     });
 });

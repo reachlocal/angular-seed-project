@@ -1,43 +1,39 @@
 angular
     .rlmodule('rl.cpi.main.directives.rlCreativeCard', [])
-    .controller('rlCreativeCardCtrl', function($scope) {
-        var isSyncing = false;
-        var syncListener = angular.noop;
+    .controller('rlCreativeCardCtrl', function ($scope) {
+        var syncing;
+        var stopSyncing = angular.noop;
 
-        function listener(newValue, oldValue) {
-            isSyncing = true;
-            $scope.creative = {
-                headLine: newValue.headLine,
-                descriptiveLine: [
-                    newValue.descriptiveLine[0],
-                    newValue.descriptiveLine[1]
-                ]
-            };
+        function synchronize (value) {
+            syncing = true;
+            $scope.creative = angular.copy(value);
         }
 
-        if ($scope.basedOn) {
-            syncListener = $scope.$watch("basedOn", listener, true);
-        } else {
-            $scope.creative = $scope.masterOf;
-        }
-
-        $scope.$watch('creative', function(newValue, oldValue) {
-            if (!isSyncing) {
-                syncListener();
-            }
-            isSyncing = false;
-        }, true);
-
-        $scope.linkWithMaster = function() {
+        $scope.link = function link () {
+            $scope.isLinked = true;
+            stopSyncing = $scope.$watch('linkedTo', synchronize , true);
         };
+
+        $scope.unlink = function unlink () {
+            if (!syncing) {
+                stopSyncing();
+                $scope.isLinked = false;
+            }
+            syncing = false;
+        };
+
+        $scope.creative = $scope.ngModel;
+        if ($scope.linkedTo) { $scope.link(); }
+        $scope.$watch('creative', $scope.unlink, true);
     })
+
     .directive('rlCreativeCard', function () {
         return {
-            templateUrl: "modules/main/directives/rlCreativeCard/rlCreativeCard.html",
+            templateUrl: 'modules/main/directives/rlCreativeCard/rlCreativeCard.html',
             scope: {
                 publisher: '=',
-                masterOf: '=',
-                basedOn: '='
+                ngModel: '=',
+                linkedTo: '='
             },
             restrict: 'E',
             replace: true,
