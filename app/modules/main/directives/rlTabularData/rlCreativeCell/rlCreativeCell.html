@@ -1,7 +1,7 @@
 <section >
   <p class="headline"
     editable-text="creative.headLines[$index]"
-    onbeforesave="creative.$update()"
+    onaftersave="creative.$update()"
     ng-repeat="headLine in creative.headLines track by $index"
     e-required
     ng-class="{'invalid': $error}">
@@ -9,7 +9,7 @@
   </p>
   <p ng-repeat="descriptiveLine in creative.descriptiveLines track by $index"
      editable-text="creative.descriptiveLines[$index]"
-     onbeforesave="creative.$update()"
+     onaftersave="creative.$update()"
      e-required
      ng-class="{'invalid': $error}">
      {{ descriptiveLine }}
