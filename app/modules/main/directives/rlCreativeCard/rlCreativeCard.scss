@@ -1,0 +1,31 @@
+article.creative_card {
+    margin: .5em;
+    width: 20em;
+    background: #ddd;
+    padding: 0.8em;
+    float: left;
+
+    header {
+        .publisher {
+            font-weight: bold;
+            width: 13em;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            float: left;
+        }
+        .geotype {
+            display: inline-block;
+            float: left;
+        }
+    }
+
+    input {
+        width: 100%;
+
+        &:first-child {
+            font-weight: bold;
+        }
+    }
+}

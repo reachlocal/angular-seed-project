@@ -1,0 +1,59 @@
+@import "rl_seeds/variables";
+
+main.new_creative {
+    position: relative;
+    padding-bottom: 2em;
+
+    $nav-height: $default-spacing / 2;
+    $header-height: $default-spacing * 3;
+
+    nav {
+        height: $nav-height;
+        padding: 0;
+        * {
+            display: none;
+        }
+    }
+
+    header[role=banner] {
+        height: $header-height;
+        padding: 1em;
+        width: 100%;
+        background: white;
+    }
+
+    aside {
+        width: 23em;
+        padding: 1em;
+        height: 100%;
+        float: left;
+        border-right: 1px dotted gray;
+    }
+    section.preview {
+        padding: 1em;
+        bottom: 0;
+        top: 0;
+        margin-left: 23em;
+
+        p.tip {
+            background: lightpink;
+            padding: 1em;
+            border-radius: 1em;
+            width: 30em;
+        }
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        border-top: 1px solid gray;
+        background-color: white;
+        width: 100%;
+        text-align: right;
+        padding: 1em;
+
+        button {
+            font-size: large;
+            padding: 0 5rem;
+        }
+    }
+}

@@ -17,6 +17,7 @@ angular
         $scope.recommendations = recommendations;
         $scope.creatives = creatives;
         $scope.creativeHeaders = CreativeHeaders;
+        $scope.publishers = publishers;
 
         function getReports() {
             var params = {
