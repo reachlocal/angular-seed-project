@@ -1,9 +1,20 @@
 angular.rlmodule('rl.errorhandler', ['angular-growl'])
 
-.factory('errorInterceptor', function (growl) {
-    return { responseError: function (error) {
-        growl.addErrorMessage(error.status === 500 ? 'Internal server error.' : error.data);
-        throw error;
+.factory('errorInterceptor', function ($q, growl) {
+    return { responseError: function ( error) {
+        if (error.status === 500) {
+            growl.addErrorMessage('Internal server error.');
+         } else {
+            try {
+                error.data.forEach(function(errorMessage) {
+                    growl.addErrorMessage(errorMessage.name + ': ' + errorMessage.message);
+                });    
+            } catch (e) {
+               growl.addErrorMessage('Unexpected error.');
+            }
+         }
+        //throw error;
+        return $q.reject(error);
     }};
 })
 
