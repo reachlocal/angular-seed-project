@@ -50,6 +50,6 @@
   &:#{$position} {
     font-size: initial;
     line-height: initial;
-    content: $unicode-icon
+    content: $unicode-icon;
   }
 }

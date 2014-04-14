@@ -17,7 +17,8 @@ angular
             scope: {
                 headers: '=',
                 creatives: '=',
-                reports: '='
+                reports: '=',
+                campaignId: '='
             },
             restrict: 'E',
             controller: 'rlTabularDataCtrl',

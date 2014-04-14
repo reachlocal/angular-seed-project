@@ -85,4 +85,7 @@
     box-shadow: $spacing-small $spacing-small $color-shadow;
   }
 
+  [rel="new-creative"] {
+    @include unicode(before, $unicode-plus);
+  }
 }
