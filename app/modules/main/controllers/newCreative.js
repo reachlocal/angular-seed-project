@@ -5,12 +5,14 @@ angular
          'rl.cpi.main.services.CampaignOverview',
          'ui.router'])
 
-    .controller('NewCreative', function ($scope, publishers, campaignOverview) {
+    .controller('NewCreative', function ($scope, publishers, campaignOverview, $window) {
         $scope.campaignOverview = campaignOverview;
         $scope.publishers = publishers.webPublisherCampaigns;
-        // _.each($scope.publishers,function(e) { e.selected = true; });
 
-        $scope.masterCreative = { headLine: 'abc', descriptiveLine: ['1','2'] };
+        $scope.masterCreative = { headLine: '', descriptiveLine: ['',''] };
+        $scope.back = function () {
+            $window.history.back();
+        };
     })
     .config(function ($stateProvider) {
         $stateProvider
