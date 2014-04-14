@@ -5,8 +5,9 @@
     $hover-color: darken($background-color, 10);
   }
 
-  background-color: $background-color;
   &:not(:disabled) {
+    background-color: $background-color;
+
     &:hover {
       background-color: $hover-color;
     }
