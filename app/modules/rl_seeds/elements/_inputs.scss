@@ -11,4 +11,17 @@
   min-height: 2em;
   padding: 0 ($default-spacing / 2);
   vertical-align: middle;
+  resize: none;
+
+  &:not(:disabled):hover {
+    border-color: $color-action;
+  }
+
+  &:not(:disabled):focus {
+    border-color: $color-info;
+  }
+
+  &:disabled {
+    background-color: $color-light;
+  }
 }

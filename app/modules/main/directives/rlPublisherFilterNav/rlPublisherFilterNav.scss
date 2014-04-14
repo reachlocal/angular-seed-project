@@ -21,6 +21,7 @@ main > nav {
 
       & + fieldset {
         margin-left: ($default-spacing - 4px); // The magic spacing added to inline elements.
+        margin-top: 0;
         border-left: 1px solid $color-light;
         padding-left: $default-spacing;
         position: relative;
@@ -40,7 +41,8 @@ main > nav {
     color: $color-white;
     cursor: pointer;
 
-    &:not(:disabled):hover {
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
       border-color: $color-white;
     }
   }

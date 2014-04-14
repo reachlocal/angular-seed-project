@@ -11,6 +11,8 @@ $color-heading     : $color-dark;
 
 $inputs: (
   unquote('input[type="text"]'),
+  unquote('input[type="password"]'),
+  unquote('input[type="number"]'),
   unquote('input[type="date"]'),
   unquote('textarea')
 );
