@@ -13,8 +13,9 @@ gulp.task('style:minify', function () {
     var minifyCss = require('gulp-minify-css');
     var concat = require('gulp-concat');
 
-    var sassPipe = gulp.src(config.APPLICATION_STYLES)
-        .pipe(sass({includePaths: ['app/modules'], sourceComments: 'map'}))
+    var cssFiles = config.APPLICATION_STYLES.concat(config.BOWER_CSS);
+    var sassPipe = gulp.src(cssFiles)
+        .pipe(sass({includePaths: ['app/modules']}))
         .pipe(minifyCss())
         .pipe(concat('app.css'))
         .pipe(gulp.dest(config.MINIFY_DESTINATION))
