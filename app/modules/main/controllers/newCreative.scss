@@ -4,8 +4,8 @@ main.new_creative {
     position: relative;
     padding-bottom: 2em;
 
-    $nav-height: $default-spacing / 2;
-    $header-height: $default-spacing * 3;
+    $nav-height: $spacing-small;
+    $header-height: $spacing-default * 3;
 
     nav {
         height: $nav-height;

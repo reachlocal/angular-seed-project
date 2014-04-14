@@ -54,39 +54,3 @@ body > footer {
   display: block;
   text-align: right;
 }
-
-.editable {
-  cursor: pointer;
-  border: 1px dashed transparent;
-  color: $color-bodycopy;
-  padding: ($default-spacing / 5) 8px;
-  margin-bottom: 2px;
-
-  &:hover {
-    color: $color-bodycopy;
-    border-bottom-color: $color-info;
-  }
-}
-
-.editable-wrap {
-  width: 100%;
-  position: relative;
-  margin-bottom: $default-spacing / 5;
-
-  .editable-controls > input {
-    width: 100%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .editable-buttons {
-    position: absolute;
-    direction: rtl;
-    height: 100%;
-
-    button {
-      margin: 0;
-      height: 100%;
-    }
-  }
-}
