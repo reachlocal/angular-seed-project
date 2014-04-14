@@ -2,7 +2,7 @@
 
 ol[growl] {
   position: fixed;
-  top: $default-spacing * 3;
+  top: $spacing-default * 3;
   left: 50%;
   transform: translateX(-50%);
 
@@ -18,8 +18,8 @@ ol[growl] {
   }
 
   .growl-item {
-    padding: $default-spacing;
-    box-shadow: ($default-spacing / 2) ($default-spacing / 2) 0 $color-shadow;
+    padding: $spacing-default;
+    box-shadow: $spacing-small $spacing-small 0 $color-shadow;
 
     &.ng-enter,
     &.ng-leave {

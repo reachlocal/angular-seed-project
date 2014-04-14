@@ -1,14 +1,14 @@
 @import "rl_seeds/variables";
 
 main > nav {
-  $nav-height: ($default-spacing * 3);
+  $nav-height: ($spacing-default * 3);
 
   background-color: rgba($color-info, 0.9);
   color: $color-white;
-  box-shadow: 0 ($default-spacing / 2) 0 $color-shadow;
+  box-shadow: 0 $spacing-small 0 $color-shadow;
   height: $nav-height;
   text-align: right;
-  padding: ($default-spacing / 2) $default-spacing;
+  padding: $spacing-small $spacing-default;
   position: sticky;
   top: 0;
 
@@ -20,10 +20,10 @@ main > nav {
       height: 100%;
 
       & + fieldset {
-        margin-left: ($default-spacing - 4px); // The magic spacing added to inline elements.
+        margin-left: ($spacing-default - 4px); // The magic spacing added to inline elements.
         margin-top: 0;
         border-left: 1px solid $color-light;
-        padding-left: $default-spacing;
+        padding-left: $spacing-default;
         position: relative;
       }
     }
@@ -48,7 +48,7 @@ main > nav {
   }
 
   select {
-    background-image: $arrow-image-white;
+    background-image: $image-down-arrow-white;
     &:-moz-focusring {
       text-shadow: 0 0 0 $color-white;
     }

@@ -1,10 +1,11 @@
 @import "rl_seeds/variables";
+@import "rl_seeds/mixins";
 
 .creative-metrics {
   clear: both;
   width: 100%;
   overflow: auto;
-  padding: $default-spacing;
+  padding: $spacing-default;
 
   table {
     margin: 0 auto;
@@ -49,9 +50,9 @@
     display: block;
     width: 100%;
     position: relative;
-    left: -($default-spacing / 2);
+    left: -$spacing-small;
     top: -3px;
-    margin-bottom: -($default-spacing / 3);
+    margin-bottom: -($spacing-default / 3);
 
     .editable-controls > input {
       width: 100%;
@@ -67,17 +68,13 @@
         font-size: 0;
         height: 100%;
 
-        &:before {
-          font-size: initial;
-          line-height: initial;
-        }
-
+        @include unicode(before, '');
         &[type="submit"]:before {
-          content: '\2714';
+          content: $unicode-check;
         }
 
         &[type="button"]:before {
-          content: '\2716';
+          content: $unicode-times;
         }
       }
     }
@@ -85,7 +82,7 @@
 
   .editable-wrap,
   .editable-buttons {
-    box-shadow: ($default-spacing / 2) ($default-spacing / 2) $color-shadow;
+    box-shadow: $spacing-small $spacing-small $color-shadow;
   }
 
 }

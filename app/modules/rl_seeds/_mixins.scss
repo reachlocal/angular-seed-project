@@ -27,7 +27,7 @@
 
 @mixin button($background-color, $hover-color: null) {
   border: none;
-  padding: 0 ($default-spacing / 2);
+  padding: 0 $spacing-small;
   font: $font-bodycopy;
   min-height: 2em;
   background-color: $background-color;
@@ -43,4 +43,12 @@
   }
 
   @include button-color($background-color, $hover-color);
+}
+
+@mixin unicode($position, $unicode-icon) {
+  &:#{$position} {
+    font-size: initial;
+    line-height: initial;
+    content: $unicode-icon
+  }
 }

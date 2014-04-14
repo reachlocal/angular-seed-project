@@ -1,7 +1,7 @@
 @import "rl_seeds/variables";
 
 body > header {
-  $header-height: $default-spacing * 4;
+  $header-height: $spacing-default * 4;
 
   background-color: $color-dark;
   color: $color-white;
@@ -12,7 +12,7 @@ body > header {
 
   & > h1, & > ul {
     float: left;
-    padding: $default-spacing;
+    padding: $spacing-default;
   }
 
   & > h1 {

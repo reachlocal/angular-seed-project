@@ -12,7 +12,7 @@ form {
 
   dt + dd + dt,
   dd + dt + dd {
-    margin-top: $default-spacing / 2;
+    margin-top: $spacing-small;
   }
 
   dt {
@@ -34,12 +34,12 @@ fieldset {
   }
 
   & + fieldset {
-    margin-top: $default-spacing;
+    margin-top: $spacing-default;
   }
 
   legend {
     font-size: 1.5em;
     line-height: 150%;
-    margin-bottom: $default-spacing;
+    margin-bottom: $spacing-default;
   }
 }

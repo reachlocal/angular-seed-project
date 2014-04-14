@@ -1,7 +1,7 @@
 @import "rl_seeds/variables";
 
 .recommendations {
-  padding: $default-spacing;
+  padding: $spacing-default;
   display: inline-block;
   width: 50%;
   float: left;
@@ -14,11 +14,11 @@
   }
 
   ul {
-    padding: $default-spacing;
+    padding: $spacing-default;
   }
 
   li + li {
-    margin-top: $default-spacing / 2;
+    margin-top: $spacing-small;
   }
 
   details {
@@ -30,12 +30,12 @@
     }
 
     & > p {
-      padding: $default-spacing;
+      padding: $spacing-default;
     }
   }
 
   summary {
-    $height: $default-spacing * 2;
+    $height: $spacing-large;
 
     user-select: none;
     overflow: auto;
@@ -46,7 +46,7 @@
     }
 
     button {
-      min-width: 5 * $default-spacing;
+      min-width: 5 * $spacing-default;
       height: $height;
       float: right;
     }

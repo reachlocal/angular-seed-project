@@ -10,25 +10,25 @@ select {
   margin: 0;
   padding: 0;
   min-height: 2em;
-  padding: 0 ($default-spacing / 2);
+  padding: 0 $spacing-small;
   vertical-align: middle;
 }
 
 
 select {
   appearance: none;
-  background-image: $arrow-image;
+  background-image: $image-down-arrow;
   background-repeat: no-repeat;
-  background-position: right ($default-spacing / 2) top 50%;
+  background-position: right $spacing-small top 50%;
   background-size: 1em;
-  padding-right: ($default-spacing * 2);
+  padding-right: ($spacing-large);
 }
 
 @-moz-document url-prefix() {
   select {
     text-indent: 0.01px;
     text-overflow: '';
-    padding: ($default-spacing / 5) ($default-spacing) 0 ($default-spacing / 2);
+    padding: ($spacing-default / 5) ($spacing-default) 0 $spacing-small;
   }
 
   select:-moz-focusring {
