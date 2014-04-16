@@ -1,0 +1,23 @@
+{
+  "name": "angular-rlmodule",
+  "version": "0.0.1",
+  "homepage": "https://github.com/reachlocal/angular-rlmodule",
+  "authors": [
+    "Tom Hood <networkerror@gmail.com>"
+  ],
+  "description": "A namespaced module loader for angularjs (experimental).",
+  "main": "RlModule.js",
+  "keywords": [
+    "angularjs",
+    "module"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}

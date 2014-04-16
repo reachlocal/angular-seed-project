@@ -1,0 +1,32 @@
+{
+  "name": "angular-rlmodule",
+  "homepage": "https://github.com/reachlocal/angular-rlmodule",
+  "authors": [
+    "Tom Hood <networkerror@gmail.com>"
+  ],
+  "description": "A namespaced module loader for angularjs (experimental).",
+  "main": "RlModule.js",
+  "keywords": [
+    "angularjs",
+    "module"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "644d2a03d7",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "644d2a03d7e6257f7702e62727cd0efbf35ae32a"
+  },
+  "_source": "git@github.com:reachlocal/angular-rlmodule.git",
+  "_target": "*",
+  "_originalSource": "git@github.com:reachlocal/angular-rlmodule.git",
+  "_direct": true
+}

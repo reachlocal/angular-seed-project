@@ -14,7 +14,7 @@
  *   OR
  *   angular.rlmodule('myapp.controllers.AllDirectives', ['myapp.directives']).controller('AllDirectives', ...);
  *   OR
- *   <body rl-app='myapp'></body>
+ *   <body ng-app='myapp'></body>
  *
  * Then I should get all components declared on child modules
  **/

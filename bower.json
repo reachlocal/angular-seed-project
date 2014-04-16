@@ -34,7 +34,8 @@
     "momentjs": "~2.5.1",
     "prefixfree": "*",
     "logifill-details": "kapitancho/logifill-details",
-    "angular-growl": "~0.4.0"
+    "angular-growl": "~0.4.0",
+    "angular-rlmodule": "git@github.com:reachlocal/angular-rlmodule.git"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15"
