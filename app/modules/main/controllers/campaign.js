@@ -21,9 +21,9 @@ angular
 
         function getReports() {
             var params = {
-                campaignId: $stateParams.campaignId,
-                from:       DateRange.from().format('YYYY-MM-DD'),
-                to:         DateRange.to().format('YYYY-MM-DD')
+                masterCampaignId: $scope.campaignOverview.masterCampaignId,
+                from:             DateRange.from().format('YYYY-MM-DD'),
+                to:               DateRange.to().format('YYYY-MM-DD')
             };
             $scope.reports = TextCreativeReports.query(params);
         }
