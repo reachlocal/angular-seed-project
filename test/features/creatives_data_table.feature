@@ -13,6 +13,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     And the data table should contain these data elements as columns:
       | Column Name         |
       | Ad Text             |
+      | New creative…       |
       | Status              |
       | Ad Group            |
       | Publisher           |

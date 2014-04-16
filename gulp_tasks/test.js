@@ -20,9 +20,9 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
 
 gulp.task('test:cucumber:webdriver', require('gulp-protractor').webdriver_update);
 
-gulp.task('test:cucumber', ['test:cucumber:webdriver'], function () {
+gulp.task('test:cucumber', ['test:cucumber:webdriver', 'dist'], function () {
     var httpServer = require('./lib/httpServer');
-    var serverInstance = httpServer(config.APPLICATION_ROOT, config.WEB_SERVER_PORT);
+    var serverInstance = httpServer(config.MINIFY_DESTINATION, config.WEB_SERVER_PORT);
 
     var protractor = require('gulp-protractor').protractor;
     gulp.src(['./test/features/*.feature']).pipe(protractor({
