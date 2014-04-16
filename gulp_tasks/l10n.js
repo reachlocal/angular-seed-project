@@ -1,9 +1,6 @@
-var lrServer = global.lrServer;
-
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var config = require('./config/config');
-var refresh = require('gulp-livereload');
 
 /**
  * Concat translation files for each language
@@ -19,9 +16,7 @@ gulp.task('l10n', ['l10n:support'], function () {
         var locale = config.LOCALES[i];
         var l10nPipe = gulp.src(config.APPLICATION_ROOT + '/modules/**/lang-' + locale + '.json')
             .pipe(concatJson('lang-' + locale + '.json'))
-            .pipe(gulp.dest(config.APPLICATION_ROOT + '/.l10n/'))
-            .pipe(gulp.dest(config.MINIFY_DESTINATION + '/.l10n/'))
-            .pipe(refresh(lrServer));
+            .pipe(gulp.dest(config.MINIFY_DESTINATION + '/.l10n/'));
         jsonStreams.push(l10nPipe);
     }
 
@@ -42,7 +37,7 @@ gulp.task('l10n:support', function () {
 gulp.task('l10n:testify', ['l10n'], function () {
     var deferred = require('q').defer();
     var fs = require('fs');
-    fs.readFile(config.APPLICATION_ROOT + '/.l10n/lang-en.json', function(err, data) {
+    fs.readFile(config.MINIFY_DESTINATION + '/.l10n/lang-en.json', function(err, data) {
         if (err) {
             gutil.log(gutil.colors.red("Could not build test l10n files."));
             deferred.reject();

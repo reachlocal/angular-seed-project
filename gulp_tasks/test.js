@@ -4,11 +4,11 @@ var config = require('./config/config');
 var runJasmineTestsFunc = require('./lib/runJasmineTests.js');
 
 
-gulp.task('test:unit', ['build_project_file', 'ngtemplates', 'l10n:testify'], function () {
+gulp.task('test:unit', ['ngtemplates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['build_project_file', 'ngtemplates', 'l10n:testify'], function () {
+gulp.task('test:integration', ['ngtemplates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('integration');
 });
 

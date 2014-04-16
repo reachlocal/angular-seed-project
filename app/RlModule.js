@@ -64,39 +64,5 @@
 
     }
 
-    /**
-     * Find the 'rl-app' node in the HTML and bootstrap the angular app.
-     */
-    function bootstrap() {
-        buildModuleBundle();
-
-        // Bootstrap using the 'rl-app="rl.myModule"', if defined
-        // It looks like a directive...  but it's not.  :)
-        var bootstrapThis = document.querySelectorAll('[rl-app]');
-        if (bootstrapThis.length > 0) {
-            if (bootstrapThis.length > 1) {
-                throw {message: 'You *must* specify only ONE \'rl-app="[module.name]"\' on the page. Found: ' + bootstrapThis.length};
-            }
-            bootstrapThis = bootstrapThis[0];
-            var bootstrapModule = bootstrapThis.getAttribute('rl-app');
-            if (!bootstrapModule) {
-                throw {message: 'You must specify a module in your rl-app attribute.  Ex: rl-app="rl.myproject"'};
-            }
-            angular.bootstrap(bootstrapThis, [bootstrapModule]);
-        }
-
-        // If the user is using ng-app, warn them.  Race condition!
-        var ohnoes = document.querySelectorAll('[ng-app]');
-        if (ohnoes.length > 0) {
-            console.warn('You are automatically bootstrapping an angular app using ng-app. ' +
-                'This will sometimes break when used with rlModule and rlLoader. ' +
-                'You should probably use "rl-app" instead of "ng-app".  Have a nice day.');
-        }
-    }
-
-    // Don't bootstrap until RlLoader has loaded everything
-    // If we use ngApp, it auto-bootstraps too early (sometimes)  :S
-    document.addEventListener('RlLoaderFinished', bootstrap);
     angular.rlmodule = this.module;
-
 }());

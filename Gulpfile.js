@@ -16,12 +16,6 @@
 var gulp = require('gulp');
 
 /**
- * Setup live reload, spawn a server, and stash it in the global scope
- */
-var refresh = require('gulp-livereload');
-global.lrServer = require('tiny-lr')();
-
-/**
  * A tiny task that will print out all our other tasks
  * Usage:  `gulp help`
  */

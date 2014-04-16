@@ -17,6 +17,7 @@ var config = {
     APPLICATION_STYLES: [
         APPLICATION_ROOT + '/modules/**/*.scss',
         APPLICATION_ROOT + '/modules/**/*.css',
+        APPLICATION_ROOT + '/bower_components/angular-xeditable/dist/css/xeditable.css',
         '!' + APPLICATION_ROOT + '/modules/{rl_seeds,rl_seeds/**}'
     ],
     TEST_LIBRARIES: [
