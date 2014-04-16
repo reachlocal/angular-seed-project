@@ -11,5 +11,5 @@ gulp.task('ngtemplates', function () {
             root: 'modules',
             module: 'templates'
         }))
-        .pipe(gulp.dest(config.MINIFY_DESTINATION));
+        .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js'));
 });
