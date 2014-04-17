@@ -18,7 +18,7 @@ gulp.task('js:app:minify', ['ngtemplates'], function() {
     var uglify = require('gulp-uglify');
     var concat = require('gulp-concat');
 
-    return gulp.src(['app/RlModule.js', config.APPLICATION_SCRIPTS , config.MINIFY_DESTINATION + '/js/templates.js'])
+    return gulp.src([config.APPLICATION_SCRIPTS , config.MINIFY_DESTINATION + '/js/templates.js'])
         .pipe(concat('app.min.js', {sourceContent: true }))
         .pipe(uglify({mangle: false}))
         .pipe(gulp.dest(config.MINIFY_DESTINATION));

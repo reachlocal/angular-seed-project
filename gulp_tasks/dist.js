@@ -50,9 +50,6 @@ gulp.task('dist:config:js', function() {
     bowerFiles()
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js' ));
 
-    gulp.src('./app/RlModule.js')
-        .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js'));
-
     gulp.src('./app/modules/**/*.js')
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js/modules'));
 });
@@ -63,7 +60,6 @@ gulp.task('dist:config:js', function() {
     gulp.src(copyFiles)
     .pipe(inject(es.merge(
             bowerFiles({read: false }),
-            gulp.src('./app/RlModule.js', {read: false}),
             gulp.src('./app/modules/**/*.js', {read: false}),
             gulp.src(config.MINIFY_DESTINATION + '/js/templates.js')
         ), { ignorePath: ['/app', '/bower_components', '/dist/js'], addPrefix: '/js' }))
