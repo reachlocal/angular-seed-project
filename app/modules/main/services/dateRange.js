@@ -1,45 +1,48 @@
-angular
-    .rlmodule('rl.cpi.main.services.DateRange', ['rl.cpi.main.services.Moment', 'ui.router'])
-    .service('DateRange', function($rootScope, $state, $location, Moment) {
-        var dateFormat = "YYYY-MM-DD";
-        var today = Moment.build().format(dateFormat);
-        var from, to;
+angular.rlmodule('rl.cpi.main.services.DateRange', ['rl.cpi.main.services.Moment', 'ui.router'])
+.service('DateRange', function ($rootScope, $state, $location, Moment) {
 
+  var dateFormat = 'YYYY-MM-DD';
+  var today = Moment.build().format(dateFormat);
+  var keys = { from: 'dateFrom', to: 'dateTo' };
 
-        if (!$location.search().dateFrom) {
-            from = Moment.build().subtract('days', 30);
-        } else {
-            from = Moment.build($location.search().dateFrom);
-        }
-        if (!$location.search().dateTo) {
-            to = Moment.build();
-        } else {
-            to = Moment.build($location.search().dateTo);
-        }
+  function last (amount, granularity) {
+    return Moment.build().subtract(granularity, amount).format(dateFormat);
+  }
 
-        this.from = function(newDate) {
-            if (!newDate) { return from; }
-            newDate = Moment.build(newDate);
-            if (newDate.isSame(from)) { return this; }
-            from = newDate;
-            broadcast();
-            return this;
-        };
-        this.to = function(newDate) {
-            if (!newDate) { return to; }
-            newDate = Moment.build(newDate);
-            if (newDate.isSame(to)) { return this; }
-            to = newDate;
-            broadcast();
-            return this;
-        };
+  function broadcast (range) {
+    $location.search(keys.from, range.from);
+    $location.search(keys.to, range.to);
+    $state.go($state.current);
+    $rootScope.$broadcast('rl:dateRange:updated', range);
+  }
 
-        function broadcast() {
-            var range = { from: from, to: to };
-            $location.search('dateFrom', from.format(dateFormat));
-            $location.search('dateTo',   to.format(dateFormat));
-            $state.go($state.current);
-            $rootScope.$broadcast('rl:dateRange:updated', range);
-        }
-        broadcast();
-    });
+  this.setRange = function (range) {
+    if (!range) return;
+    broadcast(range);
+  };
+
+  var last30Days = { from: last(30, 'days') , to: today };
+  var initialRange = last30Days;
+  if ($location.search()[keys.from] && $location.search()[keys.to]) {
+    var from = $location.search()[keys.from];
+    var to = $location.search()[keys.to];
+    initialRange = { from: from, to: to };
+  }
+  this.setRange(initialRange);
+
+  this.options = {
+    customLabel: 'rlPublisherFilterNav.dateRange.Custom',
+    ranges: [
+      { label: 'rlPublisherFilterNav.dateRange.Last 30 days',
+        value: last30Days },
+      { label: 'rlPublisherFilterNav.dateRange.Last 60 days',
+        value: { from: last(60, 'days') , to: today } },
+      { label: 'rlPublisherFilterNav.dateRange.Last 90 days',
+        value: { from: last(90, 'days') , to: today } },
+      { label: 'rlPublisherFilterNav.dateRange.All time',
+        value: { from: undefined, to: today } }
+    ],
+    maxToDate: today,
+    value: initialRange
+  };
+});

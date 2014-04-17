@@ -35,6 +35,5 @@
   },
   "_source": "git://github.com/marcorinck/angular-growl.git",
   "_target": "~0.4.0",
-  "_originalSource": "angular-growl",
-  "_direct": true
+  "_originalSource": "angular-growl"
 }

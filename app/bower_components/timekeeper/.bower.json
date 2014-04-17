@@ -1,0 +1,42 @@
+{
+  "name": "timekeeper",
+  "description": "Easy testing of time-dependent code.",
+  "keywords": [
+    "fake date",
+    "date test",
+    "mocking date"
+  ],
+  "author": "Veselin Todorov <hi@vesln.com>",
+  "contributors": [
+    {
+      "name": "Oleg Slobodskoi",
+      "email": "oleg008@gmail.com"
+    },
+    {
+      "name": "Guilherme Tramontina",
+      "email": "guilherme.tramontina@gmail.com"
+    }
+  ],
+  "homepage": "http://github.com/vesln/timekeeper",
+  "main": "./lib/timekeeper.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "_release": "8d6942c132",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8d6942c1328517c72b25e147937d284516cde575"
+  },
+  "_source": "git://github.com/gtramontina/timekeeper.git",
+  "_target": "master",
+  "_originalSource": "gtramontina/timekeeper"
+}

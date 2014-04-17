@@ -33,7 +33,7 @@ main > nav {
     line-height: 2em;
   }
 
-  select, #{$inputs} {
+  select {
     height: 100%;
     width: 180px;
     border-color: transparent;
@@ -51,6 +51,83 @@ main > nav {
     background-image: $image-down-arrow-white;
     &:-moz-focusring {
       text-shadow: 0 0 0 $color-white;
+    }
+  }
+
+  .rl-daterange {
+
+    input[type="checkbox"] {
+      display: none;
+
+      & + label {
+        display: inline-block;
+        width: 15em;
+        text-align: center;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+
+      & + label:hover,
+      &:checked + label {
+        border: 1px solid $color-white;
+      }
+    }
+
+    ul {
+      text-align: initial;
+      background-color: $color-white;
+      box-shadow: $spacing-small $spacing-small 0 $color-shadow;
+      border: 1px solid $color-light;
+      color: $color-bodycopy;
+      padding: $spacing-small;
+      width: 18em;
+      top: $spacing-large;
+
+      li {
+        & + li {
+          margin-top: $spacing-small;
+        }
+
+        &:last-of-type {
+          border-top: 1px solid $color-light;
+
+          label {
+            margin-top: $spacing-small;
+          }
+        }
+      }
+
+      input[type="radio"] {
+        display: none;
+
+        & + label {
+          display: block;
+          cursor: pointer;
+          padding: 0 $spacing-small;
+
+          &:hover {
+            background-color: $color-bright;
+          }
+        }
+
+        &:checked + label {
+          background-color: $color-info;
+          color: $color-white;
+        }
+      }
+
+      input[type="date"] {
+        color: $color-bodycopy;
+        width: 50%;
+        float: left;
+        border: none;
+
+        margin-top: $spacing-small;
+
+        &::-webkit-calendar-picker-indicator {
+          color: $color-action;
+        }
+      }
     }
   }
 }

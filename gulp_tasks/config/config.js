@@ -22,6 +22,7 @@ var config = {
     ],
     TEST_LIBRARIES: [
         'app/bower_components/angular-mocks/angular-mocks.js',
+        'app/bower_components/timekeeper/lib/timekeeper.js'
     ],
     MINIFY_DESTINATION: PROJECT_ROOT + '/dist',
     LOCALES: ['en', 'pt']

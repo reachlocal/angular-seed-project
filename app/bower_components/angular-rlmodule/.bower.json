@@ -19,14 +19,13 @@
     "test",
     "tests"
   ],
-  "_release": "644d2a03d7",
+  "_release": "f511e786c0",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "644d2a03d7e6257f7702e62727cd0efbf35ae32a"
+    "commit": "f511e786c03fe386778ad56d8e1b59ba4cba9973"
   },
   "_source": "git@github.com:reachlocal/angular-rlmodule.git",
   "_target": "*",
-  "_originalSource": "git@github.com:reachlocal/angular-rlmodule.git",
-  "_direct": true
+  "_originalSource": "git@github.com:reachlocal/angular-rlmodule.git"
 }

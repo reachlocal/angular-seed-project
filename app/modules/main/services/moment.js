@@ -1,8 +1,8 @@
 angular
     .rlmodule('rl.cpi.main.services.Moment', [])
-    .factory('Moment', function() {
+    .factory('Moment', function ($window) {
         return {
-            build: function() { return window.moment.apply({}, arguments); }
+            build: function() { return $window.moment.apply({}, arguments); }
         };
     });
 

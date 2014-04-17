@@ -2,6 +2,13 @@
     "rlPublisherFilterNav": {
         "All Publishers": "Todos os Editores",
         "All Ad Groups": "Todos os Ad Groups",
-        "Filter by:": "Filtrar por:"
+        "Filter by:": "Filtrar por:",
+        "dateRange": {
+          "Last 30 days": "Últimos 30 dias",
+          "Last 60 days": "Últimos 60 dias",
+          "Last 90 days": "Últimos 90 dias",
+          "All time": "Tudo",
+          "Custom": "Personalizado"
+        }
     }
 }

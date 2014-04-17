@@ -37,7 +37,8 @@
     "angular-rlmodule": "git@github.com:reachlocal/angular-rlmodule.git"
   },
   "devDependencies": {
-    "angular-mocks": "1.2.15"
+    "angular-mocks": "1.2.15",
+    "timekeeper": "gtramontina/timekeeper#master"
   },
   "overrides": {
     "logifill-details": {

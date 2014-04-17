@@ -18,16 +18,10 @@ angular
         $scope.creatives = creatives;
         $scope.creativeHeaders = CreativeHeaders;
 
-        function getReports() {
-            var params = {
-                masterCampaignId: $scope.campaignOverview.masterCampaignId,
-                from:             DateRange.from().format('YYYY-MM-DD'),
-                to:               DateRange.to().format('YYYY-MM-DD')
-            };
-            $scope.reports = TextCreativeReports.query(params);
-        }
-        getReports();
-        $scope.$on('rl:dateRange:updated', getReports);
+        $scope.$on('rl:dateRange:updated', function getReports(event, range) {
+            range.masterCampaignId = $scope.campaignOverview.masterCampaignId;
+            $scope.reports = TextCreativeReports.query(range);
+        });
     })
 
     .config(function ($stateProvider) {
