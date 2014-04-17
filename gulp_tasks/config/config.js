@@ -33,9 +33,4 @@ config.APPLICATION_FILES = [
     config.APPLICATION_VIEWS
 ].concat(config.APPLICATION_STYLES);
 
-// Matchers for our bower scripts - managed by the application developers
-config.BOWER_SCRIPTS = require(APPLICATION_ROOT + '/bower_scripts').map(function (file) {
-    return 'app/' + file;
-});
-
 module.exports = config;

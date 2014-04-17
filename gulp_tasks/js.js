@@ -36,12 +36,10 @@ gulp.task('js:vendor:minify', function() {
     var uglify = require('gulp-uglify'),
         concat = require('gulp-concat'),
         bowerFiles = require('gulp-bower-files'),
-        es = require('event-stream'),
         exclude = require('gulp-ignore');
 
-    return es.merge(bowerFiles(), gulp.src(config.BOWER_SCRIPTS))
-        .pipe(exclude('**/*.css'))
-        .pipe(concat('vendor.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.MINIFY_DESTINATION));
+    return bowerFiles().pipe(exclude('**/*.css'))
+                      .pipe(concat('vendor.min.js'))
+                      .pipe(uglify())
+                      .pipe(gulp.dest(config.MINIFY_DESTINATION));
 });

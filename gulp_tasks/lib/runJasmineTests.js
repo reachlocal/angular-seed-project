@@ -16,12 +16,11 @@ var karmaPort = 9876;
 module.exports = function (testDirectory) {
     var config = require('../config/config');
     // Note:  These must be in order:  Bower, project, test
-    var all_test_files = config.BOWER_SCRIPTS
-        .concat(config.APPLICATION_ROOT + '/RlModule.js')
+    var all_test_files = [config.APPLICATION_ROOT + '/RlModule.js']
         .concat(config.APPLICATION_ROOT + '/config.js')
         .concat(config.APPLICATION_SCRIPTS)
         .concat(config.TEST_LIBRARIES)
-        .concat(['dist/templates.js',
+        .concat(['dist/js/templates.js',
                  'test/helpers/**/*.js',
                  'test/' + testDirectory + '/**/*.spec.js']);
 
