@@ -1,24 +1,12 @@
 var gulp = require('gulp');
 var config = require('./config/config');
-var runSequence = require('run-sequence');
 
-/**
- * Start a static server that will live-reload when any file is changed.
- **/
-gulp.task('serve:app', function () {
-    runSequence('serve:dist', 'styleguide');
-});
+gulp.task('serve', ['dist:dev', 'styleguide'], require('gulp-serve')({
+  root: config.MINIFY_DESTINATION,
+  port: config.WEB_SERVER_PORT
+}));
 
-/**
- * Start a basic web server for the dest/ folder - try out your build
- */
-gulp.task('serve:dist', ['dist'], function () {
-    // Serve app
-    var httpServer = require('./lib/httpServer');
-    httpServer(config.MINIFY_DESTINATION, config.WEB_SERVER_PORT);
-});
-
-/**
- * Static web server AND mock rest web server
- **/
-gulp.task('serve', ['serve:app']);
+gulp.task('serve:prod', ['dist', 'styleguide'], require('gulp-serve')({
+  root: config.MINIFY_DESTINATION,
+  port: config.WEB_SERVER_PORT
+}));
