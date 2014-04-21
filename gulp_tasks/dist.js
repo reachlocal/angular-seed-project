@@ -9,7 +9,7 @@ gulp.task('dist:config:js', function() {
     var uglify = require('gulp-uglify');
 
     var copyFiles = [
-    config.APPLICATION_ROOT + '/config.js'
+        config.APPLICATION_ROOT + '/config.js'
     ];
     return gulp.src(copyFiles)
     .pipe(uglify())
@@ -20,15 +20,15 @@ gulp.task('dist:config:js', function() {
  * Build all minified assets for the 'dist/' directory
  */
 
- gulp.task('dist', function(callback) {
+gulp.task('dist', function(callback) {
     runSequence('clean', 'style', 'js', 'l10n', 'dist:copy', callback);
 });
 
- gulp.task('dist:copy', ['dist:html', 'dist:config:js']);
+gulp.task('dist:copy', ['dist:html', 'dist:config:js']);
 
- gulp.task('dist:html', function() {
+gulp.task('dist:html', function() {
     var copyFiles = [
-    config.APPLICATION_ROOT + '/index.html'
+        config.APPLICATION_ROOT + '/index.html'
     ];
 
     gulp.src(copyFiles)
@@ -42,11 +42,11 @@ gulp.task('dist:config:js', function() {
  * Development routines below - as for dev we do not want to minify stuff
  */
 
- gulp.task('dist:dev', function(callback) {
+gulp.task('dist:dev', function(callback) {
     runSequence('clean', 'style', 'ngtemplates', 'l10n', 'dist:copy:dev', callback);
 });
 
- gulp.task('dist:copy:dev', ['dist:html:dev', 'dist:config:js'], function() {
+gulp.task('dist:copy:dev', ['dist:html:dev', 'dist:config:js'], function() {
     bowerFiles()
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js' ));
 
@@ -54,7 +54,7 @@ gulp.task('dist:config:js', function() {
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js/modules'));
 });
 
- gulp.task('dist:html:dev', function() {
+gulp.task('dist:html:dev', function() {
     var copyFiles = [ config.APPLICATION_ROOT + '/index.html' ];
 
     gulp.src(copyFiles)
