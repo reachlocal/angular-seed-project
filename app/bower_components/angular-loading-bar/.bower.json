@@ -1,6 +1,6 @@
 {
   "name": "angular-loading-bar",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "main": [
     "src/loading-bar.js",
     "src/loading-bar.css"
@@ -16,14 +16,14 @@
     "angular-mocks": "~1.2.9",
     "angular-animate": "~1.2.9"
   },
-  "homepage": "https://github.com/chieffancypants/angular-loading-bar",
-  "_release": "0.3.0",
+  "homepage": "https://github.com/networkerror/angular-loading-bar",
+  "_release": "0.4.1",
   "_resolution": {
     "type": "version",
-    "tag": "0.3.0",
-    "commit": "c97fec2201745e803e78da747a46db88c273e0c6"
+    "tag": "0.4.1",
+    "commit": "79c277ffc3d498b393605b375e553e6ee2022a58"
   },
-  "_source": "git://github.com/chieffancypants/angular-loading-bar.git",
-  "_target": "0.3.0",
-  "_originalSource": "angular-loading-bar"
+  "_source": "https://github.com/networkerror/angular-loading-bar.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/networkerror/angular-loading-bar.git"
 }

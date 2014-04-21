@@ -1,5 +1,5 @@
 /*! 
- * angular-loading-bar v0.3.0
+ * angular-loading-bar v0.4.0
  * https://chieffancypants.github.io/angular-loading-bar
  * Copyright (c) 2014 Wes Cruver
  * License: MIT
@@ -162,12 +162,12 @@ angular.module('chieffancypants.loadingBar', [])
     this.includeSpinner = true;
     this.includeBar = true;
     this.latencyThreshold = 100;
+    this.startSize = 0.02;
     this.parentSelector = 'body';
 
     this.$get = ['$document', '$timeout', '$animate', '$rootScope', function ($document, $timeout, $animate, $rootScope) {
 
       var $parentSelector = this.parentSelector,
-        $parent = $document.find($parentSelector),
         loadingBarContainer = angular.element('<div id="loading-bar"><div class="bar"><div class="peg"></div></div></div>'),
         loadingBar = loadingBarContainer.find('div').eq(0),
         spinner = angular.element('<div id="loading-bar-spinner"><div class="spinner-icon"></div></div>');
@@ -179,11 +179,13 @@ angular.module('chieffancypants.loadingBar', [])
 
       var includeSpinner = this.includeSpinner;
       var includeBar = this.includeBar;
+      var startSize = this.startSize;
 
       /**
        * Inserts the loading bar element into the dom, and sets it to 2%
        */
       function _start() {
+        var $parent = $document.find($parentSelector);
         $timeout.cancel(completeTimeout);
 
         // do not continually broadcast the started event:
@@ -202,7 +204,7 @@ angular.module('chieffancypants.loadingBar', [])
           $animate.enter(spinner, $parent);
         }
 
-        _set(0.02);
+        _set(startSize);
       }
 
       /**
@@ -288,7 +290,8 @@ angular.module('chieffancypants.loadingBar', [])
         complete         : _complete,
         includeSpinner   : this.includeSpinner,
         latencyThreshold : this.latencyThreshold,
-        parentSelector   : this.parentSelector
+        parentSelector   : this.parentSelector,
+        startSize        : this.startSize
       };
 
 

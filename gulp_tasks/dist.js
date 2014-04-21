@@ -48,7 +48,7 @@ gulp.task('dist:dev', function(callback) {
 
 gulp.task('dist:copy:dev', ['dist:html:dev', 'dist:config:js'], function() {
     bowerFiles()
-        .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js' ));
+        .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js'));
 
     gulp.src('./app/modules/**/*.js')
         .pipe(gulp.dest(config.MINIFY_DESTINATION + '/js/modules'));
