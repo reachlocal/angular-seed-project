@@ -30,7 +30,6 @@
     "angular-underscore-module": "*",
     "angular-xeditable": "~0.1.8",
     "underscore": "~1.6.0",
-    "ngQuickDate": "~1.3.0",
     "momentjs": "~2.5.1",
     "prefixfree": "*",
     "logifill-details": "kapitancho/logifill-details",
