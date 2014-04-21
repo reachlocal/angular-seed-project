@@ -19,7 +19,7 @@ module.exports = function (testDirectory) {
     var all_test_files = [config.APPLICATION_ROOT + '/config.js']
         .concat(config.APPLICATION_SCRIPTS)
         .concat(config.TEST_LIBRARIES)
-        .concat(['dist/js/templates.js',
+        .concat(['dist/public/templates.js',
                  'test/helpers/**/*.js',
                  'test/' + testDirectory + '/**/*.spec.js']);
 

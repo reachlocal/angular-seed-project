@@ -4,11 +4,11 @@ var config = require('./config/config');
 var runJasmineTestsFunc = require('./lib/runJasmineTests.js');
 
 
-gulp.task('test:unit', ['ngtemplates', 'l10n:testify'], function () {
+gulp.task('test:unit', ['build:javascripts:templates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['ngtemplates', 'l10n:testify'], function () {
+gulp.task('test:integration', ['build:javascripts:templates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('integration');
 });
 
@@ -20,14 +20,18 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
 
 gulp.task('test:cucumber:webdriver', require('gulp-protractor').webdriver_update);
 
-gulp.task('test:cucumber', ['test:cucumber:webdriver', 'dist'], function () {
-    var serverInstance = require('gulp-serve')({ root: config.MINIFY_DESTINATION,
-                                 port: config.WEB_SERVER_PORT });
+gulp.task('test:cucumber', ['test:cucumber:webdriver', 'build'], function () {
+    var connect = require('gulp-connect');
+    connect.server({
+        root: config.MINIFY_DESTINATION,
+        port: config.WEB_SERVER_PORT
+    });
 
     var protractor = require('gulp-protractor').protractor;
     gulp.src(['./test/features/*.feature']).pipe(protractor({
         configFile: 'test/features/protractor.config.js'
     }))
+        .on('end', function () { connect.serverClose(); })
         .on('error', function (e) { throw e; });
 });
 

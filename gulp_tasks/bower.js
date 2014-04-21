@@ -1,17 +1,20 @@
 var gulp = require('gulp');
-var config = require('./config/config');
+var gutil = require('gulp-util');
+var bower = require('bower');
 
-/**
- * Remove app/bower_components/
- * Re-install all bower components
- * For things that are 'fuzzy-versioned', this will fetch the latest
- */
-gulp.task('bower', ['bower:clean'], function() {
-    var bower = require('gulp-bower');
-    return bower();
+gulp.task('bower', ['bower:clean'], function (done) {
+  bower.commands.install()
+    .on('log', log)
+    .on('end', function () { done(); });
 });
-gulp.task('bower:clean', function() {
-    var clean = require('gulp-clean');
-    return gulp.src(config.APPLICATION_ROOT + '/bower_components')
-        .pipe(clean());
+
+gulp.task('bower:clean', function () {
+  var clean = require('gulp-rimraf');
+  return gulp.src(bower.config.directory)
+    .pipe(clean());
 });
+
+
+function log (event) {
+  gutil.log(gutil.colors.cyan(event.id), event.message);
+}

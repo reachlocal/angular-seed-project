@@ -13,3 +13,5 @@ tmp
 test/helpers/l10n.js
 test-results.xml
 app/styleguide/
+dist.tar.gz
+.DS_Store

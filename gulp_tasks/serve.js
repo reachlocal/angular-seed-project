@@ -1,12 +1,39 @@
 var gulp = require('gulp');
-var config = require('./config/config');
+var paths = require('./support').paths;
+var all = require('./support').streams;
+var gutil = require('gulp-util');
 
-gulp.task('serve', ['dist:dev', 'styleguide'], require('gulp-serve')({
-    root: config.MINIFY_DESTINATION,
-    port: config.WEB_SERVER_PORT
-}));
+// Serve =======================================================================
 
-gulp.task('serve:prod', ['dist', 'styleguide'], require('gulp-serve')({
-    root: config.MINIFY_DESTINATION,
-    port: config.WEB_SERVER_PORT
-}));
+gulp.task('serve', ['build'], function () {
+  var connect = require('gulp-connect');
+
+  connect.server({
+    livereload : !gutil.env.production,
+    root       : paths.dist,
+    port       : 4000
+  });
+
+  if (!gutil.env.production) {
+    var watch = require('gulp-watch');
+
+    gulp.watch(paths.stylesheets, [ 'stylesheets' ]);
+    gulp.watch(paths.javascripts, [ 'javascripts' ]);
+    gulp.watch(paths.templates,   [ 'templates' ]);
+    gulp.watch(paths.statics,     [ 'statics' ]);
+    gulp.watch(paths.index,       [ 'inject:index' ]);
+
+    gulp.watch([
+      paths.styleguide.stylesheets,
+      paths.styleguide.index],    [ 'build:styleguide' ]);
+
+    watch({ glob: paths.dist + '/**/*' }).pipe(connect.reload());
+  }
+});
+
+// Serve Dist ==================================================================
+
+gulp.task('serve:dist', function (done) {
+  gutil.env.production = true;
+  gulp.start('serve');
+});

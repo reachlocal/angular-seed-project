@@ -46,7 +46,8 @@
     "angular-dynamic-locale": {
       "main": "src/tmhDynamicLocale.js"
     }
+  },
+  "resolutions": {
+    "angular": "1.2.15"
   }
 }
-
-
