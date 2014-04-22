@@ -4,7 +4,7 @@ var gutil = require('gulp-util');
 /**
  * Static web server AND mock rest web server
  **/
-gulp.task('protractor:debug', ['serve:app'], function() {
+gulp.task('protractor:debug', ['serve'], function() {
     var webDriver = require('./lib/webDriver');
     var runDebugger = function() {
         var child_process = require('child_process');
