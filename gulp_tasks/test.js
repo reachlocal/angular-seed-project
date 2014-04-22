@@ -28,7 +28,6 @@ gulp.task('test:cucumber', ['test:cucumber:webdriver', 'dist'], function () {
     gulp.src(['./test/features/*.feature']).pipe(protractor({
         configFile: 'test/features/protractor.config.js'
     }))
-        .on('end', function () { serverInstance.close(); })
         .on('error', function (e) { throw e; });
 });
 
