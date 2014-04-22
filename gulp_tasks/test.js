@@ -21,8 +21,8 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
 gulp.task('test:cucumber:webdriver', require('gulp-protractor').webdriver_update);
 
 gulp.task('test:cucumber', ['test:cucumber:webdriver', 'dist'], function () {
-    var httpServer = require('./lib/httpServer');
-    var serverInstance = httpServer(config.MINIFY_DESTINATION, config.WEB_SERVER_PORT);
+    var serverInstance = require('gulp-serve')({ root: config.MINIFY_DESTINATION,
+                                 port: config.WEB_SERVER_PORT });
 
     var protractor = require('gulp-protractor').protractor;
     gulp.src(['./test/features/*.feature']).pipe(protractor({
