@@ -1,8 +1,18 @@
 var page = require('../page_objects/creatives_data_table');
 
 module.exports = function () {
-  When(/^a user selects a creative for editing in the data table$/, function (callback) {
-    callback.pending();
+  When(/^a user updates the first creative's headline to "([^"]*)"$/, function (headline_value, callback) {
+    var firstCreative = page.firstCreative;
+    page.updateHeadline(firstCreative, headline_value, callback);
+  });
+
+  Then(/^the creative's new headline should be "([^"]*)"$/, function (new_headline, callback) {
+      page.firstCreative()
+          .then(function(creative) {
+            var actualHeadline = creative.findElement(by.binding('headLine')).getText();
+            expect(actualHeadline).to.eventually.be.equal(new_headline)
+                                  .then(function() { callback(); });
+          });
   });
 
   Then(/^the list of creatives belonging to the selected AdGroup is listed in the data table$/, function (callback) {
