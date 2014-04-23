@@ -1,5 +1,6 @@
 <nav>
   <form>
+    <rl-date-range></rl-date-range>
     <fieldset>
       <label>{{ 'rlPublisherFilterNav.Filter by:' | translate }}</label>
       <select name="webPublisherCampaign"
@@ -8,7 +9,7 @@
                       + ' ' +
                       (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publishers"
           >
-          <option value="">{{ 'rlPublisherFilterNav.All Campaigns' | translate }}</option>
+          <option value="">{{ 'rlPublisherFilterNav.All Publishers' | translate }}</option>
       </select>
       <select name="adGroup"
           ng-options="adGroup for adGroup in selectedPublisher.adGroups"
@@ -17,6 +18,5 @@
           <option value="">{{ 'rlPublisherFilterNav.All Ad Groups' | translate }}</option>
       </select>
     </fieldset>
-    <rl-date-range></rl-date-range>
   </form>
 </nav>
