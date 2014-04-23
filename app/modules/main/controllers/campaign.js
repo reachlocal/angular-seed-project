@@ -10,14 +10,13 @@ angular
          'rl.cpi.l10n.directives.rlLocaleSelector',
          'ui.router'])
     .controller('Campaign', function ($scope, $rootScope, $filter,
-                                      publishers, campaignOverview, recommendations, creatives,
+                                      campaignOverview, recommendations, creatives,
                                       TextCreativeReports, CreativeHeaders, DateRange, $stateParams) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.campaignOverview = campaignOverview;
         $scope.recommendations = recommendations;
         $scope.creatives = creatives;
         $scope.creativeHeaders = CreativeHeaders;
-        $scope.publishers = publishers;
 
         function getReports() {
             var params = {
@@ -35,10 +34,6 @@ angular
         $stateProvider
             .state('campaign', {
                 resolve: {
-                    publishers: function(Publishers, $stateParams) {
-                        var publishers = Publishers.get({campaignId: $stateParams.campaignId});
-                        return publishers.$promise;
-                    },
                     campaignOverview: function(CampaignOverview, $stateParams) {
                         var campaignOverview = CampaignOverview.get({campaignId: $stateParams.campaignId});
                         return campaignOverview.$promise;
