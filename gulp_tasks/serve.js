@@ -17,11 +17,11 @@ gulp.task('serve', ['build'], function () {
   if (!gutil.env.production) {
     var watch = require('gulp-watch');
 
-    gulp.watch(paths.stylesheets, [ 'stylesheets' ]);
-    gulp.watch(paths.javascripts, [ 'javascripts' ]);
-    gulp.watch(paths.templates,   [ 'templates' ]);
-    gulp.watch(paths.statics,     [ 'statics' ]);
-    gulp.watch(paths.index,       [ 'inject:index' ]);
+    gulp.watch(paths.stylesheets, [ 'build:stylesheets' ]);
+    gulp.watch(paths.javascripts, [ 'build:javascripts' ]);
+    gulp.watch(paths.templates,   [ 'build:javascript:templates' ]);
+    gulp.watch(paths.statics,     [ 'build:statics' ]);
+    gulp.watch(paths.index,       [ 'build:inject:index' ]);
 
     gulp.watch([
       paths.styleguide.stylesheets,
