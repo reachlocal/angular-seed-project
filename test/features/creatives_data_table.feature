@@ -41,13 +41,16 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
 
 
 
-  @JIRA-CPI-132 @JIRA-CPI-133
+  @JIRA-CPI-132 @JIRA-CPI-133 @JIRA-CPI-188
   Scenario: Edit a creative in the data table
 
     When a user selects a creative for editing in the data table
     And the user makes a change to the creative's headline or descriptive lines
-    And the user selects the option to save
+	Then the system displays the characters remaining for the creative's headline and descriptive lines
+	And the characters remaining are dependent on the publisher's requirements
+    When the user selects the option to save
     Then the creative's edits are staged for publishing
+	And the creative is validated against the publisher's requirements
 
   @JIRA-CPI-132 @JIRA-CPI-133
   Scenario: Cancel an edit on a creative in the data table
