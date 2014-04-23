@@ -19,7 +19,7 @@ gulp.task('serve', ['build'], function () {
 
     gulp.watch(paths.stylesheets, [ 'build:stylesheets' ]);
     gulp.watch(paths.javascripts, [ 'build:javascripts' ]);
-    gulp.watch(paths.templates,   [ 'build:javascript:templates' ]);
+    gulp.watch(paths.templates,   [ 'build:javascripts:templates' ]);
     gulp.watch(paths.statics,     [ 'build:statics' ]);
     gulp.watch(paths.index,       [ 'build:inject:index' ]);
 
