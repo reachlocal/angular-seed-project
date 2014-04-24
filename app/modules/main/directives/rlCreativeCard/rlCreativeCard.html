@@ -6,9 +6,9 @@
 
         <i class="fa fa-chain"></i>
     </header>
-    <input type="text" ng-model="creative.headLine"           placeholder="Creative Title">
-    <input type="text" ng-model="creative.descriptiveLine[0]" placeholder="Descriptive Line">
-    <input type="text" ng-model="creative.descriptiveLine[1]" placeholder="Descriptive Line">
+    <input type="text" ng-change="unlink()" ng-model="creative.headLine"           placeholder="Creative Title">
+    <input type="text" ng-change="unlink()" ng-model="creative.descriptiveLine[0]" placeholder="Descriptive Line">
+    <input type="text" ng-change="unlink()" ng-model="creative.descriptiveLine[1]" placeholder="Descriptive Line">
 
 <!--    <select>
         <option>adg1</option>

@@ -55,19 +55,6 @@ describe('RL Creative Card Editor', function () {
             expect($scope.isLinked).toBe(true);
         });
 
-        it('unlinks when user edits it', function () {
-            $scope.creative.headLine = 'a different headline';
-            $scope.$digest();
-
-            expect(masterCreative.headLine).toBe('a headline');
-
-            masterCreative.headLine = 'yet another headline';
-            $scope.$digest();
-
-            expect($scope.creative.headLine).toBe('a different headline');
-            expect($scope.isLinked).toBe(false);
-        });
-
         it('user explicitly link creative again', function () {
             $scope.creative.headLine = 'a different headline';
             $scope.$digest();

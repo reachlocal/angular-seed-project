@@ -1,11 +1,9 @@
 angular
     .rlmodule('rl.cpi.main.directives.rlCreativeCard', [])
     .controller('rlCreativeCardCtrl', function ($scope) {
-        var syncing;
         var stopSyncing = angular.noop;
 
         function synchronize (value) {
-            syncing = true;
             $scope.creative = angular.copy(value);
         }
 
@@ -15,16 +13,13 @@ angular
         };
 
         $scope.unlink = function unlink () {
-            if (!syncing) {
-                stopSyncing();
-                $scope.isLinked = false;
-            }
-            syncing = false;
+          stopSyncing();
+          $scope.isLinked = false;
         };
 
         $scope.creative = $scope.ngModel;
         if ($scope.linkedTo) { $scope.link(); }
-        $scope.$watch('creative', $scope.unlink, true);
+
     })
 
     .directive('rlCreativeCard', function () {
