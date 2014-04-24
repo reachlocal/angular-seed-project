@@ -44,3 +44,12 @@ Feature: Each dashboard should have a consistent global navigation function
     Then the user should see a campaign header:
       | name                                      | masterCampaignId   | currentCampaignId   | totalCycleBudget | spentToDateThisCycle | currentCycle |
       | A Quality 1st Plumbing- Plumbing 20100222 | 713896             | 713896              | $1,800.00        | $0.00                | 1            |
+
+  @JIRA-CPI-197
+  Scenario: Select a creative status in Global Nav Bar under All Creatives
+  
+    Given a campaign with id "713896" exists
+    And the campaign has Creatives associated to the campaign
+    When a user views the campaign id "713896" dashboard
+    And the user selects "Active" from the Creative status filter
+    Then the campaign dashboard should only show the data table of Creatives that have the "Active" Creative status

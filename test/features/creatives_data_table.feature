@@ -39,14 +39,16 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       |     12 |
       |      6 |
 
-
-
   @JIRA-CPI-132 @JIRA-CPI-133 @JIRA-CPI-188
   Scenario: Edit a creative in the data table
 
     When a user views the campaign id "713896" dashboard
     And a user updates the first creative's headline to "FooBar Plumbing"
-    Then the creative's new headline should be "FooBar Plumbing"
+    Then the system displays the characters remaining using that publisher's requirements
+    And the creative's new headline should be "FooBar Plumbing"
+    When the user selects the option to save
+    Then the creative's edits are staged for publishing
+    And the creative is validated against the publisher's requirements
 
   @JIRA-CPI-132 @JIRA-CPI-133
   Scenario: Cancel an edit on a creative in the data table
@@ -64,6 +66,11 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     When the user changes the status of the creative
     Then the creative's status change is staged for publishing
 
-
-
-
+  @JIRA-CPI-33 @JIRA-CPI-34 @JIRA-CPI-35
+  Scenario: Sort data by column within creative table
+  
+    When a user clicks a column header of types (alphanumeric, decimal)
+    Then the system sorts the data within the clicked column in alphanumeric order, ascending
+    When a user clicks the the same column header
+    Then the system sorts the data within the clicked column in alphanumeric order, descending
+    When a user clicks a column header of types (date)
