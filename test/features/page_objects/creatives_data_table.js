@@ -27,7 +27,7 @@ var firstCreative = exports.firstCreative = function() {
 exports.updateHeadline = function(creative, value, callback) {
   creative()
     .then(function(creative) {
-      creative.findElement(by.binding('headLine')).then(function(headline) { headline.click() });
+      creative.findElement(by.binding('headLine')).then(function(headline) { headline.click(); });
       creative.findElement(by.css('form input')).then(function(input) {
         input.clear();
         input.sendKeys(value + '\n');
