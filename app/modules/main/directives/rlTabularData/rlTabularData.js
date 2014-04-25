@@ -4,7 +4,7 @@ angular
         var zippedByCreatives = Zippable.build($scope.creatives, 'id', 'creative');
 
         function updateTable() {
-            var zReports   = Zippable.build($scope.reports, 'textCreativeId', 'report');
+            var zReports   = Zippable.build($scope.reports, 'creativeId', 'report');
             zippedByCreatives.zip(zReports);
         }
         $scope.$watchCollection('creatives', updateTable);

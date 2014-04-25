@@ -29,7 +29,7 @@ describe('Creative table controller', function () {
         $scope.$digest();
 
         expect(mocks.zippable.build).toHaveBeenCalledWith($scope.creatives, 'id', 'creative');
-        expect(mocks.zippable.build).toHaveBeenCalledWith($scope.reports, 'textCreativeId', 'report');
+        expect(mocks.zippable.build).toHaveBeenCalledWith($scope.reports, 'creativeId', 'report');
         expect(mocks.creative.zip).toHaveBeenCalledWith(mocks.report);
         // $scope.table should be assigned to the return value of creative.zip (a spy)
         // This is not awesome...  :(
