@@ -9,6 +9,7 @@ var q = require('q');
 
 var commitHook = "" +
     "#!/bin/bash\n" +
+    "node_modules/.bin/gulp lint:failhard\n" +
     "node_modules/.bin/gulp build\n" +
     "node_modules/.bin/gulp test:fail_on_skipped\n" +
     "RETVAL=$?\n" +
