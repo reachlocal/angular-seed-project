@@ -1,11 +1,13 @@
 /**
- * Allow the user to
+ * Allow the user to format a number using one of these
+ * 'standard' formats
+ * Usage:  {{ 123 | flexnumber:percent }} becomes "123.00%"
  */
 angular
     .rlmodule('rl.cpi.main.filters.flexnumber', [])
     .filter('flexnumber', function($filter) {
         return function(input, filterName) {
-            if (input === undefined || input === '') {
+            if (input === undefined || input === '' || input === null) {
                 return 'N/A';
             } else {
                 if (filterName === 'currency') {
