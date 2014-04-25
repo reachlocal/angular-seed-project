@@ -1,5 +1,5 @@
 angular
-    .rlmodule('rl.cpi.main.directives.rlPublisherFilterNav', ['ui.bootstrap', 'rl.dateRange'])
+    .rlmodule('rl.cpi.main.directives.rlPublisherFilterNav', ['ui.bootstrap', 'rl.daterange'])
     .controller('rlPublisherFilterNavCtrl', function($scope, PublisherFilterService, DateRange) {
         PublisherFilterService.load($scope.creatives);
         $scope.dateRangeOptions = DateRange.options;

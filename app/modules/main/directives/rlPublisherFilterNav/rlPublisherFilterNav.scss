@@ -62,9 +62,25 @@ main > nav {
       & + label {
         display: inline-block;
         width: 15em;
-        text-align: center;
         border: 1px solid transparent;
         cursor: pointer;
+
+        & > span {
+          text-align: center;
+          width: 50%;
+          display: inline-block;
+          position: relative;
+
+          &:empty:before {
+            content: '-\221E';
+          }
+
+          & + span:before {
+            content: '-';
+            position: absolute;
+            left: -.25em;
+          }
+        }
       }
 
       & + label:hover,

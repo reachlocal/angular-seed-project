@@ -50,7 +50,7 @@ describe('Date Range Service', function () {
     it('sets the custom label text', function () {
       buildService();
       expect(service.options.customLabel).toMatch(/custom/i);
-    })
+    });
 
     it('sets default range value option', function () {
       buildService();
