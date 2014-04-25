@@ -8,8 +8,11 @@ angular
             collection = _.map(collection, function(value, idx) {
                 var entry = {};
                 entry[alias] = value;
+                if (!value.hasOwnProperty(key)) {
+                    throw "Zippable: Your input collection '"+alias+"' is missing keys '" + key + "'";
+                }
                 if (index[value[key]]) {
-                    throw "Your input collection '"+alias+"' has duplicate keys";
+                    throw "Zippable: Your input collection '"+alias+"' has duplicate keys '" + key + "'";
                 }
                 index[value[key]] = entry;
                 return entry;

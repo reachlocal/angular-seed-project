@@ -81,8 +81,13 @@ describe('Zippable factory', function() {
             summaries[1].id = summaries[0].id;
             expect(function() {
                 factory.build(summaries, 'id', 'summary');
-            }).toThrow("Your input collection 'summary' has duplicate keys");
+            }).toThrow("Zippable: Your input collection 'summary' has duplicate keys 'id'");
 
+        });
+        it("raises if the key is missing", function() {
+            expect(function() {
+                factory.build(summaries, 'notAKey', 'summary');
+            }).toThrow("Zippable: Your input collection 'summary' is missing keys 'notAKey'");
         });
     });
 
