@@ -53,12 +53,10 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   @JIRA-CPI-132 @JIRA-CPI-133
   Scenario: Cancel an edit on a creative in the data table
 
-    When a user selects a creative for editing in the data table
-    And the user makes a change to the creative's headline or descriptive lines
-    And the user selects the option to cancel
-    Then the creative's edits are not saved
-    And the creative reverts to its original state
-
+    When a user views the campaign id "713896" dashboard
+    And he makes a change to the first creative's headline
+    But he clicks to cancel those changes
+    Then the creative reverts to its original state
 
   @JIRA-CPI-138
   Scenario: Edit a creative's status in the data table
@@ -68,7 +66,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
 
   @JIRA-CPI-33 @JIRA-CPI-34 @JIRA-CPI-35
   Scenario: Sort data by column within creative table
-  
+
     When a user clicks a column header of types (alphanumeric, decimal)
     Then the system sorts the data within the clicked column in alphanumeric order, ascending
     When a user clicks the the same column header

@@ -24,14 +24,36 @@ var firstCreative = exports.firstCreative = function() {
     });
 };
 
-exports.updateHeadline = function(creative, value, callback) {
-  creative()
+var getHeadline = exports.getHeadline = function(creativePromise) {
+  return creativePromise
     .then(function(creative) {
-      creative.findElement(by.binding('headLine')).then(function(headline) { headline.click(); });
-      creative.findElement(by.css('form input')).then(function(input) {
+      return creative.findElement(by.binding('headLine'));
+    });
+};
+
+var getHeadlineText = exports.getHeadlineText = function(creativePromise) {
+  return getHeadline(creativePromise)
+    .then(function(headline) {
+      return headline.getText();
+    });
+};
+
+var setHeadline = exports.setHeadline = function(creativePromise, value) {
+  return creativePromise
+    .then(function(creative) {
+      getHeadline(creative).then(function(headline) { headline.click(); });
+      return creative.findElement(by.css('form input')).then(function(input) {
         input.clear();
-        input.sendKeys(value + '\n');
-        callback();
+        input.sendKeys(value);
+        return input;
       });
     });
+};
+
+var updateHeadline = exports.updateHeadline = function(creativePromise, value) {
+  return setHeadline(creativePromise, value)
+          .then(function(element) {
+            element.sendKeys('\n');
+            return element;
+          });
 };

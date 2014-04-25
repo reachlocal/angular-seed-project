@@ -1,9 +1,43 @@
 var page = require('../page_objects/creatives_data_table');
 
 module.exports = function () {
+  var context = {};
+
   When(/^a user updates the first creative's headline to "([^"]*)"$/, function (headline_value, callback) {
+    var firstCreative = page.firstCreative();
+    page.updateHeadline(firstCreative, headline_value)
+        .then(function() {
+          callback();
+        });
+  });
+
+  When(/^he makes a change to the first creative's headline$/, function (callback) {
+    var firstCreative = page.firstCreative();
+    page.getHeadlineText(firstCreative).then(function(value) { context.currentHeadline = value; });
+    var newHeadlineText = 'something';
+
+    page.setHeadline(firstCreative, newHeadlineText)
+        .then(function() {
+          callback();
+        });
+  });
+
+  When(/^he clicks to cancel those changes$/, function (callback) {
     var firstCreative = page.firstCreative;
-    page.updateHeadline(firstCreative, headline_value, callback);
+    firstCreative().then(function(creative) {
+      creative.findElement(by.css("form button[type='button']"))
+                     .then(function(button) {
+                        button.click();
+                        callback();
+                     });
+    });
+  });
+
+  Then(/^the creative reverts to its original state$/, function (callback) {
+    var firstCreative = page.firstCreative();
+    var firstHeadline = page.getHeadlineText(firstCreative);
+    expect(firstHeadline).to.eventually.be.equal(context.currentHeadline)
+      .then(function() { callback(); });
   });
 
   Then(/^the creative's new headline should be "([^"]*)"$/, function (new_headline, callback) {
