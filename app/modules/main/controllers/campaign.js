@@ -6,22 +6,27 @@ angular
          'rl.cpi.main.services.Recommendations',
          'rl.cpi.main.services.Creatives',
          'rl.cpi.main.services.TextCreativeReports',
-         'rl.cpi.main.services.DateRange',
          'rl.cpi.l10n.directives.rlLocaleSelector',
+         'rl.QueryParams',
          'ui.router'])
     .controller('Campaign', function ($scope, $rootScope, $filter,
                                       campaignOverview, recommendations, creatives,
-                                      TextCreativeReports, CreativeHeaders, DateRange, $stateParams) {
+                                      TextCreativeReports, CreativeHeaders, QueryParams) {
         $rootScope.pageTitle = "Campaign Overview";
         $scope.campaignOverview = campaignOverview;
         $scope.recommendations = recommendations;
         $scope.creatives = creatives;
         $scope.creativeHeaders = CreativeHeaders;
 
-        $scope.$on('rl:dateRange:updated', function getReports(event, range) {
-            range.masterCampaignId = $scope.campaignOverview.masterCampaignId;
-            $scope.reports = TextCreativeReports.query(range);
-        });
+        function getReports() {
+            $scope.reports = TextCreativeReports.query({
+                from: QueryParams.from,
+                to: QueryParams.to,
+                masterCampaignId: $scope.campaignOverview.masterCampaignId
+            });
+        }
+        $scope.QueryParams = QueryParams;
+        $scope.$watch('QueryParams.from+QueryParams.to', getReports);
     })
 
     .config(function ($stateProvider) {
@@ -43,7 +48,6 @@ angular
                 },
                 url: '^/campaign/:campaignId',
                 templateUrl: 'modules/main/controllers/campaign.html',
-                controller: 'Campaign',
-                reloadOnSearch: false
+                controller: 'Campaign'
             });
     });

@@ -47,7 +47,10 @@ angular.module('rl.daterange', [])
 
   function setModel (value) {
     if (!value) return;
-    $scope.model =  isCustom(value)? $scope.model : { from: value.from, to: value.to };
+    if (!isCustom(value)) {
+      $scope.model.from = value.from;
+      $scope.model.to = value.to;
+    }
   }
 
   function isCustom (value) {

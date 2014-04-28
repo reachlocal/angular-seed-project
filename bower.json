@@ -34,7 +34,8 @@
     "prefixfree": "*",
     "logifill-details": "kapitancho/logifill-details",
     "angular-growl": "~0.4.0",
-    "angular-rlmodule": "git@github.com:reachlocal/angular-rlmodule.git"
+    "angular-rlmodule": "git@github.com:reachlocal/angular-rlmodule.git",
+    "angular-bindqueryparams": "git@github.com:reachlocal/angular-bindqueryparams.git"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
