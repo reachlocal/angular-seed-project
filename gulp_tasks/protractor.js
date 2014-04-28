@@ -1,18 +1,30 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
+var child = require('child_process');
 
-gulp.task('protractor:debug', ['serve'], function() {
+gulp.task('protractor:webdriver', require('gulp-protractor').webdriver_update);
+
+var selenium, elementExplorer;
+gulp.task('protractor:debug', ['protractor:webdriver', 'serve'], function () {
   runSelenium(runElementExplorer);
 });
 
-var runSelenium = function (callback) {
-  require('child_process').exec('node_modules/.bin/webdriver-manager start --chrome').stdout.on('data', function (data) {
-    if (data.match(/Started SocketListener/))
-      callback();
+function runSelenium (callback) {
+  selenium = child.exec('node_modules/.bin/webdriver-manager start');
+  selenium.stderr.on('data', console.error);
+  selenium.stdout.on('data', function (data) {
+    if (data.match(/started socketlistener/i)) { callback(); }
   });
-};
+}
 
-var runElementExplorer = function () {
-  commands = ['node_modules/protractor/bin/elementexplorer.js', 'http://localhost:4000/#/campaign/713896'];
-  gutil.log(gutil.colors.red("Please run this command in another terminal: "), commands.join(' '));
-};
+function runElementExplorer () {
+  var url = process.env.URL || 'http://localhost:4000/#/campaign/713896';
+  elementExplorer = child.spawn('/bin/sh', ['-c', 'node_modules/' +
+    'protractor/bin/elementexplorer.js ' + url
+  ], { stdio: 'inherit' }).on('exit', process.exit);
+}
+
+process.on('exit', function killAll () {
+  [selenium, elementExplorer]
+    .forEach(function (proc) { proc && proc.kill() });
+  child.exec('pkill -9 -f selenium-server-standalone');
+});

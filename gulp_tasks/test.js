@@ -18,9 +18,7 @@ gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
     gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
 });
 
-gulp.task('test:cucumber:webdriver', require('gulp-protractor').webdriver_update);
-
-gulp.task('test:cucumber', ['test:cucumber:webdriver', 'build'], function () {
+gulp.task('test:cucumber', ['protractor:webdriver', 'build'], function () {
     var connect = require('gulp-connect');
     connect.server({
         root: config.MINIFY_DESTINATION,
