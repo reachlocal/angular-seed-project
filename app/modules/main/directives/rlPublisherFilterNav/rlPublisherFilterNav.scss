@@ -87,6 +87,10 @@ main > nav {
       &:checked + label {
         border: 1px solid $color-white;
       }
+
+      &:checked + label:before {
+        background-color: $color-shadow;
+      }
     }
 
     ul {
@@ -97,6 +101,8 @@ main > nav {
       color: $color-bodycopy;
       padding: $spacing-small;
       width: 18em;
+      position: absolute;
+      left: 0;
       top: $spacing-large;
 
       li {
@@ -142,6 +148,7 @@ main > nav {
 
         &::-webkit-calendar-picker-indicator {
           color: $color-action;
+          opacity: 1;
         }
       }
     }
