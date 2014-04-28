@@ -19,12 +19,12 @@
         "STATE": "State",
         "Click Through Rate": "CTR",
         "Clicks": "Clicks",
-        "Impressions": "Impressions",
+        "Impressions": "Impr.",
         "Conversions": "Conversions",
         "Average Position": "Avg Position",
-        "Impression Share": "Impression Share",
+        "Impression Share": "Impr. Share",
         "Lead Count": "Leads",
         "Quality Score": "QS",
-        "Add a new creative": "New creative…"
+        "Add a new creative": "New Ad"
     }
 }
