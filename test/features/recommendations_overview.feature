@@ -51,8 +51,8 @@ Feature: Surface recommendations
     Given a "Guided" recommendation for a campaign is available
     When the recommendation is surfaced to the user
     Then the user is presented with an option to navigate where the recommendation can be implemented
-    And the user is presented with an option to dismiss the recommendation as not implemented
-
+    And the user is presented with an option to dismiss the recommendation as "Not Relevant to Campaign"
+    And the user is presented with an option to dismiss the recommendation as "Not Right Now"
 
 
   @JIRA-CPI-116
@@ -81,6 +81,22 @@ Feature: Surface recommendations
     When the user has selected the recommendation option "No, I will not implemented this"
     Then the recommendation is dismissed from the campaign
     And the user action is recorded
+
+  Scenario:  Act on Permanent Dismissal of Recommendation
+
+    Given a recommendation was presented to the user
+    When the user dismisses the recommendation as "Not Relevant to Campaign"
+    Then the recommendation dismissal reason is stored for analysis
+    And the recommendation is permanently disabled for the campaign
+
+  Scenario:  Act on Temporary Dismissal of Recommendation
+
+    Given a recommendation was presented to the user
+    When the user dismisses the recommendations as "Not Right Now"
+    Then the recommendation dismissal reason is not stored for analysis
+    And the recommendation is temporarily disabled for 30 days
+    # TODO: This might be "next cycle" - TBD
+
 
 
 

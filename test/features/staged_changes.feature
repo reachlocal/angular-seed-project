@@ -51,13 +51,3 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the user should be prevented from making changes to data elements published but not yet confirmed by the bots
     And the user should see a visual element that shows the data element as being locked
 
-
-
-
-
-
-
-
-
-
-

@@ -72,3 +72,12 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     When a user clicks the the same column header
     Then the system sorts the data within the clicked column in alphanumeric order, descending
     When a user clicks a column header of types (date)
+
+  @JIRA-CPI-198
+  Scenario: Viewing Creatives in the Data Table with Dynamic Text
+
+    Given a creative with dynamic text attributes
+    When the creative is viewed in the creative data table
+    Then the dynamic text placeholder is marked with open and close braces
+    And the area with the braces is shaded with a different color scheme
+
