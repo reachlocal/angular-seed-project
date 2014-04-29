@@ -12,8 +12,8 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     Then the list of creatives belonging to the selected AdGroup is listed in the data table
     And the data table should contain these data elements as columns:
       | Column Name         |
-      | Ad Text             |
-      | New creative…       |
+      | Creative Text       |
+      | New                 |
       | Status              |
       | Ad Group            |
       | Publisher           |
@@ -21,10 +21,11 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | CTR                 |
       | Clicks              |
       | Conversions         |
-      | Impressions         |
-      | Impression Share    |
+      | Cost Per Lead       |
+      | Impr.               |
       | Leads               |
       | QS                  |
+      | Total Cost          |
     And the first creative is displayed
       | AdGroup2 Creative1  |
       | The Way Network     |
@@ -34,10 +35,11 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | 38.13% |
       |     45 |
       | 26.66% |
+      |  32.45 |
       |    118 |
-      | 14.20% |
       |     12 |
       |      6 |
+      |  30.00 |
 
   @JIRA-CPI-132 @JIRA-CPI-133 @JIRA-CPI-188
   Scenario: Edit a creative in the data table
