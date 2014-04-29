@@ -12,6 +12,14 @@
     width: 100%;
   }
 
+  thead {
+    background-color: $color-bright;
+    border-bottom: 1px solid $color-light;
+    a {
+      color: $color-info;
+    }
+  }
+
   th, td {
     &:first-of-type {
       width: 250px;
