@@ -1,15 +1,21 @@
 angular
     .rlmodule('rl.cpi.main.directives.rlPublisherFilterNav', ['ui.bootstrap', 'rl.daterange', 'rl.cpi.main.services.Moment', 'rl.QueryParams'])
     .controller('rlPublisherFilterNavCtrl', function($scope, PublisherFilterService, Moment, QueryParams) {
-        PublisherFilterService.load($scope.creatives);
-
+        // Setup calendar
+        $scope.selectedDateRange = QueryParams;
         var dateFormat = 'YYYY-MM-DD';
         var today = Moment.build().format(dateFormat);
-        function last (amount, granularity) {
+        function last(amount, granularity) {
             return Moment.build().subtract(granularity, amount).format(dateFormat);
         }
         var last30Days = { from: last(30, 'days'), to: today };
         var initialRange = last30Days;
+        if (!!QueryParams.to) {
+            initialRange = {
+                from: QueryParams.from,
+                to:   QueryParams.to
+            };
+        }
         $scope.dateRangeOptions = {
             customLabel: 'rlPublisherFilterNav.dateRange.Custom',
             ranges: [
@@ -26,9 +32,9 @@ angular
             value: initialRange
         };
 
+        // Setup filter drop-downs
+        PublisherFilterService.load($scope.creatives);
         $scope.publisherFilter = PublisherFilterService;
-
-        $scope.selectedDateRange = QueryParams;
 
         $scope.$watch('selectedPublisher', PublisherFilterService.setPublisher);
         $scope.$watch('selectedAdGroup', PublisherFilterService.setAdGroup);
