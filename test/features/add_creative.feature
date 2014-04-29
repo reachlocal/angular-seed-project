@@ -11,5 +11,5 @@ Feature: Add a new creative to an existing ad group
     Then the user is presented with a screen to add a new creative
     And the publisher selected in the data table filter is the default publisher selected to add a creative to
     And the user is presented with an option to select all publishers
-    And the user is presented with options to select and deselect individual publishers
+    And the user is presented with options to select and unselect individual publishers
 
