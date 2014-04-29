@@ -15,9 +15,10 @@
   thead {
     background-color: $color-bright;
     border-bottom: 1px solid $color-light;
-    a {
-      color: $color-info;
-    }
+  }
+
+  tr {
+    border-bottom: 1px solid #DDDDDD;
   }
 
   th, td {
