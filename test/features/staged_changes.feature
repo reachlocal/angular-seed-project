@@ -4,7 +4,7 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Given a typical campaign exists
 
 
-  @JIRA-CPI-167 @JIRA-CPI-168
+  @JIRA-CPI-167
   Scenario: A visual indicator shows changes pending
 
     Given changes are staged for publishing
@@ -12,6 +12,15 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the user is presented with a visual indicator that changes are staged
     When the user has navigated to a dashboard with entities that have staged changes
     Then the user sees a visual element that highlights the fields that are staged in the entity's data table
+
+  @JIRA-CPI-203
+  Scenario: A quick view shows a list of changes pending
+
+    Given changes are staged for publishing
+    When a user is navigating the CPI tool
+    When the user mouse over the visual indicator that changes are staged
+    Then the user sees a visual element that shows a list of changes pending to publish
+    And the user can navigated to a dashboard with entities that have staged changes.
 
 
   @JIRA-CPI-134 @JIRA-CPI-135 @JIRA-CPI-167
@@ -50,4 +59,3 @@ Feature: Ability to stage changes to business entities before they are pushed to
     When the user is viewing a changed entity's data table
     Then the user should be prevented from making changes to data elements published but not yet confirmed by the bots
     And the user should see a visual element that shows the data element as being locked
-
