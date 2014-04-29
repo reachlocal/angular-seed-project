@@ -2,7 +2,8 @@
 
 thead {
   font-weight: 700;
-  border-bottom: 1px solid $color-mid;
+  background-color: $color-bright;
+  border-bottom: 1px solid $color-light;
   text-align: left;
 }
 
@@ -14,4 +15,8 @@ th {
 th,
 td {
   vertical-align: top;
+}
+
+tr {
+  border-bottom: 1px solid #DDDDDD;
 }
