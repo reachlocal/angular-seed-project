@@ -1,6 +1,6 @@
 {
     "rlTabularData": {
-        "Ad Text": "Ad Text",
+        "Ad Text": "Creative Text",
         "Ad Group": "Ad Group",
         "Publisher": "Publisher",
         "Status": "Status",
@@ -25,6 +25,6 @@
         "Impression Share": "Impr. Share",
         "Lead Count": "Leads",
         "Quality Score": "QS",
-        "Add a new creative": "New Ad"
+        "Add a new creative": "New"
     }
 }

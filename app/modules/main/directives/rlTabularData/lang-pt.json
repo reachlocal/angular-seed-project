@@ -1,6 +1,6 @@
 {
     "rlTabularData": {
-        "Ad Text": "Texto do anúncio",
+        "Ad Text": "Creative Text",
         "Ad Group": "Grupo de anúncios",
         "Publisher": "Editor",
         "Status": "Status",
@@ -25,6 +25,6 @@
         "Impression Share": "Parcela de Impressão",
         "Lead Count": "Leads ",
         "Quality Score": "Índice de Qualidade",
-        "Add a new creative": "Novo anúncio"
+        "Add a new creative": "Novo"
     }
 }
