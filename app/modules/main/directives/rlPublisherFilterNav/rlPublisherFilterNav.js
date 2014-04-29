@@ -26,9 +26,7 @@ angular
             value: initialRange
         };
 
-        $scope.publishers = PublisherFilterService.publishers;
-        $scope.selectedPublisher = PublisherFilterService.selectedPublisher;
-        $scope.selectedAdGroup   = PublisherFilterService.selectedAdGroup;
+        $scope.publisherFilter = PublisherFilterService;
 
         $scope.selectedDateRange = QueryParams;
 

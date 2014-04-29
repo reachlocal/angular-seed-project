@@ -4,16 +4,16 @@
     <fieldset>
       <label>{{ 'rlPublisherFilterNav.Filter by:' | translate }}</label>
       <select name="webPublisherCampaign"
-          ng-model="selectedPublisher"
+          ng-model="publisherFilter.selectedPublisher"
           ng-options="(p.publisher.publisherName
                       + ' ' +
-                      (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publishers"
+                      (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publisherFilter.publishers"
           >
           <option value="">{{ 'rlPublisherFilterNav.All Publishers' | translate }}</option>
       </select>
       <select name="adGroup"
-          ng-options="adGroup for adGroup in selectedPublisher.adGroups"
-          ng-model="selectedAdGroup"
+          ng-options="adGroup for adGroup in publisherFilter.selectedPublisher.adGroups"
+          ng-model="publisherFilter.selectedAdGroup"
           >
           <option value="">{{ 'rlPublisherFilterNav.All Ad Groups' | translate }}</option>
       </select>

@@ -1,5 +1,9 @@
 angular
-    .rlmodule('rl.cpi.main.directives.rlTabularData', ['ui.bootstrap', 'rl.cpi.main.filters.flexnumber', 'rl.cpi.main.services.Zippable'])
+    .rlmodule('rl.cpi.main.directives.rlTabularData', [
+        'ui.bootstrap',
+        'rl.cpi.main.filters.flexnumber',
+        'rl.cpi.main.services.Zippable'
+    ])
     .controller('rlTabularDataCtrl', function($scope, Zippable, $timeout) {
         var zippedByCreatives = Zippable.build($scope.creatives, 'id', 'creative');
 
