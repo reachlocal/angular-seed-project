@@ -17,7 +17,7 @@ try {
         var seq = require('run-sequence');
         seq(
             'build',
-            //'test-ci',
+            'test-ci',
             'test:unit',
             'test:integration',
             'test:fail_on_skipped',
