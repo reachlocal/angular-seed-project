@@ -1,0 +1,60 @@
+#!/bin/bash
+
+CI_NODE='ci-cpi-stub.dev.wh.reachlocal.com'
+APP_DIR='/rl/product/cpi/cpi-gateway-service'
+USER='appuser'
+RVM='/var/people/appuser/.rvm/bin/rvm'
+
+function setup() {
+  ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
+    cd /rl/product/cpi
+    ${RVM} install 2.1.0
+    mkdir -p cpi-gateway-service
+    git clone  ssh://git@stash.lax.reachlocal.com/cpi/cpi-gateway-service.git
+    bundle
+LimitString
+}
+
+function run() {
+  echo 'Running the remote server...'
+  ssh ${USER}@${CI_NODE} "bash --login" <<LimitString
+    cd ${APP_DIR}
+    SKIP_AUTH=1 STUB_SERVICES=1 bundle exec rackup -p8001 &
+LimitString
+
+#  ssh ${USER}@${CI_NODE} "bash --login" <<LimitString
+#    cd ${APP_DIR}
+#    ${RVM} use 2.1.0
+#    bundle
+#    SKIP_AUTH=1 STUB_SERVICES=1 bundle exec rackup -p8001 &
+#    echo "\$!" > ${APP_DIR}/pid
+#LimitString
+}
+
+function refresh() {
+  ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
+    cd ${APP_DIR}
+    git pull
+    bundle
+LimitString
+}
+
+function stop_server() {
+  ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
+    cd ${APP_DIR}
+    cat ${APP_DIR}/pid | xargs sudo kill -9
+LimitString
+}
+
+function usage() {
+  echo 'Usage: ./gateway <setup|run|stop>'
+}
+
+case "$1" in
+  "run" ) run ;;
+  "stop" ) stop_server ;;
+  "refresh" ) refresh ;;
+  "setup" ) setup ;;
+  "usage" ) usage ;;
+  *) usage ;;
+esac
