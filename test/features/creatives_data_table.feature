@@ -17,11 +17,11 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | Status              |
       | Ad Group            |
       | Publisher           |
-      | Avg Position        |
+      | Avg. Pos.           |
       | CTR                 |
       | Clicks              |
       | Conversions         |
-      | Cost Per Lead       |
+      | CPL                 |
       | Impr.               |
       | Leads               |
       | QS                  |
