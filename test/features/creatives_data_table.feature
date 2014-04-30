@@ -38,7 +38,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       |  32.45 |
       |    118 |
       |     12 |
-      |      6 |
+      |   6.56 |
       |  30.00 |
 
   @JIRA-CPI-132 @JIRA-CPI-133 @JIRA-CPI-188

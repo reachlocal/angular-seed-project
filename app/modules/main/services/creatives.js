@@ -57,7 +57,7 @@ angular
                 name: "Quality Score",
                 shortName: "QSCORE",
                 description: "How much google loves you",
-                format: "integer"
+                format: "decimal"
             }
         };
     });
