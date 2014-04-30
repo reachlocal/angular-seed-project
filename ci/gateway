@@ -4,35 +4,38 @@ CI_NODE='ci-cpi-stub.dev.wh.reachlocal.com'
 APP_DIR='/rl/product/cpi/cpi-gateway-service'
 USER='appuser'
 RVM='/var/people/appuser/.rvm/bin/rvm'
+SET_RVM='echo "Setting up remote ruby environment..." && source ~/.rvm/environments/ruby-2.1.0@global && which ruby'
+BUNDLE='~/.rvm/environments/ruby-2.1.0@global/bin/bundle'
 
 function setup() {
   ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
     cd /rl/product/cpi
     ${RVM} install 2.1.0
-    mkdir -p cpi-gateway-service
-    git clone  ssh://git@stash.lax.reachlocal.com/cpi/cpi-gateway-service.git
+    ${SET_RVM}
+    gem install bundler --no-rdoc --no-ri && which bundle && bundle --version
+    if [ -d ${APP_DIR} ]; then
+      cd ${APP_DIR} && git pull
+    else
+      git clone  ssh://git@stash.lax.reachlocal.com/cpi/cpi-gateway-service.git
+    fi
     bundle
 LimitString
 }
 
 function run() {
   echo 'Running the remote server...'
-  ssh ${USER}@${CI_NODE} "bash --login" <<LimitString
+  ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
+    ${SET_RVM}
     cd ${APP_DIR}
-    SKIP_AUTH=1 STUB_SERVICES=1 bundle exec rackup -p8001 &
+    bundle
+    SKIP_AUTH=1 STUB_SERVICES=1 nohup bundle exec rackup -p8001 > /dev/null 2>&1 &
+    echo "\$!" > ${APP_DIR}/pid
 LimitString
-
-#  ssh ${USER}@${CI_NODE} "bash --login" <<LimitString
-#    cd ${APP_DIR}
-#    ${RVM} use 2.1.0
-#    bundle
-#    SKIP_AUTH=1 STUB_SERVICES=1 bundle exec rackup -p8001 &
-#    echo "\$!" > ${APP_DIR}/pid
-#LimitString
 }
 
 function refresh() {
   ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
+    ${SET_RVM}
     cd ${APP_DIR}
     git pull
     bundle
@@ -41,8 +44,9 @@ LimitString
 
 function stop_server() {
   ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
+    ${SET_RVM}
     cd ${APP_DIR}
-    cat ${APP_DIR}/pid | xargs sudo kill -9
+    cat ${APP_DIR}/pid | xargs kill -9
 LimitString
 }
 
