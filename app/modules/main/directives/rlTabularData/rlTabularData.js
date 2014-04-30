@@ -1,10 +1,10 @@
 angular
     .rlmodule('rl.cpi.main.directives.rlTabularData', [
         'ui.bootstrap',
-        'rl.cpi.main.filters.flexnumber',
+        'rl.cpi.main.filters.FlexNumber',
         'rl.cpi.main.services.Zippable'
     ])
-    .controller('rlTabularDataCtrl', function($scope, Zippable, $timeout) {
+    .controller('rlTabularDataCtrl', function($scope, Zippable) {
         var zippedByCreatives = Zippable.build($scope.creatives, 'id', 'creative');
 
         function updateTable() {
