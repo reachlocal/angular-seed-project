@@ -1,11 +1,18 @@
 {
-  "name"                        : "cpi-angular",
+  "name"                         : "cpi-angular",
   "version"                      : "1.0.0",
   "description"                  : "CPI Client",
   "repository"                   : "git@stash.lax.reachlocal.com/cpi/cpi-client.git",
 
   "scripts"                      : {
     "test"                       : "make test"
+  },
+
+  "config": {
+     "ghooks": {
+      "pre-commit": "node_modules/.bin/gulp pre-commit",
+      "pre-push": "node_modules/.bin/gulp pre-push"
+    }
   },
 
   "devDependencies"              : {

@@ -78,7 +78,6 @@ gulp.task('build', function (done) {
     'build:stylesheets',
     'build:i18n',
     'build:styleguide',
-    'githook',
     done
   );
 });

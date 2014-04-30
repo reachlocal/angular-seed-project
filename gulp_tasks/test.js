@@ -4,22 +4,19 @@ var config = require('./config/config');
 var runJasmineTestsFunc = require('./lib/runJasmineTests.js');
 var seq = require('run-sequence');
 
-gulp.task('test:unit', ['build:javascripts:templates', 'l10n:testify'], function () {
+gulp.task('test:unit', ['build:javascripts:templates', 'l10n:testify'], function testUnit() {
     return runJasmineTestsFunc('unit');
 });
 
-gulp.task('test:integration', ['build:javascripts:templates', 'l10n:testify'], function () {
+gulp.task('test:integration', ['build:javascripts:templates', 'l10n:testify'], function testIntegration() {
     return runJasmineTestsFunc('integration');
 });
 
 gulp.task('test', function test(done) {
     seq('test:unit', 'test:integration', 'test:cucumber-stub', done);
 });
-gulp.task('test-ci', function testCi(done) {
-    seq('test:unit', 'test:integration', 'test:cucumber-ci', done);
-});
 
-gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
+gulp.task('test:watch', ['test:unit', 'test:integration'], function testWatch() {
     gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
 });
 
@@ -65,7 +62,7 @@ gulp.task('test:cucumber-ci', function testCucumberCi() {
     return runProtractor('test/features/protractor.ci.config.js');
 });
 
-gulp.task('test:fail_on_skipped', function() {
+gulp.task('test:fail_on_skipped', function testFailOnSkipped() {
     var shell = require('shelljs');
     var matchDetector = function(exitCode, out) {
         if (exitCode) return;
