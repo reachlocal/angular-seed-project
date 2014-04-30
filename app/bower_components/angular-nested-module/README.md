@@ -1,4 +1,4 @@
-angular-rlmodule
+angular-nested-module
 ================
 
 A namespaced module loader for angularjs (experimental).
