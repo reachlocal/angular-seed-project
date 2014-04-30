@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var config = require('./config/config');
 var runJasmineTestsFunc = require('./lib/runJasmineTests.js');
-
+var seq = require('run-sequence');
 
 gulp.task('test:unit', ['build:javascripts:templates', 'l10n:testify'], function () {
     return runJasmineTestsFunc('unit');
@@ -12,13 +12,19 @@ gulp.task('test:integration', ['build:javascripts:templates', 'l10n:testify'], f
     return runJasmineTestsFunc('integration');
 });
 
-gulp.task('test', ['test:unit', 'test:integration']);
+gulp.task('test', function test(done) {
+    seq('test:unit', 'test:integration', 'test:cucumber-stub', done);
+});
+gulp.task('test-ci', function testCi(done) {
+    seq('test:unit', 'test:integration', 'test:cucumber-ci', done);
+});
 
 gulp.task('test:watch', ['test:unit', 'test:integration'], function () {
     gulp.watch([config.APPLICATION_FILES, 'test/**/*.spec.js'], ['test:unit', 'test:integration']);
 });
 
-gulp.task('test:cucumber', ['protractor:webdriver', 'build'], function () {
+// Start local server and run protractor tests
+function runProtractor(configFile) {
     var connect = require('gulp-connect');
     connect.server({
         root: config.MINIFY_DESTINATION,
@@ -26,11 +32,37 @@ gulp.task('test:cucumber', ['protractor:webdriver', 'build'], function () {
     });
 
     var protractor = require('gulp-protractor').protractor;
-    gulp.src(['./test/features/*.feature']).pipe(protractor({
-        configFile: 'test/features/protractor.config.js'
-    }))
+    return gulp.src(['./test/features/*.feature'])
+        .pipe(protractor({
+            configFile: configFile
+        }))
         .on('end', function () { connect.serverClose(); })
         .on('error', function (e) { throw e; });
+}
+// Write the ci version of the client config.js file to the dist directory
+function writeCiClientConfig() {
+    var paths = require('./support').paths;
+    var concat = require('gulp-concat');
+    gulp.src('./test/features/client.ci.config.js')
+        .pipe(concat('config.js'))
+        .pipe(gulp.dest(paths.dist));
+}
+// Run cucumber against a local gateway service in stub mode
+// (The user must ensure the gateway is running and is in stub mode)
+gulp.task('test:cucumber', ['protractor:webdriver'], function testCucumber() {
+    return runProtractor('test/features/protractor.config.js');
+});
+// Run cucumber against ci's gateway service in stub mode
+// But using your localhost as the webdriver server (you'll see a browser)
+gulp.task('test:cucumber-stub', ['protractor:webdriver'], function testCucumberStub() {
+    writeCiClientConfig();
+    return runProtractor('test/features/protractor.config.js');
+});
+// Run cucumber against ci's gateway service in stub mode
+// using ci's webdriver server (you won't see the browser on your screen)
+gulp.task('test:cucumber-ci', function testCucumberCi() {
+    writeCiClientConfig();
+    return runProtractor('test/features/protractor.ci.config.js');
 });
 
 gulp.task('test:fail_on_skipped', function() {
