@@ -27,7 +27,7 @@ function streamStylesheets () {
   var stream = merge(
       gulp.src(paths.stylesheets),
       plugins.bowerFiles().pipe(plugins.ignore.exclude('**/*.js')))
-    .pipe(plugins.sass({ errLogToConsole: !plugins.util.env.production, sourceComments: 'map' }));
+    .pipe(plugins.sass({ errLogToConsole: !plugins.util.env.production, sourceComments: 'map', includePaths: 'app/modules' }));
 
   if (plugins.util.env.production) stream = stream
     .pipe(plugins.concat('cpi.min.css'))
