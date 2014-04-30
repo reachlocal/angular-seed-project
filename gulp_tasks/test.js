@@ -38,15 +38,23 @@ function runProtractor(configFile) {
 }
 // Write the ci version of the client config.js file to the dist directory
 function writeCiClientConfig() {
+    return writeClientConfig('./test/features/client.ci.config.js');
+}
+// Write the localhost version of the client config.js file to the dist directory
+function writeLocalClientConfig() {
+    return writeClientConfig('./app/config.js');
+}
+function writeClientConfig(path) {
     var paths = require('./support').paths;
     var concat = require('gulp-concat');
-    gulp.src('./test/features/client.ci.config.js')
+    return gulp.src(path)
         .pipe(concat('config.js'))
         .pipe(gulp.dest(paths.dist));
 }
 // Run cucumber against a local gateway service in stub mode
 // (The user must ensure the gateway is running and is in stub mode)
 gulp.task('test:cucumber', ['protractor:webdriver'], function testCucumber() {
+    writeLocalClientConfig();
     return runProtractor('test/features/protractor.config.js');
 });
 // Run cucumber against ci's gateway service in stub mode
