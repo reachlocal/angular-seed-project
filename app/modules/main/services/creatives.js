@@ -18,7 +18,7 @@ angular
             totalCost: {
                 name: "Total Cost",
                 shortName: "Cost",
-                format: "decimal"
+                format: "currency"
             },
             leads: {
                 name: "Lead Count",
@@ -28,7 +28,7 @@ angular
             costPerLead: {
                 name: "Cost Per Lead",
                 shortName: "CPL",
-                format: "decimal"
+                format: "currency"
             },
             clicks: {
                 name: "Clicks",

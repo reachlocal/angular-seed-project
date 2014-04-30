@@ -35,11 +35,11 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | 38.13% |
       |     45 |
       | 26.66% |
-      |  32.45 |
+      | $32.45 |
       |    118 |
       |     12 |
       |   6.56 |
-      |  30.00 |
+      | $35.12 |
 
   @JIRA-CPI-132 @JIRA-CPI-133 @JIRA-CPI-188
   Scenario: Edit a creative in the data table
