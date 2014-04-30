@@ -22,7 +22,7 @@ function setup() {
 LimitString
 }
 
-function run() {
+function start_server() {
   echo 'Running the remote server...'
   ssh ${USER}@${CI_NODE} "bash -s" <<LimitString
     ${SET_RVM}
@@ -51,11 +51,11 @@ LimitString
 }
 
 function usage() {
-  echo 'Usage: ./gateway <setup|run|stop>'
+  echo 'Usage: ./gateway <setup|stop|refresh|start>'
 }
 
 case "$1" in
-  "run" ) run ;;
+  "start" ) start_server ;;
   "stop" ) stop_server ;;
   "refresh" ) refresh ;;
   "setup" ) setup ;;
