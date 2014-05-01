@@ -44,20 +44,3 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the changes are canceled and no longer appear on the list of changes
 
 
-  @JIRA-CPI-169
-  Scenario: View the difference between the original entity and the changed element
-
-    Given changes are staged for publishing
-    When the user is presented with the list of changes
-    Then the user should see the original entity before the change
-    And the user should see the changed entity
-    And the changed entity should be highlighted
-
-
-  @JIRA-CPI-170
-  Scenario: Fields should be locked for editing when publish is pending
-
-    Given changes have been published
-    When the user is viewing a changed entity's data table
-    Then the user should be prevented from making changes to data elements published but not yet confirmed by the bots
-    And the user should see a visual element that shows the data element as being locked
