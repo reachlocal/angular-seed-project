@@ -7,11 +7,11 @@ Feature: Ability to stage changes to business entities before they are pushed to
   @JIRA-CPI-167
   Scenario: A visual indicator shows changes pending
 
-    Given changes are staged for publishing
-    When a user is navigating the CPI tool
+    Given 5 changes are staged for publishing
+    When a user is navigating the typical campaign's creative dashboard
     Then the user is presented with a visual indicator that changes are staged
-    When the user has navigated to a dashboard with entities that have staged changes
-    Then the user sees a visual element that highlights the fields that are staged in the entity's data table
+    And the visual indicator shows 5 staged changes pending
+
 
   @JIRA-CPI-203
   Scenario: A quick view shows a list of changes pending
