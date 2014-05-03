@@ -24,8 +24,13 @@ describe('rl.daterange', function () {
                 expect(scope.range).toEqual(scope.custom);
             });
 
-            it('sets the given value to the model', function () {
-                var scope = initializeController({ options: { value: customRange } });
+            it('sets the default value to the model if model from/to are not set', function () {
+                var scope = initializeController({ optionsIn: { defaultRange: customRange } });
+                expect(scope.model).toEqual(customRange);
+            });
+
+            it('uses model range if present', function () {
+                var scope = initializeController({ model: customRange });
                 expect(scope.model).toEqual(customRange);
             });
         });
@@ -35,17 +40,15 @@ describe('rl.daterange', function () {
                 var scope = initializeController();
                 expect(scope.options).toBeDefined();
                 expect(scope.options.customLabel).toEqual('Custom');
-                expect(scope.options.ranges).toEqual([]);
-                expect(scope.options.dateFormat).toEqual('MMM, dd yyyy');
+                expect(scope.options.format).toEqual('YYYY-MM-DD');
             });
 
             it('extends the defaults with provided', function () {
-                var scope = { options: { customLabel: 'Now this is custom' } };
+                var scope = { optionsIn: { customLabel: 'Now this is custom' } };
                 scope = initializeController(scope);
                 expect(scope.options).toBeDefined();
                 expect(scope.options.customLabel).toEqual('Now this is custom');
-                expect(scope.options.ranges).toEqual([]);
-                expect(scope.options.dateFormat).toEqual('MMM, dd yyyy');
+                expect(scope.options.format).toEqual('YYYY-MM-DD');
             });
         });
 
