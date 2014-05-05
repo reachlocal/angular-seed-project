@@ -6,6 +6,12 @@ angular
         $scope.dateRangeOptions = DateRangeOptions.build();
         $scope.dateRangeOptions.labelPrefix('rlPublisherFilterNav.dateRange.');
 
+        $scope.countStagedChanges = function() {
+          return $scope.creatives.filter(function (creative) {
+            return creative.staged === true;
+          }).length;
+        };
+
         // Setup filter drop-downs
         PublisherFilterService.load($scope.creatives);
         $scope.publisherFilter = PublisherFilterService;

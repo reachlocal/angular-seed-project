@@ -6,6 +6,11 @@ angular
           updatedModel[attribute][index] = data;
           return updatedModel.$update();
       };
+
+      $scope.setStaged = function() {
+        $scope.creative.staged = true;
+      };
+
     })
     .directive('rlCreativeCell', function() {
         return {

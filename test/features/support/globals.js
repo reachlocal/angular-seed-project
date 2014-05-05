@@ -1,8 +1,8 @@
 var chai = require('chai');
 chai.use(require('chai-as-promised'));
+global.request = require('supertest')('http://localhost:8001');
 global.assert = chai.assert;
 global.expect = chai.expect;
-
 global._ = require('underscore');
 
 var Q = require('q');
