@@ -26,7 +26,7 @@ angular.module('rl.daterange', [])
         <input id="{{ custom }}-{{ id }}" type="radio" ng:model="range" value="{{ custom }}">\
         <label for="{{ custom }}-{{ id }}" translate>{{ options.labelPrefix }}{{ options.customLabel }}</label>\
         <input type="date" ng:change="range=custom" ng:model="model.from" max="{{ model.to }}">\
-        <input type="date" ng:change="range=custom" ng:model="model.to" min="{{ model.from }}" max="{{ options.maxToDate }}">\
+        <input type="date" ng:change="range=custom" ng:model="model.to" min="{{ model.from }}" max="{{ options.maxDate }}">\
       </li>\
     </ul>\
   </fieldset>';
