@@ -1,8 +1,13 @@
 describe('Publisher filter nav controller', function () {
     var $scope;
+    var buildMock = function() {
+      return {
+        labelPrefix: angular.noop
+      };
+    };
     var mocks = {
         publisherFilterService: { load: angular.noop },
-        dateRangeOptions: { build: angular.noop },
+        dateRangeOptions: { build: buildMock },
         queryParams: { }
     };
 
