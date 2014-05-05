@@ -55,42 +55,20 @@ Feature: Each dashboard should have a consistent global navigation function
     Then the campaign dashboard should only show the data table of Creatives that have the "Active" Creative status
 
 
-  @JRIA-CPI-192 @JRIA-CPI-193
+  @JIRA-CPI-192 @JIRA-CPI-193 @JIRA-CPI-143
   Scenario: Viewing preset date ranges in Calendar filter
 
-    Given a calendar filter mechanism present
-    When the user selects the calendar widget with the intent to select a date range
-    Then the calendar widget should display a full calendar
-    And the calendar widget should display the following preselected items:
-      | Preset Date Range Text | Start Date                    | End Date     |
-      | Last 30 Days           | 30 days before current date   | Current date |
-      | Last 60 Days           | 60 days before current date   | Current date |
-      | Last 90 Days           | 90 days before current date   | Current date |
-      | All-Time               | Start date of master campaign | Current date |
-      | Yesterday              | 1 day before current date     | Current date |
-      | Last 7 Days            | 7 days before current date    | Current date |
-      | Last Calendar Month    | 1st of the month preceeding   | Current date |
-
-
-  @JRIA-CPI-192 @JRIA-CPI-193
-  Scenario Outline: Selecting a preset date range in Calendar filter
-
-    Given the current date is "<current_date>"
-    And the master campaign start date is "<master_campaign_start_date>"
-    When the user selects the preset date range item "<preset_date_item>"
-    Then the date range should start at "<start_date>" inclusive
-    And the date range should end at "<end_date>" inclusive
-
-  Examples:
-    | preset_date_item    | master_campaign_start_date | current_date | start_date | end_date  |
-    | Last 30 Days        | N/A                        | 4/15/2014    | 3/16/2014  | 4/15/2014 |
-    | Last 60 Days        | N/A                        | 4/15/2014    | 2/14/2014  | 4/15/2014 |
-    | Last 90 Days        | N/A                        | 4/15/2014    | 1/15/2014  | 4/15/2014 |
-    | All-Time            | 12/15/2013                 | 4/15/2014    | 12/15/2013 | 4/15/2014 |
-    | Yesterday           | N/A                        | 4/15/2014    | 4/14/2014  | 4/15/2014 |
-    | Last 7 Days         | N/A                        | 4/15/2014    | 4/8/2014   | 4/15/2014 |
-    | Last Calendar Month | N/A                        | 4/15/2014    | 3/1/2014   | 3/31/2014 |
-
-
-
-
+    Given campaign with id "713896" exists
+    When a user views the campaign id "713896" dashboard
+    And the user selects the calendar widget with the intent to select a date range
+    Then the calendar widget should display the following preselected items:
+      | Preset Date Range Text |
+      | Last 30 Days           |
+      | Last 60 Days           |
+      | Last 90 Days           |
+      | All Time               |
+      | Yesterday              |
+      | Last 7 Days            |
+      | This Month             |
+      | Last Month             |
+      | Custom                 |

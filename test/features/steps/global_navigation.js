@@ -44,4 +44,35 @@ module.exports = function () {
 
         all(expectPromises).then(callback);
     });
+
+    When(/^the user selects the calendar widget with the intent to select a date range$/, function (callback) {
+        browser.findElement(by.model('selectedDateRange')).then(
+            function clickCalendar(element) {
+                element.click()
+                    .then(
+                        function calendarIsDisplayed() {
+                            expect(element.isDisplayed()).to.eventually.be.true.then(function () { callback(); });
+                        }
+                );
+            }
+        );
+    });
+
+    Then(/^the calendar widget should display the following preselected items:$/, function (table, callback) {
+        var hash = table.hashes();
+        var expectPromises = [];
+        browser.findElements(by.repeater('range in options.ranges'))
+            .then(function validateCalendarEntries(elements) {
+                // This validates the order, as well as the field names
+                // Actual date range selections are validated by unit tests
+                for (var i = 0; i < elements.length; i++) {
+                    var element = elements[i];
+                    var expText = hash[i]["Preset Date Range Text"];
+                    var expectPromise = expect(element.getText()).to.eventually.include(expText);
+                    expectPromises.push(expectPromise);
+                }
+                all(expectPromises).then(callback);
+            });
+    });
+
 };
