@@ -4,11 +4,14 @@
         "All Ad Groups": "Todos os Ad Groups",
         "Filter by:": "Filtrar por:",
         "dateRange": {
-          "Current month": "Este mes",
-          "Last 30 days": "Últimos 30 dias",
-          "Last 60 days": "Últimos 60 dias",
-          "Last 90 days": "Últimos 90 dias",
-          "All time": "Tudo",
+          "Last 30 Days": "Últimos 30 Dias",
+          "Last 60 Days": "Últimos 60 Dias",
+          "Last 90 Days": "Últimos 90 Dias",
+          "All Time": "Tudo",
+          "Yesterday": "Ontem",
+          "Last 7 Days": "Últimos 7 Dias",
+          "This Month": "Este Mes",
+          "Last Month": "Última Mes",
           "Custom": "Personalizado"
         }
     }

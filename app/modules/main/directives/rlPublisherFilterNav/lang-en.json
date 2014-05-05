@@ -4,11 +4,14 @@
         "All Ad Groups": "All Ad Groups",
         "Filter by:": "Filter by:",
         "dateRange": {
-          "Current month": "Current month",
-          "Last 30 days": "Last 30 days",
-          "Last 60 days": "Last 60 days",
-          "Last 90 days": "Last 90 days",
-          "All time": "All time",
+          "Last 30 Days": "Last 30 Days",
+          "Last 60 Days": "Last 60 Days",
+          "Last 90 Days": "Last 90 Days",
+          "All Time": "All Time",
+          "Yesterday": "Yesterday",
+          "Last 7 Days": "Last 7 Days",
+          "This Month": "This Month",
+          "Last Month": "Last Month",
           "Custom": "Custom"
         }
     }

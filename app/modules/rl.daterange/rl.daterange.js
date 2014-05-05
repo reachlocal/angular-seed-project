@@ -20,11 +20,11 @@ angular.module('rl.daterange', [])
     <ul>\
       <li ng:repeat="range in options.ranges | toArray">\
         <input id="{{ id }}-predef.{{ $index }}" type="radio" ng:model="$parent.range" ng:value="range">\
-        <label for="{{ id }}-predef.{{ $index }}" translate>{{ range.label }}</label>\
+        <label for="{{ id }}-predef.{{ $index }}" translate>{{ options.labelPrefix }}{{ range.label }}</label>\
       </li>\
       <li>\
         <input id="{{ custom }}-{{ id }}" type="radio" ng:model="range" value="{{ custom }}">\
-        <label for="{{ custom }}-{{ id }}" translate>{{ options.customLabel }}</label>\
+        <label for="{{ custom }}-{{ id }}" translate>{{ options.labelPrefix }}{{ options.customLabel }}</label>\
         <input type="date" ng:change="range=custom" ng:model="model.from" max="{{ model.to }}">\
         <input type="date" ng:change="range=custom" ng:model="model.to" min="{{ model.from }}" max="{{ options.maxToDate }}">\
       </li>\
@@ -231,7 +231,7 @@ angular.module('rl.daterange', [])
                 var formattedRanges = {};
                 angular.forEach(ranges, function formatRanges(value, key) {
                     var range = {
-                        label: options.labelPrefix + key,
+                        label: key,
                         from:  value.from ? value.from.format(format) : '',
                         to:    value.to? value.to.format(format) : ''
                     };

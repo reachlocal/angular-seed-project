@@ -3,7 +3,8 @@ angular
     .controller('rlPublisherFilterNavCtrl', function ($scope, PublisherFilterService, DateRangeOptions, QueryParams) {
         // Attach the QueryParams object to our calendar - it's uh...  global.  :S
         $scope.selectedDateRange = QueryParams;
-        $scope.dateRangeOptions = DateRangeOptions.build(); // The defaults are fine
+        $scope.dateRangeOptions = DateRangeOptions.build();
+        $scope.dateRangeOptions.labelPrefix('rlPublisherFilterNav.dateRange.');
 
         // Setup filter drop-downs
         PublisherFilterService.load($scope.creatives);

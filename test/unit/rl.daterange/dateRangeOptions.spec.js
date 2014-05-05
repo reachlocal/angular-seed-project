@@ -74,7 +74,6 @@ describe("DateRangeOptions", function DateRangeOptions() {
     it("allows a label prefix", function () {
         options.labelPrefix("PREFIX");
         expect(options.labelPrefix()).toEqual("PREFIX");
-        expect(options.ranges()["Last 30 Days"].label).toEqual("PREFIXLast 30 Days");
     });
     it("builds a hash", function () {
         var hash = options.asHash();
