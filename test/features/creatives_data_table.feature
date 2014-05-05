@@ -14,7 +14,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | Column Name         |
       | Creative Text       |
       | New                 |
-      | Status              |
+      | State               |
       | Ad Group            |
       | Publisher           |
       | Avg. Pos.           |
