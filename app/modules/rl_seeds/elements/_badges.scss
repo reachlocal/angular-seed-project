@@ -1,7 +1,7 @@
 span.badge {
   display: inline-block;
   font-weight: bold;
-  font-size: 13px;
+  font-size: .9em;
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -10,6 +10,6 @@ span.badge {
   box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
 }
 
-span.badge-red {
-  background-color: #B31D14;
+span.badge-danger {
+  background-color: $color-danger;
 }

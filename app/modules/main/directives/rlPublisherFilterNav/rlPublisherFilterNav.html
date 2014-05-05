@@ -1,4 +1,7 @@
 <nav>
+  <input type="checkbox" id="staged_changes">
+  <label for="staged_changes"><span class="badge badge-danger">{{ countStagedChanges() }}</span> Changes Ready To Publish</label>
+
   <form>
     <rl-date-range options="dateRangeOptions" ng-model="selectedDateRange"></rl-date-range>
     <fieldset>
