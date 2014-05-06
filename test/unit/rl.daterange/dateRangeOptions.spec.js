@@ -7,23 +7,14 @@ describe("DateRangeOptions", function DateRangeOptions() {
     beforeEach(function injectService() {
         module('rl.daterange');
         inject(function (DateRangeOptions, Moment) {
+            timekeeper.freeze(new Date('2000-01-15'));
             moment = Moment.build;
-            // Pick a static date so our tests can have manually calculated results
-            now = moment("2000-01-15");
-            // Monkey-patch moment's init method to freeze time
-            // If they're asking for "now", return frozen time
-            // Otherwise, return the time the asked for
-            Moment.build = function (date) {
-                if (!!date) {
-                    return moment(date);
-                } else {
-                    return angular.copy(now);
-                }
-            };
-
+            now = moment().utc();
             options = DateRangeOptions.build(now);
         });
     });
+
+    afterEach(timekeeper.reset);
 
     it("starts with sensible defaults", function () {
         expect(options.customLabel()).toEqual("Custom");
