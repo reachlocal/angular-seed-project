@@ -14,9 +14,8 @@ module.exports = function () {
 
     Given(/^a typical campaign with (\d+) staged changes exists$/, function (numberOfCreatives, callback) {
         this.campaignId = 1581451;
-        request.get('/campaigns/' + this.campaignId + '/overview_data')
-               .expect(200)
-               .end(callback);
+        browser.get('/#campaign/' + this.campaignId)
+            .then(callback);
     });
 
     When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
