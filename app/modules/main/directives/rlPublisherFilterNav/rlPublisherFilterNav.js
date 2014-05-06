@@ -8,7 +8,7 @@ angular
 
         $scope.countStagedChanges = function() {
           return $scope.creatives.filter(function (creative) {
-            return creative.staged === true;
+            return creative.status === 'STAGED';
           }).length;
         };
 

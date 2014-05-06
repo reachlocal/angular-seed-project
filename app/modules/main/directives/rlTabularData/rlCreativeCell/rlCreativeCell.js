@@ -8,7 +8,7 @@ angular
       };
 
       $scope.setStaged = function() {
-        $scope.creative.staged = true;
+        $scope.creative.status = 'STAGED';
       };
 
     })

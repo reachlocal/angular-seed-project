@@ -24,11 +24,11 @@ describe('Publisher filter nav controller', function () {
         });
 
         $scope.creatives = [
-          { staged: true  },
-          { staged: true  },
-          { staged: false },
-          { staged: false },
-          { staged: false }
+          { status: 'STAGED' },
+          { status: 'STAGED' },
+          { status: 'RUNNING' },
+          { status: 'PAUSED' },
+          { status: 'NEW' }
         ];
 
         expect($scope.countStagedChanges()).toEqual(2);

@@ -23,11 +23,11 @@ describe('Creative cell controller', function () {
 
       it('set creative as staged', function() {
 
-        $scope.creative = { headLines: ['original value'], staged: false };
+        $scope.creative = { headLines: ['original value'], status: 'RUNNING' };
 
         $scope.setStaged();
 
-        expect($scope.creative.staged).toEqual(true);
+        expect($scope.creative.status).toEqual('STAGED');
       });
     });
 });
