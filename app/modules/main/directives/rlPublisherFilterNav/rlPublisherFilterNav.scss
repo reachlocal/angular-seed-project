@@ -104,11 +104,6 @@ main > nav {
         }
       }
 
-      // & + label:hover,
-      // &:checked + label {
-      //   border: 1px solid $color-white;
-      // }
-
       &:checked + label:before {
         background-color: $color-shadow;
       }
@@ -198,5 +193,13 @@ main > nav {
 
   input#staged_changes {
     display:none;
+    &:disabled + label {
+      background-color: $color-light;
+      cursor: default;
+      pointer-events: none;
+      em {
+        background-color: $color-muted;
+      }
+    }
   }
 }

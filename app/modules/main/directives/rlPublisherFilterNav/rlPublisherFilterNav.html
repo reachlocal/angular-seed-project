@@ -1,5 +1,5 @@
 <nav>
-  <input type="checkbox" id="staged_changes">
+  <input type="checkbox" id="staged_changes" ng-disabled='countStagedChanges() === 0'>
   <label for="staged_changes">
     <translate translate-value-count="{{ countStagedChanges() }}">
         rlPublisherFilterNav.{ count } Changes Ready To Publish
