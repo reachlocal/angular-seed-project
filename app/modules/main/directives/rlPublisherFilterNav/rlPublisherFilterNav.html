@@ -21,11 +21,24 @@
   </form>
 
   <article>
-    <input type="checkbox" id="staged_changes" ng-disabled='countStagedChanges() === 0'>
+    <input type="checkbox" id="staged_changes" ng-disabled="countStagedChanges() === 0">
     <label for="staged_changes">
       <translate translate-value-count="{{ countStagedChanges() }}">
           rlPublisherFilterNav.{ count } Changes Ready To Publish
       </translate>
     </label>
+
+    <section id="quick_view">
+      <p translate>rlPublisherFilterNav.Pending changes</p>
+
+      <ul>
+        <li>
+          <translate translate-value-count="{{ countStagedChanges() }}">
+              rlPublisherFilterNav.{ count } changed creatives
+          </translate>
+        </li>
+      </ul>
+      <a href="#" rel="staged_changes" translate>rlPublisherFilterNav.Review</a>
+    </section>
   </article>
 </nav>

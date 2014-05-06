@@ -37,35 +37,106 @@ main > nav {
     line-height: 2em;
   }
 
-  label[for=staged_changes] {
+  article {
     @include button($color-action);
-    float: right;
-    height: 100%;
-    line-height: $spacing-large;
+    $width: 14em;
 
-    em {
-      $size: 1.4em;
-      display: inline-block;
-      min-width: $size;
-      height: $size;
-      line-height: $size;
-      text-align: center;
-      background-color: $color-danger;
-      font-size: .9em;
-      font-weight: 700;
-      border-radius: 50%;
-      vertical-align: middle;
+    position: relative;
+    min-width: $width;
+
+    &:hover label[for=staged_changes] em {
+      background-color: darken($color-danger, 10);
     }
-  }
 
-  input#staged_changes {
-    display:none;
-    &:disabled + label {
-      background-color: $color-light;
+    section#quick_view {
+      @include dialog($color-info);
+
+      text-transform: initial;
+      display: none;
+      top: calc(100% + #{$spacing-small});
+      left: 0px;
+      position: absolute;
+      text-align: center;
       cursor: default;
-      pointer-events: none;
+
+      p {
+        text-align: left;
+      }
+
+      ul {
+        margin: $spacing-default auto;
+        text-align: left;
+
+        li {
+          padding: $spacing-small;
+          & + li {
+            border-top: 1px solid $color-light;
+          }
+        }
+      }
+
       em {
-        background-color: $color-muted;
+        color: $color-action;
+        font-weight: 700;
+      }
+
+      a[rel='staged_changes'] {
+        @include button($color-action);
+      }
+    }
+
+    label[for=staged_changes] {
+      float: right;
+      height: 100%;
+      width: 100%;
+      cursor: inherit;
+      line-height: initial;
+
+      em {
+        $size: 1.4em;
+        display: inline-block;
+        min-width: $size;
+        height: $size;
+        line-height: $size;
+        text-align: center;
+        background-color: $color-danger;
+        font-size: .9em;
+        font-weight: 700;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+    }
+
+    input#staged_changes {
+      display:none;
+      $high-z-index: 100;
+
+      &:checked + label {
+        &:before {
+          content: '';
+          display: block;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          position: fixed;
+          z-index: $high-z-index - 1;
+          background-color: $color-shadow;
+        }
+
+        & + section {
+          display: initial;
+          z-index: $high-z-index;
+        }
+      }
+
+      &:disabled + label {
+        background-color: $color-light;
+        cursor: default;
+        pointer-events: none;
+        em {
+          background-color: $color-muted;
+        }
       }
     }
   }

@@ -14,6 +14,9 @@
           "Last Month": "Última Mes",
           "Custom": "Personalizado"
         },
-        "{ count } Changes Ready To Publish": "<em>{ count }</em> { count, plural, one{Mudança} other{Mudanças} } { count, plural, one{Pronta} other {Prontas} } Para Publicar"
+        "{ count } Changes Ready To Publish": "<em>{ count }</em> { count, plural, one{Mudança} other{Mudanças} } { count, plural, one{Pronta} other {Prontas} } Para Publicar",
+        "{ count } changed creatives": "<em>{ count }</em> { count , plural, one{anúncio} other{anúncios} } { count , plural, one{alterado} other{alterados}  }",
+        "Pending changes": "Algumas mudanças aguardam a sua revisão:",
+        "Review": "Revisar"
     }
 }

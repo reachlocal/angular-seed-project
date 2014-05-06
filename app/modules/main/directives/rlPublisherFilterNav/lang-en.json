@@ -14,6 +14,9 @@
           "Last Month": "Last Month",
           "Custom": "Custom"
         },
-        "{ count } Changes Ready To Publish": "<em>{ count }</em> { count , plural, one{Change} other{Changes} } Ready To Publish"
+        "{ count } Changes Ready To Publish": "<em>{ count }</em> { count , plural, one{Change} other{Changes} } Ready To Publish",
+        "{ count } changed creatives": "<em>{ count }</em> changed { count , plural, one{creative} other{creatives} }",
+        "Pending changes": "Pending changes are awaiting for your review:",
+        "Review": "Review"
     }
 }

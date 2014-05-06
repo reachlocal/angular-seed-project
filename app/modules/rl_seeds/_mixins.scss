@@ -28,19 +28,24 @@
 
 @mixin button($background-color, $hover-color: null) {
   border: none;
-  padding: 0 $spacing-small;
+  padding: ($spacing-default / 3) $spacing-small;
   font: $font-bodycopy;
-  min-height: 2em;
   background-color: $background-color;
   color: $color-white;
   cursor: pointer;
   text-transform: capitalize;
+  text-decoration: none;
   margin: 0;
   outline: none;
+  display: inline-block;
 
   &:disabled {
     background-color: $color-light;
     cursor: default;
+  }
+
+  &:not(:disabled):hover {
+    text-decoration: none;
   }
 
   @include button-color($background-color, $hover-color);

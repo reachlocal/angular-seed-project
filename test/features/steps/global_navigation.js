@@ -12,7 +12,7 @@ module.exports = function () {
         callback();
     });
 
-    Given(/^a typical campaign with (\d+) staged changes exists$/, function (numberOfCreatives, callback) {
+    Given(/^a typical campaign with (\d+) creative staged changes exists$/, function (numberOfCreatives, callback) {
         this.campaignId = 1581451;
         browser.get('/#campaign/' + this.campaignId)
             .then(callback);
