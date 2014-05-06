@@ -24,9 +24,6 @@ Feature: Ability to stage changes to business entities before they are pushed to
     And the user views the Quick View of staged changes
     Then the user sees a visual element that shows the quantity of changes for each category
     And the user is presented with the option to view the full list of changes
-    When the user selects the option to see the full list of changes
-    Then the user is presented with the full detailed view of staged changes
-
 
   @JIRA-CPI-136 @JIRA-CPI-135
   Scenario: Cancel a staged change
