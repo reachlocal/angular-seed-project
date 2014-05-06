@@ -15,7 +15,7 @@ angular.module('rl.daterange', [])
   <fieldset class="rl-daterange">\
     <input type="checkbox" id="{{ id }}">\
     <label for="{{ id }}">\
-      <span>{{ model.from }}</span><span>{{ model.to }}</span>\
+      <span>{{ model.from | date: options.dateFormat }}</span><span>{{ model.to | date: options.dateFormat }}</span>\
     </label>\
     <ul>\
       <li ng:repeat="range in options.ranges | toArray">\
