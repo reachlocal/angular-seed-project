@@ -1,11 +1,21 @@
 angular
     .rlmodule('rl.cpi.main.services.Creatives', ['ngResource', 'rl.cpi.main.Config'])
     .factory('Creatives', function($resource, Config) {
-        return $resource(
+        var Creative = $resource(
             Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives/:textCreativeId',
             { 'campaignId': '@campaignId', 'textCreativeId': '@id' },
             { 'update': { method: 'PUT' } }
         );
+
+        Creative.prototype.isStaged = function() {
+          return this.status === 'STAGED';
+        };
+
+        Creative.prototype.setStaged = function() {
+          this.status = 'STAGED';
+        };
+
+        return Creative;
     })
     .factory('CreativeHeaders', function() {
         return {

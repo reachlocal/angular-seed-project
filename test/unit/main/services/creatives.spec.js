@@ -38,4 +38,18 @@ describe('Creatives Service', function() {
         expect(result.headLines).toEqual('Blah');
     });
 
+    it('knows when it is staged', function() {
+      var creative = new service({ status: 'STAGED' });
+      expect(creative.isStaged()).toEqual(true);
+
+      creative = new service({ status: 'RUNNING' });
+      expect(creative.isStaged()).toEqual(false);
+    });
+
+    it('sets the status to staged', function() {
+      var creative = new service({ status: 'RUNNING' });
+      creative.setStaged();
+
+      expect(creative.status).toEqual('STAGED');
+    });
 });

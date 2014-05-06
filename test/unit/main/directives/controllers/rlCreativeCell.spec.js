@@ -20,15 +20,6 @@ describe('Creative cell controller', function () {
         expect(creativeCopy.headLines[0]).toEqual('updated value');
         expect(result).toEqual('success');
       });
-
-      it('set creative as staged', function() {
-
-        $scope.creative = { headLines: ['original value'], status: 'RUNNING' };
-
-        $scope.setStaged();
-
-        expect($scope.creative.status).toEqual('STAGED');
-      });
     });
 });
 
