@@ -13,6 +13,7 @@
           "This Month": "This Month",
           "Last Month": "Last Month",
           "Custom": "Custom"
-        }
+        },
+        "{ count } Changes Ready To Publish": "<em>{ count }</em> { count , plural, one{Change} other{Changes} } Ready To Publish"
     }
 }

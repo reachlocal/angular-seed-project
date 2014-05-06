@@ -13,6 +13,7 @@
           "This Month": "Este Mes",
           "Last Month": "Última Mes",
           "Custom": "Personalizado"
-        }
+        },
+        "{ count } Changes Ready To Publish": "<em>{ count }</em> { count, plural, one{Mudança} other{Mudanças} } { count, plural, one{Pronta} other {Prontas} } Para Publicar"
     }
 }
