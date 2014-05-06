@@ -15,7 +15,7 @@ angular.module('rl.daterange', [])
   <fieldset class="rl-daterange">\
     <input type="checkbox" id="{{ id }}">\
     <label for="{{ id }}">\
-      <span>{{ model.from | date: options.dateFormat }}</span><span>{{ model.to | date: options.dateFormat }}</span>\
+      <span>{{ model.from | date: options.prettyFormat }}</span><span>{{ model.to | date: options.prettyFormat }}</span>\
     </label>\
     <ul>\
       <li ng:repeat="range in options.ranges | toArray">\
@@ -99,6 +99,7 @@ angular.module('rl.daterange', [])
                 customLabel: 'Custom',
                 labelPrefix: '', // Placed in front of all labels - useful for name-spaced translations
                 format: 'YYYY-MM-DD',
+                prettyFormat: 'mediumDate', // Format to use for angular's "pretty" output on the clickable button
                 anchorDate: today,
                 maxDate: moment(today),
                 defaultRange: 'Last 30 Days'
@@ -161,6 +162,7 @@ angular.module('rl.daterange', [])
 
             // Getter/setters for every option
             this.format = getOrSet(this, 'format');
+            this.prettyFormat = getOrSet(this, 'prettyFormat');
             this.anchorDate = getOrSet(this, 'anchorDate', inputDateFilter, outputDateFilter);
             this.maxDate = getOrSet(this, 'maxDate', inputDateFilter, outputDateFilter);
             this.customLabel = getOrSet(this, 'customLabel');
@@ -180,6 +182,7 @@ angular.module('rl.daterange', [])
             this.asHash = function asHash() {
                 return {
                     format:      this.format(),
+                    prettyFormat:this.prettyFormat(),
                     anchorDate:  this.anchorDate(),
                     maxDate:     this.maxDate(),
                     customLabel: this.customLabel(),

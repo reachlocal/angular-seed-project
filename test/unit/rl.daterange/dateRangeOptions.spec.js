@@ -20,6 +20,7 @@ describe("DateRangeOptions", function DateRangeOptions() {
         expect(options.customLabel()).toEqual("Custom");
         expect(options.labelPrefix()).toEqual("");
         expect(options.format()).toEqual(format);
+        expect(options.prettyFormat()).toEqual('mediumDate');
         expect(options.anchorDate()).toEqual("2000-01-15");
         expect(options.maxDate()).toEqual("2000-01-15");
         expect(options.defaultRange()).toEqual({ label: "Last 30 Days", from : "1999-12-16", to : "2000-01-15" });
@@ -43,6 +44,10 @@ describe("DateRangeOptions", function DateRangeOptions() {
     it("allows a custom format", function () {
         options.format("YYYY");
         expect(options.format()).toEqual("YYYY");
+    });
+    it("allows a custom pretty format", function () {
+        options.prettyFormat("shortDate");
+        expect(options.prettyFormat()).toEqual("shortDate");
     });
     it("allows a custom label", function () {
         options.customLabel("WAT?");
@@ -69,6 +74,7 @@ describe("DateRangeOptions", function DateRangeOptions() {
     it("builds a hash", function () {
         var hash = options.asHash();
         expect(hash.format).toEqual("YYYY-MM-DD");
+        expect(hash.prettyFormat).toEqual("mediumDate");
         expect(hash.anchorDate).toEqual("2000-01-15");
         expect(hash.maxDate).toEqual("2000-01-15");
         expect(hash.customLabel).toEqual("Custom");
