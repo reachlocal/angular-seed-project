@@ -1,6 +1,14 @@
+@import "rl_seeds/variables";
+
 .creative-metrics {
   .state {
     cursor: pointer;
-    font-weight: bold;
+    border-bottom: 1px dashed transparent;
+
+    &:hover {
+      color: $color-bodycopy;
+      border-bottom-color: $color-info;
+    }
+
   }
 }

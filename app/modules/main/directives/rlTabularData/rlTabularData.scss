@@ -25,6 +25,10 @@
     &:first-of-type {
       width: 250px;
     }
+    &:nth-of-type(2) {
+      width: 70px;
+    }
+
   }
 
   .headline,
