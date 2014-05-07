@@ -54,7 +54,7 @@
 @mixin unicode($position, $unicode-icon) {
   &:#{$position} {
     font-size: initial;
-    line-height: initial;
+    line-height: 1em;
     content: $unicode-icon;
   }
 }
