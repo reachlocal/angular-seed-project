@@ -61,21 +61,13 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     Then the creative reverts to its original state
 
   @JIRA-CPI-138
-  Scenario: Change the creative's status in the data table from Active to Inactive
+  Scenario: Change the creative's state in the data table from Active to Inactive and back
 
-    Given a creative with the visible status of "Active" in the data table
-    When the user changes the status of the creative to "Inactive" in the data table
-    Then the creative's status change is staged
-    And the creative has a visible status of "Inactive"
-
-  @JIRA-CPI-138
-  Scenario: Change the creative's status in the data table from Inactive to Active
-
-    Given a creative with the visible status of "Inactive" in the data table
-    When the user changes the status of the creative to "Active" in the data table
-    Then the creative's status change is staged
-    And the creative has a visible status of "Active"
-
+    Given a creative with the visible state of "Active" is in the data table
+    When the user changes the state of the creative to "Inactive" in the data table
+    Then the creative's state is "Inactive"
+    When the user changes the state of the creative to "Active" in the data table
+    Then the creative's state is "Active"
 
   @JIRA-CPI-33 @JIRA-CPI-34 @JIRA-CPI-35
   Scenario: Sort data by column within creative table

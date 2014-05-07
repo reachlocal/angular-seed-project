@@ -17,10 +17,27 @@ var firstDataRow = exports.firstDataRow = function() {
     });
 };
 
+var nthDataRow = exports.nthDataRow = function(rowNumber) {
+  return dataRows()
+    .then(function (rows) {
+      return rows[rowNumber];
+    });
+};
+
 var firstCreative = exports.firstCreative = function() {
   return firstDataRow()
     .then(function(row) {
       return row.findElement(by.css("td:first-of-type"));
+    });
+};
+
+var firstCreativeState = exports.firstCreativeState = function() {
+  return firstDataRow()
+    .then(function(row) {
+      return row.findElement(by.css("td:nth-of-type(2)"))
+        .then(function(cell) {
+          return cell.findElement(by.css(".state"));
+        });
     });
 };
 

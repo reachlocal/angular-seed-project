@@ -3,6 +3,20 @@ var page = require('../page_objects/creatives_data_table');
 module.exports = function () {
   var context = {};
 
+  Given(/^a creative with the visible state of "([^"]*)" is in the data table$/, function (state, callback) {
+    this.campaignId = 713896;
+    browser.get('/#campaign/' + this.campaignId)
+        .then(callback);
+  });
+
+  When(/^the user changes the state of the creative to "([^"]*)" in the data table$/, function (new_state, callback) {
+    page.firstCreativeState().then(function(row) {
+      row.click().then(function() {
+        callback();
+      });
+    });
+  });
+
   When(/^a user updates the first creative's headline to "([^"]*)"$/, function (headline_value, callback) {
     var firstCreative = page.firstCreative();
     page.updateHeadline(firstCreative, headline_value)
@@ -31,6 +45,13 @@ module.exports = function () {
                         callback();
                      });
     });
+  });
+
+  Then(/^the creative's state is "([^"]*)"$/, function (exp_state, callback) {
+    page.firstCreativeState().then(function(state) {
+        expect(state.getText()).to.eventually.contain(exp_state)
+          .then(function() { callback(); });
+      });
   });
 
   Then(/^the creative reverts to its original state$/, function (callback) {
