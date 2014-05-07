@@ -1,11 +1,4 @@
 <nav>
-  <input type="checkbox" id="staged_changes" ng-disabled='countStagedChanges() === 0'>
-  <label for="staged_changes">
-    <translate translate-value-count="{{ countStagedChanges() }}">
-        rlPublisherFilterNav.{ count } Changes Ready To Publish
-    </translate>
-  </label>
-
   <form>
     <rl-date-range options="dateRangeOptions" ng-model="selectedDateRange"></rl-date-range>
     <fieldset>
@@ -27,4 +20,12 @@
     </fieldset>
   </form>
 
+  <article>
+    <input type="checkbox" id="staged_changes" ng-disabled='countStagedChanges() === 0'>
+    <label for="staged_changes">
+      <translate translate-value-count="{{ countStagedChanges() }}">
+          rlPublisherFilterNav.{ count } Changes Ready To Publish
+      </translate>
+    </label>
+  </article>
 </nav>

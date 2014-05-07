@@ -53,3 +53,20 @@
     content: $unicode-icon;
   }
 }
+
+@mixin dialog($border-color: $color-light) {
+  @include shadow-block();
+  border: 1px solid $border-color;
+  background-color: $color-white;
+  color: $color-bodycopy;
+  padding: $spacing-small;
+}
+
+@mixin shadow-block($onX: true) {
+  $distanceY: $spacing-small;
+  $distanceX: $distanceY;
+  @if $onX == false {
+    $distanceX: 0;
+  }
+  box-shadow: $distanceX $distanceY 0 $color-shadow;
+}

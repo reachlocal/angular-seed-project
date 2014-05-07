@@ -1,173 +1,40 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
 
-$calendar-icon: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMwIDMyIj4KPGc+CjwvZz4KCTxwYXRoIGQ9Ik0yLjI4NiAyOS43MTRoNS4xNDN2LTUuMTQzaC01LjE0M3Y1LjE0M3pNOC41NzEgMjkuNzE0aDUuNzE0di01LjE0M2gtNS43MTR2NS4xNDN6TTIuMjg2IDIzLjQyOWg1LjE0M3YtNS43MTRoLTUuMTQzdjUuNzE0ek04LjU3MSAyMy40MjloNS43MTR2LTUuNzE0aC01LjcxNHY1LjcxNHpNMi4yODYgMTYuNTcxaDUuMTQzdi01LjE0M2gtNS4xNDN2NS4xNDN6TTE1LjQyOSAyOS43MTRoNS43MTR2LTUuMTQzaC01LjcxNHY1LjE0M3pNOC41NzEgMTYuNTcxaDUuNzE0di01LjE0M2gtNS43MTR2NS4xNDN6TTIyLjI4NiAyOS43MTRoNS4xNDN2LTUuMTQzaC01LjE0M3Y1LjE0M3pNMTUuNDI5IDIzLjQyOWg1LjcxNHYtNS43MTRoLTUuNzE0djUuNzE0ek05LjE0MyA4di01LjE0M3EwLTAuMjMyLTAuMTctMC40MDJ0LTAuNDAyLTAuMTdoLTEuMTQzcS0wLjIzMiAwLTAuNDAyIDAuMTd0LTAuMTcgMC40MDJ2NS4xNDNxMCAwLjIzMiAwLjE3IDAuNDAydDAuNDAyIDAuMTdoMS4xNDNxMC4yMzIgMCAwLjQwMi0wLjE3dDAuMTctMC40MDJ6TTIyLjI4NiAyMy40MjloNS4xNDN2LTUuNzE0aC01LjE0M3Y1LjcxNHpNMTUuNDI5IDE2LjU3MWg1LjcxNHYtNS4xNDNoLTUuNzE0djUuMTQzek0yMi4yODYgMTYuNTcxaDUuMTQzdi01LjE0M2gtNS4xNDN2NS4xNDN6TTIyLjg1NyA4di01LjE0M3EwLTAuMjMyLTAuMTctMC40MDJ0LTAuNDAyLTAuMTdoLTEuMTQzcS0wLjIzMiAwLTAuNDAyIDAuMTd0LTAuMTcgMC40MDJ2NS4xNDNxMCAwLjIzMiAwLjE3IDAuNDAydDAuNDAyIDAuMTdoMS4xNDNxMC4yMzIgMCAwLjQwMi0wLjE3dDAuMTctMC40MDJ6TTI5LjcxNCA2Ljg1N3YyMi44NTdxMCAwLjkyOS0wLjY3OSAxLjYwN3QtMS42MDcgMC42NzloLTI1LjE0M3EtMC45MjkgMC0xLjYwNy0wLjY3OXQtMC42NzktMS42MDd2LTIyLjg1N3EwLTAuOTI5IDAuNjc5LTEuNjA3dDEuNjA3LTAuNjc5aDIuMjg2di0xLjcxNHEwLTEuMTc5IDAuODM5LTIuMDE4dDIuMDE4LTAuODM5aDEuMTQzcTEuMTc5IDAgMi4wMTggMC44Mzl0MC44MzkgMi4wMTh2MS43MTRoNi44NTd2LTEuNzE0cTAtMS4xNzkgMC44MzktMi4wMTh0Mi4wMTgtMC44MzloMS4xNDNxMS4xNzkgMCAyLjAxOCAwLjgzOXQwLjgzOSAyLjAxOHYxLjcxNGgyLjI4NnEwLjkyOSAwIDEuNjA3IDAuNjc5dDAuNjc5IDEuNjA3eiIgZmlsbD0iI2ZmZmZmZiIgLz4KPC9zdmc+Cg==');
+@import "daterange";
 
 main > nav {
+  @include shadow-block(false);
+
   $nav-height: ($spacing-default * 3);
+  height: $nav-height;
+  display: flex;
+  padding: $spacing-small $spacing-default;
 
   background-color: rgba($color-info, 0.9);
   color: $color-white;
-  box-shadow: 0 $spacing-small 0 $color-shadow;
-  height: $nav-height;
-  text-align: left;
-  padding: $spacing-small $spacing-default;
-  position: sticky;
-  top: 0;
 
-  form {
-    height: 100%;
-
-    fieldset {
-      display: inline-block;
-      height: 100%;
-
-      & + fieldset {
-        margin-left: ($spacing-default - 4px); // The magic spacing added to inline elements.
-        margin-top: 0;
-        border-left: 1px solid $color-light;
-        padding-left: $spacing-default;
-        position: relative;
-      }
-    }
-  }
-
-  label {
-    line-height: 2em;
-  }
 
   select {
-    height: 100%;
-    width: 180px;
-    border-color: transparent;
-    background-color: transparent;
     color: $color-white;
+    background-color: transparent;
+    border-color: transparent;
     cursor: pointer;
-
-    &:not(:disabled):hover,
-    &:not(:disabled):focus {
+    &:not(:disabled):hover {
       border-color: $color-white;
     }
   }
 
   select {
     background-image: $image-down-arrow-white;
+    width: 22ch;
     &:-moz-focusring {
       text-shadow: 0 0 0 $color-white;
     }
   }
 
-  .rl-daterange {
-    border: 1px solid transparent;
-    cursor: pointer;
-
-    &:before {
-      content: '';
-      display: inline-block;
-      background-image: $calendar-icon;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      width: 1em;
-      height: 100%;
-      vertical-align: top;
-      background-position: center;
-      margin-left: $spacing-small;
-    }
-
-    &:hover {
-      border: 1px solid $color-white;
-    }
-
-    input[type="checkbox"] {
-      display: none;
-
-      & + label {
-        display: inline-block;
-        width: 15em;
-        cursor: pointer;
-
-        & > span {
-          text-align: center;
-          width: 50%;
-          display: inline-block;
-          position: relative;
-
-          &:empty:before {
-            content: '-\221E';
-          }
-
-          & + span:before {
-            content: '-';
-            position: absolute;
-            left: -.25em;
-          }
-        }
-      }
-
-      &:checked + label:before {
-        background-color: $color-shadow;
-      }
-    }
-
-    ul {
-      text-align: initial;
-      background-color: $color-white;
-      box-shadow: $spacing-small $spacing-small 0 $color-shadow;
-      border: 1px solid $color-light;
-      color: $color-bodycopy;
-      padding: $spacing-small;
-      width: 18em;
-      position: absolute;
-      left: 0;
-      top: $spacing-large;
-
-      li {
-        & + li {
-          margin-top: $spacing-small;
-        }
-
-        &:last-of-type {
-          border-top: 1px solid $color-light;
-
-          label {
-            margin-top: $spacing-small;
-          }
-        }
-      }
-
-      input[type="radio"] {
-        display: none;
-
-        & + label {
-          display: block;
-          cursor: pointer;
-          padding: 0 $spacing-small;
-
-          &:hover {
-            background-color: $color-bright;
-          }
-        }
-
-        &:checked + label {
-          background-color: $color-info;
-          color: $color-white;
-        }
-      }
-
-      input[type="date"] {
-        color: $color-bodycopy;
-        width: 50%;
-        float: left;
-        border: none;
-
-        margin-top: $spacing-small;
-
-        &::-webkit-calendar-picker-indicator {
-          color: $color-action;
-          opacity: 1;
-        }
-      }
-    }
+  label {
+    line-height: 2em;
   }
 
   label[for=staged_changes] {
@@ -200,6 +67,19 @@ main > nav {
       em {
         background-color: $color-muted;
       }
+    }
+  }
+
+  form {
+    @include rl-daterange();
+
+    flex-grow: 1;
+    display: flex;
+
+    fieldset + fieldset {
+      margin: 0 0 0 $spacing-default;
+      border-left: 1px solid $color-light;
+      padding-left: $spacing-default;
     }
   }
 }
