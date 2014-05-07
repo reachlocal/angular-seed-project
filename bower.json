@@ -34,7 +34,8 @@
     "logifill-details": "kapitancho/logifill-details",
     "angular-growl": "~0.4.0",
     "angular-nested-module": "~0.0.0",
-    "angular-bindqueryparams": "~0.0.0"
+    "angular-bindqueryparams": "~0.0.0",
+    "fontawesome": "~4.0.3"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
