@@ -27,7 +27,7 @@ function streamStylesheets () {
   var stream = merge(
       gulp.src(paths.stylesheets),
       plugins.bowerFiles().pipe(plugins.ignore.exclude('**/*.js')))
-    .pipe(plugins.sass({ errLogToConsole: !plugins.util.env.production, sourceComments: 'map', includePaths: 'app/modules' }))
+    .pipe(plugins.sass({ errLogToConsole: !plugins.util.env.production, sourceComments: 'map', includePaths: ['app/modules', 'app/bower_components'] }))
     .pipe(plugins.autoprefixer('last 2 chrome versions', 'last 2 ff versions'));
 
   if (plugins.util.env.production) stream = stream
