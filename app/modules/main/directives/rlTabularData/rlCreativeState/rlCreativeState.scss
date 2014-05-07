@@ -1,4 +1,6 @@
 @import "rl_seeds/variables";
+$fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.0.3/fonts";
+@import "fontawesome/scss/font-awesome.scss";
 
 .creative-metrics {
   .state {
@@ -8,6 +10,20 @@
     &:hover {
       color: $color-bodycopy;
       border-bottom-color: $color-info;
+    }
+
+    i {
+      padding-right: 6px;
+      float: right;
+      font-size: 10px;
+      margin-top: 6px;
+
+      &.fa-play {
+        color: $color-action;
+      }
+      &.fa-pause {
+        color: $color-muted;
+      }
     }
 
   }

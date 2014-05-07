@@ -1,3 +1,4 @@
 <section class="state" ng-click="toggleActive()">
   {{ 'rlTabularData.' + creative.state | translate }}
+  <i class="fa" ng-class="{ 'fa-play': isActive(), 'fa-pause': !isActive() }"></i>
 </section>
