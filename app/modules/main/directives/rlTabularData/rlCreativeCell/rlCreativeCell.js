@@ -12,7 +12,22 @@ angular
       $scope.creative.setStaged();
     }, true);
 
-    $scope.rules = PublisherTextCreativeRules.asHash();
+    var rules = PublisherTextCreativeRules.asHash();
+
+    // How many chars are permitted for a given 'headLines' or 'descriptiveLines' ?
+    function maxChars(attribute, index) {
+      var count = 35; // Default if we don't know
+      if (true) {
+        try {
+          var publisherId = $scope.creative.publisher.publisherId;
+          count = rules[publisherId][attribute][index].charCount;
+        } catch (err) {
+          // Airbrake error goes here
+        }
+      }
+      return count;
+    }
+    $scope.maxChars = maxChars;
   })
   .directive('rlCreativeCell', function () {
     return {
