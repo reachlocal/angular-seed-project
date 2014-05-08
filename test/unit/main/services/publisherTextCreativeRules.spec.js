@@ -3,12 +3,12 @@ describe("PublisherTextCreativeRules", function () {
   var service;
   var rules = [
     {
-      id: 1,
-      name: "Google"
+      publisherId: 1,
+      publisherName: "Google"
     },
     {
-      id: 2,
-      name: "Bing"
+      publisherId: 2,
+      publisherName: "Bing"
     }
   ];
 
@@ -30,8 +30,8 @@ describe("PublisherTextCreativeRules", function () {
     var allRules = service.asHash();
     httpResolver.resolve();
 
-    expect(allRules['1'].id).toEqual(rules[0].id);
-    expect(allRules['2'].name).toEqual(rules[1].name);
+    expect(allRules['1'].publisherId).toEqual(rules[0].publisherId);
+    expect(allRules['2'].publisherName).toEqual(rules[1].publisherName);
   });
 
   it("fetches rules as an array", function () {
@@ -40,8 +40,8 @@ describe("PublisherTextCreativeRules", function () {
     var allRules = service.query();
     httpResolver.resolve();
 
-    expect(allRules[0].id).toEqual(rules[0].id);
-    expect(allRules[1].name).toEqual(rules[1].name);
+    expect(allRules[0].publisherId).toEqual(rules[0].publisherId);
+    expect(allRules[1].publisherName).toEqual(rules[1].publisherName);
   });
 
 });

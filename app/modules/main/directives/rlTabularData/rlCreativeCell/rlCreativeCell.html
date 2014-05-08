@@ -4,7 +4,7 @@
      editable-text="creative.headLines[$index]"
      onbeforesave="update('headLines', $index, $data)"
      e-required
-     e-rl-xcounter="35"
+     e-rl-xcounter="{{ rules[creative.publisher.publisherId].headLines[$index].charCount }}"
      ng-class="{'invalid': $error}">
      {{ headLine }}
   </p>
@@ -12,7 +12,7 @@
      editable-text="creative.descriptiveLines[$index]"
      onbeforesave="update('descriptiveLines', $index, $data)"
      e-required
-     e-rl-xcounter="35"
+     e-rl-xcounter="{{ rules[creative.publisher.publisherId].descriptiveLines[$index].charCount }}"
      ng-class="{'invalid': $error}">
      {{ descriptiveLine }}
   </p>

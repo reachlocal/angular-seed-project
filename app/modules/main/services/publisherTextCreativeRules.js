@@ -14,7 +14,8 @@ angular
       asHash: {
         method: 'GET',
         isArray: false,
-        transformResponse: function transform(data) { return arrayToHash(data, 'id'); }
+        cache: true,
+        transformResponse: function transform(data) { return arrayToHash(data, 'publisherId'); }
       }
     };
 
