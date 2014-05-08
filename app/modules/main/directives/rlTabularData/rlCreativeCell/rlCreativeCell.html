@@ -1,16 +1,18 @@
 <section >
-  <p class="headline"
-    editable-text="creative.headLines[$index]"
-    onbeforesave="update('headLines', $index, $data)"
-    ng-repeat="headLine in creative.headLines track by $index"
-    e-required
-    ng-class="{'invalid': $error}">
-    {{ headLine }}
+  <p ng-repeat="headLine in creative.headLines track by $index"
+     class="headline"
+     editable-text="creative.headLines[$index]"
+     onbeforesave="update('headLines', $index, $data)"
+     e-required
+     e-rl-xcounter="35"
+     ng-class="{'invalid': $error}">
+     {{ headLine }}
   </p>
   <p ng-repeat="descriptiveLine in creative.descriptiveLines track by $index"
      editable-text="creative.descriptiveLines[$index]"
      onbeforesave="update('descriptiveLines', $index, $data)"
      e-required
+     e-rl-xcounter="35"
      ng-class="{'invalid': $error}">
      {{ descriptiveLine }}
   </p>

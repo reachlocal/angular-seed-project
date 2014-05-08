@@ -35,6 +35,19 @@
   .headline + .editable-wrap input {
     font-weight: 700;
   }
+  .rl-xcounter {
+    direction: ltr;
+    border: 1px solid rgba($color-dark,.1);
+    height: 100%;
+    display: inline-block;
+    line-height: 2em;
+    width: 40px;
+    text-align: center;
+    background: $color-bright;
+    &.negative {
+      color: $color-danger;
+    }
+  }
 
   p {
     margin: 0;

@@ -22,4 +22,30 @@ angular
             replace: true,
             controller: 'rlCreativeCellCtrl'
         };
+    })
+    /**
+     * This directive will add a character counter to the x-editable directive.
+     * It's only meant to work with input-type fields.
+     * If it is ever used in other places (besides Creative Cell), it should be moved up
+     * to a top-level directive.
+     */
+    .directive('rlXcounter', function () {
+      var directive = {
+        restrict: 'A',
+        template: '<span class="rl-xcounter" ng-class="{ negative: $negative }">{{ $remainder }}</span>'
+      };
+
+      directive.compile = function ($tElement) {
+        $tElement.next().prepend(angular.element(directive.template));
+        return directive.link;
+      };
+
+      directive.link = function (scope, element, attributes) {
+        scope.$watch(attributes.ngModel, function (value) {
+          scope.$remainder = parseInt(attributes.rlXcounter) - (value ? value.length : 0);
+          scope.$negative = scope.$remainder < 0;
+        });
+      };
+
+      return directive;
     });
