@@ -2,7 +2,6 @@
   <p class="headline"
     editable-text="creative.headLines[$index]"
     onbeforesave="update('headLines', $index, $data)"
-    onaftersave="creative.setStaged()"
     ng-repeat="headLine in creative.headLines track by $index"
     e-required
     ng-class="{'invalid': $error}">

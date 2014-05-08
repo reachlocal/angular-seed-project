@@ -6,6 +6,11 @@ angular
           updatedModel[attribute][index] = data;
           return updatedModel.$update();
       };
+
+      $scope.$watch('creative', function(newValue, oldValue) {
+        if (newValue === oldValue) return;
+        $scope.creative.setStaged();
+      }, true);
     })
     .directive('rlCreativeCell', function() {
         return {
