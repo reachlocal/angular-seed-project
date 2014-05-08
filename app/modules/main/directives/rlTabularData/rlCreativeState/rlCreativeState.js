@@ -12,7 +12,6 @@ angular
       var promise = updatedModel.$update();
       return promise.then(
         function updateSuccess() {
-          $scope.creative.setStaged();
           $scope.creative.state = newState;
         }
       );

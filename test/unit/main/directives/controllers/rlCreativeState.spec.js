@@ -56,7 +56,6 @@ describe('rlCreativeStateCtrl', function () {
 
     it('updates the model if $update succeeds', function () {
       var creativeCopy = { state: 'ACTIVE', $update: creative.$update };
-      spyOn(creative, 'setStaged').andCallThrough();
       spyOn(angular, 'copy').andCallFake(function(arg) {
         return (arg === $scope.creative) ? creativeCopy : undefined;
       });
@@ -66,7 +65,6 @@ describe('rlCreativeStateCtrl', function () {
       rootScope.$apply();
 
       expect($scope.creative.state).toBe('INACTIVE');
-      expect(creative.setStaged).toHaveBeenCalled();
     });
   });
 });
