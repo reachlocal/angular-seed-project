@@ -2,6 +2,10 @@ angular
   .rlmodule('rl.cpi.main.directives.rlCreativeCell', ['ui.bootstrap', 'xeditable', 'rl.cpi.main.services.PublisherTextCreativeRules'])
   .controller('rlCreativeCellCtrl', function ($scope, PublisherTextCreativeRules) {
     $scope.update = function (attribute, index, data) {
+      var max = maxChars(attribute, index);
+      if (data.length > max) {
+        return "Creative '" + attribute + "' line '" + index + "' is longer than '" + max + "' characters";
+      }
       var updatedModel = angular.copy($scope.creative);
       updatedModel[attribute][index] = data;
       return updatedModel.$update();
