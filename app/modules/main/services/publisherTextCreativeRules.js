@@ -3,7 +3,15 @@ angular
   .factory('PublisherTextCreativeRules', function ($resource, Config, _) {
     function arrayToHash(array, key) {
       if (angular.isString(array)) {
-        array = JSON.parse(array);
+        try {
+          array = JSON.parse(array);
+        } catch (err) {
+          // Note:  Throwing an exception from inside a transformResponse like this isn't awesome
+          // This service needs to be reworked.
+          var e = new Error("Could not parse publisher rules.  Server returned invalid JSON.");
+          e.json = array;
+          throw e;
+        }
       }
       return _.object(_.map(array, function mapRow(row) {
         return [row[key], row];
