@@ -17,36 +17,36 @@ var gutil = require('gulp-util');
  * @param colorFunc
  */
 function prettyPrint(string, colorFunc) {
-    // Don't decorate anything shorter than this...
-    var minLineLength = 10;
-    var prefix = "--- ";
-    var lines = string.split("\n");
-    var prettyLines = [];
-    lines.map(function(line) {
-        if (line.length > minLineLength) {
-            prettyLines.push(colorFunc(prefix) + line);
-        } else {
-            prettyLines.push(line);
-        }
-    });
-    return prettyLines.join("\n");
+  // Don't decorate anything shorter than this...
+  var minLineLength = 10;
+  var prefix = "--- ";
+  var lines = string.split("\n");
+  var prettyLines = [];
+  lines.map(function (line) {
+    if (line.length > minLineLength) {
+      prettyLines.push(colorFunc(prefix) + line);
+    } else {
+      prettyLines.push(line);
+    }
+  });
+  return prettyLines.join("\n");
 }
 
-module.exports = function(options, callback, quiet) {
+module.exports = function (options, callback, quiet) {
 
-    var cProcess = child_process.spawn('node', options);
-    if (!!callback) {
-        cProcess.on('exit', callback);
-    }
-    if (!quiet) {
-        cProcess.stdout.on('data', function(d) {
-            process.stdout.write(String(d), gutil.colors.blue);
-        });
+  var cProcess = child_process.spawn('node', options);
+  if (!!callback) {
+    cProcess.on('exit', callback);
+  }
+  if (!quiet) {
+    cProcess.stdout.on('data', function (d) {
+      process.stdout.write(String(d), gutil.colors.blue);
+    });
 
-        cProcess.stderr.on('data', function(d) {
-            process.stderr.write(prettyPrint(String(d), gutil.colors.red));
-        });
-    }
+    cProcess.stderr.on('data', function (d) {
+      process.stderr.write(prettyPrint(String(d), gutil.colors.red));
+    });
+  }
 
-    return cProcess;
+  return cProcess;
 };

@@ -5,13 +5,15 @@ describe('rlCreativeStateCtrl', function () {
   var rootScope;
 
   beforeEach(module('rl.cpi.main.directives.rlCreativeState'));
-  beforeEach(inject(function($controller, $rootScope, $q) {
+  beforeEach(inject(function ($controller, $rootScope, $q) {
     rootScope = $rootScope;
     deferred = $q.defer();
     $scope = $rootScope.$new();
     creative = {
       state: 'ACTIVE',
-      $update: function () { return deferred.promise; },
+      $update: function () {
+        return deferred.promise;
+      },
       setStaged: angular.noop
     };
     $scope.creative = creative;
@@ -56,7 +58,7 @@ describe('rlCreativeStateCtrl', function () {
 
     it('updates the model if $update succeeds', function () {
       var creativeCopy = { state: 'ACTIVE', $update: creative.$update };
-      spyOn(angular, 'copy').andCallFake(function(arg) {
+      spyOn(angular, 'copy').andCallFake(function (arg) {
         return (arg === $scope.creative) ? creativeCopy : undefined;
       });
 

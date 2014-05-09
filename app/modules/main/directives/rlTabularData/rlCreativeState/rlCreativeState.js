@@ -4,6 +4,7 @@ angular
     function isActive() {
       return $scope.creative.state === 'ACTIVE';
     }
+
     $scope.isActive = isActive;
     $scope.toggleActive = function toggleActive() {
       var updatedModel = angular.copy($scope.creative);

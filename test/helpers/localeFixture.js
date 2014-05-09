@@ -16,12 +16,12 @@
  * @return module function
  */
 function localeFixture(moduleName, customTranslations) {
-    var DEFAULT_MODULE = 'rl';
-    var DEFAULT_LANG = 'en';
-    var DEFAULT_TRANSLATIONS = translations; // Declared globally by the l10n.js file (hack!)
+  var DEFAULT_MODULE = 'rl';
+  var DEFAULT_LANG = 'en';
+  var DEFAULT_TRANSLATIONS = translations; // Declared globally by the l10n.js file (hack!)
 
-    return module(moduleName || DEFAULT_MODULE, function config($translateProvider) {
-        $translateProvider.translations(DEFAULT_LANG, customTranslations || DEFAULT_TRANSLATIONS);
-        $translateProvider.preferredLanguage(DEFAULT_LANG);
-    });
+  return module(moduleName || DEFAULT_MODULE, function config($translateProvider) {
+    $translateProvider.translations(DEFAULT_LANG, customTranslations || DEFAULT_TRANSLATIONS);
+    $translateProvider.preferredLanguage(DEFAULT_LANG);
+  });
 }

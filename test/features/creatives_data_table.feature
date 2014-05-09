@@ -11,34 +11,34 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     And the user selects the ad group "Primary Ad Group"
     Then the list of creatives belonging to the selected AdGroup is listed in the data table
     And the data table should contain these data elements as columns:
-      | Column Name         |
-      | Creative Text       |
-      | New                 |
-      | State               |
-      | Ad Group            |
-      | Publisher           |
-      | Avg. Pos.           |
-      | CTR                 |
-      | Clicks              |
-      | Conversions         |
-      | CPL                 |
-      | Impr.               |
-      | Leads               |
-      | QS                  |
-      | Total Cost          |
+      | Column Name   |
+      | Creative Text |
+      | New           |
+      | State         |
+      | Ad Group      |
+      | Publisher     |
+      | Avg. Pos.     |
+      | CTR           |
+      | Clicks        |
+      | Conversions   |
+      | CPL           |
+      | Impr.         |
+      | Leads         |
+      | QS            |
+      | Total Cost    |
     And the first creative is displayed
-      | AdGroup2 Creative1  |
-      | The Way Network     |
-      | Duarte, CA          |
+      | AdGroup2 Creative1 |
+      | The Way Network    |
+      | Duarte, CA         |
     And the report data for the first creative is displayed
-      |   1.46 |
+      | 1.46   |
       | 38.13% |
-      |     45 |
+      | 45     |
       | 26.66% |
       | $32.45 |
-      |    118 |
-      |     12 |
-      |   6.56 |
+      | 118    |
+      | 12     |
+      | 6.56   |
       | $35.12 |
 
   @JIRA-CPI-132 @JIRA-CPI-133 @JIRA-CPI-188

@@ -6,19 +6,19 @@
  * @returns {Object}
  */
 function mockDependency(moduleName, dependencyName) {
-    return {
-        /**
-         * Create the mock.
-         * @param mock              ex: { get: function () { return 'foo'; } }
-         * @returns {Function}
-         */
-        toBe: function (mock) {
-            return function () {
-                module(moduleName);
-                module(function ($provide) {
-                    $provide.value(dependencyName, mock);
-                });
-            };
-        }
-    };
+  return {
+    /**
+     * Create the mock.
+     * @param mock              ex: { get: function () { return 'foo'; } }
+     * @returns {Function}
+     */
+    toBe: function (mock) {
+      return function () {
+        module(moduleName);
+        module(function ($provide) {
+          $provide.value(dependencyName, mock);
+        });
+      };
+    }
+  };
 }

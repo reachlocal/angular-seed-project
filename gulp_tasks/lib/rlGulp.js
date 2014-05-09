@@ -8,28 +8,28 @@ var tasks = [];
 var gulp_task_real = gulp.task;
 
 function rlTask() {
-    var args = Array.prototype.slice.call(arguments);
-    var message = args.pop();
+  var args = Array.prototype.slice.call(arguments);
+  var message = args.pop();
 
-    // Is lat param a string?
-    // If not, put it back!
-    if (typeof message !== 'string') {
-        args.push(message);
-        message = false;
-    }
-    gulp_task_real.apply(this, args);
+  // Is lat param a string?
+  // If not, put it back!
+  if (typeof message !== 'string') {
+    args.push(message);
+    message = false;
+  }
+  gulp_task_real.apply(this, args);
 
-    if (message) {
-        var taskName = args.shift();
-        var taskHelp = {
-            name: taskName,
-            message: message
-        };
-        tasks.push(taskHelp);
-    }
+  if (message) {
+    var taskName = args.shift();
+    var taskHelp = {
+      name: taskName,
+      message: message
+    };
+    tasks.push(taskHelp);
+  }
 }
 gulp.task = rlTask;
 
 gulp.getTaskHelp = function () {
-    return tasks;
+  return tasks;
 };

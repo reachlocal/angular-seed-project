@@ -11,7 +11,7 @@ angular
       return updatedModel.$update();
     };
 
-    $scope.$watch('creative', function(newValue, oldValue) {
+    $scope.$watch('creative', function (newValue, oldValue) {
       if (newValue === oldValue) return;
       $scope.creative.setStaged();
     }, true);
@@ -31,6 +31,7 @@ angular
       }
       return count;
     }
+
     $scope.maxChars = maxChars;
   })
   .directive('rlCreativeCell', function () {
@@ -44,12 +45,12 @@ angular
       controller: 'rlCreativeCellCtrl'
     };
   })
-  /**
-   * This directive will add a character counter to the x-editable directive.
-   * It's only meant to work with input-type fields.
-   * If it is ever used in other places (besides Creative Cell), it should be moved up
-   * to a top-level directive.
-   */
+/**
+ * This directive will add a character counter to the x-editable directive.
+ * It's only meant to work with input-type fields.
+ * If it is ever used in other places (besides Creative Cell), it should be moved up
+ * to a top-level directive.
+ */
   .directive('rlXcounter', function () {
     var directive = {
       restrict: 'A',

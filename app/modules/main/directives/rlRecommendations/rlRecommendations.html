@@ -1,8 +1,8 @@
 <section class="recommendations">
   <p ng-show="recommendations.hasActiveRecommendations()">
-      <translate translate-value-count="{{ recommendations.count() }}">
-          rlRecommendations.Your campaign has { count } active recommendations
-      </translate>
+    <translate translate-value-count="{{ recommendations.count() }}">
+      rlRecommendations.Your campaign has { count } active recommendations
+    </translate>
   </p>
 
   <ul>
@@ -10,8 +10,12 @@
       <details class="{{ recommendation.severity || 'warning' }}">
         <summary>
           {{ recommendation.title }}
-          <button><translate>rlRecommendations.Apply</translate></button>
-          <button><translate>rlRecommendations.Dismiss</translate></button>
+          <button>
+            <translate>rlRecommendations.Apply</translate>
+          </button>
+          <button>
+            <translate>rlRecommendations.Dismiss</translate>
+          </button>
         </summary>
         <p>{{ recommendation.description }}</p>
       </details>

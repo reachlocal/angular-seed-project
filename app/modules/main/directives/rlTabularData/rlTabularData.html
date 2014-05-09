@@ -1,9 +1,10 @@
 <section class="creative-metrics">
   <table>
-    <thead><tr>
+    <thead>
+    <tr>
       <th>
         <translate>rlTabularData.Ad Text</translate>
-        
+
         <a ui-sref="newCreative({ campaignId: campaignId })" rel="new-creative" translate>
           rlTabularData.Add a new creative
         </a>
@@ -14,7 +15,8 @@
       <th ng-repeat="header in headers" ng-hide="header.hidden" translate>
         {{ "rlTabularData." + header.name }}
       </th>
-    </tr></thead>
+    </tr>
+    </thead>
 
     <tbody>
     <tr ng-repeat="row in table | CreativeTable">

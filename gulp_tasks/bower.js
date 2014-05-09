@@ -5,7 +5,9 @@ var bower = require('bower');
 gulp.task('bower', ['bower:clean'], function (done) {
   bower.commands.install()
     .on('log', log)
-    .on('end', function () { done(); });
+    .on('end', function () {
+      done();
+    });
 });
 
 gulp.task('bower:clean', function () {
@@ -15,6 +17,6 @@ gulp.task('bower:clean', function () {
 });
 
 
-function log (event) {
+function log(event) {
   gutil.log(gutil.colors.cyan(event.id), event.message);
 }

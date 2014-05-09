@@ -7,24 +7,24 @@
  * much everywhere.  (Not sure if this is a great idea.)
  */
 angular
-    .rlmodule('rl.cpi.main.Config', ['ngAnimate'])
-    .factory('Config', function() {
-        /**
-         * Currently, we're defining our config in the app/config.js file.
-         * It creates a global object called 'rlConfig'.
-         * If that variable exists, return that.  If it does not exist, PANIC!
-         */
-        var configDefaults = {
-            gatewayBaseUrl: "http://localhost:8001",
-            defaultLocale: 'en',
-            locales: ['en', 'pt']
-        };
-        if (typeof rlConfig !== 'undefined' && angular.isObject(rlConfig)) {
-            angular.forEach(rlConfig, function(value, key) {
-                configDefaults[key] = value;
-            }, this);
-        } else {
-            console.warn("WARNING: No config.js found for client app - using defaults");
-        }
-        return configDefaults;
-    });
+  .rlmodule('rl.cpi.main.Config', ['ngAnimate'])
+  .factory('Config', function () {
+    /**
+     * Currently, we're defining our config in the app/config.js file.
+     * It creates a global object called 'rlConfig'.
+     * If that variable exists, return that.  If it does not exist, PANIC!
+     */
+    var configDefaults = {
+      gatewayBaseUrl: "http://localhost:8001",
+      defaultLocale: 'en',
+      locales: ['en', 'pt']
+    };
+    if (typeof rlConfig !== 'undefined' && angular.isObject(rlConfig)) {
+      angular.forEach(rlConfig, function (value, key) {
+        configDefaults[key] = value;
+      }, this);
+    } else {
+      console.warn("WARNING: No config.js found for client app - using defaults");
+    }
+    return configDefaults;
+  });

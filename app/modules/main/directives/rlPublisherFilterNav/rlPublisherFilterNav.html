@@ -4,18 +4,18 @@
     <fieldset>
       <label>{{ 'rlPublisherFilterNav.Filter by:' | translate }}</label>
       <select name="webPublisherCampaign"
-          ng-model="publisherFilter.selectedPublisher"
-          ng-options="(p.publisher.publisherName
+              ng-model="publisherFilter.selectedPublisher"
+              ng-options="(p.publisher.publisherName
                       + ' ' +
                       (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publisherFilter.publishers"
           >
-          <option value="">{{ 'rlPublisherFilterNav.All Publishers' | translate }}</option>
+        <option value="">{{ 'rlPublisherFilterNav.All Publishers' | translate }}</option>
       </select>
       <select name="adGroup"
-          ng-options="adGroup for adGroup in publisherFilter.selectedPublisher.adGroups"
-          ng-model="publisherFilter.selectedAdGroup"
+              ng-options="adGroup for adGroup in publisherFilter.selectedPublisher.adGroups"
+              ng-model="publisherFilter.selectedAdGroup"
           >
-          <option value="">{{ 'rlPublisherFilterNav.All Ad Groups' | translate }}</option>
+        <option value="">{{ 'rlPublisherFilterNav.All Ad Groups' | translate }}</option>
       </select>
     </fieldset>
   </form>
@@ -24,7 +24,7 @@
     <input type="checkbox" id="staged_changes" ng-disabled="countStagedChanges() === 0">
     <label for="staged_changes">
       <translate translate-value-count="{{ countStagedChanges() }}">
-          rlPublisherFilterNav.{ count } Changes Ready To Publish
+        rlPublisherFilterNav.{ count } Changes Ready To Publish
       </translate>
     </label>
 
@@ -34,7 +34,7 @@
       <ul>
         <li>
           <translate translate-value-count="{{ countStagedChanges() }}">
-              rlPublisherFilterNav.{ count } changed creatives
+            rlPublisherFilterNav.{ count } changed creatives
           </translate>
         </li>
       </ul>

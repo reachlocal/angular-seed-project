@@ -14,11 +14,10 @@ select {
   vertical-align: middle;
 }
 
-
 select {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-image: $image-down-arrow;
   background-repeat: no-repeat;
   background-position: right $spacing-small top 50%;

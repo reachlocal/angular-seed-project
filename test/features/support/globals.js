@@ -6,56 +6,62 @@ global._ = require('underscore');
 
 var Q = require('q');
 global.promiseFor = function (value) {
-    var deferred = Q.defer();
-    deferred.resolve(value);
-    return deferred.promise;
+  var deferred = Q.defer();
+  deferred.resolve(value);
+  return deferred.promise;
 };
 
 global.all = function (promiseArray) {
-    promiseArray = [].concat(promiseArray);
-    var promise = Q.all(promiseArray);
+  promiseArray = [].concat(promiseArray);
+  var promise = Q.all(promiseArray);
 
-    return { then: function (callback) {
-        promise
-        .then(function () { callback(); })
-        .fail(function (results) { callback(results.message); });
-    }};
+  return { then: function (callback) {
+    promise
+      .then(function () {
+        callback();
+      })
+      .fail(function (results) {
+        callback(results.message);
+      });
+  }};
 };
 
-function withOption (action) {
-    return function (selector, item) {
-        var selectList, desiredOption;
+function withOption(action) {
+  return function (selector, item) {
+    var selectList, desiredOption;
 
-        selectList = this.findElement(selector);
-        selectList.click();
+    selectList = this.findElement(selector);
+    selectList.click();
 
-        return selectList.findElements(protractor.By.tagName('option'))
-            .then(function findMatchingOption(options){
-                options.some(function(option){
-                    option.getText().then(function doesOptionMatch(text){
+    return selectList.findElements(protractor.By.tagName('option'))
+      .then(function findMatchingOption(options) {
+        options.some(function (option) {
+          option.getText().then(function doesOptionMatch(text) {
 
-                        if (item === text){
-                            desiredOption = option;
-                            return true;
-                        }
-                    });
-                });
-            })
-            .then(function () {
-                return action(desiredOption);
-            });
-    };
+            if (item === text) {
+              desiredOption = option;
+              return true;
+            }
+          });
+        });
+      })
+      .then(function () {
+        return action(desiredOption);
+      });
+  };
 }
 
 module.exports = function () {
-    global.Given = global.When = global.Then = this.defineStep;
+  global.Given = global.When = global.Then = this.defineStep;
 
-    var browser = protractor.getInstance();
-    browser.selectOption =  withOption(function (desiredOption) {
-        if (desiredOption) { desiredOption.click(); }
-    }).bind(browser);
+  var browser = protractor.getInstance();
+  browser.selectOption = withOption(function (desiredOption) {
+    if (desiredOption) {
+      desiredOption.click();
+    }
+  }).bind(browser);
 
-    browser.findOption = withOption(function (desiredOption) {
-        return !!desiredOption;
-    }).bind(browser);
+  browser.findOption = withOption(function (desiredOption) {
+    return !!desiredOption;
+  }).bind(browser);
 };

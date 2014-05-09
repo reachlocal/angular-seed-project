@@ -10,10 +10,10 @@ gulp.task('dist', function () {
   gulp.start('build', tarball);
 });
 
-function tarball (error) {
+function tarball(error) {
   if (error) return;
   gutil.log('Packaging...');
-  exec('tar -zcvf '+ packageName +' dist', function () {
+  exec('tar -zcvf ' + packageName + ' dist', function () {
     gutil.log(packageName + ' is done.');
   });
 }

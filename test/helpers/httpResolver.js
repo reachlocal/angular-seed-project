@@ -7,11 +7,11 @@
  *   beforeEach(helpers.beforeEach); // <-- Pass this function to beforeEach()
  */
 var httpResolver = {};
-httpResolver.beforeEach = function() {
-    inject(function($rootScope, _$httpBackend_) {
-        httpResolver.$rootScope = $rootScope;
-        httpResolver.$httpBackend = _$httpBackend_;
-    });
+httpResolver.beforeEach = function () {
+  inject(function ($rootScope, _$httpBackend_) {
+    httpResolver.$rootScope = $rootScope;
+    httpResolver.$httpBackend = _$httpBackend_;
+  });
 };
 
 /**
@@ -30,9 +30,9 @@ httpResolver.beforeEach = function() {
  *     expect($scope.foo).toEqual("bar"); // Verify stuff happened
  *   })
  **/
-httpResolver.resolve = function() {
-    httpResolver.$rootScope.$digest();
-    httpResolver.$httpBackend.flush();
+httpResolver.resolve = function () {
+  httpResolver.$rootScope.$digest();
+  httpResolver.$httpBackend.flush();
 };
 
 /**
@@ -41,7 +41,7 @@ httpResolver.resolve = function() {
  * ex:
  *   afterEach(helpers.afterEach);
  **/
-httpResolver.afterEach = function() {
-    httpResolver.$httpBackend.verifyNoOutstandingExpectation();
-    httpResolver.$httpBackend.verifyNoOutstandingRequest();
+httpResolver.afterEach = function () {
+  httpResolver.$httpBackend.verifyNoOutstandingExpectation();
+  httpResolver.$httpBackend.verifyNoOutstandingRequest();
 };

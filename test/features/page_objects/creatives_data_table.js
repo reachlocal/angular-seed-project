@@ -1,65 +1,67 @@
-var creativeMetricsTable = exports.createMetricsTable = function() {
+var creativeMetricsTable = exports.createMetricsTable = function () {
   return browser.findElement(by.css(".creative-metrics > table"));
 };
 
-var dataRows = exports.dataRows = function() {
+var dataRows = exports.dataRows = function () {
   return creativeMetricsTable().findElements(by.css("tbody > tr"));
 };
 
-exports.headerRow = function() {
+exports.headerRow = function () {
   return creativeMetricsTable().findElement(by.css("thead > tr"));
 };
 
-var firstDataRow = exports.firstDataRow = function() {
+var firstDataRow = exports.firstDataRow = function () {
   return dataRows()
     .then(function (rows) {
       return rows[0];
     });
 };
 
-var nthDataRow = exports.nthDataRow = function(rowNumber) {
+var nthDataRow = exports.nthDataRow = function (rowNumber) {
   return dataRows()
     .then(function (rows) {
       return rows[rowNumber];
     });
 };
 
-var firstCreative = exports.firstCreative = function() {
+var firstCreative = exports.firstCreative = function () {
   return firstDataRow()
-    .then(function(row) {
+    .then(function (row) {
       return row.findElement(by.css("td:first-of-type"));
     });
 };
 
-var firstCreativeState = exports.firstCreativeState = function() {
+var firstCreativeState = exports.firstCreativeState = function () {
   return firstDataRow()
-    .then(function(row) {
+    .then(function (row) {
       return row.findElement(by.css("td:nth-of-type(2)"))
-        .then(function(cell) {
+        .then(function (cell) {
           return cell.findElement(by.css(".state"));
         });
     });
 };
 
-var getHeadline = exports.getHeadline = function(creativePromise) {
+var getHeadline = exports.getHeadline = function (creativePromise) {
   return creativePromise
-    .then(function(creative) {
+    .then(function (creative) {
       return creative.findElement(by.binding('headLine'));
     });
 };
 
-var getHeadlineText = exports.getHeadlineText = function(creativePromise) {
+var getHeadlineText = exports.getHeadlineText = function (creativePromise) {
   return getHeadline(creativePromise)
-    .then(function(headline) {
+    .then(function (headline) {
       return headline.getText();
     });
 };
 
-var setHeadline = exports.setHeadline = function(creativePromise, value) {
+var setHeadline = exports.setHeadline = function (creativePromise, value) {
   return creativePromise
-    .then(function(creative) {
-      getHeadline(creative).then(function(headline) { headline.click(); });
-      return creative.findElement(by.css('form input')).then(function(input) {
+    .then(function (creative) {
+      getHeadline(creative).then(function (headline) {
+        headline.click();
+      });
+      return creative.findElement(by.css('form input')).then(function (input) {
         input.clear();
         input.sendKeys(value);
         return input;
@@ -67,10 +69,10 @@ var setHeadline = exports.setHeadline = function(creativePromise, value) {
     });
 };
 
-var updateHeadline = exports.updateHeadline = function(creativePromise, value) {
+var updateHeadline = exports.updateHeadline = function (creativePromise, value) {
   return setHeadline(creativePromise, value)
-          .then(function(element) {
-            element.sendKeys('\n');
-            return element;
-          });
+    .then(function (element) {
+      element.sendKeys('\n');
+      return element;
+    });
 };

@@ -1,7 +1,7 @@
 {
-    "rlLocaleSelector": {
-        "Locale": "Locale",
-        "en": "English (US)",
-        "pt": "Portuguese (BR)"
-    }
+  "rlLocaleSelector": {
+    "Locale": "Locale",
+    "en": "English (US)",
+    "pt": "Portuguese (BR)"
+  }
 }

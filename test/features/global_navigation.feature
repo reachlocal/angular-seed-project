@@ -18,8 +18,8 @@ Feature: Each dashboard should have a consistent global navigation function
 
     Given a campaign with id "713896" exists
     And the campaign has the following AdGroups:
-      | AdGroup       | Publisher     |
-      | First AdGroup | Google        |
+      | AdGroup       | Publisher |
+      | First AdGroup | Google    |
     When the user selects 'First AdGroup' under the all AdGroups section
     Then the campaign dashboard should show the data table of Creatives under 'First AdGroup' across all publishers
 
@@ -28,9 +28,9 @@ Feature: Each dashboard should have a consistent global navigation function
 
     Given a campaign with id "713896" exists
     And the campaign has the following AdGroups:
-      | AdGroup             | Web Publisher Campaign    |
-      | Primary Ad Group    | Local Profile (City)      |
-      | Commercial Plumbing | Local Profile (City)      |
+      | AdGroup             | Web Publisher Campaign |
+      | Primary Ad Group    | Local Profile (City)   |
+      | Commercial Plumbing | Local Profile (City)   |
     When a user views the campaign id "713896" dashboard
     And the user selects the web publisher campaign "Local Profile (City)"
     And the user selects "Primary Ad Group" from the web publisher campaign "Local Profile (City)"
@@ -42,12 +42,12 @@ Feature: Each dashboard should have a consistent global navigation function
     Given campaign with id "713896" exists
     When a user views the campaign id "713896" dashboard
     Then the user should see a campaign header:
-      | name                                      | masterCampaignId   | currentCampaignId   | totalCycleBudget | spentToDateThisCycle | currentCycle |
-      | A Quality 1st Plumbing- Plumbing 20100222 | 713896             | 713896              | $1,800.00        | $0.00                | 1            |
+      | name                                      | masterCampaignId | currentCampaignId | totalCycleBudget | spentToDateThisCycle | currentCycle |
+      | A Quality 1st Plumbing- Plumbing 20100222 | 713896           | 713896            | $1,800.00        | $0.00                | 1            |
 
   @JIRA-CPI-197
   Scenario: Select a creative status in Global Nav Bar under All Creatives
-  
+
     Given a campaign with id "713896" exists
     And the campaign has Creatives associated to the campaign
     When a user views the campaign id "713896" dashboard

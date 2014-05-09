@@ -23,16 +23,16 @@ ol[growl] {
 
     &.ng-enter,
     &.ng-leave {
-        transition: 200ms linear all;
+      transition: 200ms linear all;
     }
 
     &.ng-enter,
     &.ng-leave.ng-leave-active {
-        transform: translateY(-200%);
+      transform: translateY(-200%);
     }
     &.ng-leave,
     &.ng-enter.ng-enter-active {
-        transform: translateY(0);
+      transform: translateY(0);
     }
   }
 

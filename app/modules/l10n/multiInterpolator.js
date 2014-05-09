@@ -18,21 +18,21 @@
  * That's it.
  */
 angular.rlmodule('rl.l10n.MultiInterpolator', ['pascalprecht.translate', 'tmh.dynamicLocale'])
-    .factory('MultiInterpolator', function ($interpolate, $translateMessageFormatInterpolation) {
-        var $locale;
-        return {
-            setLocale: function (locale) {
-                $locale = locale;
-            },
+  .factory('MultiInterpolator', function ($interpolate, $translateMessageFormatInterpolation) {
+    var $locale;
+    return {
+      setLocale: function (locale) {
+        $locale = locale;
+      },
 
-            getInterpolationIdentifier: function () {
-                return 'multiinterpolator';
-            },
+      getInterpolationIdentifier: function () {
+        return 'multiinterpolator';
+      },
 
-            interpolate: function (stringIn, interpolateParams) {
-                var stringOut = $interpolate(stringIn)(interpolateParams);
-                stringOut = $translateMessageFormatInterpolation.interpolate(stringOut, interpolateParams);
-                return stringOut;
-            }
-        };
-    });
+      interpolate: function (stringIn, interpolateParams) {
+        var stringOut = $interpolate(stringIn)(interpolateParams);
+        stringOut = $translateMessageFormatInterpolation.interpolate(stringOut, interpolateParams);
+        return stringOut;
+      }
+    };
+  });

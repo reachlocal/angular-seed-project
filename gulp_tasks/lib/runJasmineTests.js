@@ -14,27 +14,27 @@ var es = require('event-stream');
 
 var karmaPort = 9876;
 module.exports = function (testDirectory) {
-    var config = require('../config/config');
-    // Note:  These must be in order:  Bower, project, test
-    var all_test_files = [config.APPLICATION_ROOT + '/config.js']
-        .concat(config.APPLICATION_SCRIPTS)
-        .concat(config.TEST_LIBRARIES)
-        .concat(['dist/public/templates.js',
-                 'test/helpers/**/*.js',
-                 'test/' + testDirectory + '/**/*.spec.js']);
+  var config = require('../config/config');
+  // Note:  These must be in order:  Bower, project, test
+  var all_test_files = [config.APPLICATION_ROOT + '/config.js']
+    .concat(config.APPLICATION_SCRIPTS)
+    .concat(config.TEST_LIBRARIES)
+    .concat(['dist/public/templates.js',
+      'test/helpers/**/*.js',
+        'test/' + testDirectory + '/**/*.spec.js']);
 
-    var karma = require('gulp-karma');
-    return es.merge(bowerFiles(), gulp.src(all_test_files))
-        .pipe(karma({
-            frameworks: ['jasmine'],
-            browsers: ['PhantomJS'],
-            action: 'run',
-            reporters: ['dots', 'junit'],
-            singleRun: true,
-            port: karmaPort++
-        }))
-        .on('error', function(err) {
-            gutil.log(gutil.colors.red("TESTS FAILED! DO THE PANIC DANCE!"));
-            throw err;
-        });
+  var karma = require('gulp-karma');
+  return es.merge(bowerFiles(), gulp.src(all_test_files))
+    .pipe(karma({
+      frameworks: ['jasmine'],
+      browsers: ['PhantomJS'],
+      action: 'run',
+      reporters: ['dots', 'junit'],
+      singleRun: true,
+      port: karmaPort++
+    }))
+    .on('error', function (err) {
+      gutil.log(gutil.colors.red("TESTS FAILED! DO THE PANIC DANCE!"));
+      throw err;
+    });
 };

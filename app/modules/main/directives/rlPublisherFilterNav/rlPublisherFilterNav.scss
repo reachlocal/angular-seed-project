@@ -1,6 +1,5 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
-
 @import "daterange";
 
 main > nav {
@@ -13,7 +12,6 @@ main > nav {
 
   background-color: rgba($color-info, 0.9);
   color: $color-white;
-
 
   select {
     color: $color-white;
@@ -110,7 +108,7 @@ main > nav {
     }
 
     input#staged_changes {
-      display:none;
+      display: none;
       $high-z-index: 100;
 
       &:checked + label {
