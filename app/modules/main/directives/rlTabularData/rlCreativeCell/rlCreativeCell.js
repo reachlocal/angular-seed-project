@@ -16,7 +16,7 @@ angular
       $scope.creative.setStaged();
     }, true);
 
-    var rules = PublisherTextCreativeRules.asHash();
+    var rules = PublisherTextCreativeRules.asHash({ campaignId: $scope.creative.campaignId });
 
     // How many chars are permitted for a given 'headLines' or 'descriptiveLines' ?
     function maxChars(attribute, index) {

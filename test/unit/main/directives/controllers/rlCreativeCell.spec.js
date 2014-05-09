@@ -10,6 +10,7 @@ describe('Creative cell controller', function () {
       };
       controller = $controller;
       $scope = $rootScope.$new();
+      $scope.creative = { campaignId: '123' };
       Creative = _Creatives_;
     });
   });
@@ -46,7 +47,7 @@ describe('Creative cell controller', function () {
     });
 
     it('sets the creative as staged upon any model change', function () {
-      $scope.creative = new Creative({ status: 'NEW', headLines: [ 'original value' ]});
+      $scope.creative = new Creative({ status: 'NEW', headLines: [ 'original value' ] });
       $scope.$digest();
       expect($scope.creative.isStaged()).toEqual(false);
 
