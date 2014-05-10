@@ -1,8 +1,14 @@
 angular
   .rlmodule('rl.cpi.main.directives.rlCreativeCell', ['ui.bootstrap', 'xeditable', 'rl.cpi.main.services.PublisherTextCreativeRules'])
   .controller('rlCreativeCellCtrl', function ($scope, PublisherTextCreativeRules) {
+    var rules = PublisherTextCreativeRules
+      .allByCampaignId($scope.creative.campaignId)
+      .forPublisherId($scope.creative.publisherId);
+
+    $scope.maxChars = rules.maxChars;
+
     $scope.update = function (attribute, index, data) {
-      var max = maxChars(attribute, index);
+      var max = rules.maxChars(attribute, index);
       if (data.length > max) {
         return "Creative '" + attribute + "' line '" + index + "' is longer than '" + max + "' characters";
       }
@@ -15,24 +21,6 @@ angular
       if (newValue === oldValue) return;
       $scope.creative.setStaged();
     }, true);
-
-    var rules = PublisherTextCreativeRules.asHash({ campaignId: $scope.creative.campaignId });
-
-    // How many chars are permitted for a given 'headLines' or 'descriptiveLines' ?
-    function maxChars(attribute, index) {
-      var count = 35; // Default if we don't know
-      if (true) {
-        try {
-          var publisherId = $scope.creative.publisher.publisherId;
-          count = rules[publisherId][attribute][index].charCount;
-        } catch (err) {
-          // Airbrake error goes here
-        }
-      }
-      return count;
-    }
-
-    $scope.maxChars = maxChars;
   })
   .directive('rlCreativeCell', function () {
     return {

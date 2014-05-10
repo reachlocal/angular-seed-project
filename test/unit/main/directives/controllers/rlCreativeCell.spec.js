@@ -1,12 +1,21 @@
 describe('Creative cell controller', function () {
-  var $scope, Creative, rulesStub, controller;
+  var $scope, Creative, ruleStub, ruleCollectionStub, controller;
 
   beforeEach(function () {
     module('rl.cpi.main.directives.rlCreativeCell');
     module('rl.cpi.main.services.Creatives');
     inject(function ($controller, $rootScope, _Creatives_) {
-      rulesStub = {
-        asHash: angular.noop
+      // Single rule for a publisher
+      ruleStub  = {
+        forPublisherId: function () {
+          return { maxChars: angular.noop };
+        }
+      };
+      // All rules for a campaign (all publishers)
+      ruleCollectionStub = {
+        allByCampaignId: function () {
+          return ruleStub;
+        }
       };
       controller = $controller;
       $scope = $rootScope.$new();
@@ -16,14 +25,16 @@ describe('Creative cell controller', function () {
   });
 
   function buildController() {
-    controller('rlCreativeCellCtrl', { $scope: $scope, PublisherTextCreativeRules: rulesStub });
+    controller('rlCreativeCellCtrl', { $scope: $scope, PublisherTextCreativeRules: ruleCollectionStub });
   }
 
   describe('initialization', function () {
     it('pulls in validation rules', function () {
-      spyOn(rulesStub, 'asHash').andCallThrough();
+      spyOn(ruleCollectionStub, 'allByCampaignId').andCallThrough();
+      spyOn(ruleStub, 'forPublisherId').andCallThrough();
       buildController();
-      expect(rulesStub.asHash).toHaveBeenCalled();
+      expect(ruleCollectionStub.allByCampaignId).toHaveBeenCalled();
+      expect(ruleStub.forPublisherId).toHaveBeenCalled();
     });
   });
 
