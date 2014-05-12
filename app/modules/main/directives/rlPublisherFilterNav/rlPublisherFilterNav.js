@@ -1,5 +1,5 @@
 angular
-  .rlmodule('rl.cpi.main.directives.rlPublisherFilterNav', ['ui.bootstrap', 'rl.daterange', 'rl.cpi.main.services.Moment', 'rl.QueryParams'])
+  .rlmodule('rl.cpi.main.directives.rlPublisherFilterNav', ['ui.bootstrap', 'rl.daterange', 'rl.cpi.main.services.Moment', 'rl.QueryParams', 'rl.stick'])
   .controller('rlPublisherFilterNavCtrl', function ($scope, PublisherFilterService, DateRangeOptions, QueryParams) {
     // Attach the QueryParams object to our calendar - it's uh...  global.  :S
     $scope.selectedDateRange = QueryParams;
