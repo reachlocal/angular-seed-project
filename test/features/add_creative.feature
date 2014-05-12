@@ -13,6 +13,15 @@ Feature: Add a new creative to an existing ad group
     And the master template includes a headline, two descriptive lines, and an AdGroup selector
     And all of the active publishers are displayed to the user
 
+  @CPI-JIRA-222
+  Scenario: Navigate to the new creative view after filtering by Publisher
+
+    When the user has selected a publisher in the global nav filter
+    And the user selects the option to add a new creative
+    Then the user is presented with a view to add a new creative in a master template
+    And the master template includes a headline, two descriptive lines, and an AdGroup selector
+    And the only active publisher creative box is the publisher selected in the global nav filter
+
 
   @CPI-JIRA-222
   Scenario: Enter headline and descriptive lines for a new creative
