@@ -16,7 +16,7 @@ angular
   .factory('PublisherTextCreativeRules', function ($resource, Config) {
 
     // This is the resource we'll use to fetch rules for each campaignId
-    var baseUrl = Config.gatewayBaseUrl + '/publisher-text-creative-rules';
+    var baseUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/publisher-text-creative-rules';
     var defaultParams = {};
     var customMethods = { query: { method: 'GET', isArray: true, cache: true } };
     var resource = $resource(baseUrl, defaultParams, customMethods);

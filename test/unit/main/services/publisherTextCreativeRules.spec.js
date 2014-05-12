@@ -23,7 +23,7 @@ describe("PublisherTextCreativeRules", function () {
       service = PublisherTextCreativeRules;
     });
     httpResolver.beforeEach();
-    httpResolver.$httpBackend.expectGET('/publisher-text-creative-rules?campaignId=' + campaignId).respond(rulesStub);
+    httpResolver.$httpBackend.expectGET('/campaigns/'+ campaignId + '/publisher-text-creative-rules').respond(rulesStub);
   });
 
   afterEach(httpResolver.afterEach);
