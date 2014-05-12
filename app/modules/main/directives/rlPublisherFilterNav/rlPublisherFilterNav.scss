@@ -36,12 +36,13 @@ main > nav {
   }
 
   article {
-    @include button($color-action);
+    //@include button($color-info);
     $width: 14em;
 
     position: relative;
     min-width: $width;
     padding: 0px;
+    font-weigth: bold;
 
     &:hover label[for=staged_changes] em {
       background-color: darken($color-danger, 10);
@@ -93,7 +94,7 @@ main > nav {
       padding: ($spacing-default / 3) $spacing-small;
 
       em {
-        $size: 1.4em;
+        $size: 1.6em;
         display: inline-block;
         min-width: $size;
         height: $size;
