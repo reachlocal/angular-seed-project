@@ -42,7 +42,6 @@ main > nav {
     position: relative;
     min-width: $width;
     padding: 0px;
-    font-weigth: bold;
 
     &:hover label[for=staged_changes] em {
       background-color: darken($color-danger, 10);
@@ -53,7 +52,7 @@ main > nav {
 
       text-transform: initial;
       display: none;
-      top: calc(100% + #{$spacing-small});
+      top: calc(95% + #{$spacing-small});
       left: 0px;
       position: absolute;
       text-align: center;
@@ -92,6 +91,7 @@ main > nav {
       cursor: inherit;
       line-height: initial;
       padding: ($spacing-default / 3) $spacing-small;
+      font-weight: 700;
 
       em {
         $size: 1.6em;
