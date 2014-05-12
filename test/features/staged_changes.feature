@@ -24,7 +24,14 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the user sees a visual element that shows "5 changed creatives"
     And the user is presented with the option to view the full list of changes
 
-  @JIRA-CPI-136 @JIRA-CPI-135
+  @JIRA-CPI-135
+  Scenario: List pending changes to review
+
+    When a user modifies a creative's headline that has no staged changes yet
+    And a user visualizes the staged changes
+    Then the user should be presented with 6 creative staged changes to review
+
+  @JIRA-CPI-136
   Scenario: Cancel a staged change
 
     Given changes are staged for publishing
