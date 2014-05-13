@@ -17,7 +17,7 @@ angular
 
     // This is the resource we'll use to fetch rules for each campaignId
     var baseUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/publisher-text-creative-rules';
-    var defaultParams = {};
+    var defaultParams = {'campaignId': '@campaignId' };
     var customMethods = { query: { method: 'GET', isArray: true, cache: true } };
     var resource = $resource(baseUrl, defaultParams, customMethods);
 
