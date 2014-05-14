@@ -1,7 +1,8 @@
 Feature: Ability to stage changes to business entities before they are pushed to publishers
 
   Background:
-    Given a typical campaign with 5 creative staged changes exists
+    Given a typical campaign exists
+    And 5 creative staged changes exist
 
   @JIRA-CPI-167
   Scenario: Staged changes are already present
@@ -24,12 +25,6 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the user sees a visual element that shows "5 changed creatives"
     And the user is presented with the option to view the full list of changes
 
-  @JIRA-CPI-135
-  Scenario: List pending changes to review
-
-    When a user modifies a creative's headline that has no staged changes yet
-    And a user visualizes the staged changes
-    Then the user should be presented with 6 creative staged changes to review
 
   @JIRA-CPI-136
   Scenario: Cancel a staged change
@@ -50,6 +45,12 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the staged changes are submitted for publishing
     And the user is navigated back to the campaign's creative dashboard
 
+  @JIRA-CPI-237 @JIRA-CPI-135
+  Scenario: List pending changes to review
 
+    Given a staged change exists to a creative's headline
+    When a user views the list of staged changes
+    Then the user should be presented with 6 creative staged changes to review
+    And the fields that have changed for each creative are highlighted with a visual indicator
 
 
