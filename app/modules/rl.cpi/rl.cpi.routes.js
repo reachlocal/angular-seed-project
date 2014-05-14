@@ -1,7 +1,7 @@
 angular.rlmodule('rl.cpi.routes', ['ui.router'])
 .config(function ($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/campaign/713896');
+  $urlRouterProvider.otherwise('/campaign/1422307');
 
   $stateProvider.state('cpi', {
     abstract: true,
