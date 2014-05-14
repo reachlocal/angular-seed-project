@@ -1,0 +1,19 @@
+<p ng-show="recommendations.hasActiveRecommendations()">
+  <translate translate-value-count="{{ recommendations.count() }}">
+    rlRecommendations.Your campaign has { count } active recommendations
+  </translate>
+</p>
+
+<ul>
+  <li ng-repeat="recommendation in recommendations.items">
+    <details class="{{ recommendation.severity || 'warning' }}">
+      <summary>
+        {{ recommendation.title }}
+        <button translate>rlRecommendations.Apply</button>
+        <button translate>rlRecommendations.Dismiss</button>
+      </summary>
+
+      <p>{{ recommendation.description }}</p>
+    </details>
+  </li>
+</ul>
