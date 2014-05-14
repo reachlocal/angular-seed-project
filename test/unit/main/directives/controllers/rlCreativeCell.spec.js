@@ -19,7 +19,7 @@ describe('Creative cell controller', function () {
       };
       controller = $controller;
       $scope = $rootScope.$new();
-      $scope.creative = { campaignId: '123' };
+      $scope.creative = { campaignId: 123, publisher: { publisherId: 123 } };
       Creative = _Creatives_;
     });
   });

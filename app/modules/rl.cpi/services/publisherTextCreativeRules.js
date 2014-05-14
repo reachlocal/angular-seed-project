@@ -24,6 +24,8 @@ angular
     function RuleSet(campaignId) {
       // Rules that may or may not be totally made up (we populate with real rules as available)
       var localRules = {};
+      // List of publisherIds for which we have "official" rules from the domain ( id => null )
+      var officialRules = {};
       // Default rules - If we don't have rules for the specified publisher, use this
       function DefaultRuleTemplate(publisherId) {
         this.headLines = [ { charCount: 35, required: true } ];
@@ -38,6 +40,12 @@ angular
          * @param index Int
          */
         this.maxChars = function maxChars(attribute, index) {
+          if (!that.hasOwnProperty(attribute)) {
+            throw new Error('Cannot find validation rule for "' + attribute + '".  campaignId: "' + campaignId + '", publisherId: "' + that.publisherId + '" - ' + JSON.stringify(that));
+          }
+          if (!that[attribute].hasOwnProperty(index)) {
+            throw new Error('Cannot find validation rule for "' + attribute + '/' + index + '".  campaignId: "' + campaignId + '", publisherId: "' + that.publisherId + '" - ' + JSON.stringify(that));
+          }
           return that[attribute][index].charCount;
         };
       }
@@ -55,6 +63,9 @@ angular
        * If we don't know them, make up some defaults :P
        */
       function forPublisherId(publisherId) {
+        if (publisherId === undefined || publisherId === null) {
+          throw new Error('Cannot load rule for publisherId "' + String(publisherId) + '" (campaignId "' + campaignId + '").  PublisherId must be a valid id.');
+        }
         if (!localRules.hasOwnProperty(publisherId)) {
           var blankRule = defaultRule(publisherId);
           localRules[publisherId] = blankRule;
@@ -72,8 +83,15 @@ angular
         angular.forEach(rules, function (value) {
           var publisherId = value.publisherId;
           var localRule = forPublisherId(publisherId); // Get a reference to the local rule
+          officialRules[publisherId] = null;
           angular.extend(localRule, value); // Overwrite rule object without breaking references
         }, this);
+        // Ensure we have official rules for all requested local rules
+        angular.forEach(localRules, function (rule) {
+          if (!officialRules.hasOwnProperty(rule.publisherId)) {
+            throw new Error('Cannot load rule for publisherId "' + rule.publisherId + '" (campaignId "' + campaignId + '").  Domain did not return rules for this publisherId.');
+          }
+        });
       }
 
       resource.query({ campaignId: campaignId })

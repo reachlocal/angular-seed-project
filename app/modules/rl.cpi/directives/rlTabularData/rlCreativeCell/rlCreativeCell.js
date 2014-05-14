@@ -3,7 +3,7 @@ angular
   .controller('rlCreativeCellCtrl', function ($scope, PublisherTextCreativeRules) {
     var rules = PublisherTextCreativeRules
       .allByCampaignId($scope.creative.campaignId)
-      .forPublisherId($scope.creative.publisherId);
+      .forPublisherId($scope.creative.publisher.publisherId);
 
     $scope.maxChars = rules.maxChars;
 
