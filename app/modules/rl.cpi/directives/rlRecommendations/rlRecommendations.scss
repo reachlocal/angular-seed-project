@@ -1,6 +1,6 @@
 @import "rl_seeds/variables";
 
-.recommendations {
+[ui-view=recommendations] {
   padding: $spacing-default;
   display: inline-block;
   width: 50%;

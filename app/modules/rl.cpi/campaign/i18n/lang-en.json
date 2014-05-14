@@ -1,5 +1,5 @@
 {
-  "rlPublisherFilterNav": {
+  "rlCampaignFilters": {
     "All Publishers": "All Publishers",
     "All Ad Groups": "All Ad Groups",
     "Filter by:": "Filter by:",
@@ -18,5 +18,31 @@
     "{ count } changed creatives": "<em>{ count }</em> changed { count , plural, one{creative} other{creatives} }",
     "Pending changes": "Pending changes are awaiting for your review:",
     "Review": "Review"
+  },
+
+  "rlCampaignTabularData": {
+    "Ad Text": "Creative Text",
+    "Ad Group": "Ad Group",
+    "Publisher": "Publisher",
+    "State": "State",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "NATIONAL": "National",
+    "GLOBAL": "Global",
+    "DMA": "DMA",
+    "CITY": "City",
+    "ZIPCODE": "Zip Code",
+    "STATE": "State",
+    "Click Through Rate": "CTR",
+    "Clicks": "Clicks",
+    "Impressions": "Impr.",
+    "Conversions": "Conversions",
+    "Average Position": "Avg. Pos.",
+    "Impression Share": "Impr. Share",
+    "Cost Per Lead": "CPL",
+    "Total Cost": "Total Cost",
+    "Lead Count": "Leads",
+    "Quality Score": "QS",
+    "Add a new creative": "New"
   }
 }

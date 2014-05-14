@@ -1,35 +1,42 @@
 <header>
-  <h1>{{ overview.name }}</h1>
+  <h1>{{ campaign.name }}</h1>
   <ul>
     <li>
       <translate>rlCampaignHeader.Master Campaign ID:</translate>
-      {{ overview.masterCampaignId | filter:number }}
+      {{ campaign.masterCampaignId | filter:number }}
     </li>
     <li>
       <translate>rlCampaignHeader.Current Campaign ID:</translate>
-      {{ overview.currentCampaignId | filter:number }}
+      {{ campaign.currentCampaignId | filter:number }}
     </li>
     <li>
       <translate>rlCampaignHeader.Cycle Budget:</translate>
-      {{ overview.totalCycleBudget | currency:'$' }}
+      {{ campaign.totalCycleBudget | currency:'$' }}
     </li>
-    <li ng-hide="overview.unlimitedRenewals">
+    <li ng-hide="campaign.unlimitedRenewals">
       <translate>rlCampaignHeader.Contract Length:</translate>
       <translate
-          translate-value-cycleCount="{{ overview.totalContractLength }}">
+          translate-value-cycleCount="{{ campaign.totalContractLength }}">
         rlCampaignHeader.{cycleCount} Cycles
       </translate>
     </li>
-    <li ng-show="overview.unlimitedRenewals">
+    <li ng-show="campaign.unlimitedRenewals">
       <translate>rlCampaignHeader.Contract Length: Unlimited</translate>
     </li>
     <li>
       <translate>rlCampaignHeader.Spend to Date this Cycle:</translate>
-      {{ overview.spentToDateThisCycle | currency:'$' }}
+      {{ campaign.spentToDateThisCycle | currency:'$' }}
     </li>
     <li>
       <translate>rlCampaignHeader.Current Cycle:</translate>
-      {{ overview.currentCycle | filter:number }}
+      {{ campaign.currentCycle | filter:number }}
     </li>
   </ul>
 </header>
+
+
+<main ui-view="content"></main>
+
+<footer>
+  <rl-locale-selector></rl-locale-selector>
+</footer>

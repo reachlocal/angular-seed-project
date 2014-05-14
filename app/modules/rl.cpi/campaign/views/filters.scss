@@ -1,8 +1,8 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
-@import "daterange";
+@import "filters.daterange";
 
-main > nav {
+[ui-view=filters] {
   @include shadow-block(false);
 
   $nav-height: ($spacing-default * 3);

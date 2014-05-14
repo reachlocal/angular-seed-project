@@ -1,0 +1,40 @@
+<section class="creative-metrics">
+  <table>
+    <thead>
+    <tr>
+      <th>
+        <translate>rlCampaignTabularData.Ad Text</translate>
+
+        <a ui-sref="newCreative({ campaignId: campaign.currentCampaignId })" rel="new-creative" translate>
+          rlCampaignTabularData.Add a new creative
+        </a>
+      </th>
+      <th translate>rlCampaignTabularData.State</th>
+      <th translate>rlCampaignTabularData.Ad Group</th>
+      <th translate>rlCampaignTabularData.Publisher</th>
+      <th ng-repeat="header in creativeHeaders" ng-hide="header.hidden" translate>
+        {{ "rlCampaignTabularData." + header.name }}
+      </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="row in table | CreativeTable">
+      <td>
+        <rl-creative-cell creative="row.creative"></rl-creative-cell>
+      </td>
+      <td>
+        <rl-creative-state creative="row.creative"></rl-creative-state>
+      </td>
+      <td>{{ row.creative.adGroup.name }}</td>
+      <td>
+        {{ row.creative.publisher.publisherName }}
+        ({{ 'rlCampaignTabularData.' + row.creative.publisher.geoType | translate}})
+      </td>
+      <td ng-repeat="(key, header) in creativeHeaders" ng-hide="header.hidden">
+        {{ row.report[key] | flexnumber:header.format }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>

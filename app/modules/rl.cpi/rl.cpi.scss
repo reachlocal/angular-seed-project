@@ -4,51 +4,6 @@ body {
   overflow-y: scroll;
 }
 
-main > article {
-  margin-top: $spacing-default;
-}
-
-// CHART -----------------------------------------------------------------------
-.chart {
-  padding: $spacing-default;
-  display: inline-block;
-  width: 50%;
-  float: left;
-
-  form {
-    text-align: justify;
-    padding: $spacing-default;
-    &:after {
-      content: '';
-      width: 100%;
-      display: inline-block;
-    }
-  }
-
-  input[type="checkbox"] {
-    display: none;
-
-    & + label {
-      @include button($color-muted, $color-mid);
-      user-select: none;
-      display: inline-block;
-      width: 60px;
-      height: 60px;
-      text-align: center;
-      padding: $spacing-small;
-    }
-
-    &:checked + label {
-      @include button-color($color-info);
-    }
-  }
-
-  img {
-    min-width: 100%;
-    max-width: 100%;
-  }
-}
-
 // FOOTER ----------------------------------------------------------------------
 body > footer {
   display: block;
