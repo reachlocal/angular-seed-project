@@ -26,7 +26,7 @@ angular
 
   .directive('rlCreativeCard', function () {
     return {
-      templateUrl: 'modules/main/directives/rlCreativeCard/rlCreativeCard.html',
+      templateUrl: 'modules/rl.cpi/directives/rlCreativeCard/rlCreativeCard.html',
       scope: {
         publisher: '=',
         ngModel: '=',

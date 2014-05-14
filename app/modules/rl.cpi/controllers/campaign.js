@@ -46,7 +46,7 @@ angular
           }
         },
         url: '^/campaign/:campaignId',
-        templateUrl: 'modules/main/controllers/campaign.html',
+        templateUrl: 'modules/rl.cpi/controllers/campaign.html',
         controller: 'Campaign'
       });
   });

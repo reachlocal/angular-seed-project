@@ -21,7 +21,7 @@ angular
   })
   .directive('rlRecommendations', function () {
     return {
-      templateUrl: "modules/main/directives/rlRecommendations/rlRecommendations.html",
+      templateUrl: "modules/rl.cpi/directives/rlRecommendations/rlRecommendations.html",
       scope: {
         recommendations: '='
       },

@@ -63,8 +63,7 @@ Here's a quick overview of how our project is organized.
 * /ci/*.js <-- Helpers for gulp
 * /app/ <-- All our project files
 * /app/bower_components/ <-- Vendor libraries
-* /app/index.html, RlLoad.js, RlModule.js <-- Landing page + bootstrap helpers
-* /app/bower_css.json, bower_scripts.json <-- List of bower files to load for our app (order matters)
+* /app/index.html <-- Landing page + bootstrap helpers
 * /app/modules/ <-- Our project - broken up by functional area
 * /app/modules/\*\*/*.js <-- The nuts and bolts of our project
 * /app/modules/\*\*/*.scss <-- We got style

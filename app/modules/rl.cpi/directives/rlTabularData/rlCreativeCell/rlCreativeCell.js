@@ -24,7 +24,7 @@ angular
   })
   .directive('rlCreativeCell', function () {
     return {
-      templateUrl: "modules/main/directives/rlTabularData/rlCreativeCell/rlCreativeCell.html",
+      templateUrl: "modules/rl.cpi/directives/rlTabularData/rlCreativeCell/rlCreativeCell.html",
       scope: {
         creative: '='
       },

@@ -18,7 +18,7 @@ angular
   })
   .directive('rlTabularData', function () {
     return {
-      templateUrl: "modules/main/directives/rlTabularData/rlTabularData.html",
+      templateUrl: "modules/rl.cpi/directives/rlTabularData/rlTabularData.html",
       scope: {
         headers: '=',
         creatives: '=',

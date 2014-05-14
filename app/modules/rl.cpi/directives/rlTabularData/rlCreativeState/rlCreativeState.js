@@ -20,7 +20,7 @@ angular
   })
   .directive('rlCreativeState', function () {
     return {
-      templateUrl: "modules/main/directives/rlTabularData/rlCreativeState/rlCreativeState.html",
+      templateUrl: "modules/rl.cpi/directives/rlTabularData/rlCreativeState/rlCreativeState.html",
       scope: {
         creative: '='
       },

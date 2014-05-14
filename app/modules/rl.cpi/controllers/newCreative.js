@@ -28,7 +28,7 @@ angular
           },
         },
         url: '^/campaign/:campaignId/new-creative',
-        templateUrl: 'modules/main/controllers/newCreative.html',
+        templateUrl: 'modules/rl.cpi/controllers/newCreative.html',
         controller: 'NewCreative'
       });
   });
