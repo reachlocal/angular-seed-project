@@ -4,7 +4,7 @@ describe('Zippable factory', function () {
 
   beforeEach(function () {
     localeFixture();
-    module("rl.cpi.main.services.Zippable");
+    module('rl.cpi.main.services.Zippable');
     inject(function (Zippable) {
       factory = Zippable;
     });
@@ -23,33 +23,33 @@ describe('Zippable factory', function () {
     reports[2] = { summaryId: 123, count: 3 };
   });
 
-  describe("zippable objects", function () {
+  describe('zippable objects', function () {
     var zipped;
     beforeEach(function () {
       zipped = factory.build(summaries, 'id', 'summary');
     });
-    it("return entry that has a certain key", function () {
+    it('return entry that has a certain key', function () {
       expect(zipped.byKey(123).summary).toBe(summaries[0]);
     });
-    it("modified source objects are still accessible", function () {
+    it('modified source objects are still accessible', function () {
       var newValue = { abc: 123 };
       summaries[0].foo = newValue;
       expect(zipped.byKey(123).summary.foo).toBe(newValue);
     });
   });
 
-  describe("a zipped collection of collections", function () {
+  describe('a zipped collection of collections', function () {
     var zippedSummaries, zippedReports;
     beforeEach(function () {
       zippedSummaries = factory.build(summaries, 'id', 'summary');
       zippedReports = factory.build(reports, 'summaryId', 'report');
       zippedSummaries.zip(zippedReports);
     });
-    it("entry on the result has references for both original collections", function () {
+    it('entry on the result has references for both original collections', function () {
       expect(zippedSummaries[0].summary).toBe(summaries[0]);
       expect(zippedSummaries[0].report).toBe(reports[2]);
     });
-    it("marks right-side as undefined when no match is found", function () {
+    it('marks right-side as undefined when no match is found', function () {
       expect(zippedSummaries[3].report).toBe(null);
     });
     it('keeps the order of the left hand object', function () {
@@ -58,7 +58,7 @@ describe('Zippable factory', function () {
       expect(zippedSummaries[2].summary).toBe(summaries[2]);
       expect(zippedSummaries[3].summary).toBe(summaries[3]);
     });
-    it("re-zipping overwrites only the relevant sub-entry", function () {
+    it('re-zipping overwrites only the relevant sub-entry', function () {
       var newReports = [
         { 'summaryId': 123, count: 15 }
       ];
@@ -78,18 +78,18 @@ describe('Zippable factory', function () {
     });
   });
 
-  describe("input validation", function () {
-    it("raises if there are two entries with same key", function () {
+  describe('input validation', function () {
+    it('raises if there are two entries with same key', function () {
       summaries[1].id = summaries[0].id;
       expect(function () {
         factory.build(summaries, 'id', 'summary');
-      }).toThrow("Zippable: Your input collection 'summary' has duplicate keys 'id'");
+      }).toThrow('Zippable: Your input collection \'summary\' has duplicate keys \'id\'');
 
     });
-    it("raises if the key is missing", function () {
+    it('raises if the key is missing', function () {
       expect(function () {
         factory.build(summaries, 'notAKey', 'summary');
-      }).toThrow("Zippable: Your input collection 'summary' is missing keys 'notAKey'");
+      }).toThrow('Zippable: Your input collection \'summary\' is missing keys \'notAKey\'');
     });
   });
 

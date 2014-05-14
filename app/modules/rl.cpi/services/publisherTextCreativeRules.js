@@ -28,7 +28,7 @@ angular
       function DefaultRuleTemplate(publisherId) {
         this.headLines = [ { charCount: 35, required: true } ];
         this.descriptiveLines = [ { charCount: 35, required: true }, { charCount: 35, required: false } ];
-        this.publisherName = "UNKNOWN";
+        this.publisherName = 'UNKNOWN';
         this.publisherId = publisherId;
         var that = this; // Closure is safer than referencing 'this'
         /**

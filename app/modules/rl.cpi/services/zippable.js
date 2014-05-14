@@ -9,10 +9,10 @@ angular
         var entry = {};
         entry[alias] = value;
         if (!value.hasOwnProperty(key)) {
-          throw "Zippable: Your input collection '" + alias + "' is missing keys '" + key + "'";
+          throw 'Zippable: Your input collection \'' + alias + '\' is missing keys \'' + key + '\'';
         }
         if (index[value[key]]) {
-          throw "Zippable: Your input collection '" + alias + "' has duplicate keys '" + key + "'";
+          throw 'Zippable: Your input collection \'' + alias + '\' has duplicate keys \'' + key + '\'';
         }
         index[value[key]] = entry;
         return entry;
@@ -25,7 +25,7 @@ angular
       };
       collection.zip = function (other) {
         if (!angular.isFunction(other.byKey)) {
-          throw "Other collection is not a Zippable";
+          throw 'Other collection is not a Zippable';
         }
         // change the collection to include other
         _.each(collection, function (rowLeft) {

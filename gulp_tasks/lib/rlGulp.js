@@ -5,7 +5,7 @@
 var gulp = require('gulp');
 
 var tasks = [];
-var gulp_task_real = gulp.task;
+var gulpTaskReal = gulp.task;
 
 function rlTask() {
   var args = Array.prototype.slice.call(arguments);
@@ -17,7 +17,7 @@ function rlTask() {
     args.push(message);
     message = false;
   }
-  gulp_task_real.apply(this, args);
+  gulpTaskReal.apply(this, args);
 
   if (message) {
     var taskName = args.shift();

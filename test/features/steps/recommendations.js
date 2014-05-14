@@ -1,6 +1,6 @@
 module.exports = function () {
 
-  Given(/^campaign with id "([^"]*)" exists$/, function (campaign_id, callback) {
+  Given(/^campaign with id "([^"]*)" exists$/, function (campaignId, callback) {
     callback();
   });
 

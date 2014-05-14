@@ -9,7 +9,7 @@ describe('Creatives Service', function () {
 
   beforeEach(function () {
     localeFixture();
-    module("rl.cpi.main.services.Creatives");
+    module('rl.cpi.main.services.Creatives');
     inject(function (Creatives) {
       service = Creatives;
     });
@@ -24,7 +24,7 @@ describe('Creatives Service', function () {
     var result = service.query({campaignId: 1});
     httpResolver.resolve();
 
-    expect(result[0].headLines).toEqual("Blah");
+    expect(result[0].headLines).toEqual('Blah');
   });
 
   it('creates new creatives on gateway', function () {

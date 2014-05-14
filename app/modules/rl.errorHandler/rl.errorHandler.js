@@ -11,7 +11,7 @@ angular.rlmodule('rl.errorhandler', ['angular-growl'])
           });
         } catch (e) {
           growl.addErrorMessage('Unexpected error.');
-          e.message = "Unexpected error while parsing error response from gateway: " + e.message;
+          e.message = 'Unexpected error while parsing error response from gateway: ' + e.message;
           $exceptionHandler(e);
         }
       }

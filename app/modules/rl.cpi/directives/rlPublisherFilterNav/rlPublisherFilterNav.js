@@ -21,7 +21,7 @@ angular
   })
   .directive('rlPublisherFilterNav', function () {
     return {
-      templateUrl: "modules/rl.cpi/directives/rlPublisherFilterNav/rlPublisherFilterNav.html",
+      templateUrl: 'modules/rl.cpi/directives/rlPublisherFilterNav/rlPublisherFilterNav.html',
       scope: {
         creatives: '='
       },

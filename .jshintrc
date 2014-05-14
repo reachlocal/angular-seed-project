@@ -1,4 +1,38 @@
 {
-    "trailing": true,
-    "multistr": true
+  "indent"        : 2,
+  "quotmark"      : "single",
+  "camelcase"     : true,
+
+  "asi"           : false,
+  "boss"          : false,
+  "debug"         : false,
+  "eqnull"        : false,
+  "esnext"        : true,
+  "moz"           : false,
+
+  "evil"          : false,
+  "expr"          : false,
+  "funcscope"     : false,
+  "globalstrict"  : false,
+  "iterator"      : false,
+  "lastsemic"     : false,
+  "laxbreak"      : false,
+  "laxcomma"      : false,
+  "loopfunc"      : false,
+  "multistr"      : true,
+  "proto"         : false,
+  "scripturl"     : false,
+  "smarttabs"     : false,
+  "shadow"        : false,
+  "sub"           : false,
+  "supernew"      : false,
+  "validthis"     : false,
+  "noyield"       : true,
+
+  "nomen"         : false,
+  "onevar"        : false,
+  "passfail"      : false,
+  "white"         : false,
+
+  "globals"       : {}
 }

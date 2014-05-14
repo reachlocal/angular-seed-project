@@ -11,7 +11,7 @@ describe('Creative table controller', function () {
   beforeEach(module('rl.cpi'));
   beforeEach(module('rl.cpi.main.directives.rlTabularData'));
 
-  it("builds the table when reports are updated", function () {
+  it('builds the table when reports are updated', function () {
     spyOn(mocks.zippable, 'build').andCallFake(function (c, k, n) {
       return mocks[n];
     });

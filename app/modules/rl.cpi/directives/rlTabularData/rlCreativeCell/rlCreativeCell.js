@@ -10,7 +10,7 @@ angular
     $scope.update = function (attribute, index, data) {
       var max = rules.maxChars(attribute, index);
       if (data.length > max) {
-        return "Creative '" + attribute + "' line '" + index + "' is longer than '" + max + "' characters";
+        return 'Creative \'' + attribute + '\' line \'' + index + '\' is longer than \'' + max + '\' characters';
       }
       var updatedModel = angular.copy($scope.creative);
       updatedModel[attribute][index] = data;
@@ -24,7 +24,7 @@ angular
   })
   .directive('rlCreativeCell', function () {
     return {
-      templateUrl: "modules/rl.cpi/directives/rlTabularData/rlCreativeCell/rlCreativeCell.html",
+      templateUrl: 'modules/rl.cpi/directives/rlTabularData/rlCreativeCell/rlCreativeCell.html',
       scope: {
         creative: '='
       },

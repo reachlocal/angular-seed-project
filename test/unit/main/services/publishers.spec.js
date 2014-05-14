@@ -1,11 +1,11 @@
-describe("Publishers", function () {
+describe('Publishers', function () {
 
   var publishers;
 
   beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
   beforeEach(function () {
     localeFixture();
-    module("rl.cpi.main.services.Publishers");
+    module('rl.cpi.main.services.Publishers');
     inject(function (Publishers) {
       publishers = Publishers;
     });
@@ -15,7 +15,7 @@ describe("Publishers", function () {
   afterEach(httpResolver.afterEach);
 
 
-  it("should fetch ad group data", function () {
+  it('should fetch ad group data', function () {
     var publishersData = [
       {
         id: 312,

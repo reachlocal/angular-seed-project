@@ -10,7 +10,7 @@ describe('rl.errorhandler', function () {
     module('rl.errorhandler');
     // Prevent messages to exceptionHandler from failing the test
     module(function($exceptionHandlerProvider) {
-      $exceptionHandlerProvider.mode("log");
+      $exceptionHandlerProvider.mode('log');
     });
     inject(function (errorInterceptor) {
       interceptor = errorInterceptor;

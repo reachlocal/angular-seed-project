@@ -1,16 +1,16 @@
-describe("PublisherTextCreativeRules", function () {
+describe('PublisherTextCreativeRules', function () {
 
   var service;
   var rulesStub = [
     {
       publisherId: 1,
-      publisherName: "Google",
-      headLines: [ "Google:mockHeadLines" ]
+      publisherName: 'Google',
+      headLines: [ 'Google:mockHeadLines' ]
     },
     {
       publisherId: 2,
-      publisherName: "Bing",
-      headLines: [ "Bing:mockHeadLines" ]
+      publisherName: 'Bing',
+      headLines: [ 'Bing:mockHeadLines' ]
     }
   ];
   var campaignId = 1;
@@ -18,7 +18,7 @@ describe("PublisherTextCreativeRules", function () {
   beforeEach(mockDependency('rl.cpi.main.Config', 'Config').toBe({gatewayBaseUrl: ''}));
   beforeEach(function () {
     localeFixture();
-    module("rl.cpi.main.services.PublisherTextCreativeRules");
+    module('rl.cpi.main.services.PublisherTextCreativeRules');
     inject(function (PublisherTextCreativeRules) {
       service = PublisherTextCreativeRules;
     });
@@ -28,7 +28,7 @@ describe("PublisherTextCreativeRules", function () {
 
   afterEach(httpResolver.afterEach);
 
-  it("returns data from domain service rules", function () {
+  it('returns data from domain service rules', function () {
     var rules = service.allByCampaignId(campaignId);
     httpResolver.resolve();
 
@@ -36,7 +36,7 @@ describe("PublisherTextCreativeRules", function () {
     expect(rules.forPublisherId(2).publisherName).toEqual(rulesStub[1].publisherName);
   });
 
-  it("returns data from default rule template", function () {
+  it('returns data from default rule template', function () {
     var rules = service.allByCampaignId(campaignId);
     var defaultRule = rules.defaultRule();
     var publisherOne = rules.forPublisherId(1);
@@ -45,7 +45,7 @@ describe("PublisherTextCreativeRules", function () {
     httpResolver.resolve();
   });
 
-  it("cleanly updates default rules after domain service returns real rules", function () {
+  it('cleanly updates default rules after domain service returns real rules', function () {
     var rules = service.allByCampaignId(campaignId);
     var publisherOne = rules.forPublisherId(1);
 
@@ -55,7 +55,7 @@ describe("PublisherTextCreativeRules", function () {
     expect(publisherOne.headLines).toEqual(rulesStub[0].headLines);
   });
 
-  it("caches rulesets by campaignId", function () {
+  it('caches rulesets by campaignId', function () {
     var rulesA = service.allByCampaignId(campaignId);
     var publisherOneA = rulesA.forPublisherId(1);
     var rulesB = service.allByCampaignId(campaignId);
@@ -66,7 +66,7 @@ describe("PublisherTextCreativeRules", function () {
     expect(publisherOneA).toBe(publisherOneB);
   });
 
-  describe("rule object", function () {
+  describe('rule object', function () {
 
     var publisherOne;
 
@@ -76,8 +76,8 @@ describe("PublisherTextCreativeRules", function () {
 
     afterEach(httpResolver.resolve);
 
-    it("provides a flexible accessor for char counts", function () {
-      expect(publisherOne.maxChars("headLines", 0)).toEqual(publisherOne.headLines[0].charCount);
+    it('provides a flexible accessor for char counts', function () {
+      expect(publisherOne.maxChars('headLines', 0)).toEqual(publisherOne.headLines[0].charCount);
     });
   });
 });

@@ -5,6 +5,6 @@ angular
       if (!input) {
         return input;
       }
-      return "(" + input + ")";
+      return '(' + input + ')';
     };
   });

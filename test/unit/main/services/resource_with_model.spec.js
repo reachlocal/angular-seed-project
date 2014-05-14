@@ -1,4 +1,4 @@
-describe("ResourceWithModel", function () {
+describe('ResourceWithModel', function () {
   var resource, listModel, itemModel, subject, response;
 
   var thing1 = { oneProperty: 'one' };
@@ -7,7 +7,7 @@ describe("ResourceWithModel", function () {
 
   beforeEach(function () {
     localeFixture();
-    module("rl.cpi.main.services.ResourceWithModel");
+    module('rl.cpi.main.services.ResourceWithModel');
     inject(function (ResourceWithModel, $resource) {
       service = ResourceWithModel;
       resource = $resource('/thing/:id');

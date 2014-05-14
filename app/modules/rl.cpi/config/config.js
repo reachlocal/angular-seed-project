@@ -15,7 +15,7 @@ angular
      * If that variable exists, return that.  If it does not exist, PANIC!
      */
     var configDefaults = {
-      gatewayBaseUrl: "http://localhost:8001",
+      gatewayBaseUrl: 'http://localhost:8001',
       defaultLocale: 'en',
       locales: ['en', 'pt']
     };
@@ -24,7 +24,7 @@ angular
         configDefaults[key] = value;
       }, this);
     } else {
-      console.warn("WARNING: No config.js found for client app - using defaults");
+      console.warn('WARNING: No config.js found for client app - using defaults');
     }
     return configDefaults;
   });

@@ -16,7 +16,7 @@ var karmaPort = 9876;
 module.exports = function (testDirectory) {
   var config = require('../config/config');
   // Note:  These must be in order:  Bower, project, test
-  var all_test_files = [config.APPLICATION_ROOT + '/config.js']
+  var allTestFiles = [config.APPLICATION_ROOT + '/config.js']
     .concat(config.APPLICATION_SCRIPTS)
     .concat(config.TEST_LIBRARIES)
     .concat(['dist/public/templates.js',
@@ -24,7 +24,7 @@ module.exports = function (testDirectory) {
         'test/' + testDirectory + '/**/*.spec.js']);
 
   var karma = require('gulp-karma');
-  return es.merge(bowerFiles(), gulp.src(all_test_files))
+  return es.merge(bowerFiles(), gulp.src(allTestFiles))
     .pipe(karma({
       frameworks: ['jasmine'],
       browsers: ['PhantomJS'],
@@ -34,7 +34,7 @@ module.exports = function (testDirectory) {
       port: karmaPort++
     }))
     .on('error', function (err) {
-      gutil.log(gutil.colors.red("TESTS FAILED! DO THE PANIC DANCE!"));
+      gutil.log(gutil.colors.red('TESTS FAILED! DO THE PANIC DANCE!'));
       throw err;
     });
 };

@@ -1,6 +1,6 @@
 module.exports = function () {
 
-  Given(/^campaign with id "([^"]*)" exists$/, function (campaign_id, callback) {
+  Given(/^campaign with id "([^"]*)" exists$/, function (campaignId, callback) {
     callback();
   });
 
@@ -18,8 +18,8 @@ module.exports = function () {
       .then(callback);
   });
 
-  When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaign_id, callback) {
-    browser.get('/#campaign/' + campaign_id)
+  When(/^a user views the campaign id "([^"]*)" dashboard$/, function (campaignId, callback) {
+    browser.get('/#campaign/' + campaignId)
       .then(callback);
   });
 
@@ -28,19 +28,19 @@ module.exports = function () {
       .then(callback);
   });
 
-  When(/^the user selects the web publisher campaign "([^"]*)"$/, function (wpc_name, callback) {
-    browser.selectOption(by.name('webPublisherCampaign'), wpc_name).then(callback);
+  When(/^the user selects the web publisher campaign "([^"]*)"$/, function (wpcName, callback) {
+    browser.selectOption(by.name('webPublisherCampaign'), wpcName).then(callback);
   });
 
-  Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function (adgroup_name, wpc_name, callback) {
-    browser.findOption(by.name('adGroup'), adgroup_name).then(function (found) {
+  Then(/^the "([^"]*)" should be listed under "([^"]*)" section$/, function (adgroupName, wpcName, callback) {
+    browser.findOption(by.name('adGroup'), adgroupName).then(function (found) {
       expect(found).to.equal(true);
       callback();
     });
   });
 
-  When(/^the user selects the ad group "([^"]*)"$/, function (ad_group_name, callback) {
-    browser.selectOption(by.name('adGroup'), ad_group_name).then(callback);
+  When(/^the user selects the ad group "([^"]*)"$/, function (adgroupName, callback) {
+    browser.selectOption(by.name('adGroup'), adgroupName).then(callback);
   });
 
   Then(/^the user should see a campaign header:$/, function (table, callback) {
@@ -80,7 +80,7 @@ module.exports = function () {
         // Actual date range selections are validated by unit tests
         for (var i = 0; i < elements.length; i++) {
           var element = elements[i];
-          var expText = hash[i]["Preset Date Range Text"];
+          var expText = hash[i]['Preset Date Range Text'];
           var expectPromise = expect(element.getText()).to.eventually.include(expText);
           expectPromises.push(expectPromise);
         }

@@ -79,7 +79,7 @@ gulp.task('test:fail_on_skipped', function testFailOnSkipped() {
   var matchDetector = function (exitCode, out) {
     if (exitCode) return;
 
-    var message = "It looks like you have some tests disabled.";
+    var message = 'It looks like you have some tests disabled.';
     gutil.log(gutil.colors.red(message));
     gutil.log(gutil.colors.red(out));
     throw message;

@@ -6,7 +6,7 @@
  * @param quiet boolean     If true, suppress stdout.
  * @return process
  */
-var child_process = require('child_process');
+var spawn = require('child_process').spawn;
 var gutil = require('gulp-util');
 
 /**
@@ -19,8 +19,8 @@ var gutil = require('gulp-util');
 function prettyPrint(string, colorFunc) {
   // Don't decorate anything shorter than this...
   var minLineLength = 10;
-  var prefix = "--- ";
-  var lines = string.split("\n");
+  var prefix = '--- ';
+  var lines = string.split('\n');
   var prettyLines = [];
   lines.map(function (line) {
     if (line.length > minLineLength) {
@@ -29,12 +29,12 @@ function prettyPrint(string, colorFunc) {
       prettyLines.push(line);
     }
   });
-  return prettyLines.join("\n");
+  return prettyLines.join('\n');
 }
 
 module.exports = function (options, callback, quiet) {
 
-  var cProcess = child_process.spawn('node', options);
+  var cProcess = spawn('node', options);
   if (!!callback) {
     cProcess.on('exit', callback);
   }

@@ -1,51 +1,51 @@
-describe("Recommendations Model", function () {
+describe('Recommendations Model', function () {
   var factory;
 
   beforeEach(function () {
-    module("rl.cpi.main.services.Recommendations");
+    module('rl.cpi.main.services.Recommendations');
     inject(function (RecommendationsModel) {
       factory = RecommendationsModel;
     });
   });
 
-  describe("build", function () {
+  describe('build', function () {
     var model = null;
 
-    it("should expose items", function () {
+    it('should expose items', function () {
       model = factory.build([ 1, 2, 3 ]);
       expect(model.items).toEqual([1, 2, 3]);
     });
-    it("counts number of recommendations", function () {
+    it('counts number of recommendations', function () {
       model = factory.build([8, 9, 10, 11]);
       expect(model.count()).toBe(4);
     });
 
-    var items_empty = [];
-    var items_single = [
+    var itemsEmpty = [];
+    var itemsSingle = [
       {}
     ];
-    var items_multiple = [
+    var itemsMultiple = [
       {},
       {},
       {}
     ];
 
-    describe("empty item list", function () {
+    describe('empty item list', function () {
       beforeEach(function () {
-        model = factory.build(items_empty);
+        model = factory.build(itemsEmpty);
       });
 
-      it("has no active recommendations", function () {
+      it('has no active recommendations', function () {
         expect(model.hasActiveRecommendations()).toBe(false);
       });
     });
 
-    describe("single item list", function () {
+    describe('single item list', function () {
       beforeEach(function () {
-        model = factory.build(items_single);
+        model = factory.build(itemsSingle);
       });
 
-      it("has active recommendations", function () {
+      it('has active recommendations', function () {
         expect(model.hasActiveRecommendations()).toBe(true);
       });
     });

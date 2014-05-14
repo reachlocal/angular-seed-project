@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var child = require('child_process');
 
-gulp.task('protractor:webdriver', require('gulp-protractor').webdriver_update);
+gulp.task('protractor:webdriver', require('gulp-protractor').webdriver_update); // jshint ignore:line
 
 var selenium, elementExplorer;
 gulp.task('protractor:debug', ['protractor:webdriver', 'serve'], function () {

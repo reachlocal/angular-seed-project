@@ -114,7 +114,7 @@ angular.module('rl.daterange', [])
       function inputDateFilter(date) {
         var dateObj = moment(date);
         if (!dateObj.isValid()) {
-          throw new Error("Date is invalid");
+          throw new Error('Date is invalid');
         }
         return dateObj;
       }
@@ -173,7 +173,7 @@ angular.module('rl.daterange', [])
       this.defaultRange = function defaultRange(rangeKey) {
         if (!!rangeKey) {
           if (!this.ranges()[rangeKey]) {
-            throw new Error("The default range you are trying to set isn't in the range list.");
+            throw new Error('The default range you are trying to set isn\'t in the range list.');
           }
           options.defaultRange = rangeKey;
         }
@@ -222,14 +222,14 @@ angular.module('rl.daterange', [])
         }
 
         var ranges = {
-          'Last 30 Days': less(anchorDate, 30, "days"),
-          'Last 60 Days': less(anchorDate, 60, "days"),
-          'Last 90 Days': less(anchorDate, 90, "days"),
+          'Last 30 Days': less(anchorDate, 30, 'days'),
+          'Last 60 Days': less(anchorDate, 60, 'days'),
+          'Last 90 Days': less(anchorDate, 90, 'days'),
           'All Time': { from: null, to: null },
-          'Yesterday': { from: subtract(anchorDate, 1, "days"), to: subtract(anchorDate, 1, "days") },
-          'Last 7 Days': less(anchorDate, 7, "days"),
+          'Yesterday': { from: subtract(anchorDate, 1, 'days'), to: subtract(anchorDate, 1, 'days') },
+          'Last 7 Days': less(anchorDate, 7, 'days'),
           'This Month': monthRange(anchorDate),
-          'Last Month': monthRange(subtract(anchorDate, 1, "months"))
+          'Last Month': monthRange(subtract(anchorDate, 1, 'months'))
         };
         var formattedRanges = {};
         angular.forEach(ranges, function formatRanges(value, key) {

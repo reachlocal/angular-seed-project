@@ -8,7 +8,7 @@ describe('flexNumber filter', function () {
   });
 
   it('should output currency', function () {
-    expect(filter(100, "currency")).toBe('$100.00');
+    expect(filter(100, 'currency')).toBe('$100.00');
   });
   it('should output integers', function () {
     var format = 'integer';

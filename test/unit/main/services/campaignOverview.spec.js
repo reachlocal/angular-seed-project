@@ -1,4 +1,4 @@
-describe("CampaignOverview", function () {
+describe('CampaignOverview', function () {
 
   var campaignOverview;
 
@@ -6,7 +6,7 @@ describe("CampaignOverview", function () {
 
   beforeEach(function () {
     localeFixture();
-    module("rl.cpi.main.services.CampaignOverview");
+    module('rl.cpi.main.services.CampaignOverview');
     inject(function (CampaignOverview) {
       campaignOverview = CampaignOverview;
     });
@@ -16,10 +16,10 @@ describe("CampaignOverview", function () {
   afterEach(httpResolver.afterEach);
 
 
-  it("should fetch overview data for a given campaign", function () {
+  it('should fetch overview data for a given campaign', function () {
     var overviewData = {
       id: 1,
-      name: "A Quality 1st Plumbing- Plumbing"
+      name: 'A Quality 1st Plumbing- Plumbing'
     };
     httpResolver.$httpBackend.expectGET('/campaigns/1/overview_data').respond(overviewData);
 

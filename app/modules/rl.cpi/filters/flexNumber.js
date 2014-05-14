@@ -12,7 +12,7 @@ angular
       } else {
         input = parseFloat(input);
         if (filterName === 'currency') {
-          return $filter('currency')(input, "$");
+          return $filter('currency')(input, '$');
         } else if (filterName === 'integer') {
           return $filter('number')(input, 0);
         } else if (filterName === 'decimal') {

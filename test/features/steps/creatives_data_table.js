@@ -9,7 +9,7 @@ module.exports = function () {
       .then(callback);
   });
 
-  When(/^the user changes the state of the creative to "([^"]*)" in the data table$/, function (new_state, callback) {
+  When(/^the user changes the state of the creative to "([^"]*)" in the data table$/, function (newState, callback) {
     page.firstCreativeState().then(function (row) {
       row.click().then(function () {
         callback();
@@ -17,9 +17,9 @@ module.exports = function () {
     });
   });
 
-  When(/^a user updates the first creative's headline to "([^"]*)"$/, function (headline_value, callback) {
+  When(/^a user updates the first creative's headline to "([^"]*)"$/, function (headlineValue, callback) {
     var firstCreative = page.firstCreative();
-    page.updateHeadline(firstCreative, headline_value)
+    page.updateHeadline(firstCreative, headlineValue)
       .then(function () {
         callback();
       });
@@ -41,7 +41,7 @@ module.exports = function () {
   When(/^he clicks to cancel those changes$/, function (callback) {
     var firstCreative = page.firstCreative;
     firstCreative().then(function (creative) {
-      creative.findElement(by.css("form button[type='button']"))
+      creative.findElement(by.css('form button[type=\'button\']'))
         .then(function (button) {
           button.click();
           callback();
@@ -49,9 +49,9 @@ module.exports = function () {
     });
   });
 
-  Then(/^the creative's state is "([^"]*)"$/, function (exp_state, callback) {
+  Then(/^the creative's state is "([^"]*)"$/, function (expState, callback) {
     page.firstCreativeState().then(function (state) {
-      expect(state.getText()).to.eventually.contain(exp_state)
+      expect(state.getText()).to.eventually.contain(expState)
         .then(function () {
           callback();
         });
@@ -67,11 +67,11 @@ module.exports = function () {
       });
   });
 
-  Then(/^the creative's new headline should be "([^"]*)"$/, function (new_headline, callback) {
+  Then(/^the creative's new headline should be "([^"]*)"$/, function (newHeadline, callback) {
     page.firstCreative()
       .then(function (creative) {
         var actualHeadline = creative.findElement(by.binding('headLine')).getText();
-        expect(actualHeadline).to.eventually.be.equal(new_headline)
+        expect(actualHeadline).to.eventually.be.equal(newHeadline)
           .then(function () {
             callback();
           });
@@ -99,8 +99,8 @@ module.exports = function () {
 
   Then(/^the first creative is displayed$/, function (table, callback) {
     page.firstCreative().then(function (creative) {
-      var exp = table.raw().map(function (table_row) {
-        return expect(creative.getText()).to.eventually.contain(table_row[0]);
+      var exp = table.raw().map(function (tableRow) {
+        return expect(creative.getText()).to.eventually.contain(tableRow[0]);
       });
       all(exp).then(callback);
     });
@@ -108,8 +108,8 @@ module.exports = function () {
 
   Then(/^the report data for the first creative is displayed$/, function (table, callback) {
     page.firstDataRow().then(function (row) {
-      var exp = table.raw().map(function (table_row) {
-        return expect(row.getText()).to.eventually.contain(table_row[0]);
+      var exp = table.raw().map(function (tableRow) {
+        return expect(row.getText()).to.eventually.contain(tableRow[0]);
       });
       all(exp).then(callback);
     });

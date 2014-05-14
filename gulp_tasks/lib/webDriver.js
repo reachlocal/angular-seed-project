@@ -19,13 +19,13 @@ function WebDriver() {
       running = true;
 
       // Update, then run.
-      gutil.log(gutil.colors.magenta("Updating Selenium Drivers "), gutil.colors.red("-- this takes a few minutes the first time --"));
+      gutil.log(gutil.colors.magenta('Updating Selenium Drivers '), gutil.colors.red('-- this takes a few minutes the first time --'));
       runCommand(['node_modules/.bin/webdriver-manager', 'update', '--standalone'], function () {
         processHandle = spawnWebDriver();
-        gutil.log(gutil.colors.magenta("Waiting for WebDriver Server to Start..."));
+        gutil.log(gutil.colors.magenta('Waiting for WebDriver Server to Start...'));
         processHandle.stdout.on('data', function (d) {
           if (String(d).match('Started SocketListener')) {
-            gutil.log(gutil.colors.cyan("WebDriver Server is Running!"));
+            gutil.log(gutil.colors.cyan('WebDriver Server is Running!'));
             callback();
             callback = function () {
             }; // Only call it once.
@@ -45,7 +45,7 @@ function WebDriver() {
       // It leaves a hanging child process
       http.get('http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer');
       processHandle.kill('SIGKILL');
-      gutil.log(gutil.colors.cyan("WebDriver Server Stopped"));
+      gutil.log(gutil.colors.cyan('WebDriver Server Stopped'));
     }
   };
 

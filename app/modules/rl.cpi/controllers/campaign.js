@@ -10,7 +10,7 @@ angular
     'rl.QueryParams',
     'ui.router'])
   .controller('Campaign', function ($scope, $rootScope, $filter, campaignOverview, recommendations, creatives, TextCreativeReports, CreativeHeaders, QueryParams) {
-    $rootScope.pageTitle = "Campaign Overview";
+    $rootScope.pageTitle = 'Campaign Overview';
     $scope.campaignOverview = campaignOverview;
     $scope.recommendations = recommendations;
     $scope.creatives = creatives;
