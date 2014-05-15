@@ -1,0 +1,40 @@
+<article id="staged_changes">
+
+  <section id="staged_creatives_list">
+    <header role="banner">
+      <h1>Pending to Publish</h1>
+      <h3>You have the following changes ready to publish:</h3>
+    </header>
+
+    <table>
+      <caption>{{ creatives.length }} creatives</caption>
+      <thead>
+        <tr>
+          <th>Ad Text</th>
+          <th>Status</th>
+          <th>Ad Group</th>
+          <th>Publisher</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="creative in creatives">
+          <td>
+            <rl-creative-cell readonly creative="creative"></rl-creative-cell>
+          </td>
+          <td>{{ 'rlCampaignTabularData.' + creative.state | translate }}</td>
+          <td>{{ creative.adGroup.name }}</td>
+          <td>
+            {{ creative.publisher.publisherName }}
+            ({{ 'rlCampaignTabularData.' + creative.publisher.geoType | translate}})
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <button type="submit" ng-click="back()">Cancel</button>
+    <button type="button" ng-click="back()">Publish</button>
+  </footer>
+</article>
