@@ -70,5 +70,24 @@ Feature: Add a new creative to an existing ad group
     Then the headline, descriptive lines, and AdGroup entered in the master template is copied to the newly activated publisher-specific creative
 
 
+  @CPI-JIRA-224
+  Scenario: Unlink a publisher-specific creative from the master template
+
+    Given the user has navigated to the Add Creative view
+    And the view shows multiple publisher-specific creatives as active
+    When the user selects the option to unlink a publisher-specific creative
+    Then the publisher-specific creative no longer changes when the master creative is edited
+    And there is a visual indicator that shows the publisher specific creative is unlinked
+
+  @CPI-JIRA-224
+  Scenario: Link a publisher-specific creative to the master template
+
+    Given the user has navigated to the Add Creative view
+    And the view shows multiple publisher-specific creatives as active
+    And at least one publisher-specific creative is currently unlinked
+    When the user selects the option to link a publisher-specific creative
+    Then the publisher-specific creative's data attributes are immediately copied from the master creative
+    And there is a visual indicator that shows the publisher specific creative is linked
+
 
 
