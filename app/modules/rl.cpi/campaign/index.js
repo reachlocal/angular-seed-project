@@ -5,11 +5,10 @@ angular.rlmodule('rl.cpi.campaign', [
   'rl.stick'
 ])
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider) {
 
-  $urlRouterProvider.otherwise('/campaign/713896');
-
-  $stateProvider.state('cpi.campaign', { url: '',
+  $stateProvider.state('cpi.campaign', {
+    url: '',
     views: {
       'content': { templateUrl: 'modules/rl.cpi/campaign/index.html' },
 
