@@ -9,7 +9,7 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
       views: {
         'content': {
           templateUrl: 'modules/rl.cpi/campaignStagedChanges/index.html',
-          controller: 'campaignStagedChanges.controllers.StagedChanges',
+          controller: 'StagedChangesCtrl',
           resolve: {
             creatives: function (Creatives, $stateParams) {
               var creatives = Creatives.query($stateParams);
