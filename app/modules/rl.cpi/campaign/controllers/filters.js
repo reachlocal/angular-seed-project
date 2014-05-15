@@ -1,10 +1,10 @@
 angular.rlmodule('rl.cpi.campaign')
-.controller('campaign.controller.filters',
+.controller('FiltersCtrl',
 function ($scope, creatives, QueryParams, DateRangeOptions, PublisherFilterService) {
 
   $scope.selectedDateRange = QueryParams;
   $scope.dateRangeOptions = DateRangeOptions.build();
-  $scope.dateRangeOptions.labelPrefix('rlPublisherFilterNav.dateRange.');
+  $scope.dateRangeOptions.labelPrefix('rlCampaignFilters.dateRange.');
 
   $scope.countStagedChanges = function () {
     return creatives.filter(function (creative) {
@@ -13,7 +13,7 @@ function ($scope, creatives, QueryParams, DateRangeOptions, PublisherFilterServi
   };
 
   // Setup filter drop-downs
-  PublisherFilterService.load($scope.creatives);
+  PublisherFilterService.load(creatives);
   $scope.publisherFilter = PublisherFilterService;
 
   $scope.$watch('selectedPublisher', PublisherFilterService.setPublisher);

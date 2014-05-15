@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 angular.rlmodule('rl.cpi.campaign', [
   'ui.router',
   'rl.daterange',
