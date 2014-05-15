@@ -1,5 +1,5 @@
 angular.rlmodule('rl.cpi.campaign')
-.controller('campaign.controller.filters',
+.controller('campaign.controllers.filters',
 function ($scope, creatives, QueryParams, DateRangeOptions, PublisherFilterService) {
 
   $scope.selectedDateRange = QueryParams;
@@ -13,7 +13,7 @@ function ($scope, creatives, QueryParams, DateRangeOptions, PublisherFilterServi
   };
 
   // Setup filter drop-downs
-  PublisherFilterService.load($scope.creatives);
+  PublisherFilterService.load(creatives);
   $scope.publisherFilter = PublisherFilterService;
 
   $scope.$watch('selectedPublisher', PublisherFilterService.setPublisher);
