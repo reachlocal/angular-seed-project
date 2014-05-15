@@ -14,7 +14,7 @@ angular.rlmodule('rl.cpi.campaign', [
 
       'filters@cpi.campaign': {
         templateUrl: 'modules/rl.cpi/campaign/views/filters.html',
-        controller: 'campaign.controllers.Filters',
+        controller: 'FiltersCtrl',
         resolve: { creatives: function (Creatives, $stateParams) {
           return Creatives.query($stateParams).$promise;
         }}
@@ -26,7 +26,7 @@ angular.rlmodule('rl.cpi.campaign', [
 
       'recommendations@cpi.campaign': {
         templateUrl: 'modules/rl.cpi/campaign/views/recommendations.html',
-        controller: 'campaign.controllers.Recommendations',
+        controller: 'RecommendationsCtrl',
         resolve: { recommendations: function (Recommendations, $stateParams) {
           return Recommendations.query($stateParams);
         }}
@@ -34,7 +34,7 @@ angular.rlmodule('rl.cpi.campaign', [
 
       'creative-metrics@cpi.campaign': {
         templateUrl: 'modules/rl.cpi/campaign/views/creative-metrics.html',
-        controller: 'campaign.controllers.CreativeMetrics',
+        controller: 'CreativeMetricsCtrl',
         resolve: { creatives: function (Creatives, $stateParams) {
           return Creatives.query($stateParams).$promise;
         }}
