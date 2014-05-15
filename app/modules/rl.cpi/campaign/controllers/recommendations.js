@@ -1,5 +1,5 @@
 angular.rlmodule('rl.cpi.campaign')
-.controller('campaign.controllers.recommendations',
+.controller('RecommendationsCtrl',
 function ($scope, recommendations) {
   $scope.recommendations = recommendations;
 });

@@ -1,0 +1,12 @@
+<section>
+  <p ng-repeat="headLine in creative.headLines track by $index"
+     class="headline">
+    {{ headLine }}
+  </p>
+
+  <p ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
+    {{ descriptiveLine }}
+  </p>
+
+  <a href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
+</section>

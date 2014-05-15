@@ -3,13 +3,13 @@ describe('Creative table controller', function () {
   var mocks = {
     zippable: { build: angular.noop },
     creative: { zip: angular.noop },
+    creatives: [],
     report: { }
   };
 
   // Load the template cache, it's in the 'rl' module
   beforeEach(localeFixture);
-  beforeEach(module('rl.cpi'));
-  beforeEach(module('rl.cpi.main.directives.rlTabularData'));
+  beforeEach(module('rl.cpi.campaign'));
 
   it('builds the table when reports are updated', function () {
     spyOn(mocks.zippable, 'build').andCallFake(function (c, k, n) {
@@ -19,12 +19,10 @@ describe('Creative table controller', function () {
 
     inject(function ($controller, $rootScope) {
       $scope = $rootScope.$new();
-      $scope.creatives = [];
       $scope.reports = [];
-      $controller('rlTabularDataCtrl', { $scope: $scope, Zippable: mocks.zippable });
+      $controller('CreativeMetricsCtrl', { $scope: $scope, creatives: mocks.creatives, Zippable: mocks.zippable });
     });
 
-    $scope.creatives = [];
     $scope.reports = [];
     $scope.$digest();
 

@@ -48,7 +48,7 @@ module.exports = function () {
 
     var expectPromises = [];
     _.each(hash, function (expectedValue, bindingName) {
-      var element = browser.findElement(by.binding('overview.' + bindingName));
+      var element = browser.findElement(by.binding('campaign.' + bindingName));
       var expectPromise = expect(element.getText()).to.eventually.include(expectedValue);
       expectPromises.push(expectPromise);
     }, this);

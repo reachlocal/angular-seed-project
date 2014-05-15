@@ -24,7 +24,11 @@ angular
   })
   .directive('rlCreativeCell', function () {
     return {
-      templateUrl: 'modules/rl.cpi/directives/rlTabularData/rlCreativeCell/rlCreativeCell.html',
+      templateUrl: function (element, attributes) {
+        var readOnly = (attributes.readonly !== undefined);
+        return 'modules/rl.cpi/directives/rlTabularData/rlCreativeCell/rlCreativeCell' +
+               (readOnly? '-readonly':'') + '.html';
+      },
       scope: {
         creative: '='
       },

@@ -5,17 +5,16 @@ angular.rlmodule('rl.cpi.campaign', [
   'rl.stick'
 ])
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider) {
 
-  $urlRouterProvider.otherwise('/campaign/713896');
-
-  $stateProvider.state('cpi.campaign', { url: '',
+  $stateProvider.state('cpi.campaign', {
+    url: '',
     views: {
       'content': { templateUrl: 'modules/rl.cpi/campaign/index.html' },
 
       'filters@cpi.campaign': {
         templateUrl: 'modules/rl.cpi/campaign/views/filters.html',
-        controller: 'campaign.controllers.filters',
+        controller: 'FiltersCtrl',
         resolve: { creatives: function (Creatives, $stateParams) {
           return Creatives.query($stateParams).$promise;
         }}
@@ -27,7 +26,7 @@ angular.rlmodule('rl.cpi.campaign', [
 
       'recommendations@cpi.campaign': {
         templateUrl: 'modules/rl.cpi/campaign/views/recommendations.html',
-        controller: 'campaign.controllers.recommendations',
+        controller: 'RecommendationsCtrl',
         resolve: { recommendations: function (Recommendations, $stateParams) {
           return Recommendations.query($stateParams);
         }}
@@ -35,7 +34,7 @@ angular.rlmodule('rl.cpi.campaign', [
 
       'creative-metrics@cpi.campaign': {
         templateUrl: 'modules/rl.cpi/campaign/views/creative-metrics.html',
-        controller: 'campaign.controllers.creative-metrics',
+        controller: 'CreativeMetricsCtrl',
         resolve: { creatives: function (Creatives, $stateParams) {
           return Creatives.query($stateParams).$promise;
         }}
