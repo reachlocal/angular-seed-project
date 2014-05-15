@@ -4,7 +4,7 @@ function ($scope, creatives, QueryParams, DateRangeOptions, PublisherFilterServi
 
   $scope.selectedDateRange = QueryParams;
   $scope.dateRangeOptions = DateRangeOptions.build();
-  $scope.dateRangeOptions.labelPrefix('rlPublisherFilterNav.dateRange.');
+  $scope.dateRangeOptions.labelPrefix('rlCampaignFilters.dateRange.');
 
   $scope.countStagedChanges = function () {
     return creatives.filter(function (creative) {
