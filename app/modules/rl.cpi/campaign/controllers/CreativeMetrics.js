@@ -1,5 +1,5 @@
 angular.rlmodule('rl.cpi.campaign')
-.controller('campaign.controllers.creative-metrics',
+.controller('campaign.controllers.CreativeMetrics',
 function ($scope, creatives, Zippable, CreativeHeaders, TextCreativeReports, QueryParams) {
 
   function getReports() {

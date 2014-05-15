@@ -1,5 +1,5 @@
 angular.rlmodule('rl.cpi.campaign')
-.controller('campaign.controllers.filters',
+.controller('campaign.controllers.Filters',
 function ($scope, creatives, QueryParams, DateRangeOptions, PublisherFilterService) {
 
   $scope.selectedDateRange = QueryParams;
