@@ -17,7 +17,7 @@
     "angular": "1.2.16",
     "angular-resource": "1.2.16",
     "angular-sanitize": "1.2.16",
-    "angular-ui-router": "0.2.8-bowratic-tedium",
+    "angular-ui-router": "0.2.10",
     "angular-bootstrap": "0.10.0",
     "angular-loading-bar": "~0.4.1",
     "angular-animate": "1.2.16",
