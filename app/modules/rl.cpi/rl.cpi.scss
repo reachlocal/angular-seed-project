@@ -2,10 +2,13 @@
 
 body {
   overflow-y: scroll;
-}
 
-// FOOTER ----------------------------------------------------------------------
-body > footer {
-  display: block;
-  text-align: right;
+  & > main {
+    height: 100%;
+  }
+
+  & > footer {
+    display: block;
+    text-align: right;
+  }
 }

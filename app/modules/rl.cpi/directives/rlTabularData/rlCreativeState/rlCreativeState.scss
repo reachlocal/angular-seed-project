@@ -3,7 +3,7 @@
 $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.0.3/fonts";
 @import "fontawesome/scss/font-awesome.scss";
 
-.creative-metrics {
+[ui-view=creative-metrics] {
   .state {
     cursor: pointer;
     border-bottom: 1px dashed transparent;

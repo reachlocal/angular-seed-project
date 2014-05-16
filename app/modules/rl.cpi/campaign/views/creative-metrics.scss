@@ -1,7 +1,7 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
 
-.creative-metrics {
+[ui-view=creative-metrics] {
   clear: both;
   width: 100%;
   overflow: auto;
