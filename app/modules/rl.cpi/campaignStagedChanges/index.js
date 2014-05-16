@@ -5,19 +5,14 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
 ])
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaignStagedChanges', {
-      url: '/staged-changes',
-      views: {
-        'content': {
-          templateUrl: 'modules/rl.cpi/campaignStagedChanges/index.html',
-          controller: 'StagedChangesCtrl',
-          resolve: {
-            creatives: function (Creatives, $stateParams) {
-              var creatives = Creatives.query($stateParams);
-              return creatives.$promise;
-            }
-          },
-        },
+    url: '/staged-changes',
+    templateUrl: 'modules/rl.cpi/campaignStagedChanges/index.html',
+    controller: 'StagedChangesCtrl',
+    resolve: {
+      creatives: function (Creatives, $stateParams) {
+        var creatives = Creatives.query($stateParams);
+        return creatives.$promise;
       }
+    }
   });
 });
-

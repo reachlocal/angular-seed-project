@@ -7,10 +7,14 @@ angular.rlmodule('rl.cpi.routes', ['ui.router'])
     abstract: true,
     url: '/campaign/:campaignId',
     templateUrl: 'modules/rl.cpi/index.html',
-    controller: function ($scope, campaign) { $scope.campaign = campaign; },
-    resolve: { campaign: function (CampaignOverview, $stateParams) {
-      return CampaignOverview.get($stateParams).$promise;
-    }}
+    controller: function ($scope, campaign) {
+      $scope.campaign = campaign;
+    },
+    resolve: {
+      campaign: function (CampaignOverview, $stateParams) {
+        return CampaignOverview.get($stateParams).$promise;
+      }
+    }
   });
 
 });

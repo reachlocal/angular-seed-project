@@ -4,18 +4,14 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
 ])
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaignNewCreative', {
-      url: '/new-creative',
-      views: {
-        'content': {
-          templateUrl: 'modules/rl.cpi/campaignNewCreative/index.html',
-          controller: 'NewCreativeCtrl',
-          resolve: {
-            publishers: function (Publishers, $stateParams) {
-              var publishers = Publishers.get({campaignId: $stateParams.campaignId});
-              return publishers.$promise;
-            }
-          },
-        },
+    url: '/new-creative',
+    templateUrl: 'modules/rl.cpi/campaignNewCreative/index.html',
+    controller: 'NewCreativeCtrl',
+    resolve: {
+      publishers: function (Publishers, $stateParams) {
+        var publishers = Publishers.get({campaignId: $stateParams.campaignId});
+        return publishers.$promise;
       }
-    });
+    }
+  });
 });

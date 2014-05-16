@@ -1,5 +1,5 @@
 var creativeMetricsTable = exports.createMetricsTable = function () {
-  return browser.findElement(by.css('.creative-metrics > table'));
+  return browser.findElement(by.css('[ui-view=creative-metrics] > table'));
 };
 
 var dataRows = exports.dataRows = function () {
