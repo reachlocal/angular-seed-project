@@ -3,10 +3,6 @@
 body {
   overflow-y: scroll;
 
-  & > main {
-    height: 100%;
-  }
-
   & > footer {
     display: block;
     text-align: right;
