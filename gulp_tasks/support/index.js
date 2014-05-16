@@ -3,7 +3,7 @@ var merge = require('event-stream').merge;
 var plugins = require('gulp-load-plugins')();
 
 var paths = exports.paths = {
-  stylesheets: [ 'app/modules/**/*.scss', '!app/modules/rl_seeds/seeds.scss' ],
+  stylesheets: [ 'app/modules/index.scss', 'app/modules/**/*.scss', '!app/modules/rl_seeds/seeds.scss' ],
   javascripts: 'app/modules/**/*.js',
   templates: 'app/modules/**/*.html',
   index: 'app/index.html',
