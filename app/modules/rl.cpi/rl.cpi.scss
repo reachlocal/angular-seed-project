@@ -1,0 +1,8 @@
+body {
+  overflow-y: scroll;
+
+  & > footer {
+    display: block;
+    text-align: right;
+  }
+}
