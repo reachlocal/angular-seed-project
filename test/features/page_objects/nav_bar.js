@@ -27,3 +27,9 @@ var getStagedChanges = function () {
 var getReviewChangesLink = exports.getReviewChangesLink = function () {
   return element(by.css('a[rel=staged_changes]'));
 };
+
+var openStagedChanges = exports.openStagedChanges = function () {
+  return openQuickView().then(function() {
+    return getReviewChangesLink().click();
+  });
+};
