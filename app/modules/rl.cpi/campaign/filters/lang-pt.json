@@ -1,0 +1,22 @@
+{
+  "rlCampaignFilters": {
+    "All Publishers": "Todos os Editores",
+    "All Ad Groups": "Todos os Ad Groups",
+    "Filter by:": "Filtrar por:",
+    "dateRange": {
+      "Last 30 Days": "Últimos 30 Dias",
+      "Last 60 Days": "Últimos 60 Dias",
+      "Last 90 Days": "Últimos 90 Dias",
+      "All Time": "Tudo",
+      "Yesterday": "Ontem",
+      "Last 7 Days": "Últimos 7 Dias",
+      "This Month": "Este Mes",
+      "Last Month": "Última Mes",
+      "Custom": "Personalizado"
+    },
+    "{ count } Changes Ready To Publish": "<em>{ count }</em> { count, plural, one{Mudança} other{Mudanças} } { count, plural, one{Pronta} other {Prontas} } Para Publicar",
+    "{ count } changed creatives": "<em>{ count }</em> { count , plural, one{anúncio} other{anúncios} } { count , plural, one{alterado} other{alterados}  }",
+    "Pending changes": "Algumas mudanças aguardam a sua revisão:",
+    "Review": "Revisar"
+  }
+}

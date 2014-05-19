@@ -6,7 +6,7 @@ angular.rlmodule('rl.cpi.routes', ['ui.router'])
   $stateProvider.state('cpi', {
     abstract: true,
     url: '/campaign/:campaignId',
-    templateUrl: 'modules/rl.cpi/index.html',
+    templateUrl: 'modules/rl.cpi/rl.cpi.html',
     controller: function ($scope, campaign) {
       $scope.campaign = campaign;
     },

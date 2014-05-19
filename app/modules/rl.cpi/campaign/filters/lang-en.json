@@ -1,0 +1,22 @@
+{
+  "rlCampaignFilters": {
+    "All Publishers": "All Publishers",
+    "All Ad Groups": "All Ad Groups",
+    "Filter by:": "Filter by:",
+    "dateRange": {
+      "Last 30 Days": "Last 30 Days",
+      "Last 60 Days": "Last 60 Days",
+      "Last 90 Days": "Last 90 Days",
+      "All Time": "All Time",
+      "Yesterday": "Yesterday",
+      "Last 7 Days": "Last 7 Days",
+      "This Month": "This Month",
+      "Last Month": "Last Month",
+      "Custom": "Custom"
+    },
+    "{ count } Changes Ready To Publish": "<em>{ count }</em> { count , plural, one{Change} other{Changes} } Ready To Publish",
+    "{ count } changed creatives": "<em>{ count }</em> changed { count , plural, one{creative} other{creatives} }",
+    "Pending changes": "Pending changes are awaiting for your review:",
+    "Review": "Review"
+  }
+}
