@@ -7,6 +7,7 @@ angular.rlmodule('rl.cpi.campaign', [
 
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaign', { url: '',
+    data: { title: 'Campaign Overview' },
     abstract: true,
     templateUrl: 'modules/rl.cpi/campaign/campaign.html',
     controller: function ($scope, creatives) {

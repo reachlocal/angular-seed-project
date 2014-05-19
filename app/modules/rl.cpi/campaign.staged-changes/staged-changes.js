@@ -1,11 +1,12 @@
 angular.rlmodule('rl.cpi.campaignStagedChanges', [
-  // 'rl.cpi.main.directives',
-  // 'rl.cpi.main.services.Creatives',
-  // 'ui.router'
+  'rl.cpi.main.directives',
+  'rl.cpi.main.services.Creatives',
+  'ui.router'
 ])
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaignStagedChanges', {
     url: '/staged-changes',
+    data: { title: 'Staged Changes' },
     templateUrl: 'modules/rl.cpi/campaign.staged-changes/staged-changes.html',
     controller: 'StagedChangesCtrl',
     resolve: {

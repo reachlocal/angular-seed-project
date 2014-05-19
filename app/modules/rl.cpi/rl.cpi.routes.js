@@ -17,4 +17,10 @@ angular.rlmodule('rl.cpi.routes', ['ui.router'])
     }
   });
 
+})
+
+.run(function ($rootScope) {
+  $rootScope.$on('$stateChangeSuccess', function (event, toState) {
+    $rootScope.pageTitle = [toState.data.title, 'ReachLocal'].join(' | ');
+  });
 });

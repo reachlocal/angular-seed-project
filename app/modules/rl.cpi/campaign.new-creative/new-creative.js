@@ -1,10 +1,11 @@
 angular.rlmodule('rl.cpi.campaignNewCreative', [
-  // 'ui.router',
-  // 'rl.cpi.main.services.Publishers'
+  'ui.router',
+  'rl.cpi.main.services.Publishers'
 ])
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaignNewCreative', {
     url: '/new-creative',
+    data: { title: 'New Creative' },
     templateUrl: 'modules/rl.cpi/campaign.new-creative/new-creative.html',
     controller: 'NewCreativeCtrl',
     resolve: {
