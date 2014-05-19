@@ -1,40 +1,45 @@
 <article id="staged_changes">
+  <header>
+    <h1 translate>rlStagedChanges.Pending to Publish</h1>
+    <h2 translate>rlStagedChanges.You have the following changes ready to publish:</h2>
+  </header>
 
-  <section id="staged_creatives_list">
-    <header role="banner">
-      <h1>Pending to Publish</h1>
-      <h3>You have the following changes ready to publish:</h3>
-    </header>
+  <form name="staged_changes">
+    <fieldset>
+      <table>
+        <caption>
+          <translate translate-value-count="{{ creatives.length }}">
+            rlStagedChanges.{ count } creatives
+          </translate>
+        </caption>
+        <thead>
+          <tr>
+            <th translate>rlCampaignTabularData.Ad Text</th>
+            <th translate>rlCampaignTabularData.State</th>
+            <th translate>rlCampaignTabularData.Ad Group</th>
+            <th translate>rlCampaignTabularData.Publisher</th>
+          </tr>
+        </thead>
 
-    <table>
-      <caption>{{ creatives.length }} creatives</caption>
-      <thead>
-        <tr>
-          <th>Ad Text</th>
-          <th>Status</th>
-          <th>Ad Group</th>
-          <th>Publisher</th>
-        </tr>
-      </thead>
+        <tbody>
+          <tr ng-repeat="creative in creatives">
+            <td>
+              <rl-creative-cell readonly creative="creative"></rl-creative-cell>
+            </td>
+            <td>{{ 'rlCampaignTabularData.' + creative.state | translate }}</td>
+            <td>{{ creative.adGroup.name }}</td>
+            <td>
+              {{ creative.publisher.publisherName }}
+              ({{ 'rlCampaignTabularData.' + creative.publisher.geoType | translate}})
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
 
-      <tbody>
-        <tr ng-repeat="creative in creatives">
-          <td>
-            <rl-creative-cell readonly creative="creative"></rl-creative-cell>
-          </td>
-          <td>{{ 'rlCampaignTabularData.' + creative.state | translate }}</td>
-          <td>{{ creative.adGroup.name }}</td>
-          <td>
-            {{ creative.publisher.publisherName }}
-            ({{ 'rlCampaignTabularData.' + creative.publisher.geoType | translate}})
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <footer>
-    <button type="submit" ng-click="back()">Cancel</button>
-    <button type="button" ng-click="back()">Publish</button>
-  </footer>
+    <fieldset class="actions">
+      <button type="button" ng-click="back()" translate>rlStagedChanges.Publish</button>
+      <button type="submit" ng-click="back()" translate>rlStagedChanges.Cancel</button>
+    </fieldset>
+  </form>
 </article>

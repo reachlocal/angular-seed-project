@@ -1,0 +1,9 @@
+{
+  "rlStagedChanges": {
+    "Pending to Publish": "Pending to Publish",
+    "You have the following changes ready to publish:": "You have the following changes ready to publish:",
+    "{ count } creatives": "{ count } { count , plural, one{creative} other{creatives} }",
+    "Cancel": "Cancel",
+    "Publish": "Publish"
+  }
+}

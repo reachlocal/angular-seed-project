@@ -1,0 +1,84 @@
+@import "rl_seeds/variables";
+@import "rl_seeds/mixins";
+
+.creative_cell {
+  p {
+    margin : 0;
+  }
+
+  .headline,
+  .headline + .editable-wrap input {
+    font-weight: 700;
+  }
+  .rl-xcounter {
+    direction: ltr;
+    border: 1px solid rgba($color-dark, .1);
+    height: 100%;
+    display: inline-block;
+    line-height: 2em;
+    width: 40px;
+    text-align: center;
+    background: $color-bright;
+    &.negative {
+      color: $color-danger;
+    }
+  }
+
+  .editable {
+    cursor: pointer;
+    border: 1px dashed transparent;
+    color: $color-bodycopy;
+
+    &:hover {
+      color: $color-bodycopy;
+      border-bottom-color: $color-info;
+    }
+
+    &.invalid + form input {
+      border-color: $color-danger;
+    }
+  }
+
+  .editable-error {
+    display: none;
+  }
+
+  .editable-wrap {
+    display: block;
+    width: 100%;
+    position: relative;
+    left: -$spacing-small;
+    top: -3px;
+    margin-bottom: -($spacing-default / 3);
+
+    .editable-controls > input {
+      width: 100%;
+    }
+
+    .editable-buttons {
+      position: absolute;
+      direction: rtl;
+      height: 100%;
+
+      button {
+        margin: 0;
+        font-size: 0;
+        height: 100%;
+
+        @include unicode(before, '');
+        &[type="submit"]:before {
+          content: $unicode-check;
+        }
+
+        &[type="button"]:before {
+          content: $unicode-times;
+        }
+      }
+    }
+  }
+
+  .editable-wrap,
+  .editable-buttons {
+    box-shadow: $spacing-small $spacing-small $color-shadow;
+  }
+}

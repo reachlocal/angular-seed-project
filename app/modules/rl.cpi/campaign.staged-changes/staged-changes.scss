@@ -1,9 +1,20 @@
 @import "rl_seeds/variables";
 
-article#staged_changes {
+#staged_changes {
+  padding: $spacing-default;
+  border-top: $spacing-small solid $color-info;
+  box-shadow: inset 0 $spacing-small $color-shadow;
+
+  h2 {
+    font-size: 1em;
+  }
+
+  form[name="staged_changes"] {
+    min-width: 800px;
+  }
 
   table {
-    margin: 0px auto;
+    width: 100%;
 
     caption {
       border-bottom: 2px solid $color-info;
@@ -14,20 +25,5 @@ article#staged_changes {
       padding-bottom: $spacing-default - 10px;
     }
 
-    thead {
-      background-color: white;
-      border-bottom: 2px solid $color-muted;
-    }
-
-    tbody {
-      section.creative_data {
-        p {
-          margin-top: $spacing-default - 10px;
-        }
-        p.creative_headline {
-          font-weight: bold;
-        }
-      }
-    }
   }
 }
