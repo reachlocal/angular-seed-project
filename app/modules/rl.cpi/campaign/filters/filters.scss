@@ -36,12 +36,11 @@
   }
 
   article {
-    //@include button($color-info);
     $width: 14em;
-
     position: relative;
     min-width: $width;
     padding: 0px;
+    cursor: pointer;
 
     &:hover label[for=staged_changes] em {
       background-color: darken($color-danger, 10);
@@ -132,9 +131,7 @@
       }
 
       &:disabled + label {
-        background-color: $color-light;
         cursor: default;
-        pointer-events: none;
         em {
           background-color: $color-muted;
         }
