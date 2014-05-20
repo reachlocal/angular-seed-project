@@ -2,7 +2,9 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
   'ui.router',
   'rl.back',
   'rl.cpi.main.directives',
-  'rl.cpi.main.services.Creatives'
+  'rl.cpi.main.services.Creatives',
+  'rl.cpi.utils',
+  'ui.router'
 ])
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaignStagedChanges', {
@@ -18,8 +20,15 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
     }
   });
 })
-.controller('StagedChangesCtrl', function ($scope, creatives) {
-  $scope.creatives = creatives.filter(function (creative) {
+.controller('StagedChangesCtrl', function ($scope, creatives, StagedTextCreative) {
+  $scope.stagedTextCreatives = creatives.filter(function (creative) {
     return creative.isStaged();
+  }).map(function (creative) {
+    return new StagedTextCreative(creative);
   });
+});
+
+angular.module('rl.cpi.campaignStagedChanges')
+.factory('StagedTextCreative', function(rlResource) {
+  return rlResource('/campaigns/:campaignId/staged-text-creatives/:textCreativeId', { 'campaignId': '@campaignId', 'textCreativeId': '@id' });
 });

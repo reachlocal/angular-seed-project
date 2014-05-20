@@ -8,7 +8,7 @@
     <fieldset>
       <table>
         <caption>
-          <translate translate-value-count="{{ creatives.length }}">
+          <translate translate-value-count="{{ stagedTextCreatives.length }}">
             rlStagedChanges.{ count } creatives
           </translate>
         </caption>
@@ -22,18 +22,18 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="creative in creatives">
+          <tr ng-repeat="stagedTextCreative in stagedTextCreatives">
             <td>
-              <rl-creative-cell readonly creative="creative"></rl-creative-cell>
+              <rl-creative-cell readonly creative="stagedTextCreative"></rl-creative-cell>
             </td>
-            <td>{{ 'rlCampaignTabularData.' + creative.state | translate }}</td>
-            <td>{{ creative.adGroup.name }}</td>
+            <td>{{ 'rlCampaignTabularData.' + stagedTextCreative.state | translate }}</td>
+            <td>{{ stagedTextCreative.adGroup.name }}</td>
             <td>
-              {{ creative.publisher.publisherName }}
-              ({{ 'rlCampaignTabularData.' + creative.publisher.geoType | translate}})
+              {{ stagedTextCreative.publisher.publisherName }}
+              ({{ 'rlCampaignTabularData.' + stagedTextCreative.publisher.geoType | translate}})
             </td>
             <td>
-              <button type="reset">Remove</button>
+              <button type="reset" ng-click="stagedTextCreative.$remove()">Remove</button>
             </td>
           </tr>
         </tbody>
