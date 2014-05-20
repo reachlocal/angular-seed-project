@@ -17,7 +17,7 @@
             <th translate>rlCampaignTabularData.Ad Text</th>
             <th translate>rlCampaignTabularData.State</th>
             <th translate>rlCampaignTabularData.Ad Group</th>
-            <th translate>rlCampaignTabularData.Publisher</th>
+            <th colspan="2" translate>rlCampaignTabularData.Publisher</th>
           </tr>
         </thead>
 
@@ -31,6 +31,9 @@
             <td>
               {{ creative.publisher.publisherName }}
               ({{ 'rlCampaignTabularData.' + creative.publisher.geoType | translate}})
+            </td>
+            <td>
+              <button type="reset">Remove</button>
             </td>
           </tr>
         </tbody>

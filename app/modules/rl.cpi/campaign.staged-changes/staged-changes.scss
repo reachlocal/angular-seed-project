@@ -1,4 +1,5 @@
 @import "rl_seeds/variables";
+@import "rl_seeds/mixins";
 
 #staged_changes {
   padding: $spacing-default;
@@ -25,5 +26,29 @@
       padding-bottom: $spacing-default - 10px;
     }
 
+  }
+
+  tr:hover {
+    background-color: rgba($color-bright, .5);
+
+    button {
+      display: initial;
+    }
+  }
+
+  tr td:last-of-type {
+    position: relative;
+  }
+
+  tr button {
+    margin: 0px;
+    font-size: 0px;
+
+    @include unicode(before, $unicode-times);
+
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
 }
