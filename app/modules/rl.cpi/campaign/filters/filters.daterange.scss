@@ -1,31 +1,22 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
+@import "font-awesome";
 
 @mixin rl-daterange() {
   & > .rl-daterange {
-    $calendar-icon: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMwIDMyIj4KPGc+CjwvZz4KCTxwYXRoIGQ9Ik0yLjI4NiAyOS43MTRoNS4xNDN2LTUuMTQzaC01LjE0M3Y1LjE0M3pNOC41NzEgMjkuNzE0aDUuNzE0di01LjE0M2gtNS43MTR2NS4xNDN6TTIuMjg2IDIzLjQyOWg1LjE0M3YtNS43MTRoLTUuMTQzdjUuNzE0ek04LjU3MSAyMy40MjloNS43MTR2LTUuNzE0aC01LjcxNHY1LjcxNHpNMi4yODYgMTYuNTcxaDUuMTQzdi01LjE0M2gtNS4xNDN2NS4xNDN6TTE1LjQyOSAyOS43MTRoNS43MTR2LTUuMTQzaC01LjcxNHY1LjE0M3pNOC41NzEgMTYuNTcxaDUuNzE0di01LjE0M2gtNS43MTR2NS4xNDN6TTIyLjI4NiAyOS43MTRoNS4xNDN2LTUuMTQzaC01LjE0M3Y1LjE0M3pNMTUuNDI5IDIzLjQyOWg1LjcxNHYtNS43MTRoLTUuNzE0djUuNzE0ek05LjE0MyA4di01LjE0M3EwLTAuMjMyLTAuMTctMC40MDJ0LTAuNDAyLTAuMTdoLTEuMTQzcS0wLjIzMiAwLTAuNDAyIDAuMTd0LTAuMTcgMC40MDJ2NS4xNDNxMCAwLjIzMiAwLjE3IDAuNDAydDAuNDAyIDAuMTdoMS4xNDNxMC4yMzIgMCAwLjQwMi0wLjE3dDAuMTctMC40MDJ6TTIyLjI4NiAyMy40MjloNS4xNDN2LTUuNzE0aC01LjE0M3Y1LjcxNHpNMTUuNDI5IDE2LjU3MWg1LjcxNHYtNS4xNDNoLTUuNzE0djUuMTQzek0yMi4yODYgMTYuNTcxaDUuMTQzdi01LjE0M2gtNS4xNDN2NS4xNDN6TTIyLjg1NyA4di01LjE0M3EwLTAuMjMyLTAuMTctMC40MDJ0LTAuNDAyLTAuMTdoLTEuMTQzcS0wLjIzMiAwLTAuNDAyIDAuMTd0LTAuMTcgMC40MDJ2NS4xNDNxMCAwLjIzMiAwLjE3IDAuNDAydDAuNDAyIDAuMTdoMS4xNDNxMC4yMzIgMCAwLjQwMi0wLjE3dDAuMTctMC40MDJ6TTI5LjcxNCA2Ljg1N3YyMi44NTdxMCAwLjkyOS0wLjY3OSAxLjYwN3QtMS42MDcgMC42NzloLTI1LjE0M3EtMC45MjkgMC0xLjYwNy0wLjY3OXQtMC42NzktMS42MDd2LTIyLjg1N3EwLTAuOTI5IDAuNjc5LTEuNjA3dDEuNjA3LTAuNjc5aDIuMjg2di0xLjcxNHEwLTEuMTc5IDAuODM5LTIuMDE4dDIuMDE4LTAuODM5aDEuMTQzcTEuMTc5IDAgMi4wMTggMC44Mzl0MC44MzkgMi4wMTh2MS43MTRoNi44NTd2LTEuNzE0cTAtMS4xNzkgMC44MzktMi4wMTh0Mi4wMTgtMC44MzloMS4xNDNxMS4xNzkgMCAyLjAxOCAwLjgzOXQwLjgzOSAyLjAxOHYxLjcxNGgyLjI4NnEwLjkyOSAwIDEuNjA3IDAuNjc5dDAuNjc5IDEuNjA3eiIgZmlsbD0iI2ZmZmZmZiIgLz4KPC9zdmc+Cg==');
-    $calendar-size: 1em;
 
     height: 100%;
     border: 1px solid transparent;
     width: 17em;
     position: relative;
-    padding-left: calc(#{$calendar-size} + #{$spacing-small});
+    padding-left: calc(.5em + #{$spacing-small});
 
+    @include fa-icon(before, $fa-var-calendar);
     &:before {
-      content: '';
       position: absolute;
       top: 50%;
+      margin-top: -.5em;
       left: $spacing-small;
-      display: flex;
-      margin-top: -($calendar-size / 2);
-      width: $calendar-size;
-      height: $calendar-size;
-
-      background-image: $calendar-icon;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      background-position: center;
     }
 
     &:hover {
