@@ -2,22 +2,30 @@ describe('RL Creative Card Editor', function () {
 
   var $scope, controller;
   var rootScope;
+  var rulesServiceMock, ruleSetMock;
 
   beforeEach(localeFixture);
   beforeEach(module('rl.cpi'));
-  beforeEach(module('rl.cpi.main.directives.rlCreativeCard'));
+  beforeEach(module('rl.cpi.campaignNewCreative'));
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
     $scope.campaign = { currentCampaignId: 1234 };
     rootScope = $rootScope;
     controller = $controller;
+
+    ruleSetMock      = { forPublisherId: null, defaultRule: null };
+    rulesServiceMock = { allByCampaignId: null };
+    spyOn(rulesServiceMock, 'allByCampaignId').andReturn(ruleSetMock);
+    spyOn(ruleSetMock, 'forPublisherId').andReturn('publisher rule set');
+    spyOn(ruleSetMock, 'defaultRule').andReturn('default rule set');
+
   }));
 
   function buildController() {
     controller('rlCreativeCardCtrl', {
       $scope: $scope,
-      $rootScope: rootScope,
+      PublisherTextCreativeRules: rulesServiceMock
     });
     $scope.$digest();
   }
@@ -76,6 +84,26 @@ describe('RL Creative Card Editor', function () {
 
       expect($scope.creative.headLine).toBe('a headline');
       expect($scope.isLinked).toBe(false);
+    });
+  });
+
+  describe('ruleset selection', function() {
+    it('uses default rule when there is no publisher', function() {
+      $scope.publisher = null;
+
+      buildController();
+
+      expect(ruleSetMock.defaultRule).toHaveBeenCalled();
+      expect($scope.rules).toEqual('default rule set');
+    });
+
+    it('uses publisher specific ruleset', function() {
+      $scope.publisher = { publisherId: 789 };
+
+      buildController();
+
+      expect(ruleSetMock.forPublisherId).toHaveBeenCalledWith(789);
+      expect($scope.rules).toEqual('publisher rule set');
     });
   });
 });

@@ -2,7 +2,8 @@ angular.rlmodule('rl.cpi.campaign', [
   'ui.router',
   'rl.daterange',
   'rl.QueryParams',
-  'rl.stick'
+  'rl.stick',
+  'rl.cpi.campaignNewCreative'
 ])
 
 .config(function ($stateProvider) {

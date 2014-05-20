@@ -1,7 +1,5 @@
 angular
-  .rlmodule('rl.cpi.main.directives.rlCreativeCard', [
-    'rl.cpi.main.directives.rlCreativeCell'
-  ])
+  .rlmodule('rl.cpi.campaignNewCreative')
   .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules) {
    var stopSyncing = angular.noop;
 

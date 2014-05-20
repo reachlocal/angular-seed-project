@@ -6,7 +6,6 @@
     </p>
   </header>
 
-
   <section class="template">
     <rl-creative-card campaign="campaign" ng-model="masterCreative">
     </rl-creative-card>
@@ -26,44 +25,3 @@
     <button type="button" ng-click="back()" translate>newCreative.Add</button>
   </footer>
 </article>
-
-  <!--
-<article id="new-creative">
-  <header role="banner">
-  </header>
-
-  <aside>
-
-    <rl-creative-card ng-model="masterCreative">
-    </rl-creative-card>
-
-    <p>Publish a copy of this creative at...</p>
-    <ul>
-      <li ng-repeat="publisher in publishers">
-        <label>
-          <input type="checkbox" ng-model="publisher.selected" checked="checked"/>
-          {{ publisher.name }} / {{ publisher.geoType }}
-        </label>
-      </li>
-    </ul>
-  </aside>
-
-  <section class="preview">
-    <p class="tip" ng-hide="filteredPublishers.length">
-      You will see creative previews here when you
-      start selecting your desired publishers on
-      the left-hand side of this screen.
-    </p>
-    <rl-creative-card ng-repeat="publisher in filteredPublishers = ( publishers | filter:{selected:true} )"
-                      publisher="publisher"
-                      linked-to="masterCreative">
-    </rl-creative-card>
-    <br style="clear: both"/>
-  </section>
-
-  <footer>
-    <button type="submit" ng-click="back()" translate>newCreative.Save</button>
-    <button type="button" ng-click="back()" translate>newCreative.Cancel</button>
-  </footer>
-</article>
-  -->
