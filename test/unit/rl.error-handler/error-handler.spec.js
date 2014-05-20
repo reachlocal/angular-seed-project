@@ -7,6 +7,7 @@ describe('rl.errorhandler', function () {
   beforeEach(mockDependency('angular-growl', 'growl').toBe(growl));
 
   beforeEach(function () {
+    spyOn(angular, 'noop');
     module('rl.errorhandler');
     // Prevent messages to exceptionHandler from failing the test
     module(function($exceptionHandlerProvider) {
@@ -18,31 +19,29 @@ describe('rl.errorhandler', function () {
     spyOn(growl, 'addErrorMessage');
   });
 
-  it('handles internal server error', function () {
+  it('handles error without expected error', function () {
     var error = {
       status: 500
     };
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith('Internal server error.');
+    expect(growl.addErrorMessage).toHaveBeenCalledWith('The CPI server encountered an error (500).  Please try your request again.');
   });
 
   it('handles error with messages', function () {
     var error = {
-      status: 404,
-      data: [
-        { name: 'attribute name', message: 'the error message'}
-      ]
+      status: 404
     };
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith('attribute name: the error message');
+    expect(growl.addErrorMessage).toHaveBeenCalledWith('Requested resource not found');
   });
 
-  it('handle error without expected message', function () {
+  it('ignores 401 errors (sso redirect)', function () {
     var error = {
       status: 401,
       data: 'unexpected error'
     };
+
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith('Unexpected error.');
+    expect(angular.noop).toHaveBeenCalled();
   });
 });
