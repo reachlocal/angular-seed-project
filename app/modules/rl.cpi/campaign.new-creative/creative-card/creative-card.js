@@ -1,7 +1,9 @@
 angular
-  .rlmodule('rl.cpi.main.directives.rlCreativeCard', [])
-  .controller('rlCreativeCardCtrl', function ($scope) {
-    var stopSyncing = angular.noop;
+  .rlmodule('rl.cpi.main.directives.rlCreativeCard', [
+    'rl.cpi.main.directives.rlCreativeCell'
+  ])
+  .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules) {
+   var stopSyncing = angular.noop;
 
     function synchronize(value) {
       $scope.creative = angular.copy(value);
@@ -18,10 +20,18 @@ angular
     };
 
     $scope.creative = $scope.ngModel;
+
     if ($scope.linkedTo) {
       $scope.link();
     }
 
+    var ruleSet = PublisherTextCreativeRules.allByCampaignId($scope.campaign.currentCampaignId);
+    if ($scope.publisher) {
+      $scope.rules = ruleSet.forPublisherId($scope.publisher.publisherId);
+    }
+    else {
+      $scope.rules = ruleSet.defaultRule();
+    }
   })
 
   .directive('rlCreativeCard', function () {
@@ -30,10 +40,37 @@ angular
       scope: {
         publisher: '=',
         ngModel: '=',
-        linkedTo: '='
+        linkedTo: '=',
+        campaign: '='
       },
       restrict: 'E',
       replace: true,
       controller: 'rlCreativeCardCtrl'
     };
+  })
+
+  .directive('rlRemainingChars', function($compile) {
+    var template = '<span class="rl-xcounter" ng-model="ngModel" ng-class="{ negative: $negative }">{{ $remainder }}</span>';
+    var directive = {
+      restrict: 'A',
+      scope: {
+        'ngModel': '='
+      }
+    };
+
+    directive.compile = function (element) {
+      return directive.link;
+    };
+
+    directive.link = function (scope, element, attributes) {
+      element.after(angular.element($compile(template)(scope)));
+      scope.$watch('ngModel', function (value) {
+        scope.$remainder = parseInt(attributes.rlRemainingChars) - (value ? value.length : 0);
+        scope.$negative = scope.remainder < 0;
+      });
+    };
+
+    return directive;
   });
+
+

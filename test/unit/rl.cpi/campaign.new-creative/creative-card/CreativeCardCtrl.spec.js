@@ -9,6 +9,7 @@ describe('RL Creative Card Editor', function () {
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
+    $scope.campaign = { currentCampaignId: 1234 };
     rootScope = $rootScope;
     controller = $controller;
   }));

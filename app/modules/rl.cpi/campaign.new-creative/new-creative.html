@@ -1,12 +1,38 @@
-<article id="new-creative">
-  <header role="banner">
+<article id="new_creative">
+  <header>
     <h2>Add a Creative</h2>
-  </header>
-
-  <aside>
     <p>
       Add a master creative as a template for different publishers
     </p>
+  </header>
+
+
+  <section class="template">
+    <rl-creative-card campaign="campaign" ng-model="masterCreative">
+    </rl-creative-card>
+  </section>
+
+  <section class="creatives">
+    <rl-creative-card campaign="campaign"
+                      ng-repeat="publisher in publishers"
+                      publisher="publisher"
+                      linked-to="masterCreative">
+    </rl-creative-card>
+    <br style="clear: both"/>
+  </section>
+
+  <footer>
+    <button type="submit" ng-click="back()" translate>newCreative.Cancel</button>
+    <button type="button" ng-click="back()" translate>newCreative.Add</button>
+  </footer>
+</article>
+
+  <!--
+<article id="new-creative">
+  <header role="banner">
+  </header>
+
+  <aside>
 
     <rl-creative-card ng-model="masterCreative">
     </rl-creative-card>
@@ -40,3 +66,4 @@
     <button type="button" ng-click="back()" translate>newCreative.Cancel</button>
   </footer>
 </article>
+  -->

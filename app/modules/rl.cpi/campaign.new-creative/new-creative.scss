@@ -1,59 +1,38 @@
 @import "rl_seeds/variables";
 
-article#new-creative {
-  position: relative;
-  padding-bottom: 2em;
+article#new_creative {
+  & > header {
+    padding: 1rem;
+  }
+  section.template {
+    margin: 0.5rem;
 
-  $nav-height: $spacing-small;
-  $header-height: $spacing-default * 3;
+    article {
+      width: 20rem;
+      margin: 0 auto;
+      box-shadow: 7.5px 7.5px rgba(0, 0, 0, 0.075);
 
-  nav {
-    height: $nav-height;
-    padding: 0;
-    * {
-      display: none;
+      button {
+        display: none;
+      }
+    }
+  }
+  section.creatives {
+    article {
+      float: left;
+
+      button {
+        background: transparent;
+
+        &.enabled  { color: green; }
+        &.disabled { color: gray; }
+      }
     }
   }
 
-  header[role=banner] {
-    height: $header-height;
-    padding: 1em;
-    width: 100%;
-    background: white;
-  }
-
-  aside {
-    width: 23em;
-    padding: 1em;
-    height: 100%;
-    float: left;
-    border-right: 1px dotted gray;
-  }
-  section.preview {
-    padding: 1em;
-    bottom: 0;
-    top: 0;
-    margin-left: 23em;
-
-    p.tip {
-      background: lightpink;
-      padding: 1em;
-      border-radius: 1em;
-      width: 30em;
-    }
-  }
-  footer {
-    position: fixed;
-    bottom: 0;
-    border-top: 1px solid gray;
-    background-color: white;
-    width: 100%;
+  & > footer {
+    margin-right: 4rem;
+    padding: 1rem;
     text-align: right;
-    padding: 1em;
-
-    button {
-      font-size: large;
-      padding: 0 5rem;
-    }
   }
 }

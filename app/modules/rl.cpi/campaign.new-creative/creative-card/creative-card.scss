@@ -1,31 +1,52 @@
 article.creative_card {
   margin: .5em;
-  width: 20em;
+  width: 21em;
   background: #ddd;
   padding: 0.8em;
-  float: left;
+  position: relative;
 
   header {
     .publisher {
       font-weight: bold;
-      width: 13em;
       display: block;
+      float: left;
+      max-width: 9rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      float: left;
     }
     .geotype {
+      margin-left: 0.2rem;
       display: inline-block;
       float: left;
+    }
+    button {
+      float: right;
+      width: 1.2rem;
+      padding: 0;
+      height: 1.5rem;
     }
   }
 
   input {
     width: 100%;
+    padding-right: 2em;
 
-    &:first-child {
+    &:first-of-type {
       font-weight: bold;
     }
+
+    & + span {
+      position: absolute;
+      color: green;
+      z-index: 99;
+      margin-top: 0.2rem;
+      right: 1rem;
+
+      &.negative {
+        color: red;
+      }
+    }
+
   }
 }

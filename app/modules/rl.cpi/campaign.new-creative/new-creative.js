@@ -16,7 +16,8 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
     }
   });
 })
-.controller('NewCreativeCtrl', function ($scope, publishers, $window) {
+.controller('NewCreativeCtrl', function ($scope, campaign, publishers, $window) {
+  $scope.campaign = campaign;
   $scope.publishers = publishers.webPublisherCampaigns;
   $scope.masterCreative = { headLine: '', descriptiveLine: ['', ''] };
   $scope.back = function () {

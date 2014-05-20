@@ -1,16 +1,34 @@
 <article class="creative_card" ng-class="{'linked': isLinked}">
-  <button ng-show="linkedTo" ng-click="isLinked ? unlink() : link()">{{ isLinked ? 'Unlink' : 'Link' }}</button>
   <header>
     <span class="publisher">{{ publisher.name }}</span>
     <span class="geotype">{{ publisher.geoType }}</span>
 
-    <i class="fa fa-chain"></i>
-  </header>
-  <input type="text" ng-change="unlink()" ng-model="creative.headLine" placeholder="Creative Title">
-  <input type="text" ng-change="unlink()" ng-model="creative.descriptiveLine[0]" placeholder="Descriptive Line">
-  <input type="text" ng-change="unlink()" ng-model="creative.descriptiveLine[1]" placeholder="Descriptive Line">
+    <button class="enabled  fa fa-check-circle-o" ng-show=" enabled" ng-click="disable()"></button>
+    <button class="disabled fa fa-check-circle-o" ng-show="!enabled" ng-click="enable()"></button>
 
-  <!--    <select>
-          <option>adg1</option>
-      </select>-->
+    <button class="enabled  fa fa-lock"   ng-show=" isLinked" ng-click="unlink()"></button>
+    <button class="disabled fa fa-unlock" ng-show="!isLinked" ng-click="link()"  ></button>
+
+  </header>
+      <input type="text"
+            ng-change="unlink()"
+            ng-model="creative.headLine"
+            placeholder="Creative Title"
+            rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
+
+      <input type="text"
+            ng-change="unlink()"
+            ng-model="creative.descriptiveLine[0]"
+            placeholder="Descriptive Line"
+            rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" />
+
+      <input type="text"
+            ng-change="unlink()"
+            ng-model="creative.descriptiveLine[1]"
+            placeholder="Descriptive Line"
+            rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
+
+  <select>
+    <option>adg1</option>
+  </select>
 </article>
