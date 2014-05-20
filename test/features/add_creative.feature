@@ -100,4 +100,10 @@ Feature: Add a new creative to an existing ad group
     And there is a visual indicator that shows the publisher specific creative is linked
 
 
+  @CPI-JIRA-225
+  Scenario: Saving a new creative
+
+    Given the user has entered text for each new publisher-specific creative
+    When the user selects the option to save the new creative
+    Then the new creative is staged for publishing
 
