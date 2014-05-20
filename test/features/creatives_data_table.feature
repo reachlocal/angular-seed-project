@@ -3,7 +3,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
   Background:
     Given a typical campaign exists
 
-  @JIRA-CPI-108 @JIRA-CPI-109 @JIRA-CPI-151
+  @JIRA-CPI-108 @JIRA-CPI-109 @JIRA-CPI-151 @regression
   Scenario: View creatives and their metrics for a specific AdGroup
 
     When a user views the campaign id "713896" dashboard
@@ -52,7 +52,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     Then the creative's edits are staged for publishing
     And the creative is validated against the publisher's requirements
 
-  @JIRA-CPI-132 @JIRA-CPI-133
+  @JIRA-CPI-132 @JIRA-CPI-133 @regression
   Scenario: Cancel an edit on a creative in the data table
 
     When a user views the campaign id "713896" dashboard
@@ -60,7 +60,7 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
     But he clicks to cancel those changes
     Then the creative reverts to its original state
 
-  @JIRA-CPI-138
+  @JIRA-CPI-138 @regression
   Scenario: Change the creative's state in the data table from Active to Inactive and back
 
     Given a creative with the visible state of "Active" is in the data table

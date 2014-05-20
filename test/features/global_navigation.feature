@@ -1,6 +1,6 @@
 Feature: Each dashboard should have a consistent global navigation function
 
-  @JIRA-CPI-23 @dashboard @filter
+  @JIRA-CPI-23 @dashboard @filter @regression
   Scenario: View Global Nav Bar with Web Publisher Campaign AdGroups
 
     Given campaign with id "713896" exists
@@ -13,7 +13,7 @@ Feature: Each dashboard should have a consistent global navigation function
     Then the "Primary Ad Group" should be listed under "Local Profile (City)" section
     And the "Commercial Plumbing" should be listed under "Local Profile (City)" section
 
-  @JIRA-CPI-151 @dashboard @filter
+  @JIRA-CPI-151 @dashboard @filter @regression
   Scenario: Select an AdGroup in Global Nav Bar under All Ad Groups
 
     Given a campaign with id "713896" exists
@@ -23,7 +23,7 @@ Feature: Each dashboard should have a consistent global navigation function
     When the user selects 'First AdGroup' under the all AdGroups section
     Then the campaign dashboard should show the data table of Creatives under 'First AdGroup' across all publishers
 
-  @JIRA-CPI-151 @dashboard @filter
+  @JIRA-CPI-151 @dashboard @filter @regression
   Scenario: Select an AdGroup in Global Nav Bar under a specific web publisher campaign
 
     Given a campaign with id "713896" exists
@@ -36,7 +36,7 @@ Feature: Each dashboard should have a consistent global navigation function
     And the user selects "Primary Ad Group" from the web publisher campaign "Local Profile (City)"
     Then the campaign dashboard should show the data table of Creatives under "Primary Ad Group" only for the WPC "Local Profile (City)"
 
-  @JIRA-CPI-25 @dashboard @header
+  @JIRA-CPI-25 @dashboard @header @regression
   Scenario:  View campaign basic data in the dashboard header
 
     Given campaign with id "713896" exists

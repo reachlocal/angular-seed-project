@@ -30,7 +30,7 @@ Feature: Surface recommendations
   When the user expands one recommendation box the other recomendation's buttons become gray. So the user will focus only at that expanded recommendation.
 
 
-  @JIRA-CPI-26
+  @JIRA-CPI-26 @regression
   Scenario:  Surface recommendations on the CPI dashboard
 
     Given campaign with id "713896" exists

@@ -3,27 +3,26 @@ Feature: Ability to stage changes to business entities before they are pushed to
   Background:
     Given a typical campaign with 5 creative staged changes exists
 
-  @JIRA-CPI-167
+  @JIRA-CPI-167 @regression
   Scenario: Staged changes are already present
 
     When a user is navigating the typical campaign's creative dashboard
     Then the user is presented with a visual indicator that shows that 5 changes are staged
 
-  @JIRA-CPI-167
+  @JIRA-CPI-167 @regression
   Scenario: User generates a new staged change
 
     When a user is navigating the typical campaign's creative dashboard
     And a user updates the first creative's headline to "a different value"
     Then the user is presented with a visual indicator that shows that 6 changes are staged
 
-  @JIRA-CPI-203
+  @JIRA-CPI-203 @regression
   Scenario: A quick view shows a list of changes pending
 
     When a user is navigating the typical campaign's creative dashboard
     And the user views the Quick View of staged changes
     Then the user sees a visual element that shows "5 changed creatives"
     And the user is presented with the option to view the full list of changes
-
 
   @JIRA-CPI-136
   Scenario: Cancel a staged change
