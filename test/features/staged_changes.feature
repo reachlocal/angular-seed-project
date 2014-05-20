@@ -25,22 +25,20 @@ Feature: Ability to stage changes to business entities before they are pushed to
     And the user is presented with the option to view the full list of changes
 
   @JIRA-CPI-136
-  Scenario: Cancel a staged change
+  Scenario: Remove a creative staged change
 
-    Given changes are staged for publishing
-    And the user is presented with an indication that changes are staged
-    When a user selects some option for viewing the staged changes
-    And the user cancels the changes for one or more entities individually
-    Then the changes are canceled and no longer appear on the list of changes
+    When a user views the list of staged changes
+    And the user cancels the changes for one entity
+    Then the counter displays 4 creative staged changes
+    And the creative list shows only 4 creatives staged changes
 
   @JIRA-CPI-136
   Scenario: Cancel view of staged changes
 
-    Given changes are staged for publishing
-    And the user is viewing the full list of staged changes
-    When the user selects the option to cancel their action
-    Then no action is taken on the staged changes
-    And the user is presented with the view they were previously on
+    When a user views the list of staged changes
+    And the user cancels the changes for one entity
+    Then the user clicks the back button
+    And the quick view component displays 4 creative staged changes
 
   @JIRA-CPI-134
   Scenario: Publish a list of staged changes from the detailed staged changes view
