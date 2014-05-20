@@ -57,7 +57,7 @@ function writeClientConfig(path) {
 }
 // Run cucumber against a local gateway service in stub mode
 // (The user must ensure the gateway is running and is in stub mode)
-gulp.task('test:cucumber', ['protractor:webdriver'], function testCucumber() {
+gulp.task('test:cucumber', ['build', 'protractor:webdriver'], function testCucumber() {
   writeLocalClientConfig();
   return runProtractor('test/features/protractor.config.js');
 });
