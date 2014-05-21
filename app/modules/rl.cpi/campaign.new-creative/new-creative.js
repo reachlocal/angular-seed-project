@@ -1,5 +1,6 @@
 angular.rlmodule('rl.cpi.campaignNewCreative', [
   'ui.router',
+  'rl.back',
   'rl.cpi.main.services.Publishers',
   'rl.cpi.main.services.PublisherTextCreativeRules'
 ])
@@ -27,7 +28,4 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
     $scope.campaign = campaign;
     $scope.publishers = publishers.webPublisherCampaigns;
     $scope.masterCreative = { headLine: '', descriptiveLine: ['', ''] };
-    $scope.back = function () {
-      $window.history.back();
-    };
   });

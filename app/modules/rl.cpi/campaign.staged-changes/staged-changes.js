@@ -1,7 +1,8 @@
 angular.rlmodule('rl.cpi.campaignStagedChanges', [
+  'ui.router',
+  'rl.back',
   'rl.cpi.main.directives',
-  'rl.cpi.main.services.Creatives',
-  'ui.router'
+  'rl.cpi.main.services.Creatives'
 ])
 .config(function ($stateProvider) {
   $stateProvider.state('cpi.campaignStagedChanges', {
