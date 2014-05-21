@@ -37,6 +37,10 @@ angular
       stopSyncing = $scope.$watch('linkedTo', synchronize, true);
     };
 
+    $scope.$watch('creative', function () {
+      stripWhitespace($scope.creative);
+    }, true);
+
     $scope.unlink = function unlink() {
       stopSyncing();
       $scope.isLinked = false;
