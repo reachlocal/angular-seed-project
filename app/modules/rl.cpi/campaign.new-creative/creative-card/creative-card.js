@@ -7,24 +7,7 @@ angular
     function combineDescriptiveLines(creative) {
       var descLine2 = creative.descriptiveLines.splice(1, 1)[0];
       if (descLine2.length > 0) {
-        creative.descriptiveLines[0] += " " + descLine2;
-      }
-    }
-
-    function stripWhitespace(creative) {
-      var crRegex = /[\n\r]/g;
-      var doublespaceRegex = /\s{2,}/g;
-      if (creative && creative.hasOwnProperty('descriptiveLines')) {
-        for (var i = 0; i < creative.descriptiveLines.length; i++) {
-          creative.descriptiveLines[i] = creative.descriptiveLines[i].replace(crRegex, ' ');
-          creative.descriptiveLines[i] = creative.descriptiveLines[i].replace(doublespaceRegex, ' ');
-        }
-      }
-      if (creative && creative.hasOwnProperty('headLines')) {
-        for (var i = 0; i < creative.headLines.length; i++) {
-          creative.headLines[i] = creative.headLines[i].replace(crRegex, ' ');
-          creative.headLines[i] = creative.headLines[i].replace(doublespaceRegex, ' ');
-        }
+        creative.descriptiveLines[0] += ' ' + descLine2;
       }
     }
 
@@ -40,10 +23,6 @@ angular
       $scope.isLinked = true;
       stopSyncing = $scope.$watch('linkedTo', synchronize, true);
     };
-
-    $scope.$watch('creative', function () {
-      stripWhitespace($scope.creative);
-    }, true);
 
     $scope.unlink = function unlink() {
       stopSyncing();

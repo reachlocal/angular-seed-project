@@ -17,18 +17,21 @@
            ng-change="unlink()"
            ng-model="creative.headLines[0]"
            placeholder="Creative Title"
+           rl-trimspaces
            rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
 
     <input type="text"
           ng-change="unlink()"
           ng-model="creative.descriptiveLines[0]"
           placeholder="Descriptive Line"
+          rl-trimspaces
           rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" />
 
     <input type="text"
           ng-change="unlink()"
           ng-model="creative.descriptiveLines[1]"
           placeholder="Descriptive Line"
+          rl-trimspaces
           rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
   </section>
 
@@ -37,11 +40,13 @@
            ng-change="unlink()"
            ng-model="creative.headLine"
            placeholder="Creative Title"
+           rl-trimspaces
            rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
     <textarea ng-change="unlink()"
-                ng-model="creative.descriptiveLines[0]"
-                placeholder="Descriptive Line"
-                rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" /></textarea>
+              ng-model="creative.descriptiveLines[0]"
+              placeholder="Descriptive Line"
+              rl-trimspaces
+              rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" /></textarea>
   </section>
 
   <select ng-model="creative.adGroup"

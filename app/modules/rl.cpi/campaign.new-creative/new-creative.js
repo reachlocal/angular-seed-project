@@ -2,7 +2,8 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
   'ui.router',
   'rl.back',
   'rl.cpi.main.services.Publishers',
-  'rl.cpi.main.services.PublisherTextCreativeRules'
+  'rl.cpi.main.services.PublisherTextCreativeRules',
+  'rl.cpi.directives.rlTrimspaces'
 ])
   .config(function ($stateProvider) {
     $stateProvider.state('cpi.campaignNewCreative', {
