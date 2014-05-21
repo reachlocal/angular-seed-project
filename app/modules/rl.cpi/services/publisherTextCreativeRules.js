@@ -13,7 +13,7 @@
  */
 angular
   .rlmodule('rl.cpi.main.services.PublisherTextCreativeRules', ['ngResource', 'rl.cpi.main.Config'])
-  .factory('PublisherTextCreativeRules', function ($resource, Config) {
+  .factory('PublisherTextCreativeRules', function ($resource, Config, $exceptionHandler) {
 
     // This is the resource we'll use to fetch rules for each campaignId
     var baseUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/publisher-text-creative-rules';
@@ -64,7 +64,7 @@ angular
        */
       function forPublisherId(publisherId) {
         if (publisherId === undefined || publisherId === null) {
-          throw new Error('Cannot load rule for publisherId "' + String(publisherId) + '" (campaignId "' + campaignId + '").  PublisherId must be a valid id.');
+          $exceptionHandler(new Error('Cannot load rule for publisherId "' + String(publisherId) + '" (campaignId "' + campaignId + '").  PublisherId must be a valid id.'));
         }
         if (!localRules.hasOwnProperty(publisherId)) {
           var blankRule = defaultRule(publisherId);
@@ -89,12 +89,12 @@ angular
         // Ensure we have official rules for all requested local rules
         angular.forEach(localRules, function (rule) {
           if (!officialRules.hasOwnProperty(rule.publisherId)) {
-            throw new Error('Cannot load rule for publisherId "' + rule.publisherId + '" (campaignId "' + campaignId + '").  Domain did not return rules for this publisherId.');
+            $exceptionHandler(new Error('Cannot load rule for publisherId "' + rule.publisherId + '" (campaignId "' + campaignId + '").  Domain did not return rules for this publisherId.'));
           }
         });
       }
 
-      resource.query({ campaignId: campaignId })
+      this.$promise = resource.query({ campaignId: campaignId })
         .$promise
         .then(loadOfficialRules);
     }

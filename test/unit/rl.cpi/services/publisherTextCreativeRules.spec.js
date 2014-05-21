@@ -28,19 +28,6 @@ describe('PublisherTextCreativeRules', function () {
 
   afterEach(httpResolver.afterEach);
 
-  describe('bad rule states', function () {
-    it('it throws error if publisherId is clearly invalid', function () {
-      var rules = service.allByCampaignId(campaignId);
-      function throws() {
-        rules.forPublisherId();
-      }
-
-      expect(throws).toThrow(new Error('Cannot load rule for publisherId "undefined" (campaignId "' + campaignId + '").  PublisherId must be a valid id.'));
-
-      httpResolver.resolve();
-    });
-  });
-
   it('returns data from domain service rules', function () {
     var rules = service.allByCampaignId(campaignId);
     httpResolver.resolve();
