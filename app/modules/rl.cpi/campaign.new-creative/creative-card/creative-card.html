@@ -11,23 +11,38 @@
     <button class="disabled fa fa-unlock" ng-show="!isLinked" ng-click="link()"  ></button>
 
   </header>
-      <input type="text"
-            ng-change="unlink()"
-            ng-model="creative.headLine"
-            placeholder="Creative Title"
-            rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
 
-      <input type="text"
-            ng-change="unlink()"
-            ng-model="creative.descriptiveLine[0]"
-            placeholder="Descriptive Line"
-            rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" />
+  <section ng-hide="singleDescLine">
+    <input type="text"
+           ng-change="unlink()"
+           ng-model="creative.headLines[0]"
+           placeholder="Creative Title"
+           rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
 
-      <input type="text"
-            ng-change="unlink()"
-            ng-model="creative.descriptiveLine[1]"
-            placeholder="Descriptive Line"
-            rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
+    <input type="text"
+          ng-change="unlink()"
+          ng-model="creative.descriptiveLines[0]"
+          placeholder="Descriptive Line"
+          rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" />
+
+    <input type="text"
+          ng-change="unlink()"
+          ng-model="creative.descriptiveLines[1]"
+          placeholder="Descriptive Line"
+          rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
+  </section>
+
+  <section ng-show="singleDescLine">
+    <input type="text"
+           ng-change="unlink()"
+           ng-model="creative.headLine"
+           placeholder="Creative Title"
+           rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
+    <textarea ng-change="unlink()"
+                ng-model="creative.descriptiveLines[0]"
+                placeholder="Descriptive Line"
+                rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" /></textarea>
+  </section>
 
   <select ng-model="creative.adGroup"
           ng-options="adGroup.name for adGroup in publisher.adGroups"

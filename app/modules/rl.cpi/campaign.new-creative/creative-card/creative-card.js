@@ -1,16 +1,49 @@
 angular
   .rlmodule('rl.cpi.campaignNewCreative')
   .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules) {
-   var stopSyncing = angular.noop;
+    var stopSyncing = angular.noop;
+    $scope.singleDescLine = false; // Default to 2 desc lines
+
+    function combineDescriptiveLines(creative) {
+      var descLine2 = creative.descriptiveLines.splice(1, 1)[0];
+      if (descLine2.length > 0) {
+        creative.descriptiveLines[0] += " " + descLine2;
+      }
+    }
+
+    function stripWhitespace(creative) {
+      var crRegex = /[\n\r]/g;
+      var doublespaceRegex = /\s{2,}/g;
+      if (creative && creative.hasOwnProperty('descriptiveLines')) {
+        for (var i = 0; i < creative.descriptiveLines.length; i++) {
+          creative.descriptiveLines[i] = creative.descriptiveLines[i].replace(crRegex, ' ');
+          creative.descriptiveLines[i] = creative.descriptiveLines[i].replace(doublespaceRegex, ' ');
+        }
+      }
+      if (creative && creative.hasOwnProperty('headLines')) {
+        for (var i = 0; i < creative.headLines.length; i++) {
+          creative.headLines[i] = creative.headLines[i].replace(crRegex, ' ');
+          creative.headLines[i] = creative.headLines[i].replace(doublespaceRegex, ' ');
+        }
+      }
+    }
 
     function synchronize(value) {
       $scope.creative = angular.copy(value);
+      // For single-desc-lines, concat line 2 to line 1 (and delete line 2)
+      if ($scope.singleDescLine) {
+        combineDescriptiveLines($scope.creative);
+      }
     }
 
     $scope.link = function link() {
       $scope.isLinked = true;
       stopSyncing = $scope.$watch('linkedTo', synchronize, true);
     };
+
+    $scope.$watch('creative', function () {
+      stripWhitespace($scope.creative);
+    }, true);
 
     $scope.unlink = function unlink() {
       stopSyncing();
@@ -26,6 +59,7 @@ angular
     var ruleSet = PublisherTextCreativeRules.allByCampaignId($scope.campaign.currentCampaignId);
     if ($scope.publisher) {
       $scope.rules = ruleSet.forPublisherId($scope.publisher.publisherId);
+      $scope.singleDescLine = ($scope.rules.descriptiveLines.length === 1);
     }
   })
 
