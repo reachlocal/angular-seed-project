@@ -1,5 +1,10 @@
 angular
-  .rlmodule('rl.cpi.main.directives.rlCreativeCell', ['ui.bootstrap', 'xeditable', 'rl.cpi.main.services.PublisherTextCreativeRules'])
+  .rlmodule('rl.cpi.main.directives.rlCreativeCell', [
+    'ui.bootstrap',
+    'xeditable',
+    'rl.cpi.main.services.PublisherTextCreativeRules',
+    'rl.cpi.directives.rlTrimspaces'
+  ])
   .controller('rlCreativeCellCtrl', function ($scope, PublisherTextCreativeRules) {
     var rules = PublisherTextCreativeRules
       .allByCampaignId($scope.creative.campaignId)

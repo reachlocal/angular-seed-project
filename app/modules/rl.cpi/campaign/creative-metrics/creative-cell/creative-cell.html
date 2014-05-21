@@ -4,6 +4,7 @@
      editable-text="creative.headLines[$index]"
      onbeforesave="update('headLines', $index, $data)"
      e-required
+     e-rl-trimspaces
      e-rl-xcounter="{{ maxChars('headLines', $index) }}"
      ng-class="{'invalid': $error}">
     {{ headLine }}
@@ -13,6 +14,7 @@
      editable-text="creative.descriptiveLines[$index]"
      onbeforesave="update('descriptiveLines', $index, $data)"
      e-required
+     e-rl-trimspaces
      e-rl-xcounter="{{ maxChars('descriptiveLines', $index) }}"
      ng-class="{'invalid': $error}">
     {{ descriptiveLine }}

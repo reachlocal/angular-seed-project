@@ -8,8 +8,7 @@ angular.rlmodule('rl.cpi.directives.rlTrimspaces', [])
   .directive('rlTrimspaces', function () {
     var directive = {
       restrict: 'A',
-      link: function (scope, element, attrs) {
-
+      controller: function ($scope, $element, $attrs) {
         function stripWhitespace(value) {
           var crRegex = /[\n\r]/g;
           var doublespaceRegex = /\s{2,}/g;
@@ -19,12 +18,12 @@ angular.rlmodule('rl.cpi.directives.rlTrimspaces', [])
           return trimmed;
         }
 
-        scope.$watch(attrs.ngModel, function (value) {
-          if (angular.isString(value)) {
-            element[0].value = stripWhitespace(value);
+        $scope.$watch($attrs.ngModel, function () {
+          var newValue = $element[0].value;
+          if (angular.isString(newValue)) {
+            $element[0].value = stripWhitespace(newValue);
           }
-        });
-
+        }, true);
       }
     };
 
