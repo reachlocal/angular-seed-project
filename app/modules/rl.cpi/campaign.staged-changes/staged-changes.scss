@@ -18,12 +18,10 @@
     width: 100%;
 
     caption {
-      border-bottom: 2px solid $color-info;
-      font-weight: bold;
       color: $color-info;
+      border-bottom: .2em solid;
+      font-weight: 700;
       text-align: left;
-      margin-bottom: $spacing-default - 5px;
-      padding-bottom: $spacing-default - 10px;
     }
 
   }
@@ -38,6 +36,7 @@
 
   tr td:last-of-type {
     position: relative;
+    padding: 0;
   }
 
   tr button {
