@@ -26,6 +26,17 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
   }).map(function (creative) {
     return new StagedTextCreative(creative);
   });
+
+  $scope.remove = function(stagedCreative) {
+    var creativeIndex = $scope.stagedTextCreatives.indexOf(stagedCreative);
+    $scope.stagedTextCreatives.splice(creativeIndex, 1);
+
+    var failure = function() {
+      $scope.stagedTextCreatives.splice(creativeIndex, 0, stagedCreative);
+    };
+
+    stagedCreative.$remove(function(){}, failure);
+  };
 });
 
 angular.module('rl.cpi.campaignStagedChanges')
