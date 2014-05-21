@@ -1,8 +1,9 @@
 angular
   .rlmodule('rl.cpi.campaignNewCreative')
-  .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules) {
+  .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules, _) {
     var stopSyncing = angular.noop;
     $scope.singleDescLine = false; // Default to 2 desc lines
+    $scope.isMaster = !$scope.linkedTo;
 
     function combineDescriptiveLines(creative) {
       var descLine2 = creative.descriptiveLines.splice(1, 1)[0];
@@ -16,6 +17,17 @@ angular
       // For single-desc-lines, concat line 2 to line 1 (and delete line 2)
       if ($scope.singleDescLine) {
         combineDescriptiveLines($scope.creative);
+      }
+
+      // If the master has an ad group selected, match correct ad group for this publisher and set it
+      if (!!value.adGroup) {
+        var publisherAdGroups = $scope.publisher.adGroups;
+        var masterAdGroupName = value.adGroup.name;
+        $scope.creative.adGroup = _.findWhere(publisherAdGroups, {name: masterAdGroupName});
+        var noAdGroupDefined = ($scope.creative.adGroup === undefined);
+        if (noAdGroupDefined) {
+          $scope.unlink();
+        }
       }
     }
 
@@ -36,7 +48,7 @@ angular
     }
 
     var ruleSet = PublisherTextCreativeRules.allByCampaignId($scope.campaign.currentCampaignId);
-    if ($scope.publisher) {
+    if (!$scope.isMaster) {
       $scope.rules = ruleSet.forPublisherId($scope.publisher.publisherId);
       $scope.singleDescLine = ($scope.rules.descriptiveLines.length === 1);
     }

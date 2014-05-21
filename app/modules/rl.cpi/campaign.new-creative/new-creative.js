@@ -3,7 +3,8 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
   'rl.back',
   'rl.cpi.main.services.Publishers',
   'rl.cpi.main.services.PublisherTextCreativeRules',
-  'rl.cpi.directives.rlTrimspaces'
+  'rl.cpi.directives.rlTrimspaces',
+  'underscore'
 ])
   .config(function ($stateProvider) {
     $stateProvider.state('cpi.campaignNewCreative', {
@@ -25,8 +26,15 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
       }
     });
   })
-  .controller('NewCreativeCtrl', function ($scope, campaign, publishers, $window) {
+  .controller('NewCreativeCtrl', function ($scope, campaign, publishers) {
     $scope.campaign = campaign;
+
+    // We'll populate 'cards' using these publishers
     $scope.publishers = publishers.webPublisherCampaigns;
+
+    // Setup our template models
+    $scope.masterPublisher = {
+      adGroups: publishers.allAdGroups.adGroups
+    };
     $scope.masterCreative = { headLines: [''], descriptiveLine: ['', ''] };
   });

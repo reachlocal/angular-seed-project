@@ -1,6 +1,6 @@
 <article class="creative_card" ng-class="{'linked': isLinked}">
   <header>
-    <span class="master" ng-hide="linkedTo">Master Template</span>
+    <span class="master" ng-show="isMaster">Master Template</span>
     <span class="publisher">{{ publisher.name }}</span>
     <span class="geotype">{{ publisher.geoType }}</span>
 
@@ -50,8 +50,7 @@
   </section>
 
   <select ng-model="creative.adGroup"
-          ng-options="adGroup.name for adGroup in publisher.adGroups"
-          ng-show="publisher">
+          ng-options="adGroup.name for adGroup in publisher.adGroups">
     <option value="">Choose an AdGroup...</option>
   </select>
 </article>

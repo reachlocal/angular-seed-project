@@ -52,6 +52,8 @@ describe('RL Creative Card Editor', function () {
         headLines: ['a headline'],
         descriptiveLines: [ 'one line', 'other line' ]
       };
+      $scope.publisher = {};
+      $scope.publisher.adGroups = [ { id: 1, name: 'foo' }, { id: 2, name: 'bar' } ];
       buildController();
       $scope.$digest();
     });
@@ -61,6 +63,24 @@ describe('RL Creative Card Editor', function () {
       expect($scope.creative.descriptiveLines[0]).toBe('one line');
       expect($scope.creative.descriptiveLines[1]).toBe('other line');
       expect($scope.isLinked).toBe(true);
+    });
+
+    it('synchronizes adgroup with master', function () {
+      masterCreative.adGroup = { id: 0, name: 'bar' };
+      $scope.$digest();
+
+      expect($scope.creative.adGroup.name).toBe('bar');
+      // it should use the creative's publisher group id, not master's
+      expect($scope.creative.adGroup.id).toBe(2);
+    });
+
+    it('unlinks if adgroup cannot be synced with master', function () {
+      masterCreative.adGroup = { id: 0, name: 'baz' };
+      $scope.creative.adGroup = 'not null';
+      $scope.$digest();
+
+      expect($scope.creative.adGroup).toBe(undefined);
+      expect($scope.isLinked).toBe(false);
     });
 
     it('user explicitly link creative again', function () {
@@ -89,6 +109,7 @@ describe('RL Creative Card Editor', function () {
   describe('ruleset selection', function () {
     beforeEach(function () {
       $scope.publisher = { publisherId: 789 };
+      $scope.linkedTo = {  };
     });
 
     it('uses publisher specific ruleset', function () {
@@ -116,14 +137,10 @@ describe('RL Creative Card Editor', function () {
   });
 
   describe('single descriptive line', function () {
-    beforeEach(function () {
-      $scope.publisher = { publisherId: 789 };
-    });
-
     it('concats descriptive line one and two', function () {
-      rulesMock.descriptiveLines = [1];
-
       buildController();
+      $scope.singleDescLine = true;
+
       $scope.linkedTo = {
         descriptiveLines: ['Line 1', 'Line 2']
       };
