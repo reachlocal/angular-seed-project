@@ -22,14 +22,19 @@ module.exports = function () {
     });
   });
 
+  When(/^the user cancels the changes for one entity$/, function (callback) {
+    stagedChangesPage.removeStagedChange(1).then(function() {
+      callback();
+    });
+  });
+
   Then(/^the user should be presented with (\d+) creative staged changes to review$/, function (numberOfStagedChanges, callback) {
     numberOfStagedChanges = parseInt(numberOfStagedChanges, 10);
 
-    expect(stagedChangesPage.getNumberOfStagedChanges()).to.eventually
-      .equal(numberOfStagedChanges)
-      .then(function () {
-        callback();
-      });
+    all([
+      expect(stagedChangesPage.getNumberOfStagedChanges()).to.eventually.equal(numberOfStagedChanges),
+      expect(stagedChangesPage.getCounterText()).to.eventually.contain(numberOfStagedChanges)
+    ]).then(callback);
   });
 
   Then(/^the user sees a visual element that shows "([^"]*)"$/, function (message, callback) {
@@ -46,5 +51,11 @@ module.exports = function () {
       .then(function () {
         callback();
       });
+  });
+
+  Then(/^the user clicks the back button$/, function (callback) {
+    stagedChangesPage.clickBackButton().then(function() {
+      callback();
+    });
   });
 };
