@@ -16,41 +16,47 @@
     <input type="text"
            ng-change="unlink()"
            ng-model="creative.headLines[0]"
+           ng-disabled="!isEnabled"
            placeholder="Creative Title"
            rl-trimspaces
            rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
 
     <input type="text"
-          ng-change="unlink()"
-          ng-model="creative.descriptiveLines[0]"
-          placeholder="Descriptive Line"
-          rl-trimspaces
-          rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" />
+           ng-change="unlink()"
+           ng-model="creative.descriptiveLines[0]"
+           ng-disabled="!isEnabled"
+           placeholder="Descriptive Line"
+           rl-trimspaces
+           rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" />
 
     <input type="text"
-          ng-change="unlink()"
-          ng-model="creative.descriptiveLines[1]"
-          placeholder="Descriptive Line"
-          rl-trimspaces
-          rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
+           ng-change="unlink()"
+           ng-model="creative.descriptiveLines[1]"
+           ng-disabled="!isEnabled"
+           placeholder="Descriptive Line"
+           rl-trimspaces
+           rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
   </section>
 
   <section ng-show="singleDescLine">
     <input type="text"
            ng-change="unlink()"
            ng-model="creative.headLine"
+           ng-disabled="!isEnabled"
            placeholder="Creative Title"
            rl-trimspaces
            rl-remaining-chars="{{ rules.headLines[0].charCount }}" />
     <textarea ng-change="unlink()"
               ng-model="creative.descriptiveLines[0]"
+              ng-disabled="!isEnabled"
               placeholder="Descriptive Line"
               rl-trimspaces
               rl-remaining-chars="{{ rules.descriptiveLines[0].charCount }}" /></textarea>
   </section>
 
   <select ng-model="creative.adGroup"
-          ng-options="adGroup.name for adGroup in publisher.adGroups">
+          ng-options="adGroup.name for adGroup in publisher.adGroups"
+          ng-disabled="!isEnabled" >
     <option value="">Choose an AdGroup...</option>
   </select>
 </article>

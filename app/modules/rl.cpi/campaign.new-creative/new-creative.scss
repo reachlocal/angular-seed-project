@@ -10,6 +10,7 @@ article#new_creative {
     article {
       width: 20rem;
       margin: 0 auto;
+      border: 1px solid $color-light;
       box-shadow: 7.5px 7.5px rgba(0, 0, 0, 0.075);
 
       button {
@@ -20,13 +21,6 @@ article#new_creative {
   section.creatives {
     article {
       float: left;
-
-      button {
-        background: transparent;
-
-        &.enabled  { color: green; }
-        &.disabled { color: gray; }
-      }
     }
   }
 
@@ -34,5 +28,11 @@ article#new_creative {
     margin-right: 4rem;
     padding: 1rem;
     text-align: right;
+
+    button {
+      width: 5em;
+      margin-left: 1em;
+    }
+
   }
 }

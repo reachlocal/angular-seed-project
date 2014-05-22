@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../mixins";
 
 #{$inputs} {
   font: $font-bodycopy;
@@ -22,6 +23,11 @@
   }
 
   &:disabled {
-    background-color: $color-light;
+    //background-color: $color-light;
+    border-color: $color-bright;
+    @include placeholder {
+      color: $color-light;
+    }
   }
+
 }

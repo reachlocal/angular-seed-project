@@ -12,6 +12,12 @@ select {
   min-height: 2em;
   padding: 0 $spacing-small;
   vertical-align: middle;
+
+  &:disabled {
+    border-color: $color-bright;
+    color: $color-light;
+    background-image: none;
+  }
 }
 
 select {
