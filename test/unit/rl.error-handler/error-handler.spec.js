@@ -1,8 +1,7 @@
 describe('rl.errorhandler', function () {
 
   var interceptor;
-  var growl = { addErrorMessage: function (message) {
-  } };
+  var growl = { addErrorMessage: angular.noop };
 
   beforeEach(mockDependency('angular-growl', 'growl').toBe(growl));
 
@@ -19,29 +18,23 @@ describe('rl.errorhandler', function () {
     spyOn(growl, 'addErrorMessage');
   });
 
-  it('handles error without expected error', function () {
+  it('handles errors with error objects', function () {
     var error = {
-      status: 500
+      status: 500,
+      data: [ { name: 'error', message: 'message' } ]
     };
+    var expErrorMessage = 'errorhandler.error_500<br><b>error:</b> message';
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith('The CPI server encountered an error (500).  Please try your request again.');
+    expect(growl.addErrorMessage).toHaveBeenCalledWith(expErrorMessage, { enableHtml: true });
   });
 
-  it('handles error with messages', function () {
+  it('handles errors without error objects', function () {
     var error = {
       status: 404
     };
+    var expErrorMessage = 'errorhandler.error_404';
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith('Requested resource not found');
+    expect(growl.addErrorMessage).toHaveBeenCalledWith(expErrorMessage, { enableHtml: true });
   });
 
-  it('ignores 401 errors (sso redirect)', function () {
-    var error = {
-      status: 401,
-      data: 'unexpected error'
-    };
-
-    interceptor.responseError(error);
-    expect(angular.noop).toHaveBeenCalled();
-  });
 });

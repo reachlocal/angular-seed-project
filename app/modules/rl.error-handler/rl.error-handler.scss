@@ -2,7 +2,7 @@
 
 ol[growl] {
   position: fixed;
-  top: $spacing-default * 3;
+  top: $spacing-default * 6;
   left: 50%;
   transform: translateX(-50%);
 
@@ -33,6 +33,11 @@ ol[growl] {
     &.ng-leave,
     &.ng-enter.ng-enter-active {
       transform: translateY(0);
+    }
+
+    b {
+      text-transform: capitalize;
+      font-weight: bold;
     }
   }
 

@@ -1,0 +1,10 @@
+{
+  "errorhandler": {
+    "error_401": "Por favor, efetue login",
+    "error_403": "Acesso negado",
+    "error_404": "O recurso solicitado não foi encontrado",
+    "error_409": "Esse recurso foi atualizado por outra pessoa",
+    "error_422": "Você tem um erro com os dados que foram submetidos",
+    "error_500": "O servidor encontrou um erro inesperado. Se este erro persistir, por favor abra um chamado com o suporte."
+  }
+}
