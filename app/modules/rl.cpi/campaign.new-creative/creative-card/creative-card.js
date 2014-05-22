@@ -103,7 +103,7 @@ angular
       scope.noRules = !attributes.rlRemainingChars;
       scope.$watch('ngModel', function (value) {
         scope.$remainder = parseInt(attributes.rlRemainingChars) - (value ? value.length : 0);
-        scope.$negative = scope.remainder < 0;
+        scope.$negative = scope.$remainder < 0;
       });
     };
 
