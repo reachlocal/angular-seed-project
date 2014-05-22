@@ -31,7 +31,7 @@ Feature: Ability to stage changes to business entities before they are pushed to
     And the user cancels the changes for one entity
     Then the user should be presented with 4 creative staged changes to review
 
-  @JIRA-CPI-136 @tech_debt
+  @JIRA-CPI-136 @JIRA-CPI-240 @tech_debt
   Scenario: Cancel view of staged changes
 
     When a user views the list of staged changes
