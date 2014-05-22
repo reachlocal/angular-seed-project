@@ -41,10 +41,6 @@ angular
       stopSyncing = $scope.$watch('linkedTo', synchronize, true);
     };
 
-    $scope.$watch('creative', function () {
-      stripWhitespace($scope.creative);
-    }, true);
-
     $scope.unlink = function unlink() {
       stopSyncing();
       $scope.isLinked = false;
@@ -75,9 +71,6 @@ angular
     if (!$scope.isMaster) {
       $scope.rules = ruleSet.forPublisherId($scope.publisher.publisherId);
       $scope.singleDescLine = ($scope.rules.descriptiveLines.length === 1);
-    }
-    else {
-      $scope.rules = ruleSet.defaultRule();
     }
   })
 
