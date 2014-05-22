@@ -1,5 +1,6 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
+@import "font-awesome";
 
 #staged_changes {
   padding: $spacing-default;
@@ -44,7 +45,7 @@
     margin: 0px;
     font-size: 0px;
 
-    @include unicode(before, $unicode-times);
+    @include fa-icon(before, $fa-var-times);
 
     display: none;
     position: absolute;

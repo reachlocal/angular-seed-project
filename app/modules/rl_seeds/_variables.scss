@@ -11,10 +11,6 @@ $font-bodycopy: 300 14px/150% 'Open Sans';
 $color-bodycopy: $color-mid;
 $color-heading: $color-dark;
 
-$unicode-check: '\2714';
-$unicode-times: '\2716';
-$unicode-plus: '\002B';
-
 $inputs: (
         unquote('input[type="text"]'),
         unquote('input[type="password"]'),

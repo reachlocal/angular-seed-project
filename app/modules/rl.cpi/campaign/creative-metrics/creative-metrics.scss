@@ -1,5 +1,6 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
+@import "font-awesome";
 
 [ui-view=creative-metrics] {
   clear: both;
@@ -32,6 +33,6 @@
   }
 
   [rel="new-creative"] {
-    @include unicode(before, $unicode-plus);
+    @include fa-icon(before, $fa-var-plus);
   }
 }

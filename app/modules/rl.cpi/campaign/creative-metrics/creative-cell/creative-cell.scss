@@ -1,7 +1,9 @@
 @import "rl_seeds/variables";
 @import "rl_seeds/mixins";
+@import "font-awesome";
 
 .creative_cell {
+  // font-size: 2em;
   p {
     margin : 0;
   }
@@ -9,19 +11,6 @@
   .headline,
   .headline + .editable-wrap input {
     font-weight: 700;
-  }
-  .rl-xcounter {
-    direction: ltr;
-    border: 1px solid rgba($color-dark, .1);
-    height: 100%;
-    display: inline-block;
-    line-height: 2em;
-    width: 40px;
-    text-align: center;
-    background: $color-bright;
-    &.negative {
-      color: $color-danger;
-    }
   }
 
   .editable {
@@ -50,30 +39,54 @@
     left: -$spacing-small;
     top: -3px;
     margin-bottom: -($spacing-default / 3);
+  }
 
-    .editable-controls > input {
-      width: 100%;
-    }
+  .editable-controls > input {
+    width: 100%;
+    height: 100%;
+  }
 
-    .editable-buttons {
-      position: absolute;
-      direction: rtl;
-      height: 100%;
+  .editable-buttons button,
+  .rl-xcounter {
+    direction: initial;
+    height: 100%;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 2rem;
+    text-align: center;
+    vertical-align: top;
+  }
 
-      button {
-        margin: 0;
-        font-size: 0;
-        height: 100%;
+  .editable-buttons {
+    position: absolute;
+    direction: rtl;
+    height: 100%;
 
-        @include unicode(before, '');
-        &[type="submit"]:before {
-          content: $unicode-check;
-        }
+    button {
+      font-size: 0;
 
-        &[type="button"]:before {
-          content: $unicode-times;
-        }
+      &[type="submit"],
+      &[type="button"] {
+        @include fa-icon(before, '');
       }
+
+      &[type="submit"]:before {
+        content: $fa-var-check;
+      }
+      &[type="button"]:before {
+        content: $fa-var-times;
+      };
+    }
+  }
+
+  .rl-xcounter {
+    border: 1px solid $color-light;
+    background: $color-bright;
+    line-height: 2em;
+    pointer-events: none;
+    &.negative {
+      color: $color-danger;
     }
   }
 

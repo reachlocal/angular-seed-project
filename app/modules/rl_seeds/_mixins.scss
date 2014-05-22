@@ -49,14 +49,6 @@
   @include button-color($background-color, $hover-color);
 }
 
-@mixin unicode($position, $unicode-icon) {
-  &:#{$position} {
-    font-size: initial;
-    line-height: 1em;
-    content: $unicode-icon;
-  }
-}
-
 @mixin dialog($border-color: $color-light) {
   @include shadow-block();
   border: 1px solid $border-color;

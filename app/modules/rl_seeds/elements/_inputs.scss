@@ -3,6 +3,7 @@
 
 #{$inputs} {
   font: $font-bodycopy;
+  font-size: 1em;
   color: $color-bodycopy;
   outline: none;
   border: 1px solid $color-light;
@@ -29,5 +30,4 @@
       color: $color-light;
     }
   }
-
 }
