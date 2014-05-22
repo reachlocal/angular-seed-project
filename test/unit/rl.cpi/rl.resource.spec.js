@@ -15,6 +15,6 @@ describe('rlResource module', function () {
 
     rlResource('/foo', defaultArguments, instanceMethods);
 
-    expect(fakeResource.apply).toHaveBeenCalledWith(['http://gateway/foo', defaultArguments, instanceMethods]);
+    expect(fakeResource.apply).toHaveBeenCalledWith(jasmine.any(Object),['http://gateway/foo', defaultArguments, instanceMethods]);
   }));
 });
