@@ -35,7 +35,7 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
       $scope.stagedTextCreatives.splice(creativeIndex, 0, stagedCreative);
     };
 
-    stagedCreative.$remove(function(){}, failure);
+    stagedCreative.$remove().catch(failure);
   };
 });
 
