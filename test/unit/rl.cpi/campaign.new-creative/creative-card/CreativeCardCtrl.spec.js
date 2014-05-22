@@ -23,8 +23,8 @@ describe('RL Creative Card Editor', function () {
     ruleSetMock      = { forPublisherId: null, defaultRule: null };
     rulesServiceMock = { allByCampaignId: null };
     spyOn(rulesServiceMock, 'allByCampaignId').andReturn(ruleSetMock);
-    spyOn(ruleSetMock, 'forPublisherId').andReturn({ descriptiveLines: [ {}, {} ] });
-    spyOn(ruleSetMock, 'defaultRule').andReturn('default rule set');
+    spyOn(ruleSetMock, 'forPublisherId').andReturn(rulesMock);
+    spyOn(ruleSetMock, 'defaultRule').andReturn('default rule');
   }));
 
   function buildController() {
@@ -122,7 +122,6 @@ describe('RL Creative Card Editor', function () {
       buildController();
 
       expect(ruleSetMock.forPublisherId).toHaveBeenCalledWith(789);
-<<<<<<< HEAD
       expect($scope.rules).toEqual(rulesMock);
     });
 
