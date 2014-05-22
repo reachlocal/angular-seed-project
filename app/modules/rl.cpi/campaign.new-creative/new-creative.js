@@ -36,5 +36,5 @@ angular.rlmodule('rl.cpi.campaignNewCreative', [
     $scope.masterPublisher = {
       adGroups: publishers.allAdGroups.adGroups
     };
-    $scope.masterCreative = { headLines: [''], descriptiveLine: ['', ''] };
+    $scope.masterCreative = { headLines: [''], descriptiveLines: ['', ''] };
   });
