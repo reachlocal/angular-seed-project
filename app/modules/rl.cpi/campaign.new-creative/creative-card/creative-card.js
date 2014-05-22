@@ -4,6 +4,7 @@ angular
     var stopSyncing = angular.noop;
     $scope.singleDescLine = false; // Default to 2 desc lines
     $scope.isMaster = !$scope.linkedTo;
+    $scope.isEnabled = true;
 
     function combineDescriptiveLines(creative) {
       var descLine2 = creative.descriptiveLines.splice(1, 1)[0];
@@ -39,6 +40,21 @@ angular
     $scope.unlink = function unlink() {
       stopSyncing();
       $scope.isLinked = false;
+    };
+
+    $scope.enable = function enable() {
+      $scope.isEnabled = true;
+      $scope.link();
+    };
+
+    function clear() { return ''; }
+
+    $scope.disable = function disable() {
+      $scope.isEnabled = false;
+      $scope.unlink();
+      $scope.creative.headLines = _.map($scope.creative.headLines, clear);
+      $scope.creative.descriptiveLines = _.map($scope.creative.descriptiveLines, clear);
+      $scope.creative.adGroup = undefined;
     };
 
     $scope.creative = $scope.ngModel;

@@ -4,8 +4,8 @@
     <span class="publisher">{{ publisher.name }}</span>
     <span class="geotype">{{ publisher.geoType }}</span>
 
-    <button class="enabled  fa fa-check-circle-o" ng-show=" enabled" ng-click="disable()"></button>
-    <button class="disabled fa fa-check-circle-o" ng-show="!enabled" ng-click="enable()"></button>
+    <button class="enabled  fa fa-check-circle-o" ng-show=" isEnabled" ng-click="disable()"></button>
+    <button class="disabled fa fa-check-circle-o" ng-show="!isEnabled" ng-click="enable()"></button>
 
     <button class="enabled  fa fa-lock"   ng-show=" isLinked" ng-click="unlink()"></button>
     <button class="disabled fa fa-unlock" ng-show="!isLinked" ng-click="link()"  ></button>

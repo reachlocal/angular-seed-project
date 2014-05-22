@@ -11,6 +11,11 @@ describe('RL Creative Card Editor', function () {
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();
     $scope.campaign = { currentCampaignId: 1234 };
+    $scope.ngModel = {
+      headLines: ['headline'],
+      descriptiveLines: ['foo', 'bar'],
+      adGroup: { id: 1, name: 'foo' }
+    };
     rootScope = $rootScope;
     controller = $controller;
 
@@ -148,6 +153,51 @@ describe('RL Creative Card Editor', function () {
       $scope.$digest();
 
       expect($scope.creative.descriptiveLines[0]).toEqual('Line 1 Line 2');
+    });
+  });
+
+  describe('enable/disable', function () {
+    beforeEach(buildController);
+    it('starts out enabled', function () {
+      expect($scope.isEnabled).toBe(true);
+    });
+
+    it('can be enabled', function () {
+      $scope.isEnabled = false;
+      $scope.enable();
+
+      expect($scope.isEnabled).toBe(true);
+    });
+
+    it('can be disabled', function () {
+      $scope.isEnabled = true;
+      $scope.disable();
+
+      expect($scope.isEnabled).toBe(false);
+    });
+
+    describe('when it is disabled', function () {
+      it('clears all fields', function () {
+        $scope.disable();
+
+        expect($scope.creative.headLines[0]).toBe('');
+        expect($scope.creative.descriptiveLines[0]).toBe('');
+        expect($scope.creative.adGroup).toBe(undefined);
+      });
+
+      it('unlinks the card', function () {
+        $scope.disable();
+        expect($scope.isLinked).toBe(false);
+      });
+    });
+
+    describe('when it is enabled', function () {
+      it('is linked to the master', function () {
+        $scope.disable();
+        $scope.enable();
+
+        expect($scope.isLinked).toBe(true);
+      });
     });
   });
 });
