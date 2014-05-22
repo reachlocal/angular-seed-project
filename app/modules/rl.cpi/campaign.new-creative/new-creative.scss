@@ -1,6 +1,9 @@
 @import "rl_seeds/variables";
 
 article#new_creative {
+
+  padding: 15px;
+
   & > header {
     padding: 1rem;
   }
@@ -24,15 +27,9 @@ article#new_creative {
     }
   }
 
-  & > footer {
-    margin-right: 4rem;
-    padding: 1rem;
-    text-align: right;
-
+  & > fieldset {
     button {
-      width: 5em;
-      margin-left: 1em;
+      min-width: 5em;
     }
-
   }
 }
