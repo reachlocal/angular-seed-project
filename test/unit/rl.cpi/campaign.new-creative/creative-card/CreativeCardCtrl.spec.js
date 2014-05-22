@@ -6,7 +6,7 @@ describe('RL Creative Card Editor', function () {
 
   beforeEach(localeFixture);
   beforeEach(module('rl.cpi'));
-  beforeEach(module('rl.cpi.campaignNewCreative'));
+  beforeEach(module('rl.cpi.campaignNewCreative.rlCreativeCard'));
 
   beforeEach(inject(function ($controller, $rootScope) {
     $scope = $rootScope.$new();

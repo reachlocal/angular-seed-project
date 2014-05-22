@@ -1,5 +1,9 @@
 angular
-  .rlmodule('rl.cpi.campaignNewCreative')
+  .rlmodule('rl.cpi.campaignNewCreative.rlCreativeCard', [
+    'rl.cpi.main.services.Creatives',
+    'rl.cpi.main.services.PublisherTextCreativeRules',
+    'rl.cpi.directives.rlTrimspaces',
+    'underscore'])
   .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules, _) {
     var stopSyncing = angular.noop;
     $scope.singleDescLine = false; // Default to 2 desc lines
