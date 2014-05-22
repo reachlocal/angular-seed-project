@@ -6,8 +6,17 @@ var dataRows = exports.dataRows = function () {
   return creativeMetricsTable().findElements(by.css('tbody > tr'));
 };
 
-exports.headerRow = function () {
+var headerRow = exports.headerRow = function () {
   return creativeMetricsTable().findElement(by.css('thead > tr'));
+};
+
+var openNewCreative = exports.openNewCreative = function() {
+  return headerRow()
+    .then(function(row) {
+      return row.findElement(by.css('[rel=new-creative]')).then(function(link) {
+        return link.click();
+      });
+    });
 };
 
 var firstDataRow = exports.firstDataRow = function () {

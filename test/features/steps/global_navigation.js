@@ -9,6 +9,7 @@ module.exports = function () {
   });
 
   Given('a typical campaign exists', function (callback) {
+    this.campaignId = 1581451;
     callback();
   });
 

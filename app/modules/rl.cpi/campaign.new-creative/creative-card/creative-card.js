@@ -72,6 +72,9 @@ angular
       $scope.rules = ruleSet.forPublisherId($scope.publisher.publisherId);
       $scope.singleDescLine = ($scope.rules.descriptiveLines.length === 1);
     }
+    else {
+      $scope.rules = ruleSet.defaultRule();
+    }
   })
 
   .directive('rlCreativeCard', function () {
@@ -90,7 +93,7 @@ angular
   })
 
   .directive('rlRemainingChars', function($compile) {
-    var template = '<span class="rl-xcounter" ng-model="ngModel" ng-hide="noRules" ng-class="{ negative: $negative }">{{ $remainder }}</span>';
+    var template = '<span class="rl-xcounter" for-input="{{ $forInput }}" ng-model="ngModel" ng-hide="noRules" ng-class="{ negative: $negative }">{{ $remainder }}</span>';
     var directive = {
       restrict: 'A',
       scope: {
@@ -105,6 +108,8 @@ angular
     directive.link = function (scope, element, attributes) {
       element.after(angular.element($compile(template)(scope)));
       scope.noRules = !attributes.rlRemainingChars;
+      scope.$forInput = attributes.ngModel;
+
       scope.$watch('ngModel', function (value) {
         scope.$remainder = parseInt(attributes.rlRemainingChars) - (value ? value.length : 0);
         scope.$negative = scope.$remainder < 0;

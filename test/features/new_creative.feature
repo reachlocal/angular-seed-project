@@ -1,9 +1,8 @@
 Feature: Add a new creative to an existing ad group
 
-
   Background:
     Given a typical campaign exists
-    And the user is viewing a typical campaign's creative dashboard
+    And a user is navigating the typical campaign's creative dashboard
 
   @CPI-JIRA-222
   Scenario: Navigate to the new creative view
@@ -26,7 +25,7 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-222
   Scenario: Enter headline and descriptive lines for a new creative
 
-    Given the user has navigated to the Add Creative view
+    Given the user selects the option to add a new creative
     When the user enters text in the headline and/or descriptive lines
     Then the text is copied character-by-character into the publisher-specific fields
     And the character counts for each active publisher-specific creative is updated per character typed
