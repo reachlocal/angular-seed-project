@@ -1,0 +1,24 @@
+@import "../variables";
+
+
+nav#breadcrumbs {
+    li {
+      display: inline;
+      color: $color-muted;
+      &:last-child {
+        cursor: default;
+        font-weight: 700;
+      }
+    }
+    li a {
+      cursor: pointer;
+    }
+    li:after {
+      font-family: FontAwesome;
+      content: ' \f054 ';
+      color: $color-light;
+    }
+    li:last-child:after {
+      content: '';
+    }
+}
