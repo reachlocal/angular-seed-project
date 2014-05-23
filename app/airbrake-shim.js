@@ -1,7 +1,21 @@
 (function bootStrapAirbrake(window) {
 
+  // Which environments should we *ignore*?
+  // Partial hostnames are fine :)
+  var ignoreHosts = [
+    'localhost',
+    'bamboo'
+  ];
+
   // This will show up in our error reports
   var environment = location.hostname;
+
+  var isAirbrakeEnabled = true;
+  for (var i = 0; i < ignoreHosts.length; i++) {
+    if (environment.search(ignoreHosts[i]) > -1) {
+      isAirbrakeEnabled = false;
+    }
+  }
 
   // Airbrake shim that stores exceptions until Airbrake notifier is loaded.
   var Airbrake = [];
@@ -35,7 +49,7 @@
     sibling.parentNode.insertBefore(script, sibling);
   }
 
-  if (location.hostname !== 'localhost') {
+  if (isAirbrakeEnabled) {
     // Asynchronously loads Airbrake notifier.
     if (window.addEventListener) {
       window.addEventListener('load', loadAirbrakeNotifier, false);
