@@ -30,7 +30,7 @@ Feature: Add a new creative to an existing ad group
     Then the text is copied character-by-character into the publisher-specific fields
     And the character counts for each active publisher-specific creative is updated per character typed
 
-  @CPI-JIRA-222 @WIP
+  @CPI-JIRA-222
   Scenario: Select a master ad group for a new creative
 
     Given the user selects the option to add a new creative

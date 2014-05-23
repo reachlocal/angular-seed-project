@@ -20,6 +20,7 @@ module.exports = function () {
         expect(card.isElementPresent(by.model('creative.headLines[0]'))        ).to.eventually.be.true,
         expect(card.isElementPresent(by.model('creative.descriptiveLines[0]')) ).to.eventually.be.true,
         expect(card.isElementPresent(by.model('creative.descriptiveLines[1]')) ).to.eventually.be.true,
+        expect(card.isElementPresent(by.model('creative.adGroup'))             ).to.eventually.be.true,
       ];
       all(exp).then(callback);
     });
