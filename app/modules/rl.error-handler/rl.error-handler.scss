@@ -2,6 +2,7 @@
 
 ol[growl] {
   position: fixed;
+  z-index: 500;
   top: $spacing-default * 6;
   left: 50%;
   transform: translateX(-50%);
