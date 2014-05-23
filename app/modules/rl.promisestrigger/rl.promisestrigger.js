@@ -45,11 +45,14 @@ angular.rlmodule('rl.promisestrigger', [])
       function trigger() {
         var promises = [];
         angular.forEach(callbacks, function (callback) {
-          var promise = callback();
-          if (!promise || !angular.isFunction(promise.then)) {
-            throw new Error('Callbacks called by rl.promisestrigger must return a promise!');
+          if (!angular.isFunction(callback)) {
+            throw new Error('A callback registered with rl.proimstrigger was not a function: ' + JSON.stringify(callback));
           }
-          promises.push(promise);
+          var promise = callback();
+          // Ignore callbacks that return something that is not a promise
+          if (!!promise && !angular.isFunction(promise.then)) {
+            promises.push(promise);
+          }
         });
         return $q.all(promises);
       }

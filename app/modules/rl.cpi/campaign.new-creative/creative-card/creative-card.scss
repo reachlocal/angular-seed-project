@@ -7,6 +7,17 @@ article.creative_card {
   position: relative;
   overflow: auto;
 
+  .saved {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    font-size: 75px;
+    margin-left: -36px;
+    margin-top: -36px;
+    opacity: .5;
+    color: $color-action;
+  }
+
   header {
     .master {
       font-weight: bold;
@@ -33,8 +44,8 @@ article.creative_card {
       height: 1.5rem;
       background: transparent !important;
 
-      &.enabled  { color: green; }
-      &.disabled { color: gray; }
+      &.enabled  { color: $color-action; }
+      &.disabled { color: $color-muted; }
     }
   }
 

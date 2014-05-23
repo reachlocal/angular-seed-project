@@ -4,11 +4,18 @@ angular
     'rl.cpi.main.services.PublisherTextCreativeRules',
     'rl.cpi.directives.rlTrimspaces',
     'underscore'])
-  .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules, _) {
+  .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules, _, Creatives) {
     var stopSyncing = angular.noop;
     $scope.singleDescLine = false; // Default to 2 desc lines
     $scope.isMaster = !$scope.linkedTo;
+    if ($scope.isMaster) {
+      $scope.creative = $scope.ngModel;
+    } else {
+      $scope.creative = new Creatives();
+      $scope.creative.webPublisherCampaignId = $scope.publisher.id;
+    }
     $scope.isEnabled = true;
+    $scope.isSaved = false;
 
     function combineDescriptiveLines(creative) {
       var descLine2 = creative.descriptiveLines.splice(1, 1)[0];
@@ -18,7 +25,9 @@ angular
     }
 
     function synchronize(value) {
-      $scope.creative = angular.copy(value);
+      $scope.creative.headLines = angular.copy(value.headLines);
+      $scope.creative.descriptiveLines = angular.copy(value.descriptiveLines);
+      $scope.creative.adGroup = angular.copy(value.adGroup);
       // For single-desc-lines, concat line 2 to line 1 (and delete line 2)
       if ($scope.singleDescLine) {
         combineDescriptiveLines($scope.creative);
@@ -47,8 +56,10 @@ angular
     };
 
     $scope.enable = function enable() {
-      $scope.isEnabled = true;
-      $scope.link();
+      if (!$scope.isSaved) {
+        $scope.isEnabled = true;
+        $scope.link();
+      }
     };
 
     function clear() { return ''; }
@@ -61,8 +72,6 @@ angular
       $scope.creative.adGroup = undefined;
     };
 
-    $scope.creative = $scope.ngModel;
-
     if ($scope.linkedTo) {
       $scope.link();
     }
@@ -71,6 +80,19 @@ angular
     if (!$scope.isMaster) {
       $scope.rules = ruleSet.forPublisherId($scope.publisher.publisherId);
       $scope.singleDescLine = ($scope.rules.descriptiveLines.length === 1);
+    }
+
+    // Save the creative (if it hasn't already been saved) and return a promise
+    function save() {
+      if (!$scope.isSaved && $scope.isEnabled) {
+        return $scope.creative.$create({ campaignId: $scope.campaign.currentCampaignId }).then(function () {
+          $scope.isSaved = true;
+          $scope.isEnabled = false;
+        });
+      }
+    }
+    if (angular.isFunction($scope.registerSaveAction)) {
+      $scope.registerSaveAction(save);
     }
   })
 
@@ -81,7 +103,8 @@ angular
         publisher: '=',
         ngModel: '=',
         linkedTo: '=',
-        campaign: '='
+        campaign: '=',
+        registerSaveAction: '='
       },
       restrict: 'E',
       replace: true,

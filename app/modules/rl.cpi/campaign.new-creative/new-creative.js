@@ -3,7 +3,8 @@ angular.rlmodule('rl.cpi.campaignNewCreativeCtrl', [
   'ui.router',
   'rl.back',
   'rl.cpi.main.services.Publishers',
-  'rl.cpi.main.services.PublisherTextCreativeRules'
+  'rl.cpi.main.services.PublisherTextCreativeRules',
+  'rl.promisestrigger'
 ])
   .config(function ($stateProvider) {
     $stateProvider.state('cpi.campaignNewCreative', {
@@ -25,8 +26,17 @@ angular.rlmodule('rl.cpi.campaignNewCreativeCtrl', [
       }
     });
   })
-  .controller('NewCreativeCtrl', function ($scope, campaign, publishers) {
+  .controller('NewCreativeCtrl', function ($scope, campaign, publishers, promisestrigger, $timeout) {
     $scope.campaign = campaign;
+    // We'll use this to trigger the save action and keep track of its success
+    $scope.trigger = promisestrigger.build();
+    $scope.save = function () {
+      $scope.trigger.trigger().then(function () {
+        // Success!  Go to the next page.
+        // WHY IS THIS BEING CALLED WHEN PROMISES ARE FAILING?
+        // $scope.$apply(function () { history.back(); });
+      });
+    };
 
     // We'll populate 'cards' using these publishers
     $scope.publishers = publishers.webPublisherCampaigns;

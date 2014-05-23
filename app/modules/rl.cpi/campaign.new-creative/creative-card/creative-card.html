@@ -1,4 +1,5 @@
 <article class="creative_card" ng-class="{'linked': isLinked}">
+  <figure ng-show="isSaved" class="saved fa fa-check"></figure>
   <header>
     <span class="master" ng-show="isMaster">Master Template</span>
     <span class="publisher">{{ publisher.name }}</span>
@@ -7,8 +8,8 @@
     <button class="enabled  fa fa-check-circle-o" ng-show=" isEnabled" ng-click="disable()"></button>
     <button class="disabled fa fa-check-circle-o" ng-show="!isEnabled" ng-click="enable()"></button>
 
-    <button class="enabled  fa fa-lock"   ng-show=" isLinked" ng-click="unlink()"></button>
-    <button class="disabled fa fa-unlock" ng-show="!isLinked" ng-click="link()"  ></button>
+    <button class="enabled  fa fa-lock"   ng-disabled="!isEnabled" ng-show=" isLinked" ng-click="unlink()"></button>
+    <button class="disabled fa fa-unlock" ng-disabled="!isEnabled" ng-show="!isLinked" ng-click="link()"  ></button>
 
   </header>
 

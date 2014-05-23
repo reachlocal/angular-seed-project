@@ -1,10 +1,12 @@
 angular
   .rlmodule('rl.cpi.main.services.Creatives', ['ngResource', 'rl.cpi.main.Config'])
   .factory('Creatives', function ($resource, Config) {
+    var baseUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives';
     var Creative = $resource(
-        Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives/:textCreativeId',
+        baseUrl + '/:textCreativeId',
       { 'campaignId': '@campaignId', 'textCreativeId': '@id' },
-      { 'update': { method: 'PUT' } }
+      { 'update': { method: 'PUT' },
+        'create': { method: 'POST', url: baseUrl } }
     );
 
     Creative.prototype.isStaged = function () {

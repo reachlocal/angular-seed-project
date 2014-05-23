@@ -26,6 +26,7 @@
   &:disabled {
     //background-color: $color-light;
     border-color: $color-bright;
+    color: $color-light;
     @include placeholder {
       color: $color-light;
     }
