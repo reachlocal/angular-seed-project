@@ -74,4 +74,17 @@ module.exports = function () {
       all(exp).then(callback);
     });
   });
+
+  When(/^the user selects an AdGroup in the master creative template$/, function (callback) {
+    newCreativePage.chooseMasterAdgroup(0).then(callback);
+  });
+
+  Then(/^that AdGroup is selected for all active publisher\-specific creatives$/, function (callback) {
+    newCreativePage.publishersSelectedAdgroup().then(function(publishers) {
+      var expectationsByPublisher = publishers.map(function(adgroup) {
+        return expect(adgroup.getAttribute('value')).to.eventually.equal('0');
+      });
+      all(expectationsByPublisher).then(callback);
+    });
+  });
 };

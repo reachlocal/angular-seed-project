@@ -18,6 +18,33 @@ var fillMaster = exports.fillMaster = function(headline, descriptiveLines) {
   });
 };
 
+var chooseMasterAdgroup = exports.chooseMasterAdgroup = function(idx) {
+  return masterTemplateCard().then(function(card) {
+    return card.findElement(by.css('select option[value="'+idx+'"]')).click();
+  });
+};
+
+var publishersFields = exports.publishersFields = function() {
+  return publisherTemplateCards().then(function(cards) {
+    var promises = cards.map(inputsForPublisher);
+    return protractor.promise.all(promises);
+  });
+};
+
+var publishersRemainingChars = exports.publishersRemainingChars = function() {
+  return publisherTemplateCards().then(function(cards) {
+    var promises = cards.map(remainingCharsForPublisher);
+    return protractor.promise.all(promises);
+  });
+};
+
+var publishersSelectedAdgroup = exports.publishersSelectedAdgroup = function() {
+  return publisherTemplateCards().then(function(cards) {
+    var promises = cards.map(selectedAdgroup);
+    return protractor.promise.all(promises);
+  });
+};
+
 function inputsForPublisher(card) {
   var promises = [
     card.findElement(by.model('creative.headLines[0]')),
@@ -32,12 +59,9 @@ function inputsForPublisher(card) {
   });
 }
 
-var publishersFields = exports.publishersFields = function() {
-  return publisherTemplateCards().then(function(cards) {
-    var promises = cards.map(inputsForPublisher);
-    return protractor.promise.all(promises);
-  });
-};
+function selectedAdgroup(card) {
+  return card.findElement(by.selectedOption('creative.adGroup'));
+}
 
 function remainingCharsForPublisher(card) {
   var promises = [
@@ -53,10 +77,5 @@ function remainingCharsForPublisher(card) {
   });
 }
 
-var publishersRemainingChars = exports.publishersRemainingChars = function() {
-  return publisherTemplateCards().then(function(cards) {
-    var promises = cards.map(remainingCharsForPublisher);
-    return protractor.promise.all(promises);
-  });
-};
+
 
