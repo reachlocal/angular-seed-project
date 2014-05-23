@@ -13,6 +13,14 @@ select {
   padding: 0 $spacing-small;
   vertical-align: middle;
 
+  &:not(:disabled):hover {
+    border-color: $color-action;
+  }
+
+  &:not(:disabled):focus {
+    border-color: $color-info;
+  }
+
   &:disabled {
     border-color: $color-bright;
     color: $color-light;
