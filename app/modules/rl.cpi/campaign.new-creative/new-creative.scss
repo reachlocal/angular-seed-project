@@ -1,6 +1,9 @@
 @import "rl_seeds/variables";
 
 article#new_creative {
+  padding: $spacing-default;
+  border-top: $spacing-small solid $color-info;
+  box-shadow: inset 0 $spacing-small $color-shadow;
 
   padding: 15px;
 
