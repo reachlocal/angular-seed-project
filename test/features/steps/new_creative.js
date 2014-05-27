@@ -125,6 +125,22 @@ module.exports = function () {
       ];
       all(exp).then(callback);
     });
-    callback.pending();
+  });
+
+  When(/^the user selects the option to activate the deactivated publisher\-specific creative$/, function (callback) {
+    newCreativePage.activateButtonFirstPublisher().then(function(button) {
+      button.click().then(callback);
+    });
+  });
+
+  Then(/^the headline, descriptive lines, and AdGroup entered in the master template is copied to the newly activated publisher\-specific creative$/, function (callback) {
+    newCreativePage.firstPublisherFields().then(function(publisher) {
+      var exp = [
+        expect(publisher.headline.getAttribute('value')).to.eventually.equal('a headline'),
+        expect(publisher.descriptiveLines[0].getAttribute('value')).to.eventually.equal('descriptive line'),
+        expect(publisher.descriptiveLines[1].getAttribute('value')).to.eventually.equal('another descriptive line'),
+      ];
+      all(exp).then(callback);
+    });
   });
 };

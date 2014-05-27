@@ -70,10 +70,10 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-175
   Scenario: Activate a publisher-specific creative that was previously deactivated
 
-    Given the user has navigated to the Add Creative view
-    And the user has entered text into the master template's headline and descriptive line fields
-    And the user has selected an AdGroup in the master template
-    And the user has previously deactivated a publisher-specific creative
+    Given the user selects the option to add a new creative
+    And the user enters text in the headline and/or descriptive lines
+    And the user selects an AdGroup in the master creative template
+    And the user selects the option to deactivate the publisher-specific creative
     When the user selects the option to activate the deactivated publisher-specific creative
     Then the headline, descriptive lines, and AdGroup entered in the master template is copied to the newly activated publisher-specific creative
 
