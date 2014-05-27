@@ -7,7 +7,7 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-222
   Scenario: Navigate to the new creative view
 
-    When the user selects the option to add a new creative
+    Given the user has navigated to the Add Creative view
     Then the user is presented with a view to add a new creative in a master template
     And the master template includes a headline, two descriptive lines, and an AdGroup selector
     And all of the active publishers are displayed to the user
@@ -16,7 +16,7 @@ Feature: Add a new creative to an existing ad group
   Scenario: Navigate to the new creative view after filtering by Publisher
 
     When the user has selected a publisher in the global nav filter
-    And the user selects the option to add a new creative
+    And the user has navigated to the Add Creative view
     Then the user is presented with a view to add a new creative in a master template
     And the master template includes a headline, two descriptive lines, and an AdGroup selector
     And the only active publisher creative box is the publisher selected in the global nav filter
@@ -25,7 +25,7 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-222
   Scenario: Enter headline and descriptive lines for a new creative
 
-    Given the user selects the option to add a new creative
+    Given the user has navigated to the Add Creative view
     When the user enters text in the headline and/or descriptive lines
     Then the text is copied character-by-character into the publisher-specific fields
     And the character counts for each active publisher-specific creative is updated per character typed
@@ -33,7 +33,7 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-222
   Scenario: Select a master ad group for a new creative
 
-    Given the user selects the option to add a new creative
+    Given the user has navigated to the Add Creative view
     When the user selects an AdGroup in the master creative template
     Then that AdGroup is selected for all active publisher-specific creatives
 

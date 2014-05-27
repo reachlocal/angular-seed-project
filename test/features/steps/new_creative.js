@@ -6,7 +6,7 @@ var Q = require('q');
 module.exports = function () {
   var context = {};
 
-  When(/^the user selects the option to add a new creative$/, function (callback) {
+  When(/^the user has navigated to the Add Creative view$/, function (callback) {
     metricsTablePage.openNewCreative().then(callback);
   });
 
