@@ -20,7 +20,7 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
     }
   });
 })
-.controller('StagedChangesCtrl', function ($scope, creatives, StagedTextCreative) {
+.controller('StagedChangesCtrl', function ($scope, creatives, StagedTextCreative, PublishedTextCreativesService) {
   $scope.stagedTextCreatives = creatives.filter(function (creative) {
     return creative.isStaged();
   }).map(function (creative) {
@@ -37,9 +37,28 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
 
     stagedCreative.$remove().catch(failure);
   };
+
+  $scope.publish = function() {
+    var currentCampaignId = $scope.campaign.currentCampaignId;
+
+    var stagedTextCreativesLinks = $scope.stagedTextCreatives.map(function(creative) {
+      return creative.self;
+    });
+
+    PublishedTextCreativesService.publish(currentCampaignId, stagedTextCreativesLinks).then(function() {
+       history.back();
+    });
+  };
 });
 
 angular.module('rl.cpi.campaignStagedChanges')
 .factory('StagedTextCreative', function(rlResource) {
   return rlResource('/campaigns/:campaignId/staged-text-creatives/:textCreativeId', { 'campaignId': '@campaignId', 'textCreativeId': '@id' });
+});
+
+angular.module('rl.cpi.campaignStagedChanges')
+.service('PublishedTextCreativesService', function ($http, Config) {
+  this.publish = function (campaignId, links) {
+    return $http.post(Config.gatewayBaseUrl + '/campaigns/' + campaignId + '/published-text-creatives', { links: links });
+  };
 });
