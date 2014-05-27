@@ -115,4 +115,16 @@ module.exports = function () {
       all(exp).then(callback);
     });
   });
+
+  Then(/^the editable fields are cleared of text$/, function (callback) {
+    newCreativePage.firstPublisherFields().then(function(card) {
+      var exp = [
+        expect(card.headline.getAttribute('value')).to.eventually.equal(''),
+        expect(card.descriptiveLines[0].getAttribute('value')).to.eventually.equal(''),
+        expect(card.descriptiveLines[1].getAttribute('value')).to.eventually.equal('')
+      ];
+      all(exp).then(callback);
+    });
+    callback.pending();
+  });
 };

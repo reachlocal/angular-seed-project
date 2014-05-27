@@ -59,12 +59,12 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-175
   Scenario: Deactivate a publisher-specific creative while adding a new creative after making edits
 
-    Given the user has navigated to the Add Creative view
-  	And the user has entered a headline and descriptive lines in the master creative template
-  	When the user selects the option to deactivate the publisher-specific creative
-  	Then the editable fields in the publisher-specific creative are disabled
-  	And the editable fields are cleared of text
-  	And the option to activate the publisher-specific creative becomes available
+    Given the user selects the option to add a new creative
+    When the user enters text in the headline and/or descriptive lines
+    And the user selects the option to deactivate the publisher-specific creative
+    Then the editable fields in the publisher-specific creative are disabled
+    And the editable fields are cleared of text
+    And the option to activate the publisher-specific creative becomes available
 
 
   @CPI-JIRA-175
