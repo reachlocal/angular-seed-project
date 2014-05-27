@@ -88,4 +88,31 @@ module.exports = function () {
       all(expectationsByPublisher).then(callback);
     });
   });
+
+  When(/^the user selects the option to deactivate the publisher\-specific creative$/, function (callback) {
+    newCreativePage.deactivateButtonFirstPublisher().then(function(button) {
+      button.click().then(callback);
+    });
+  });
+
+  Then(/^the editable fields in the publisher\-specific creative are disabled$/, function (callback) {
+    newCreativePage.firstPublisherFields().then(function(publisher) {
+        var exp = [
+          expect(publisher.headline.isEnabled()).to.eventually.equal(false),
+          expect(publisher.descriptiveLines[0].isEnabled()).to.eventually.equal(false),
+          expect(publisher.descriptiveLines[1].isEnabled()).to.eventually.equal(false)
+        ];
+        all(exp).then(callback);
+      });
+  });
+
+  Then(/^the option to activate the publisher\-specific creative becomes available$/, function (callback) {
+    newCreativePage.activateButtonFirstPublisher().then(function(button) {
+      var exp = [
+        expect(button.isDisplayed()).to.eventually.equal(true)
+      ];
+
+      all(exp).then(callback);
+    });
+  });
 };

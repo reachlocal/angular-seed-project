@@ -31,6 +31,12 @@ var publishersFields = exports.publishersFields = function() {
   });
 };
 
+var firstPublisherFields = exports.firstPublisherFields = function() {
+  return publishersFields().then(function(publishers) {
+    return publishers[0];
+  });
+};
+
 var publishersRemainingChars = exports.publishersRemainingChars = function() {
   return publisherTemplateCards().then(function(cards) {
     var promises = cards.map(remainingCharsForPublisher);
@@ -44,6 +50,23 @@ var publishersSelectedAdgroup = exports.publishersSelectedAdgroup = function() {
     return protractor.promise.all(promises);
   });
 };
+
+var deactivateButtonFirstPublisher = exports.deactivateButtonFirstPublisher = function() {
+  return firstPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.css('[ng-click^=disable]'));
+  });
+};
+var activateButtonFirstPublisher = exports.activateButtonFirstPublisher = function() {
+  return firstPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.css('[ng-click^=enable]'));
+  });
+};
+
+function firstPublisherTemplateCard() {
+  return publisherTemplateCards().then(function(cards) {
+    return cards[0];
+  });
+}
 
 function inputsForPublisher(card) {
   var promises = [
