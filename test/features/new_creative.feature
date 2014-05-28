@@ -94,7 +94,8 @@ Feature: Add a new creative to an existing ad group
     Given the user has navigated to the Add Creative view
     And the view shows multiple publisher-specific creatives as active
     And at least one publisher-specific creative is currently unlinked
-    When the user selects the option to link a publisher-specific creative
+    When the user enters different content into the master template fields
+    And the user selects the option to link a publisher-specific creative
     Then the publisher-specific creative's data attributes are immediately copied from the master creative
     And there is a visual indicator that shows the publisher specific creative is linked
 

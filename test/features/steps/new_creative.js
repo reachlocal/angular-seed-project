@@ -177,4 +177,42 @@ module.exports = function () {
     });
   });
 
+  Given(/^at least one publisher\-specific creative is currently unlinked$/, function (callback) {
+    newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
+      button.click().then(callback);
+    });
+  });
+
+  When(/^the user enters different content into the master template fields$/, function (callback) {
+    newCreativePage.fillMaster('a new headline', [ 'another descriptive line', 'yet another descriptive line']).then(function() {
+      callback();
+    });
+  });
+
+  When(/^the user selects the option to link a publisher\-specific creative$/, function (callback) {
+    newCreativePage.linkButtonFirstPublisher().then(function(button) {
+      button.click().then(callback);
+    });
+  });
+
+  Then(/^the publisher\-specific creative's data attributes are immediately copied from the master creative$/, function (callback) {
+    newCreativePage.firstPublisherFields().then(function(publisher) {
+      var exp = [
+        expect(publisher.headline.getAttribute('value')).to.eventually.equal('a new headline'),
+        expect(publisher.descriptiveLines[0].getAttribute('value')).to.eventually.equal('another descriptive line'),
+        expect(publisher.descriptiveLines[1].getAttribute('value')).to.eventually.equal('yet another descriptive line'),
+      ];
+      all(exp).then(callback);
+    });
+  });
+
+  Then(/^there is a visual indicator that shows the publisher specific creative is linked$/, function (callback) {
+    newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
+      var exp = [
+       expect(button.isDisplayed()).to.eventually.equal(true)
+      ];
+      all(exp).then(callback);
+    });
+  });
+
 };
