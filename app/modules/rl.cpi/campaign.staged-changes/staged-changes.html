@@ -5,7 +5,7 @@
     </h1>
   </header>
 
-  <form name="staged_changes">
+  <form name="staged_changes" ng-submit="publish()">
     <fieldset>
       <table>
         <caption>
@@ -42,7 +42,7 @@
     </fieldset>
 
     <fieldset class="actions">
-      <button type="submit" ng-click="publish()" translate>rlStagedChanges.Publish</button>
+      <button type="submit" translate>rlStagedChanges.Publish</button>
       <button rl-back rel="back" translate>rlStagedChanges.Cancel</button>
     </fieldset>
   </form>

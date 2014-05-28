@@ -39,15 +39,12 @@ Feature: Ability to stage changes to business entities before they are pushed to
     Then the user clicks the back button
     And the user is presented with a visual indicator that shows that 4 changes are staged (pending because of our stubs)
 
-  @JIRA-CPI-134
+  @JIRA-CPI-134 @tech_debt
   Scenario: Publish a list of staged changes from the detailed staged changes view
 
-    Given changes are staged for publishing
-    And the user is viewing a campaign's creative dashboard
-    When the user selects the option to see all staged changes from the Quick View
+    When a user views the list of staged changes
     And the user selects the option to publish all staged changes
-    Then the staged changes are submitted for publishing
-    And the user is navigated back to the campaign's creative dashboard
+    Then the user is navigated back to the campaign's creative dashboard
 
   @JIRA-CPI-135
   Scenario: List pending changes to review

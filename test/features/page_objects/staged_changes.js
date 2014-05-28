@@ -20,3 +20,7 @@ var removeStagedChange = exports.removeStagedChange = function(position) {
 var clickBackButton = exports.clickBackButton = function() {
   return element(by.css('button[rel=back]')).click();
 };
+
+var publishStagedChanges = exports.publishStagedChanges = function() {
+  return element(by.css('button[type=submit]')).click();
+};

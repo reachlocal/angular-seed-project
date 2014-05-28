@@ -1,3 +1,7 @@
+var isCurrentPage = exports.isCurrentPage = function() {
+  return element(by.css('[ui-view=creative-metrics] > table')).isPresent();
+};
+
 var creativeMetricsTable = exports.createMetricsTable = function () {
   return browser.findElement(by.css('[ui-view=creative-metrics] > table'));
 };

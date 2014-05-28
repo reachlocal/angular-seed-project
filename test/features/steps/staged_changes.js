@@ -1,4 +1,5 @@
 var navBarPage = require('../page_objects/nav_bar');
+var creativesDataTable = require('../page_objects/creatives_data_table');
 var stagedChangesPage = require('../page_objects/staged_changes');
 
 module.exports = function () {
@@ -28,6 +29,12 @@ module.exports = function () {
     });
   });
 
+  When(/^the user selects the option to publish all staged changes$/, function (callback) {
+    stagedChangesPage.publishStagedChanges().then(function() {
+      callback();
+    });
+  });
+
   Then(/^the user should be presented with (\d+) creative staged changes to review$/, function (numberOfStagedChanges, callback) {
     numberOfStagedChanges = parseInt(numberOfStagedChanges, 10);
 
@@ -35,6 +42,12 @@ module.exports = function () {
       expect(stagedChangesPage.getNumberOfStagedChanges()).to.eventually.equal(numberOfStagedChanges),
       expect(stagedChangesPage.getCounterText()).to.eventually.contain(numberOfStagedChanges)
     ]).then(callback);
+  });
+
+  Then(/^the user is navigated back to the campaign's creative dashboard$/, function (callback) {
+    expect(creativesDataTable.isCurrentPage()).to.eventually
+      .equal(true)
+      .then(function() { callback(); });
   });
 
   Then(/^the user sees a visual element that shows "([^"]*)"$/, function (message, callback) {
