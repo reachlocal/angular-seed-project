@@ -84,7 +84,8 @@ Feature: Add a new creative to an existing ad group
     Given the user has navigated to the Add Creative view
     And the view shows multiple publisher-specific creatives as active
     When the user selects the option to unlink a publisher-specific creative
-    Then the publisher-specific creative no longer changes when the master creative is edited
+    And the user enters text in the headline and/or descriptive lines
+    Then the text is not copied into the publisher-specific fields
     And there is a visual indicator that shows the publisher specific creative is unlinked
 
   @CPI-JIRA-224

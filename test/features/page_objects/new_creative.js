@@ -37,6 +37,14 @@ var firstPublisherFields = exports.firstPublisherFields = function() {
   });
 };
 
+var activePublishers = exports.activePublishers = function() {
+  return publisherTemplateCards().then(function(cards) {
+    return protractor.promise.filter(cards, function(card) {
+      return card.findElement(by.css('[ng-click^=disable]')).isDisplayed();
+    });
+  });
+};
+
 var publishersRemainingChars = exports.publishersRemainingChars = function() {
   return publisherTemplateCards().then(function(cards) {
     var promises = cards.map(remainingCharsForPublisher);
@@ -56,9 +64,22 @@ var deactivateButtonFirstPublisher = exports.deactivateButtonFirstPublisher = fu
     return card.findElement(by.css('[ng-click^=disable]'));
   });
 };
+
+var unlinkButtonFirstPublisher = exports.unlinkButtonFirstPublisher = function() {
+  return firstPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.css('[ng-click^=unlink]'));
+  });
+};
+
 var activateButtonFirstPublisher = exports.activateButtonFirstPublisher = function() {
   return firstPublisherTemplateCard().then(function(card) {
     return card.findElement(by.css('[ng-click^=enable]'));
+  });
+};
+
+var linkButtonFirstPublisher = exports.linkButtonFirstPublisher = function() {
+  return firstPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.css('[ng-click^=link]'));
   });
 };
 
@@ -66,6 +87,14 @@ function firstPublisherTemplateCard() {
   return publisherTemplateCards().then(function(cards) {
     return cards[0];
   });
+}
+
+function activateButtonForPublisher(card) {
+  return card.findElement(by.css('[ng-click=^=enable]'));
+}
+
+function deactivateButtonForPublisher(card) {
+  return card.findElement(by.css('[ng-click=^=disable]'));
 }
 
 function inputsForPublisher(card) {

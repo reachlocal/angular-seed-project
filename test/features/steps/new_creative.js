@@ -143,4 +143,38 @@ module.exports = function () {
       all(exp).then(callback);
     });
   });
+
+  Given(/^the view shows multiple publisher\-specific creatives as active$/, function (callback) {
+    newCreativePage.activePublishers().then(function(publishers) {
+      expect(publishers.length).to.be.above(1);
+      callback();
+    });
+  });
+
+  When(/^the user selects the option to unlink a publisher\-specific creative$/, function (callback) {
+    newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
+      button.click().then(callback);
+    });
+  });
+
+  Then(/^the text is not copied into the publisher\-specific fields$/, function (callback) {
+    newCreativePage.firstPublisherFields().then(function(publisher) {
+      var exp = [
+        expect(publisher.headline.getAttribute('value')).to.eventually.not.equal('a headline'),
+        expect(publisher.descriptiveLines[0].getAttribute('value')).to.eventually.not.equal('descriptive line'),
+        expect(publisher.descriptiveLines[1].getAttribute('value')).to.eventually.not.equal('another descriptive line'),
+      ];
+      all(exp).then(callback);
+    });
+  });
+
+  Then(/^there is a visual indicator that shows the publisher specific creative is unlinked$/, function (callback) {
+    newCreativePage.linkButtonFirstPublisher().then(function(button) {
+      var exp = [
+        expect(button.isDisplayed()).to.eventually.equal(true)
+      ];
+      all(exp).then(callback);
+    });
+  });
+
 };
