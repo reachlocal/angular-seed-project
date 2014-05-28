@@ -56,6 +56,7 @@
   </section>
 
   <select ng-model="creative.adGroup"
+          ng-change="unlink()"
           ng-options="adGroup.name for adGroup in publisher.adGroups"
           ng-disabled="!isEnabled" >
     <option value="">Choose an AdGroup...</option>
