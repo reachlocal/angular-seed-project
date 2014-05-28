@@ -33,8 +33,7 @@ angular.rlmodule('rl.cpi.campaignNewCreativeCtrl', [
     $scope.save = function () {
       $scope.trigger.trigger().then(function () {
         // Success!  Go to the next page.
-        // WHY IS THIS BEING CALLED WHEN PROMISES ARE FAILING?
-        // $scope.$apply(function () { history.back(); });
+        history.back();
       });
     };
 
