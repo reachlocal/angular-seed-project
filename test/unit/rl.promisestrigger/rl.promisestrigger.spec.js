@@ -1,12 +1,12 @@
 describe('rl.promisestrigger', function () {
 
-  var service, q, dummyListener, listenerDeferred, rootScope;
+  var service, dummyListener, listenerDeferred, anotherDummyListener, anotherListenerDeferred, rootScope;
 
   beforeEach(module('rl.promisestrigger'));
   beforeEach(inject(function ($q, promisestrigger, $rootScope) {
     service = promisestrigger.build();
-    q = $q;
-    dummyListener = function () { listenerDeferred = q.defer(); return listenerDeferred.promise; };
+    dummyListener = function () { listenerDeferred = $q.defer(); return listenerDeferred.promise; };
+    anotherDummyListener = function () { anotherListenerDeferred = $q.defer(); return anotherListenerDeferred.promise; };
     rootScope = $rootScope;
   }));
 
@@ -16,7 +16,7 @@ describe('rl.promisestrigger', function () {
     expect(service.listenerCount()).toBe(1);
   });
 
-  it('notifies the client to create a promise and recieves a promise in return', function () {
+  it('notifies the client to create a promise and relieves a promise in return', function () {
     service.registerListener(dummyListener);
     var promise = service.trigger();
 
@@ -25,16 +25,45 @@ describe('rl.promisestrigger', function () {
     expect(promise).not.toBe(listenerDeferred);
   });
 
-  it('resolves the returned promise when all listeners resolve', function () {
-    service.registerListener(dummyListener);
-    var promise = service.trigger();
-    var promiseWasCalled = false;
-    promise.then(function () { promiseWasCalled = true; });
+  describe('when callbacks finish', function () {
 
-    listenerDeferred.resolve();
-    rootScope.$digest();
+    var promise, promiseWasCalled;
+    beforeEach(function () {
+      service.registerListener(dummyListener);
+      service.registerListener(anotherDummyListener);
 
-    expect(promiseWasCalled).toBe(true);
+      promise = service.trigger();
+      promiseWasCalled = false;
+      promise.then(function () { promiseWasCalled = true; });
+
+      rootScope.$digest();
+      expect(promiseWasCalled).toBe(false);
+    });
+
+    it('resolves the returned promise when all listeners resolve', function () {
+      // Resolve 1 of 2
+      listenerDeferred.resolve();
+      rootScope.$digest();
+      expect(promiseWasCalled).toBe(false);
+
+      // Resolve 2 of 2
+      anotherListenerDeferred.resolve();
+      rootScope.$digest();
+      expect(promiseWasCalled).toBe(true);
+    });
+
+    it('does not resolve if callback fails', function () {
+      // Resolve 1 of 2
+      listenerDeferred.resolve();
+      rootScope.$digest();
+      expect(promiseWasCalled).toBe(false);
+
+      // Fail 2 of 2
+      anotherListenerDeferred.reject();
+      rootScope.$digest();
+      expect(promiseWasCalled).toBe(false);
+    });
+
   });
 
 });

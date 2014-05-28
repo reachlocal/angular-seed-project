@@ -50,7 +50,7 @@ angular.rlmodule('rl.promisestrigger', [])
           }
           var promise = callback();
           // Ignore callbacks that return something that is not a promise
-          if (!!promise && !angular.isFunction(promise.then)) {
+          if (!!promise && angular.isFunction(promise.then)) {
             promises.push(promise);
           }
         });
