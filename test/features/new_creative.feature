@@ -15,12 +15,9 @@ Feature: Add a new creative to an existing ad group
   @CPI-JIRA-246
   Scenario: Navigate to the new creative view after filtering by Publisher
 
-    When the user has selected a publisher in the global nav filter
+    When the user selects the web publisher campaign "Google (National)"
     And the user has navigated to the Add Creative view
-    Then the user is presented with a view to add a new creative in a master template
-    And the master template includes a headline, two descriptive lines, and an AdGroup selector
-    And the only active publisher creative box is the publisher selected in the global nav filter
-
+    Then the only active publisher creative box is "Google (National)"
 
   @CPI-JIRA-222 @regression
   Scenario: Enter headline and descriptive lines for a new creative
