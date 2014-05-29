@@ -209,10 +209,9 @@ module.exports = function () {
   Then(/^there is a visual indicator that shows the publisher specific creative is linked$/, function (callback) {
     newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
       var exp = [
-       expect(button.isDisplayed()).to.eventually.equal(true)
+        expect(button.isDisplayed()).to.eventually.equal(true)
       ];
       all(exp).then(callback);
     });
   });
-
 };
