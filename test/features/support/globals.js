@@ -58,6 +58,8 @@ module.exports = function () {
   browser.selectOption = withOption(function (desiredOption) {
     if (desiredOption) {
       desiredOption.click();
+    } else {
+      throw new Error('The desired option could not be found');
     }
   }).bind(browser);
 
