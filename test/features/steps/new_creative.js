@@ -90,13 +90,13 @@ module.exports = function () {
   });
 
   When(/^the user selects the option to deactivate the publisher\-specific creative$/, function (callback) {
-    newCreativePage.deactivateButtonFirstPublisher().then(function(button) {
+    newCreativePage.deactivateButtonNthPublisher(1).then(function(button) {
       button.click().then(callback);
     });
   });
 
   Then(/^the editable fields in the publisher\-specific creative are disabled$/, function (callback) {
-    newCreativePage.firstPublisherFields().then(function(publisher) {
+    newCreativePage.nthPublisherFields(1).then(function(publisher) {
         var exp = [
           expect(publisher.headline.isEnabled()).to.eventually.equal(false),
           expect(publisher.descriptiveLines[0].isEnabled()).to.eventually.equal(false),
@@ -107,7 +107,7 @@ module.exports = function () {
   });
 
   Then(/^the option to activate the publisher\-specific creative becomes available$/, function (callback) {
-    newCreativePage.activateButtonFirstPublisher().then(function(button) {
+    newCreativePage.activateButtonNthPublisher(1).then(function(button) {
       var exp = [
         expect(button.isDisplayed()).to.eventually.equal(true)
       ];
@@ -117,7 +117,7 @@ module.exports = function () {
   });
 
   Then(/^the editable fields are cleared of text$/, function (callback) {
-    newCreativePage.firstPublisherFields().then(function(card) {
+    newCreativePage.nthPublisherFields(1).then(function(card) {
       var exp = [
         expect(card.headline.getAttribute('value')).to.eventually.equal(''),
         expect(card.descriptiveLines[0].getAttribute('value')).to.eventually.equal(''),
@@ -128,13 +128,13 @@ module.exports = function () {
   });
 
   When(/^the user selects the option to activate the deactivated publisher\-specific creative$/, function (callback) {
-    newCreativePage.activateButtonFirstPublisher().then(function(button) {
+    newCreativePage.activateButtonNthPublisher(1).then(function(button) {
       button.click().then(callback);
     });
   });
 
   Then(/^the headline, descriptive lines, and AdGroup entered in the master template is copied to the newly activated publisher\-specific creative$/, function (callback) {
-    newCreativePage.firstPublisherFields().then(function(publisher) {
+    newCreativePage.nthPublisherFields(1).then(function(publisher) {
       var exp = [
         expect(publisher.headline.getAttribute('value')).to.eventually.equal('a headline'),
         expect(publisher.descriptiveLines[0].getAttribute('value')).to.eventually.equal('descriptive line'),
@@ -152,13 +152,13 @@ module.exports = function () {
   });
 
   When(/^the user selects the option to unlink a publisher\-specific creative$/, function (callback) {
-    newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
+    newCreativePage.unlinkButtonNthPublisher(1).then(function(button) {
       button.click().then(callback);
     });
   });
 
   Then(/^the text is not copied into the publisher\-specific fields$/, function (callback) {
-    newCreativePage.firstPublisherFields().then(function(publisher) {
+    newCreativePage.nthPublisherFields(1).then(function(publisher) {
       var exp = [
         expect(publisher.headline.getAttribute('value')).to.eventually.not.equal('a headline'),
         expect(publisher.descriptiveLines[0].getAttribute('value')).to.eventually.not.equal('descriptive line'),
@@ -169,7 +169,7 @@ module.exports = function () {
   });
 
   Then(/^there is a visual indicator that shows the publisher specific creative is unlinked$/, function (callback) {
-    newCreativePage.linkButtonFirstPublisher().then(function(button) {
+    newCreativePage.linkButtonNthPublisher(1).then(function(button) {
       var exp = [
         expect(button.isDisplayed()).to.eventually.equal(true)
       ];
@@ -178,7 +178,7 @@ module.exports = function () {
   });
 
   Given(/^at least one publisher\-specific creative is currently unlinked$/, function (callback) {
-    newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
+    newCreativePage.unlinkButtonNthPublisher(1).then(function(button) {
       button.click().then(callback);
     });
   });
@@ -190,13 +190,13 @@ module.exports = function () {
   });
 
   When(/^the user selects the option to link a publisher\-specific creative$/, function (callback) {
-    newCreativePage.linkButtonFirstPublisher().then(function(button) {
+    newCreativePage.linkButtonNthPublisher(1).then(function(button) {
       button.click().then(callback);
     });
   });
 
   Then(/^the publisher\-specific creative's data attributes are immediately copied from the master creative$/, function (callback) {
-    newCreativePage.firstPublisherFields().then(function(publisher) {
+    newCreativePage.nthPublisherFields(1).then(function(publisher) {
       var exp = [
         expect(publisher.headline.getAttribute('value')).to.eventually.equal('a new headline'),
         expect(publisher.descriptiveLines[0].getAttribute('value')).to.eventually.equal('another descriptive line'),
@@ -207,7 +207,7 @@ module.exports = function () {
   });
 
   Then(/^there is a visual indicator that shows the publisher specific creative is linked$/, function (callback) {
-    newCreativePage.unlinkButtonFirstPublisher().then(function(button) {
+    newCreativePage.unlinkButtonNthPublisher(1).then(function(button) {
       var exp = [
         expect(button.isDisplayed()).to.eventually.equal(true)
       ];
@@ -220,7 +220,7 @@ module.exports = function () {
   });
 
   Then(/^that AdGroup is selected for all active publisher\-specific creatives who support that AdGroup$/, function (callback) {
-    newCreativePage.firstPublisherSelectedAdgroup().then(function(adgroup) {
+    newCreativePage.nthPublisherSelectedAdgroup(1).then(function(adgroup) {
       var exp = [
         expect(adgroup.getAttribute('value')).to.eventually.equal('0')
       ];
@@ -229,7 +229,7 @@ module.exports = function () {
   });
 
   Then(/^the publisher that does not support that AdGroup will not be changed$/, function (callback) {
-    newCreativePage.secondPublisherSelectedAdgroup().then(function(adgroup) {
+    newCreativePage.nthPublisherSelectedAdgroup(2).then(function(adgroup) {
       var exp = [
         expect(adgroup.getAttribute('value')).to.eventually.equal('')
       ];
@@ -238,7 +238,7 @@ module.exports = function () {
   });
 
   Then(/^the publisher that does not support that AdGroup will become unlinked$/, function (callback) {
-    newCreativePage.linkButtonSecondPublisher().then(function(button) {
+    newCreativePage.linkButtonNthPublisher(2).then(function(button) {
       var exp = [
         expect(button.isDisplayed()).to.eventually.equal(true)
       ];

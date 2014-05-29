@@ -31,21 +31,13 @@ var publishersFields = exports.publishersFields = function() {
   });
 };
 
-var firstPublisherFields = exports.firstPublisherFields = function() {
-  return publishersFields().then(function(publishers) {
-    return publishers[0];
-  });
+var nthPublisherFields = exports.nthPublisherFields = function(position) {
+  return nthPublisherTemplateCard(position).then(inputsForPublisher);
 };
 
-var firstPublisherSelectedAdgroup = exports.firstPublisherSelectedAdgroup = function() {
-  return firstPublisherTemplateCard().then(function(card) {
-    return card.findElement(by.selectedOption('creative.adGroup'));
-  });
-};
-
-var secondPublisherSelectedAdgroup = exports.secondPublisherSelectedAdgroup = function() {
-  return secondPublisherTemplateCard().then(function(card) {
-    return card.findElement(by.selectedOption('creative.adGroup'));
+var nthPublisherSelectedAdgroup = exports.nthPublisherSelectedAdgroup = function(position) {
+  return nthPublisherTemplateCard(position).then(function(card) {
+    return selectedAdgroup(card);
   });
 };
 
@@ -71,46 +63,33 @@ var publishersSelectedAdgroup = exports.publishersSelectedAdgroup = function() {
   });
 };
 
-var deactivateButtonFirstPublisher = exports.deactivateButtonFirstPublisher = function() {
-  return firstPublisherTemplateCard().then(function(card) {
+var deactivateButtonNthPublisher = exports.deactivateButtonNthPublisher = function(position) {
+  return nthPublisherTemplateCard(position).then(function(card) {
     return card.findElement(by.css('[ng-click^=disable]'));
   });
 };
 
-var unlinkButtonFirstPublisher = exports.unlinkButtonFirstPublisher = function() {
-  return firstPublisherTemplateCard().then(function(card) {
+var unlinkButtonNthPublisher = exports.unlinkButtonNthPublisher = function(position) {
+  return nthPublisherTemplateCard(position).then(function(card) {
     return card.findElement(by.css('[ng-click^=unlink]'));
   });
 };
 
-var activateButtonFirstPublisher = exports.activateButtonFirstPublisher = function() {
-  return firstPublisherTemplateCard().then(function(card) {
+var activateButtonNthPublisher = exports.activateButtonNthPublisher = function(position) {
+  return nthPublisherTemplateCard(position).then(function(card) {
     return card.findElement(by.css('[ng-click^=enable]'));
   });
 };
 
-var linkButtonFirstPublisher = exports.linkButtonFirstPublisher = function() {
-  return firstPublisherTemplateCard().then(function(card) {
+var linkButtonNthPublisher = exports.linkButtonNthPublisher = function(position) {
+  return nthPublisherTemplateCard(position).then(function(card) {
     return card.findElement(by.css('[ng-click^=link]'));
   });
 };
 
-var linkButtonSecondPublisher = exports.linkButtonSecondPublisher = function() {
-  return secondPublisherTemplateCard().then(function(card) {
-    return card.findElement(by.css('[ng-click^=link]'));
-  });
-};
-
-function firstPublisherTemplateCard() {
-  return publisherTemplateCards().then(function(cards) {
-    return cards[0];
-  });
-}
-
-function secondPublisherTemplateCard() {
-  return publisherTemplateCards().then(function(cards) {
-    return cards[1];
-  });
+function nthPublisherTemplateCard(position) {
+  var cssSelector = '.creatives article:nth-of-type(' + position + ')';
+  return browser.findElement(by.css(cssSelector));
 }
 
 function activateButtonForPublisher(card) {
