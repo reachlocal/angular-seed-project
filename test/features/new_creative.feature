@@ -30,22 +30,15 @@ Feature: Add a new creative to an existing ad group
     Then the text is copied character-by-character into the publisher-specific fields
     And the character counts for each active publisher-specific creative is updated per character typed
 
-  @CPI-JIRA-222
-  Scenario: Select a master ad group for a new creative
+  @CPI-JIRA-222 @CPI-JIRA-224
+  Scenario: Select a master ad group for a new creative when the AdGroup exists for all the publishers except for one
 
     Given the user has navigated to the Add Creative view
-    When the user selects an AdGroup in the master creative template
-    Then that AdGroup is selected for all active publisher-specific creatives
-
-  @CPI-JIRA-224
-  Scenario: Select a master ad group for a new creative when the AdGroup doesn't exist for a publisher
-
-    Given the user has navigated to the Add Creative view
-    And the user has entered a headline and descriptive lines in the master creative template
-    When the user selects an AdGroup in the master creative template
-    And the AdGroup selected does not exist for one of the publishers
+    And the user enters text in the headline and/or descriptive lines
+    When the user selects an AdGroup in the master creative template that does not exist for all the publishers
     Then that AdGroup is selected for all active publisher-specific creatives who support that AdGroup
-    And the publisher that does not support that AdGroup will become unlinked and the AdGroup will not be changed
+    And the publisher that does not support that AdGroup will not be changed
+    And the publisher that does not support that AdGroup will become unlinked
 
   @CPI-JIRA-175
   Scenario: Deactivate a publisher-specific creative while adding a new creative before making edits

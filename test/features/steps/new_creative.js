@@ -214,4 +214,35 @@ module.exports = function () {
       all(exp).then(callback);
     });
   });
+
+  When(/^the user selects an AdGroup in the master creative template that does not exist for all the publishers$/, function (callback) {
+    newCreativePage.chooseMasterAdgroup(0).then(callback);
+  });
+
+  Then(/^that AdGroup is selected for all active publisher\-specific creatives who support that AdGroup$/, function (callback) {
+    newCreativePage.firstPublisherSelectedAdgroup().then(function(adgroup) {
+      var exp = [
+        expect(adgroup.getAttribute('value')).to.eventually.equal('0')
+      ];
+      all(exp).then(callback);
+    });
+  });
+
+  Then(/^the publisher that does not support that AdGroup will not be changed$/, function (callback) {
+    newCreativePage.secondPublisherSelectedAdgroup().then(function(adgroup) {
+      var exp = [
+        expect(adgroup.getAttribute('value')).to.eventually.equal('')
+      ];
+      all(exp).then(callback);
+    });
+  });
+
+  Then(/^the publisher that does not support that AdGroup will become unlinked$/, function (callback) {
+    newCreativePage.linkButtonSecondPublisher().then(function(button) {
+      var exp = [
+        expect(button.isDisplayed()).to.eventually.equal(true)
+      ];
+      all(exp).then(callback);
+    });
+  });
 };

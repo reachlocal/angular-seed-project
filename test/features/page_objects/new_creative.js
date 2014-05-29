@@ -37,6 +37,18 @@ var firstPublisherFields = exports.firstPublisherFields = function() {
   });
 };
 
+var firstPublisherSelectedAdgroup = exports.firstPublisherSelectedAdgroup = function() {
+  return firstPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.selectedOption('creative.adGroup'));
+  });
+};
+
+var secondPublisherSelectedAdgroup = exports.secondPublisherSelectedAdgroup = function() {
+  return secondPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.selectedOption('creative.adGroup'));
+  });
+};
+
 var activePublishers = exports.activePublishers = function() {
   return publisherTemplateCards().then(function(cards) {
     return protractor.promise.filter(cards, function(card) {
@@ -83,9 +95,21 @@ var linkButtonFirstPublisher = exports.linkButtonFirstPublisher = function() {
   });
 };
 
+var linkButtonSecondPublisher = exports.linkButtonSecondPublisher = function() {
+  return secondPublisherTemplateCard().then(function(card) {
+    return card.findElement(by.css('[ng-click^=link]'));
+  });
+};
+
 function firstPublisherTemplateCard() {
   return publisherTemplateCards().then(function(cards) {
     return cards[0];
+  });
+}
+
+function secondPublisherTemplateCard() {
+  return publisherTemplateCards().then(function(cards) {
+    return cards[1];
   });
 }
 
