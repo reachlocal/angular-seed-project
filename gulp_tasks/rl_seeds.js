@@ -1,10 +1,10 @@
 var gulp = require('gulp');
-var config = require('./config/config');
+var paths = require('./support').paths;
 
 var paths = {
-  source: config.APPLICATION_ROOT + '/modules/rl_seeds',
-  destination: config.APPLICATION_ROOT + '/styleguide',
-  dist: config.MINIFY_DESTINATION + '/styleguide'
+  source: paths.app + '/modules/rl_seeds',
+  destination: paths.app + '/styleguide',
+  dist: paths.dist + '/styleguide'
 };
 
 gulp.task('styleguide:index', function () {

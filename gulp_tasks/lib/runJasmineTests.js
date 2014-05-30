@@ -14,13 +14,15 @@ var es = require('event-stream');
 
 var karmaPort = 9876;
 module.exports = function (testDirectory) {
-  var config = require('../config/config');
+  var paths = require('../support').paths;
   // Note:  These must be in order:  Bower, project, test
-  var allTestFiles = [config.APPLICATION_ROOT + '/config.js']
-    .concat(config.APPLICATION_SCRIPTS)
-    .concat(config.TEST_LIBRARIES)
-    .concat(['dist/public/templates.js',
-      'test/helpers/**/*.js',
+  var allTestFiles = [paths.app + '/config.js']
+    .concat(paths.javascripts)
+    .concat([
+        'app/bower_components/angular-mocks/angular-mocks.js',
+        'app/bower_components/timekeeper/lib/timekeeper.js',
+        'dist/public/templates.js',
+        'test/helpers/**/*.js',
         'test/' + testDirectory + '/**/*.spec.js']);
 
   var karma = require('gulp-karma');
