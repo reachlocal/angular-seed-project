@@ -1,32 +1,20 @@
-(function bootStrapAirbrake(window) {
+(function bootstrapAirbrake(window) {
 
-  // Which environments should we *ignore*?
-  // Partial hostnames are fine :)
-  var ignoreHosts = [
-    'localhost',
-    'bamboo'
-  ];
-
-  // This will show up in our error reports
-  var environment = location.hostname;
-
-  var isAirbrakeEnabled = true;
-  for (var i = 0; i < ignoreHosts.length; i++) {
-    if (environment.search(ignoreHosts[i]) > -1) {
-      isAirbrakeEnabled = false;
-    }
+  // If airbrake is disabled, stop now
+  if (!rlConfig.enableAirbrake) {
+    return;
   }
 
   // Airbrake shim that stores exceptions until Airbrake notifier is loaded.
   var Airbrake = [];
-  window.Airbrake = Airbrake;
+  window.Airbrake = [];
 
   // Registers the environment name
   Airbrake.onload = function (client) {
-    client.setEnvironmentName(environment);
+    client.setEnvironmentName(rlConfig.environment);
   };
 
-  // Reports unhandled exceptions (everything else is wired up with angular's
+  // Reports unhandled exceptions - everything else is wired up with angular's
   // Exception handler - see airbrake.js in the config dir
   window.onerror = function airbrakeGlobalExceptionHandler(message, file, line, column, error) {
     if (error) {
@@ -49,13 +37,12 @@
     sibling.parentNode.insertBefore(script, sibling);
   }
 
-  if (isAirbrakeEnabled) {
-    // Asynchronously loads Airbrake notifier.
-    if (window.addEventListener) {
-      window.addEventListener('load', loadAirbrakeNotifier, false);
-    } else {
-      window.attachEvent('onload', loadAirbrakeNotifier);
-    }
+  // Asynchronously loads Airbrake notifier.
+  if (window.addEventListener) {
+    window.addEventListener('load', loadAirbrakeNotifier, false);
+  } else {
+    window.attachEvent('onload', loadAirbrakeNotifier);
   }
+
 
 }(window));
