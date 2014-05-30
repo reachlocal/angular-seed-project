@@ -73,7 +73,7 @@ function runProtractor(configFile) {
 function configForEnvironment(environment) {
   var paths = require('./support').paths;
   var fs = require('fs');
-  var sourcePath = paths.dist + '/configs/' + environment + '.js';
+  var sourcePath = 'configs/' + environment + '.js';
   var destPath   = paths.dist + '/config.js';
   fs.unlink(destPath);
   fs.symlinkSync(sourcePath, destPath);
