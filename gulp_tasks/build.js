@@ -41,7 +41,7 @@ gulp.task('build:inject:index', function () {
 // Statics =====================================================================
 
 gulp.task('build:statics', function () {
-  return gulp.src([ paths.statics, '!' + paths.index ])
+  return gulp.src(paths.statics.concat(['!' + paths.index ]), {base: paths.app})
     .pipe(gulp.dest(paths.dist));
 });
 

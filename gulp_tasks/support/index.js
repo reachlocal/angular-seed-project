@@ -7,12 +7,14 @@ var paths = exports.paths = {
   javascripts: 'app/modules/**/*.js',
   templates: 'app/modules/**/*.html',
   index: 'app/index.html',
-  statics: 'app/*.*',
+  statics: ['app/*.*', 'app/configs/*.*'],
+  app: 'app',
   dist: 'dist',
   styleguide: {
     stylesheets: 'app/modules/rl_seeds/**/*.scss',
     index: 'app/modules/rl_seeds/index.html'
-  }
+  },
+  spectests: 'test/**/*.spec.js'
 };
 
 exports.streams = {
