@@ -1,6 +1,8 @@
 {
   "newCreative": {
     "Add": "Adicionar",
-    "Cancel": "Cancelar"
+    "Cancel": "Cancelar",
+    "Add a Creative": "Adicionar um anúncio",
+    "Add a master creative as a template for different publishers.": "Adicionar um anúncio mestre como um template para diferentes editores"
   }
 }

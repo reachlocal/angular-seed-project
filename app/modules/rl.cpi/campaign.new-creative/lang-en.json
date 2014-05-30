@@ -1,6 +1,8 @@
 {
   "newCreative": {
     "Add": "Add",
-    "Cancel": "Cancel"
+    "Cancel": "Cancel",
+    "Add a Creative": "Add a Creative",
+    "Add a master creative as a template for different publishers.": "Add a master creative as a template for different publishers."
   }
 }
