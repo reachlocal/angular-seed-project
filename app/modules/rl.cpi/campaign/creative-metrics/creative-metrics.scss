@@ -18,16 +18,35 @@
     border-bottom: 1px solid $color-light;
   }
 
-  tr {
-    border-bottom: 1px solid #DDDDDD;
-  }
-
   th, td {
     &:first-of-type {
       width: 250px;
     }
     &:nth-of-type(2) {
       width: 90px;
+    }
+
+  }
+
+  tbody tr {
+    td:first-of-type {
+      position: relative;
+      display: inline-block;
+
+      &:before {
+        $size: $spacing-small / 4;
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        width: $size;
+        top: $size;
+        bottom: $size;
+      }
+    }
+
+    &.staged td:first-of-type:before {
+      background-color: $color-info;
     }
 
   }

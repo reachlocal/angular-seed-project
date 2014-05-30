@@ -34,7 +34,7 @@ function stickIt ($window, getOffset) {
 
     $element.$sticky = {
       originalStyle : originalStyle,
-      stickyStyle   : originalStyle + 'position:fixed',
+      stickyStyle   : originalStyle + 'position:fixed;z-index:999',
       placeholder   : placeholderFor($element),
       start         : elementOffset.top - styles._top,
       end           : (parent.offsetTop + parent.offsetHeight) -

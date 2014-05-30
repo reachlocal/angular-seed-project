@@ -18,7 +18,7 @@
   </thead>
 
   <tbody>
-  <tr ng-repeat="row in table | CreativeTable">
+  <tr ng-repeat="row in table | CreativeTable" ng-class="row.creative.status | lowercase">
     <td>
       <rl-creative-cell creative="row.creative"></rl-creative-cell>
     </td>
