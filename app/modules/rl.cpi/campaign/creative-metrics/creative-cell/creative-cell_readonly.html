@@ -1,12 +1,12 @@
 <section class="creative_cell">
-  <p ng-repeat="headLine in creative.headLines track by $index"
+  <p ng-class="{ highlighted: creative.hasChanged('headLines') }" ng-repeat="headLine in creative.headLines track by $index"
      class="headline">
     {{ headLine }}
   </p>
 
-  <p ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
+  <p ng-class="{ highlighted: creative.hasChanged('descriptiveLines') }" ng-repeat="descriptiveLine in creative.descriptiveLines track by $index">
     {{ descriptiveLine }}
   </p>
 
-  <a href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
+  <a ng-class="{ highlighted: creative.hasChanged('displayUrl') }"  href="{{ creative.targetUrl }}" target="_blank">{{ creative.displayUrl }}</a>
 </section>

@@ -24,7 +24,24 @@
       font-weight: 700;
       text-align: left;
     }
+  }
 
+  tbody {
+    tr td {
+      color: rgba($color-bodycopy, 0.3);
+    }
+
+    tr td a {
+      color: rgba($color-info, 0.3);
+    }
+
+    tr .highlighted {
+      color: $color-bodycopy;
+    }
+
+    tr a.highlighted {
+      color: $color-info;
+    }
   }
 
   tr:hover {
