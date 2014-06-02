@@ -18,6 +18,11 @@ describe('rl.errorhandler', function () {
     spyOn(growl, 'addErrorMessage');
   });
 
+  it('sets error options', function () {
+    interceptor.responseError({ status: 404 });
+    expect(growl.addErrorMessage).toHaveBeenCalledWith(jasmine.any(String), { enableHtml: true, ttl: 5000 });
+  });
+
   it('handles errors with error objects', function () {
     var error = {
       status: 500,
@@ -25,7 +30,7 @@ describe('rl.errorhandler', function () {
     };
     var expErrorMessage = 'errorhandler.error_500<br><b>error:</b> message';
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith(expErrorMessage, { enableHtml: true });
+    expect(growl.addErrorMessage).toHaveBeenCalledWith(expErrorMessage, jasmine.any(Object));
   });
 
   it('handles errors without error objects', function () {
@@ -34,7 +39,7 @@ describe('rl.errorhandler', function () {
     };
     var expErrorMessage = 'errorhandler.error_404';
     interceptor.responseError(error);
-    expect(growl.addErrorMessage).toHaveBeenCalledWith(expErrorMessage, { enableHtml: true });
+    expect(growl.addErrorMessage).toHaveBeenCalledWith(expErrorMessage, jasmine.any(Object));
   });
 
 });

@@ -17,7 +17,10 @@ angular.rlmodule('rl.errorhandler', ['angular-growl', 'pascalprecht.translate', 
         });
         message += '<br>' + messageDetails.join('<br>');
       }
-      growl.addErrorMessage(message, {enableHtml: true});
+      growl.addErrorMessage(message, {
+        enableHtml: true,
+        ttl: 5000
+      });
 
       return $q.reject(error);
     }
