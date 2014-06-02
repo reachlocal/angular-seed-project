@@ -4,7 +4,7 @@ Feature: Add a new creative to an existing ad group
     Given a typical campaign exists
     And a user is navigating the typical campaign's creative dashboard
 
-  @CPI-JIRA-222 @regression
+  @JIRA-CPI-222 @regression
   Scenario: Navigate to the new creative view
 
     Given the user has navigated to the Add Creative view
@@ -12,14 +12,14 @@ Feature: Add a new creative to an existing ad group
     And the master template includes a headline, two descriptive lines, and an AdGroup selector
     And all of the active publishers are displayed to the user
 
-  @CPI-JIRA-246
+  @JIRA-CPI-246
   Scenario: Navigate to the new creative view after filtering by Publisher
 
     When the user selects the web publisher campaign "Google (National)"
     And the user has navigated to the Add Creative view
     Then the only active publisher creative box is "Google (National)"
 
-  @CPI-JIRA-222 @regression
+  @JIRA-CPI-222 @regression
   Scenario: Enter headline and descriptive lines for a new creative
 
     Given the user has navigated to the Add Creative view
@@ -27,7 +27,7 @@ Feature: Add a new creative to an existing ad group
     Then the text is copied character-by-character into the publisher-specific fields
     And the character counts for each active publisher-specific creative is updated per character typed
 
-  @CPI-JIRA-222 @CPI-JIRA-224 @regression
+  @JIRA-CPI-222 @JIRA-CPI-224 @regression
   Scenario: Select a master ad group for a new creative when the AdGroup exists for all the publishers except for one
 
     Given the user has navigated to the Add Creative view
@@ -37,7 +37,7 @@ Feature: Add a new creative to an existing ad group
     And the publisher that does not support that AdGroup will not be changed
     And the publisher that does not support that AdGroup will become unlinked
 
-  @CPI-JIRA-175 @regression
+  @JIRA-CPI-175 @regression
   Scenario: Deactivate a publisher-specific creative while adding a new creative before making edits
 
     Given the user has navigated to the Add Creative view
@@ -46,7 +46,7 @@ Feature: Add a new creative to an existing ad group
     And the option to activate the publisher-specific creative becomes available
 
 
-  @CPI-JIRA-175 @regression
+  @JIRA-CPI-175 @regression
   Scenario: Deactivate a publisher-specific creative while adding a new creative after making edits
 
     Given the user has navigated to the Add Creative view
@@ -57,7 +57,7 @@ Feature: Add a new creative to an existing ad group
     And the option to activate the publisher-specific creative becomes available
 
 
-  @CPI-JIRA-175 @regression
+  @JIRA-CPI-175 @regression
   Scenario: Activate a publisher-specific creative that was previously deactivated
 
     Given the user has navigated to the Add Creative view
@@ -68,7 +68,7 @@ Feature: Add a new creative to an existing ad group
     Then the headline, descriptive lines, and AdGroup entered in the master template is copied to the newly activated publisher-specific creative
 
 
-  @CPI-JIRA-224 @regression
+  @JIRA-CPI-224 @regression
   Scenario: Unlink a publisher-specific creative from the master template
 
     Given the user has navigated to the Add Creative view
@@ -78,7 +78,7 @@ Feature: Add a new creative to an existing ad group
     Then the text is not copied into the publisher-specific fields
     And there is a visual indicator that shows the publisher specific creative is unlinked
 
-  @CPI-JIRA-224 @regression
+  @JIRA-CPI-224 @regression
   Scenario: Link a publisher-specific creative to the master template
 
     Given the user has navigated to the Add Creative view
@@ -90,7 +90,7 @@ Feature: Add a new creative to an existing ad group
     And there is a visual indicator that shows the publisher specific creative is linked
 
 
-  @CPI-JIRA-225
+  @JIRA-CPI-225
   Scenario: Saving a new creative
 
     Given the user has entered text for each new publisher-specific creative
