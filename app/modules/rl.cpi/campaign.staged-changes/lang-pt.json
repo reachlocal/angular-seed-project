@@ -1,6 +1,6 @@
 {
   "rlStagedChanges": {
-    "Pending to Publish": "Pendentes para Publicação",
+    "Changes Ready to Publish": "Mudanças Prontas para Publicação",
     "You have the following changes ready to publish:": "Você tem as seguintes mudanças prontas para serem publicadas:",
     "{ count } creatives": "{ count } { count , plural, one{anúncio} other{anúncios} }",
     "Cancel": "Cancelar",
