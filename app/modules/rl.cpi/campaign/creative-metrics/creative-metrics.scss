@@ -52,6 +52,9 @@
   }
 
   [rel="new-creative"] {
-    @include fa-icon(before, $fa-var-plus);
+    @include fa-icon(before, $fa-var-plus-circle);
+    color: $color-action;
+    margin: 0 $spacing-small;
+    font-size: 0;
   }
 }
