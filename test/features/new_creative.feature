@@ -12,7 +12,7 @@ Feature: Add a new creative to an existing ad group
     And the master template includes a headline, two descriptive lines, and an AdGroup selector
     And all of the active publishers are displayed to the user
 
-  @JIRA-CPI-246
+  @JIRA-CPI-246 @regression
   Scenario: Navigate to the new creative view after filtering by Publisher
 
     When the user selects the web publisher campaign "Google (National)"

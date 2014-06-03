@@ -29,10 +29,7 @@
             </td>
             <td>{{ 'rlCampaignTabularData.' + stagedTextCreative.state | translate }}</td>
             <td>{{ stagedTextCreative.adGroup.name }}</td>
-            <td>
-              {{ stagedTextCreative.publisher.publisherName }}
-              ({{ 'rlCampaignTabularData.' + stagedTextCreative.publisher.geoType | translate}})
-            </td>
+            <td>{{ stagedTextCreative.publisher.name }}</td>
             <td>
               <button type="reset" ng-click="remove(stagedTextCreative)">Remove</button>
             </td>

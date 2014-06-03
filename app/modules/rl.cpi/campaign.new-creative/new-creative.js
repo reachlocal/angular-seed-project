@@ -8,7 +8,7 @@ angular.rlmodule('rl.cpi.campaignNewCreativeCtrl', [
 ])
   .config(function ($stateProvider) {
     $stateProvider.state('cpi.campaignNewCreative', {
-      url: '/new-creative',
+      url: '/new-creative?publisher',
       data: { title: 'New Creative' },
       templateUrl: 'modules/rl.cpi/campaign.new-creative/new-creative.html',
       controller: 'NewCreativeCtrl',

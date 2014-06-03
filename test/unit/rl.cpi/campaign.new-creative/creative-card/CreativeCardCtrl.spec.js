@@ -2,7 +2,7 @@ describe('RL Creative Card Editor', function () {
 
   var $scope, controller;
   var rootScope;
-  var rulesServiceMock, ruleSetMock, rulesMock;
+  var rulesServiceMock, ruleSetMock, rulesMock, stateParamsMock;
 
   beforeEach(localeFixture);
   beforeEach(module('rl.cpi'));
@@ -22,6 +22,7 @@ describe('RL Creative Card Editor', function () {
     rulesMock        = { descriptiveLines: [], headLines: [] };
     ruleSetMock      = { forPublisherId: null, defaultRule: null };
     rulesServiceMock = { allByCampaignId: null };
+    stateParamsMock  = {};
     spyOn(rulesServiceMock, 'allByCampaignId').andReturn(ruleSetMock);
     spyOn(ruleSetMock, 'forPublisherId').andReturn(rulesMock);
     spyOn(ruleSetMock, 'defaultRule').andReturn('default rule');
@@ -30,7 +31,8 @@ describe('RL Creative Card Editor', function () {
   function buildController() {
     controller('rlCreativeCardCtrl', {
       $scope: $scope,
-      PublisherTextCreativeRules: rulesServiceMock
+      PublisherTextCreativeRules: rulesServiceMock,
+      $stateParams: stateParamsMock
     });
     $scope.$digest();
   }
@@ -157,11 +159,39 @@ describe('RL Creative Card Editor', function () {
     });
   });
 
-  describe('enable/disable', function () {
-    beforeEach(buildController);
-    it('starts out enabled', function () {
+  describe('when initializing', function() {
+    beforeEach(function () {
+      $scope.publisher = { name: 'Our Publisher', id: 678 };
+      $scope.linkedTo = {};
+      stateParamsMock = {};
+    });
+
+    it('is enabled if it is master', function () {
+      delete $scope.linkedTo;
+      buildController();
       expect($scope.isEnabled).toBe(true);
     });
+
+    it('is enabled if non specific publisher is given in the url', function () {
+      buildController();
+      expect($scope.isEnabled).toBe(true);
+    });
+
+    it('is enabled if it matches with the publisher given in the url', function () {
+      stateParamsMock = { publisher: 'Our Publisher' };
+      buildController();
+      expect($scope.isEnabled).toBe(true);
+    });
+
+    it('is disabled if it does not match with the publisher given in the url', function () {
+      stateParamsMock = { publisher: 'Some other Publisher' };
+      buildController();
+      expect($scope.isEnabled).toBe(false);
+    });
+  });
+
+  describe('enable/disable', function () {
+    beforeEach(buildController);
 
     it('can be enabled', function () {
       $scope.isEnabled = false;

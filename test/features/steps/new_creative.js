@@ -245,4 +245,12 @@ module.exports = function () {
       all(exp).then(callback);
     });
   });
+
+  Then(/^the only active publisher creative box is "([^"]*)"$/, function (publisherName, callback) {
+    newCreativePage.activePublishers().then(function (activeCards) {
+      expect(activeCards.length).to.be.equal(1);
+      all([expect(activeCards[0].getInnerHtml()).to.eventually.contain(publisherName)])
+        .then(callback);
+    });
+  });
 };

@@ -6,14 +6,6 @@ angular
       this.selectedPublisher = null;
       this.selectedAdGroup = null;
 
-      this.setPublisher = function (publisher) {
-        this.selectedPublisher = publisher;
-        this.selectedAdGroup = null;
-      };
-      this.setAdGroup = function (adGroup) {
-        this.selectedAdGroup = adGroup;
-      };
-
       this.isFiltering = function () {
         return !!this.selectedPublisher;
       };
@@ -21,14 +13,13 @@ angular
         if (!this.isFiltering()) {
           return true;
         }
-        var publisherNameMatches = creative.publisher.publisherName === this.selectedPublisher.publisher.publisherName;
-        var publisherGeoMatches = creative.publisher.geoType === this.selectedPublisher.publisher.geoType;
+        var publisherNameMatches = creative.publisher.name === this.selectedPublisher.publisher.name;
         var adGroupMatches = creative.adGroup.name === this.selectedAdGroup || !this.selectedAdGroup;
-        return publisherNameMatches && publisherGeoMatches && adGroupMatches;
+        return publisherNameMatches && adGroupMatches;
       };
 
-      function samePublisher(creative) {
-        return creative.publisher.publisherName + creative.publisher.geoType;
+      function publisherName(creative) {
+        return creative.publisher.name;
       }
 
       function adGroupName(creative) {
@@ -52,7 +43,7 @@ angular
       }
 
       this.load = function (creatives) {
-        this.publishers = _.chain(creatives).groupBy(samePublisher)
+        this.publishers = _.chain(creatives).groupBy(publisherName)
           .map(uniqueAdGroups)
           .map(toObject)
           .value();

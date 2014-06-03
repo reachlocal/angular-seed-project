@@ -15,7 +15,4 @@ angular.rlmodule('rl.cpi.campaign')
   PublisherFilterService.load(creatives);
   $scope.publisherFilter = PublisherFilterService;
 
-  $scope.$watch('selectedPublisher', PublisherFilterService.setPublisher);
-  $scope.$watch('selectedAdGroup', PublisherFilterService.setAdGroup);
-
 });

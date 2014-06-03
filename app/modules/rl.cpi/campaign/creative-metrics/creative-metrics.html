@@ -3,8 +3,7 @@
   <tr>
     <th>
       <translate>rlCampaignTabularData.Ad Text</translate>
-
-      <a ui-sref="cpi.campaignNewCreative({ campaignId: campaign.currentCampaignId })" rel="new-creative" translate>
+      <a ui-sref="cpi.campaignNewCreative({ campaignId: campaign.currentCampaignId, publisher: publisherFilterService.selectedPublisher.publisher.name })" rel="new-creative" translate>
         rlCampaignTabularData.Add a new creative
       </a>
     </th>
@@ -26,10 +25,7 @@
       <rl-creative-state creative="row.creative"></rl-creative-state>
     </td>
     <td>{{ row.creative.adGroup.name }}</td>
-    <td>
-      {{ row.creative.publisher.publisherName }}
-      ({{ 'rlCampaignTabularData.' + row.creative.publisher.geoType | translate}})
-    </td>
+    <td>{{ row.creative.publisher.name }} </td>
     <td ng-repeat="(key, header) in creativeHeaders" ng-hide="header.hidden">
       {{ row.report[key] | flexnumber:header.format }}
     </td>

@@ -4,9 +4,7 @@
     <label>{{ 'rlCampaignFilters.Filter by:' | translate }}</label>
     <select name="webPublisherCampaign"
             ng-model="publisherFilter.selectedPublisher"
-            ng-options="(p.publisher.publisherName
-                    + ' ' +
-                    (p.publisher.geoType | capitalize | surroundWithParenthesis)) for p in publisherFilter.publishers">
+            ng-options="p.publisher.name for p in publisherFilter.publishers">
       <option value="">{{ 'rlCampaignFilters.All Publishers' | translate }}</option>
     </select>
     <select name="adGroup"

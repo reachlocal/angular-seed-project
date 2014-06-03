@@ -4,7 +4,7 @@ angular
     'rl.cpi.main.services.PublisherTextCreativeRules',
     'rl.cpi.directives.rlTrimspaces',
     'underscore'])
-  .controller('rlCreativeCardCtrl', function ($scope, PublisherTextCreativeRules, _, Creatives) {
+  .controller('rlCreativeCardCtrl', function ($scope, $stateParams, PublisherTextCreativeRules, _, Creatives) {
     var stopSyncing = angular.noop;
     $scope.singleDescLine = false; // Default to 2 desc lines
     $scope.isMaster = !$scope.linkedTo;
@@ -14,8 +14,14 @@ angular
       $scope.creative = new Creatives();
       $scope.creative.webPublisherCampaignId = $scope.publisher.id;
     }
-    $scope.isEnabled = true;
+
+    $scope.isEnabled = initializeEnabledState();
     $scope.isSaved = false;
+
+    function initializeEnabledState() {
+      if (!$stateParams.publisher || $scope.isMaster) return true;
+      return ($stateParams.publisher === $scope.publisher.name);
+    }
 
     function combineDescriptiveLines(creative) {
       var descLine2 = creative.descriptiveLines.splice(1, 1)[0];
