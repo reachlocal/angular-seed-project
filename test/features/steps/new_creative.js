@@ -42,7 +42,7 @@ module.exports = function () {
     });
   });
 
-  When(/^the user enters text in the headline and\/or descriptive lines$/, function (callback) {
+  When(/^the user enters text in the headline and descriptive lines$/, function (callback) {
     newCreativePage.fillMaster('a headline', ['descriptive line','another descriptive line']).then(function() {
       callback();
     });
@@ -252,5 +252,16 @@ module.exports = function () {
       all([expect(activeCards[0].getInnerHtml()).to.eventually.contain(publisherName)])
         .then(callback);
     });
+  });
+
+  When(/^the user selects the option to save the new creative$/, function (callback) {
+    newCreativePage.clickAddButton().then(callback);
+  });
+
+  Then(/^the new creative is staged for publishing$/, function (callback) {
+    var exp = [
+      expect(browser.getCurrentUrl()).to.eventually.not.contain('new-creative')
+    ];
+    all(exp).then(callback);
   });
 };

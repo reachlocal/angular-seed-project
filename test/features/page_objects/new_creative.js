@@ -87,6 +87,21 @@ var linkButtonNthPublisher = exports.linkButtonNthPublisher = function(position)
   });
 };
 
+var clickAddButton = exports.clickAddButton = function() {
+  return browser.findElement(by.css('[ng-click^=save]')).then(function (button) {
+    return button.click();
+  });
+};
+
+// Note: If all publishers are saved, the route changes before this can be called
+var nthPublisherIsSaved = exports.nthPublisherIsSaved = function(position) {
+  return nthPublisherTemplateCard(position).then(function (card) {
+    card.findElement(by.css('[ng-show^=isSaved]')).then(function (checkmark) {
+      return checkmark.isDisplayed();
+    });
+  });
+};
+
 function nthPublisherTemplateCard(position) {
   var cssSelector = '.creatives article:nth-of-type(' + position + ')';
   return browser.findElement(by.css(cssSelector));

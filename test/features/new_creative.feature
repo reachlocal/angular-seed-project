@@ -23,7 +23,7 @@ Feature: Add a new creative to an existing ad group
   Scenario: Enter headline and descriptive lines for a new creative
 
     Given the user has navigated to the Add Creative view
-    When the user enters text in the headline and/or descriptive lines
+    When the user enters text in the headline and descriptive lines
     Then the text is copied character-by-character into the publisher-specific fields
     And the character counts for each active publisher-specific creative is updated per character typed
 
@@ -31,7 +31,7 @@ Feature: Add a new creative to an existing ad group
   Scenario: Select a master ad group for a new creative when the AdGroup exists for all the publishers except for one
 
     Given the user has navigated to the Add Creative view
-    And the user enters text in the headline and/or descriptive lines
+    And the user enters text in the headline and descriptive lines
     When the user selects an AdGroup in the master creative template that does not exist for all the publishers
     Then that AdGroup is selected for all active publisher-specific creatives who support that AdGroup
     And the publisher that does not support that AdGroup will not be changed
@@ -50,7 +50,7 @@ Feature: Add a new creative to an existing ad group
   Scenario: Deactivate a publisher-specific creative while adding a new creative after making edits
 
     Given the user has navigated to the Add Creative view
-    When the user enters text in the headline and/or descriptive lines
+    When the user enters text in the headline and descriptive lines
     And the user selects the option to deactivate the publisher-specific creative
     Then the editable fields in the publisher-specific creative are disabled
     And the editable fields are cleared of text
@@ -61,7 +61,7 @@ Feature: Add a new creative to an existing ad group
   Scenario: Activate a publisher-specific creative that was previously deactivated
 
     Given the user has navigated to the Add Creative view
-    And the user enters text in the headline and/or descriptive lines
+    And the user enters text in the headline and descriptive lines
     And the user selects an AdGroup in the master creative template
     And the user selects the option to deactivate the publisher-specific creative
     When the user selects the option to activate the deactivated publisher-specific creative
@@ -74,7 +74,7 @@ Feature: Add a new creative to an existing ad group
     Given the user has navigated to the Add Creative view
     And the view shows multiple publisher-specific creatives as active
     When the user selects the option to unlink a publisher-specific creative
-    And the user enters text in the headline and/or descriptive lines
+    And the user enters text in the headline and descriptive lines
     Then the text is not copied into the publisher-specific fields
     And there is a visual indicator that shows the publisher specific creative is unlinked
 
@@ -90,10 +90,12 @@ Feature: Add a new creative to an existing ad group
     And there is a visual indicator that shows the publisher specific creative is linked
 
 
-  @JIRA-CPI-225
+  @JIRA-CPI-225 @regression
   Scenario: Saving a new creative
 
-    Given the user has entered text for each new publisher-specific creative
+    Given the user has navigated to the Add Creative view
+    And the user enters text in the headline and descriptive lines
+    And the user selects an AdGroup in the master creative template
     When the user selects the option to save the new creative
     Then the new creative is staged for publishing
 
