@@ -68,7 +68,7 @@ namespace :deploy do
       # Symlink the config
       execute <<-EOC
         rm -rf #{release_path}/dist/config.js
-        ln -s /rl/data/shared/configs/cpi_client_config.js #{release_path}/dist/config.js
+        ln -s #{release_path}/dist/configs/#{fetch :stage}.js #{release_path}/dist/config.js
       EOC
     end
   end
