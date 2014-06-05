@@ -1,5 +1,6 @@
 Feature: Add a new creative to an existing ad group
 
+
   Background:
     Given a typical campaign exists
     And a user is navigating the typical campaign's creative dashboard
