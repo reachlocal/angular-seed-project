@@ -1,0 +1,35 @@
+{
+  "name": "angular-rl-sso",
+  "main": [
+    "app/rl.sso.js",
+    "app/rl.sso.css"
+  ],
+  "version": "0.0.3",
+  "authors": [
+    "Guilherme Tramontina <gtramont@thoughtworks.com>",
+    "Tom Hood <tom.hood@reachlocal.com>"
+  ],
+  "description": "SSO Authentication for Angular Clients",
+  "keywords": [
+    "sso",
+    "saml",
+    "authentication",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-http-auth": "~1.2.1",
+    "angular": "^1.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.16"
+  }
+}
