@@ -1,38 +1,38 @@
 @import "rl_seeds/variables";
+@import "rl_seeds/mixins";
 
-article#new_creative {
+#new_creative {
   padding: $spacing-default;
   border-top: $spacing-small solid $color-info;
   box-shadow: inset 0 $spacing-small $color-shadow;
 
-  padding: 15px;
-
-  & > header {
-    padding: 1rem;
-  }
   section.template {
     margin: 0.5rem;
 
     article {
+      @include dialog();
       width: 20rem;
       margin: 0 auto;
       border: 1px solid $color-light;
-      box-shadow: 7.5px 7.5px rgba(0, 0, 0, 0.075);
 
       button {
         display: none;
       }
     }
   }
+
   section.creatives {
-    article {
-      float: left;
-    }
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
   }
 
   & > fieldset {
     button {
-      min-width: 5em;
+      min-width: $spacing-default / 3;
     }
   }
 }
