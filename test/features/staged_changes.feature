@@ -54,9 +54,9 @@ Feature: Ability to stage changes to business entities before they are pushed to
 
   @JIRA-CPI-237
   Scenario: Highlight what was changed for each creative
-    Given a staged change exists to a creative's headline
+    And the first staged change has a change to its headline
     When a user views the list of staged changes
-    Then the user should be presented with 6 creative staged changes to review
-    And the fields that have changed for each creative are highlighted with a visual indicator
+    Then the user should be presented with 5 creative staged changes to review
+    And the first staged change should have its headline highlighted
 
 

@@ -27,7 +27,7 @@
             <td>
               <rl-creative-cell readonly creative="stagedTextCreative"></rl-creative-cell>
             </td>
-            <td>{{ 'rlCampaignTabularData.' + stagedTextCreative.state | translate }}</td>
+            <td ng-class="{ highlighted: stagedTextCreative.hasChanged('state') }">{{ 'rlCampaignTabularData.' + stagedTextCreative.state | translate }}</td>
             <td>{{ stagedTextCreative.adGroup.name }}</td>
             <td>{{ stagedTextCreative.publisher.name }}</td>
             <td>

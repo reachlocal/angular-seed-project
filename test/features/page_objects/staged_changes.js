@@ -24,3 +24,11 @@ var clickBackButton = exports.clickBackButton = function() {
 var publishStagedChanges = exports.publishStagedChanges = function() {
   return element(by.css('button[type=submit]')).click();
 };
+
+var getTotalChangesForCreative = exports.getTotalChangesForCreative = function(position) {
+  var stagedCreativeRow = element(by.css('table tbody tr:nth-of-type(' + position + ')'));
+
+  return stagedCreativeRow.findElements(by.css('.highlighted')).then(function(elements) {
+    return elements.length;
+  });
+};

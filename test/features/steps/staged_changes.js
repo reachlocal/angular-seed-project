@@ -3,6 +3,10 @@ var creativesDataTable = require('../page_objects/creatives_data_table');
 var stagedChangesPage = require('../page_objects/staged_changes');
 
 module.exports = function () {
+  this.Given(/^the first staged change has a change to its headline$/, function (callback) {
+    callback();
+  });
+
   Then(/^the user is presented with a visual indicator that shows that (\d+) changes are staged$/, function (numberOfStagedCreatives, callback) {
     expect(navBarPage.getStagedChangesText()).to.eventually
       .equal(numberOfStagedCreatives + ' Changes Ready To Publish')
@@ -70,5 +74,13 @@ module.exports = function () {
     stagedChangesPage.clickBackButton().then(function() {
       callback();
     });
+  });
+
+  Then(/^the first staged change should have its headline highlighted$/, function (callback) {
+    expect(stagedChangesPage.getTotalChangesForCreative(1)).to.eventually
+      .equal(1)
+      .then(function () {
+        callback();
+      });
   });
 };

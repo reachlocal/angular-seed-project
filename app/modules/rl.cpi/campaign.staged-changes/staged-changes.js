@@ -21,67 +21,11 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
   });
 })
 .controller('StagedChangesCtrl', function ($scope, creatives, StagedTextCreative, PublishedTextCreativesService) {
-  // $scope.stagedTextCreatives = creatives.filter(function (creative) {
-  //   return creative.isStaged();
-  // }).map(function (creative) {
-  //   return new StagedTextCreative(creative);
-  // });
-
-  $scope.stagedTextCreatives = [
-    new StagedTextCreative({
-      "id": 5176191,
-      "state": "ACTIVE",
-      "status": "STAGED",
-      "webPublisherCampaignId": 2134921,
-      "masterStatus": "MASTER",
-      "campaignId": 713896,
-      "headLines": [
-        "AdGroup2 Creative1"
-      ],
-      "descriptiveLines": [
-        "The Way Network",
-        "Duarte, CA"
-      ],
-      "adGroup": {
-        "id": 1262827,
-        "name": "Primary Ad Group"
-      },
-      "publisher": {
-        "publisherName": "Local Profile",
-        "publisherId": 1,
-        "geoType": "CITY"
-      },
-      "displayUrl": "www.PlumbingHelpToday.com",
-      "targetUrl": "http://plumbinghelptoday.reachlocal.com/?scid=2134921",
-      "self": "http://cpi-campaign-ws.dev.wh.reachlocal.com:8080/campaigns/713896/staged-text-creatives/5176191",
-      "originalObject": {
-        "id": 5176191,
-        "state": "ACTIVE",
-        "status": "STAGED",
-        "webPublisherCampaignId": 2134921,
-        "masterStatus": "MASTER",
-        "campaignId": 713896,
-        "headLines": [
-          "AdGroup2 Creative1"
-        ],
-        "descriptiveLines": [
-          "The Way bleh"
-        ],
-        "adGroup": {
-          "id": 126282,
-          "name": "Primary Ad Group"
-        },
-        "publisher": {
-          "publisherName": "Local Profile",
-          "publisherId": 1,
-          "geoType": "CITY"
-        },
-        "displayUrl": "www.google.com",
-        "targetUrl": "http://plumbinghelptoday.reachlocal.com/?scid=2134921",
-        "self": "http://cpi-campaign-ws.dev.wh.reachlocal.com:8080/campaigns/713896/staged-text-creatives/5176191",
-      }
-    })
-  ]
+  $scope.stagedTextCreatives = creatives.filter(function (creative) {
+    return creative.isStaged();
+  }).map(function (creative) {
+    return new StagedTextCreative(creative);
+  });
 
   $scope.remove = function(stagedCreative) {
     var creativeIndex = $scope.stagedTextCreatives.indexOf(stagedCreative);
@@ -109,10 +53,14 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
 
 angular.module('rl.cpi.campaignStagedChanges')
 .factory('StagedTextCreative', function(rlResource) {
-  var StagedTextCreative = rlResource('/campaigns/:campaignId/staged-text-creatives/:textCreativeId', { 'campaignId': '@campaignId', 'textCreativeId': '@id' });
+  function StagedTextCreative(creative) {
+    angular.extend(this, creative);
+    this._original = creative;
+    angular.extend(this, creative._staged);
+  }
 
   StagedTextCreative.prototype.hasChanged = function(attribute) {
-    return !angular.equals(this[attribute], this.originalObject[attribute]);
+    return !angular.equals(this[attribute], this._original[attribute]);
   };
 
   return StagedTextCreative;

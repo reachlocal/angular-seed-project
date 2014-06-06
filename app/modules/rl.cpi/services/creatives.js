@@ -10,7 +10,7 @@ angular
     );
 
     Creative.prototype.isStaged = function () {
-      return this.status === 'STAGED';
+      return this.status === 'STAGED' || !!this._staged;
     };
 
     Creative.prototype.setStaged = function () {

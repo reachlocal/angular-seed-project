@@ -44,6 +44,12 @@ describe('Creatives Service', function () {
 
     creative = new service({ status: 'RUNNING' });
     expect(creative.isStaged()).toEqual(false);
+
+    creative = new service({ status: 'RUNNING', _staged: { 'bla': 'something' } });
+    expect(creative.isStaged()).toEqual(true);
+
+    creative = new service({ status: 'RUNNING', _staged: null });
+    expect(creative.isStaged()).toEqual(false);
   });
 
   it('sets the status to staged', function () {
