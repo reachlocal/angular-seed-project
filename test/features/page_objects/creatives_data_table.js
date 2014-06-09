@@ -15,12 +15,7 @@ var headerRow = exports.headerRow = function () {
 };
 
 var openNewCreative = exports.openNewCreative = function() {
-  return headerRow()
-    .then(function(row) {
-      return row.findElement(by.css('[rel=new-creative]')).then(function(link) {
-        return link.click();
-      });
-    });
+  return element(by.css('[rel=new-creative]')).click();
 };
 
 var firstDataRow = exports.firstDataRow = function () {
