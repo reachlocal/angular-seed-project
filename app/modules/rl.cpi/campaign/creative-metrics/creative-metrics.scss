@@ -54,6 +54,7 @@
   [rel="new-creative"] {
     @include fa-icon(before, $fa-var-plus-circle);
     color: $color-action;
+    padding: 1px;
     margin: 0 $spacing-small;
     font-size: 0;
   }
