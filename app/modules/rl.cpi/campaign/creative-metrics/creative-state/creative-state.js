@@ -6,6 +6,7 @@ angular
     }
 
     $scope.isActive = isActive;
+
     $scope.toggleActive = function toggleActive() {
       var updatedModel = angular.copy($scope.creative);
       var newState = isActive() ? 'INACTIVE' : 'ACTIVE';
@@ -16,6 +17,10 @@ angular
           $scope.creative.state = newState;
         }
       );
+    };
+
+    $scope.isDisabled = function() {
+      return $scope.creative.state === 'DISABLED';
     };
   })
   .directive('rlCreativeState', function () {

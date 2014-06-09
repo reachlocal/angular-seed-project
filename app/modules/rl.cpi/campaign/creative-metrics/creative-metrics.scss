@@ -45,6 +45,21 @@
       }
     }
 
+    &.disabled {
+      color: $color-light;
+
+      .editable, a {
+        color: $color-light;
+      }
+      .state {
+        font-weight: bold;
+      }
+
+      &:hover, &:hover a, &:hover .editable {
+        color: $color-muted;
+      }
+    }
+
     &.staged td:first-of-type:before {
       background-color: $color-info;
     }

@@ -6,6 +6,7 @@
     "State": "State",
     "ACTIVE": "Active",
     "INACTIVE": "Inactive",
+    "DISABLED": "Disabled",
     "NATIONAL": "National",
     "GLOBAL": "Global",
     "DMA": "DMA",
