@@ -14,17 +14,14 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
     controller: 'StagedChangesCtrl',
     resolve: {
       creatives: function (Creatives, $stateParams) {
-        var creatives = Creatives.query($stateParams);
-        return creatives.$promise;
+        return Creatives.query($stateParams);
       }
     }
   });
 })
-.controller('StagedChangesCtrl', function ($scope, creatives, StagedTextCreative, PublishedTextCreativesService) {
+.controller('StagedChangesCtrl', function ($scope, creatives, PublishedTextCreativesService) {
   $scope.stagedTextCreatives = creatives.filter(function (creative) {
     return creative.isStaged();
-  }).map(function (creative) {
-    return new StagedTextCreative(creative);
   });
 
   $scope.remove = function(stagedCreative) {
@@ -49,21 +46,6 @@ angular.rlmodule('rl.cpi.campaignStagedChanges', [
        history.back();
     });
   };
-});
-
-angular.module('rl.cpi.campaignStagedChanges')
-.factory('StagedTextCreative', function(rlResource) {
-  function StagedTextCreative(creative) {
-    angular.extend(this, creative);
-    this._original = creative;
-    angular.extend(this, creative._staged);
-  }
-
-  StagedTextCreative.prototype.hasChanged = function(attribute) {
-    return !angular.equals(this[attribute], this._original[attribute]);
-  };
-
-  return StagedTextCreative;
 });
 
 angular.module('rl.cpi.campaignStagedChanges')

@@ -27,9 +27,9 @@ Feature: Use a table containing a list of creatives and their metrics as a way t
       | QS            |
       | Total Cost    |
     And the first creative is displayed
-      | AdGroup2 Creative1 |
-      | The Way Network    |
-      | Duarte, CA         |
+      | AdGroup2 with a new name  |
+      | The Way Network           |
+      | Duarte, CA                |
     And the report data for the first creative is displayed
       | 1.46   |
       | 38.13% |

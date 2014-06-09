@@ -11,7 +11,7 @@ describe('StagedChangesCtrl', function() {
       $scope: $scope = $rootScope.$new(),
       PublishedTextCreativesService: PublishedTextCreativesService = { publish: angular.noop },
       creatives: [
-        stagedChange = new Creatives({ status: 'STAGED', self: 'http://luboviko' }),
+        stagedChange = new Creatives({ status: 'STAGED', _staged: { links: [{ rel: 'self', href: 'http://luboviko'}] } }),
         new Creatives({ status: 'PAUSED' })
       ]
     });

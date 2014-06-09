@@ -16,7 +16,7 @@ angular.rlmodule('rl.cpi.campaign', [
     },
     resolve: {
       creatives: function (Creatives, $stateParams) {
-        return Creatives.query($stateParams).$promise;
+        return Creatives.query($stateParams);
       }
     }
   })
