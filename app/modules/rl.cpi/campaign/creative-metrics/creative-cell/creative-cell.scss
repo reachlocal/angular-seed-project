@@ -96,3 +96,17 @@
     box-shadow: $spacing-small $spacing-small $color-shadow;
   }
 }
+
+[ui-view=creative-metrics] {
+  .disabled {
+    .editable, a {
+      color: $color-light;
+    }
+
+    &:hover {
+      .editable, a {
+        border-bottom-color: $color-white;
+      }
+    }
+  }
+}

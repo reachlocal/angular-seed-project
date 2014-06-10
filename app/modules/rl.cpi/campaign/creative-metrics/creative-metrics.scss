@@ -48,14 +48,7 @@
     &.disabled {
       color: $color-light;
 
-      .editable, a {
-        color: $color-light;
-      }
-      .state {
-        font-weight: bold;
-      }
-
-      &:hover, &:hover a, &:hover .editable {
+      &:hover {
         color: $color-muted;
       }
     }

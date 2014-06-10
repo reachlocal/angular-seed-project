@@ -4,10 +4,15 @@ angular
     function isActive() {
       return $scope.creative.state === 'ACTIVE';
     }
+    function isDisabled() {
+      return $scope.creative.state === 'DISABLED';
+    }
 
     $scope.isActive = isActive;
+    $scope.isDisabled = isDisabled;
 
     $scope.toggleActive = function toggleActive() {
+      if (isDisabled()) { return; }
       var updatedModel = angular.copy($scope.creative);
       var newState = isActive() ? 'INACTIVE' : 'ACTIVE';
       updatedModel.state = newState;
@@ -19,9 +24,6 @@ angular
       );
     };
 
-    $scope.isDisabled = function() {
-      return $scope.creative.state === 'DISABLED';
-    };
   })
   .directive('rlCreativeState', function () {
     return {

@@ -25,4 +25,17 @@
     }
 
   }
+
+  .disabled {
+    .state {
+      color: $color-light;
+      font-weight: bold;
+      border-bottom-color: $color-white;
+      cursor: default;
+    }
+
+    &:hover .state {
+      color: $color-muted;
+    }
+  }
 }
