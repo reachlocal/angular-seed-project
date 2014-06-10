@@ -12,7 +12,7 @@
 
   </header>
 
-  <section ng-hide="singleDescLine">
+  <section ng-if="!singleDescLine">
     <input type="text"
            ng-change="unlink()"
            ng-model="creative.headLines[0]"
@@ -38,7 +38,7 @@
            rl-remaining-chars="{{ rules.descriptiveLines[1].charCount }}" />
   </section>
 
-  <section ng-show="singleDescLine">
+  <section ng-if="singleDescLine">
     <input type="text"
            ng-change="unlink()"
            ng-model="creative.headLines[0]"
