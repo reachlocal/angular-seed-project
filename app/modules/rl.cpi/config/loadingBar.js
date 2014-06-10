@@ -4,5 +4,5 @@
 angular
   .rlmodule('rl.cpi.main.config.loadingBar', ['chieffancypants.loadingBar', 'ngAnimate'])
   .config(function (cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.includeSpinner = false;
   });

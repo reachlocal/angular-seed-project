@@ -1,0 +1,52 @@
+@import "rl_seeds/variables";
+@import "rl_seeds/mixins";
+
+$loading-bar-zindex: 999999;
+$loading-bar-height: $spacing-small;
+$loading-bar-background-width: 40px;
+
+#loading-bar {
+  line-height: 0;
+  position: fixed;
+  z-index: $loading-bar-zindex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: progress;
+  text-align: center;
+  pointer-events: initial;
+
+  .peg {
+    display: none;
+  }
+  .bar {
+    position: initial;
+    top: initial;
+    left: initial;
+    display: inline-block;
+    height: $loading-bar-height;
+    animation: loading-bar-moving 1s linear infinite;
+    border-radius: 0;
+    background-color: $color-warning;
+    background-image: linear-gradient(45deg,
+      transparent,
+      transparent 50%,
+      rgba(255, 255, 255, .2) 50%,
+      rgba(255, 255, 255, .2) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: $loading-bar-background-width $loading-bar-height;
+    @include shadow-block();
+  }
+}
+
+#authFrame {
+  z-index: ($loading-bar-zindex + 1);
+}
+
+@keyframes loading-bar-moving {
+  0%   { background-position: $loading-bar-background-width; }
+  100% { background-position: 0;    }
+}
