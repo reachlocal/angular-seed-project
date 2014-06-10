@@ -7,6 +7,7 @@
   p {
     margin : 0;
     text-align: left;
+    border: 1px dashed transparent;
   }
 
   .headline,
@@ -16,7 +17,6 @@
 
   .editable {
     cursor: pointer;
-    border: 1px dashed transparent;
     color: $color-bodycopy;
 
     &:hover {

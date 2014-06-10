@@ -19,7 +19,7 @@
   <tbody>
   <tr ng-repeat="row in table | CreativeTable" ng-class="row.creative.state | lowercase">
     <td>
-      <rl-creative-cell creative="row.creative"></rl-creative-cell>
+      <rl-creative-cell writable="row.creative.state === 'ACTIVE'" creative="row.creative"></rl-creative-cell>
     </td>
     <td>
       <rl-creative-state creative="row.creative"></rl-creative-state>

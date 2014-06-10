@@ -29,13 +29,10 @@ angular
   })
   .directive('rlCreativeCell', function () {
     return {
-      templateUrl: function (element, attributes) {
-        var readOnly = (attributes.readonly !== undefined);
-        return 'modules/rl.cpi/campaign/creative-metrics/creative-cell/creative-cell' +
-               (readOnly? '_readonly':'') + '.html';
-      },
+      templateUrl: 'modules/rl.cpi/campaign/creative-metrics/creative-cell/creative-cell.html',
       scope: {
-        creative: '='
+        creative: '=',
+        writable: '='
       },
       restrict: 'E',
       replace: true,

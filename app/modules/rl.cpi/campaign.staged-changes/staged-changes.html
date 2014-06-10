@@ -25,7 +25,7 @@
         <tbody>
           <tr ng-repeat="stagedTextCreative in stagedTextCreatives">
             <td>
-              <rl-creative-cell readonly creative="stagedTextCreative"></rl-creative-cell>
+              <rl-creative-cell writable="false" creative="stagedTextCreative"></rl-creative-cell>
             </td>
             <td ng-class="{ highlighted: stagedTextCreative.hasChanged('state') }">{{ 'rlCampaignTabularData.' + stagedTextCreative.state | translate }}</td>
             <td>{{ stagedTextCreative.adGroup.name }}</td>
