@@ -1356,8 +1356,8 @@
     },
     "cucumber": {
       "version": "0.4.0",
-      "from": "cucumber@git://github.com/simondean/cucumber-js.git#124-attachments",
-      "resolved": "git://github.com/simondean/cucumber-js.git#47ecb1a1a1fe0e4421d89a3ae7df919be768248e",
+      "from": "cucumber@^0.4.0",
+      "resolved": "https://registry.npmjs.org/cucumber/-/cucumber-0.4.0.tgz",
       "dependencies": {
         "gherkin": {
           "version": "2.12.2",
