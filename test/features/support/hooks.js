@@ -7,8 +7,9 @@ var ourHooks = function () {
     if (!isRegressionScenario) return callback();
 
     var stepIsUndefined = step.getPayloadItem('stepResult').isUndefined();
+    var stepIsPending = step.getPayloadItem('stepResult').isPending();
 
-    if (stepIsUndefined) {
+    if (stepIsUndefined || stepIsPending) {
       hasPendingSteps = true;
     }
 
