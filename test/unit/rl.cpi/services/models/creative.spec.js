@@ -32,7 +32,7 @@ describe('Creatives', function () {
 
   describe('HTTP calls', function () {
     it('fetch creatives', function () {
-      httpResolver.$httpBackend.whenGET('/campaigns/1/text_creatives/').respond([ creativeBody ]);
+      httpResolver.$httpBackend.whenGET('/campaigns/1/text-creatives/').respond([ creativeBody ]);
 
       Creative.query({campaignId: 1}).then(function(creatives) {
         expect(creatives[0].headLines).toEqual(['Blah']);
@@ -57,7 +57,7 @@ describe('Creatives', function () {
       creative.id = 10;
       creative.campaignId = 1;
 
-      httpResolver.$httpBackend.expectPUT('/campaigns/1/text_creatives/10', creative).respond(200);
+      httpResolver.$httpBackend.expectPUT('/campaigns/1/text-creatives/10', creative).respond(200);
       creative.$update();
 
       httpResolver.resolve();
@@ -66,7 +66,7 @@ describe('Creatives', function () {
     it('create a creative', function () {
       var creative = new Creative(creativeBody);
 
-      httpResolver.$httpBackend.expectPOST('/campaigns/1/text_creatives/', creative).respond(201);
+      httpResolver.$httpBackend.expectPOST('/campaigns/1/text-creatives/', creative).respond(201);
       creative.$create({ campaignId: 1 });
 
       httpResolver.resolve();

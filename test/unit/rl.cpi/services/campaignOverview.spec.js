@@ -21,7 +21,7 @@ describe('CampaignOverview', function () {
       id: 1,
       name: 'A Quality 1st Plumbing- Plumbing'
     };
-    httpResolver.$httpBackend.expectGET('/campaigns/1/overview_data').respond(overviewData);
+    httpResolver.$httpBackend.expectGET('/campaigns/1/overview-data').respond(overviewData);
 
     var result = campaignOverview.get({ campaignId: 1});
 

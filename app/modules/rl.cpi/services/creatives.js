@@ -1,7 +1,7 @@
 angular
   .rlmodule('rl.cpi.main.services.Creatives', ['rl.cpi.main.Config'])
   .factory('Creatives', function (Config, $http) {
-    var baseUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/text_creatives/:id';
+    var baseUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/text-creatives/:id';
     var deleteUrl = Config.gatewayBaseUrl + '/campaigns/:campaignId/staged-text-creatives/:id';
 
     function toUrl (params, url) {
