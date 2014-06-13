@@ -36,10 +36,21 @@ module.exports = function () {
   });
 
   When(/^a recommendation is selected$/, function (callback) {
-    callback.pending();
+    browser.findElements(by.repeater('recommendation in recommendations'))
+      .then(function (arr) {
+        arr[0].click().then(function(e) { callback(); });
+      });
   });
 
   Then(/^the recommendation section is expanded to include the full details of the recommendation$/, function (callback) {
-    callback.pending();
+    browser.findElements(by.repeater('recommendation in recommendations'))
+      .then(function(arr) {
+        arr[0].findElement(by.css('p')).then(function(detail) {
+          var exp = [
+            expect(detail.isDisplayed()).to.eventually.equal(true)
+          ];
+          all(exp).then(callback);
+        });
+      });
   });
 };
