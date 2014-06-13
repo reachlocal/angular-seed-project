@@ -18,6 +18,25 @@ var openNewCreative = exports.openNewCreative = function() {
   return element(by.css('[rel=new-creative]')).click();
 };
 
+var dataRowsAdgroups = exports.dataRowsAdgroups = function() {
+  return dataRows().then(function(creatives) {
+    return protractor.promise.all(creatives.map(adgroupAndPublisherForCreative));
+  });
+};
+
+var adgroupAndPublisherForCreative = function(creative) {
+  var promises = [
+    creative.findElement(by.binding('row.creative.adGroup.name')),
+    creative.findElement(by.binding('row.creative.publisher.name'))
+  ];
+  return protractor.promise.all(promises).then(function(tuple) {
+    return {
+      adgroup:   tuple[0],
+      publisher: tuple[1]
+    };
+  });
+};
+
 var firstDataRow = exports.firstDataRow = function () {
   return dataRows()
     .then(function (rows) {

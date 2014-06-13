@@ -87,6 +87,31 @@ module.exports = function () {
       });
   });
 
+  Then(/^the campaign dashboard should show the data table of Creatives under "([^"]*)" across all publishers$/, function (adgroupName, callback) {
+    page.dataRowsAdgroups()
+      .then(function(rows) {
+        var expectationsByCreative = rows.map(function(row) {
+          return expect(row.adgroup.getText()).to.eventually.contain(adgroupName);
+        });
+        all(expectationsByCreative).then(callback);
+      });
+  });
+
+
+  Then(/^the campaign dashboard should show the data table of Creatives under "([^"]*)" only for the WPC "([^"]*)"$/, function (adgroupName, publisherName, callback) {
+    page.dataRowsAdgroups()
+      .then(function(rows) {
+        var expectationsByCreative = rows.map(function(row) {
+          return [
+            expect(row.adgroup.getText()).to.eventually.contain(adgroupName),
+            expect(row.publisher.getText()).to.eventually.contain(publisherName)
+          ];
+        });
+        var exp = _.flatten(expectationsByCreative, true);
+        all(exp).then(callback);
+      });
+  });
+
   Then(/^the data table should contain these data elements as columns:$/, function (table, callback) {
     page.headerRow().then(function (row) {
       var expectedHeaders = _.pluck(table.hashes(), 'Column Name').join(' ');
