@@ -3,8 +3,9 @@
  */
 var rlConfig = {
   environment: 'ci',
-  gatewayBaseUrl: 'http://ci-cpi-stub.dev.wh.reachlocal.com:8001',
+  // This should be a stub server that supports your cucumber tests - not a real gateway
+  gatewayBaseUrl: 'http://my-ci-gateway-stub:8001',
   defaultLocale: 'en',
-  locales: ['en', 'pt'],
+  locales: ['en'],
   enableAirbrake: false
 };

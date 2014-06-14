@@ -14,8 +14,8 @@ var rlConfig = {
   defaultLocale: 'en',
 
   // What locales are available in the drop-down list?
-  // Note:  These must also be configured in your gulp l10n task
-  locales: ['en', 'pt'],
+  // Note:  These must also be configured in your gulp l10n task!!!
+  locales: ['en'],
 
   // Should we log errors with airbrake? (enable for qa and production)
   enableAirbrake: false

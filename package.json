@@ -1,8 +1,8 @@
 {
-  "name"                         : "cpi-angular",
-  "version"                      : "1.0.0",
-  "description"                  : "CPI Client",
-  "repository"                   : "git@stash.lax.reachlocal.com/cpi/cpi-client.git",
+  "name"                         : "rl-angular-seed-project",
+  "version"                      : "0.0.1",
+  "description"                  : "Default angular project for ReachLocal",
+  "repository"                   : "git@stash.lax.reachlocal.com/cpi/angular-seed-project.git",
 
   "scripts"                      : {
     "test"                       : "make test"

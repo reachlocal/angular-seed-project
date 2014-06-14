@@ -1,6 +1,6 @@
 {
-  "name": "cpi-angular",
-  "version": "1.0.0",
+  "name": "rl-angular-seed-project",
+  "version": "0.0.1",
   "dependencies": {
     "bower": {
       "version": "1.3.4",

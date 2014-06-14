@@ -51,7 +51,7 @@ gulp.task('build:i18n', function () {
   gulp.src('app/bower_components/angular-i18n/*.js')
     .pipe(gulp.dest(paths.dist + '/bower_components/angular-i18n'));
 
-  return all.translations().pipe(gulp.dest(paths.dist + '/.l10n'));
+  return all.translations().pipe(gulp.dest(paths.dist + '/l10n'));
 });
 
 // Styleguide ==================================================================

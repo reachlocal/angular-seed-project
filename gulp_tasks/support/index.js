@@ -3,7 +3,7 @@ var merge = require('event-stream').merge;
 var plugins = require('gulp-load-plugins')();
 
 var paths = exports.paths = {
-  stylesheets: [ 'app/modules/index.scss', 'app/modules/**/*.scss', '!app/modules/rl_seeds/seeds.scss' ],
+  stylesheets: [ 'app/modules/index.scss', 'app/modules/**/*.scss', 'app/modules/**/*.sass', '!app/modules/rl_seeds/seeds.scss' ],
   javascripts: 'app/modules/**/*.js',
   templates: 'app/modules/**/*.html',
   index: 'app/index.html',
@@ -33,7 +33,7 @@ function streamStylesheets() {
     .pipe(plugins.autoprefixer('last 2 chrome versions', 'last 2 ff versions'));
 
   if (plugins.util.env.production) stream = stream
-    .pipe(plugins.concat('cpi.min.css'))
+    .pipe(plugins.concat('app.min.css'))
     .pipe(plugins.minifyCss());
 
   return stream;
@@ -45,7 +45,7 @@ function streamJavascripts() {
     gulp.src(paths.javascripts));
 
   if (plugins.util.env.production) stream = stream
-    .pipe(plugins.concat('cpi.min.js', { sourceContent: true }))
+    .pipe(plugins.concat('app.min.js', { sourceContent: true }))
     .pipe(plugins.uglify({ mangle: false }));
 
   return stream;

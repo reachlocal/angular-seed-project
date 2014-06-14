@@ -3,8 +3,8 @@
  */
 var rlConfig = {
   environment: 'qa',
-  gatewayBaseUrl: 'https://cpigateway-usa.qa.reachlocal.com',
+  gatewayBaseUrl: 'https://my-qa-gateway',
   defaultLocale: 'en',
-  locales: ['en', 'pt'],
+  locales: ['en'],
   enableAirbrake: false
 };

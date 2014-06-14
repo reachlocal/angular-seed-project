@@ -1,0 +1,61 @@
+@import "rl_seeds/variables";
+@import "loading.bar";
+
+body {
+  overflow-y: scroll;
+
+  & > footer {
+    padding: 1em;
+    display: block;
+    text-align: right;
+  }
+}
+
+body > header {
+  $header-height: $spacing-default * 4;
+
+  background-color: $color-dark;
+  color: $color-white;
+  overflow: auto;
+  min-height: $header-height;
+  position: relative;
+  overflow: hidden;
+
+  & > h1, & > ul {
+    float: left;
+    padding: $spacing-default;
+  }
+
+  & > h1 {
+    width: 50%;
+    font-size: 1.5em;
+    line-height: $header-height;
+    color: $color-white;
+    margin: 0;
+  }
+
+  & > ul {
+    width: 50%;
+    column-count: 3;
+    column-gap: 30px;
+    column-rule: 1px inset $color-light;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    & > li {
+      column-break-inside: avoid;
+      -moz-column-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      break-inside: avoid;
+
+      text-align: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: .9em;
+      line-height: 2.3em;
+    }
+  }
+}

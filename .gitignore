@@ -1,17 +1,13 @@
 # IntelliJ and/or RubyMine ignores
 .idea/
-.project_scripts.json
 node_modules/
 build/
 /dist/
 cpi-client.iml
-app/app.css
 .*.sw?
-app/.l10n
 .vagrant
 tmp
 test/helpers/l10n.js
 test-results.xml
-app/styleguide/
 dist.tar.gz
 .DS_Store

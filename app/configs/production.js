@@ -3,8 +3,8 @@
  */
 var rlConfig = {
   environment: 'production',
-  gatewayBaseUrl: 'https://cpigateway-usa.lax.reachlocal.com',
+  gatewayBaseUrl: 'https://my-production-gateway',
   defaultLocale: 'en',
-  locales: ['en', 'pt'],
+  locales: ['en'],
   enableAirbrake: true
 };

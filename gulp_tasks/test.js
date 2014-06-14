@@ -25,7 +25,7 @@ gulp.task('test:helpers:l10n', ['build:i18n'], function () {
   var paths = require('./support').paths;
   var deferred = require('q').defer();
   var fs = require('fs');
-  fs.readFile(paths.dist + '/.l10n/lang-en.json', function (err, data) {
+  fs.readFile(paths.dist + '/l10n/lang-en.json', function (err, data) {
     if (err) {
       gutil.log(gutil.colors.red('Could not build test l10n files.'));
       deferred.reject();

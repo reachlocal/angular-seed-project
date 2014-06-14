@@ -1,0 +1,15 @@
+angular
+  .rlmodule('rl.l10n.directives.rlLocaleSelector', ['ui.bootstrap', 'rl.l10n.services.LocaleSettings'])
+  .directive('rlLocaleSelector', function () {
+    return {
+      templateUrl: 'modules/rl.l10n/directives/rlLocaleSelector/rlLocaleSelector.html',
+      scope: {},
+      restrict: 'E',
+      controller: function ($scope, LocaleSettings) {
+        $scope.locales = LocaleSettings.locales;
+        $scope.currentLocale = LocaleSettings.locale;
+        $scope.chooseLocale = LocaleSettings.locale;
+      },
+      replace: true
+    };
+  });
