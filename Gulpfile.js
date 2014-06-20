@@ -33,7 +33,7 @@ try {
       'lint:failhard',
       'build',
       'test:fail_on_skipped',
-      'test:cucumber-stub',
+      //'test:cucumber-stub',
       done
     );
   });
@@ -46,7 +46,7 @@ try {
       'lint:failhard',
       'test:unit',
       'test:integration',
-      'test:cucumber-ci',
+      //'test:cucumber-ci',
       done
     );
   });
