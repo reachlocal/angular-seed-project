@@ -1,0 +1,44 @@
+{
+  "name": "angular-rl-translate",
+  "main": [
+    "app/init.js",
+    "app/directives/rlLocaleSelector.js",
+    "app/services/LocaleSettings.js",
+    "app/services/multiInterpolator.js"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Tom Hood <tom.hood@reachlocal.com>"
+  ],
+  "description": "Easy l10n and i18n for Angular projects",
+  "keywords": [
+    "l10n",
+    "i18n",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-translate": "2.0.1",
+    "angular-translate-loader-static-files": "2.0.0",
+    "angular-i18n": "1.2.16",
+    "angular-dynamic-locale": "0.1.4",
+    "angular-translate-interpolation-messageformat": "2.0.0",
+    "angular": "^1.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.16"
+  },
+  "overrides": {
+    "angular-dynamic-locale": {
+      "main": "src/tmhDynamicLocale.js"
+    }
+  }
+}

@@ -11,3 +11,4 @@ test/helpers/l10n.js
 test-results.xml
 dist.tar.gz
 .DS_Store
+*.iml

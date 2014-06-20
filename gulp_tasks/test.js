@@ -13,7 +13,7 @@ gulp.task('test:integration', ['build:javascripts:templates', 'test:helpers:l10n
 });
 
 gulp.task('test', function test(done) {
-  seq('test:unit', 'test:integration', 'test:cucumber-stub', done);
+  seq('test:unit', 'test:integration', done);
 });
 
 gulp.task('test:watch', ['test:unit', 'test:integration'], function testWatch() {

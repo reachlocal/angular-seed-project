@@ -1,4 +1,4 @@
-angular.rlmodule('rl.helloworld.sayhello.SayhelloCtrl', [])
+angular.rlmodule('rl.helloworld.sayhello.SayhelloCtrl', ['rl.helloworld.initialize.Config', 'rl.helloworld.sayhello.RandomGreeting'])
   .config(function ($stateProvider) {
     $stateProvider.state('helloworld.sayhello', {
       url: '/sayhello',
@@ -7,6 +7,11 @@ angular.rlmodule('rl.helloworld.sayhello.SayhelloCtrl', [])
       controller: 'SayhelloCtrl'
     });
   })
-  .controller('SayhelloCtrl', function ($scope) {
+  .controller('SayhelloCtrl', function ($scope, Config, RandomGreeting) {
     $scope.hithere = '\'ello \'ello';
+    $scope.Config = Config;
+    $scope.newGreeting = function newGreeting() {
+      $scope.greeting = RandomGreeting.get();
+    };
+    $scope.newGreeting();
   });

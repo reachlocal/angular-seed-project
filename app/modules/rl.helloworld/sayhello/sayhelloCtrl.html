@@ -1,1 +1,25 @@
-<b>{{ hithere }}</b>
+Random Greeting:  {{ greeting }}<br>
+<button ng-click="newGreeting()">NEW GREETING</button>
+<p/>
+Untranslated Greating:  {{ hithere }}
+<br>
+Translated Greating (dynamic + filter):
+<b>{{ "sayhello." + hithere | translate }}</b>
+<br>
+Translated Greating (static + filter):
+<b>{{ "sayhello.'ello 'ello" | translate }}</b>
+<br>
+Translated Greating (static + directive):
+<b translate>sayhello.'ello 'ello</b>
+<p />
+
+This is a number: {{ 1000000 | number }}
+
+<p />
+
+<hr>
+This is your configuration for this environment:
+<p />
+<pre>
+  {{ Config }}
+</pre>

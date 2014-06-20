@@ -54,7 +54,7 @@ function streamJavascripts() {
 function streamTranlations() {
   var locales = ['en', 'pt'];
   return merge.apply(this, locales.map(function (locale) {
-    return gulp.src('app/modules/**/lang-' + locale + '.json')
+    return gulp.src('app/**/lang-' + locale + '.json')
       .pipe(plugins.extend('lang-' + locale + '.json'));
   }));
 }
