@@ -7,7 +7,7 @@
 
   // Airbrake shim that stores exceptions until Airbrake notifier is loaded.
   var Airbrake = [];
-  window.Airbrake = [];
+  window.Airbrake = Airbrake;
 
   // Registers the environment name
   Airbrake.onload = function (client) {
