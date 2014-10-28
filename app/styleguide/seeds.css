@@ -1,0 +1,357 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 18, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 29, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 33, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+body {
+  line-height: 1; }
+
+/* line 37, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+ol, ul {
+  list-style: none; }
+
+/* line 41, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+blockquote, q {
+  quotes: none; }
+
+/* line 46, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 51, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/external/reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 3, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/body */
+* {
+  box-sizing: border-box; }
+
+/* line 8, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/body */
+html, body {
+  height: 100%; }
+
+/* line 12, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/body */
+body {
+  font: 300 14px/150% 'Open Sans';
+  color: #666666;
+  background-color: #FFFFFF;
+  min-width: 1024px; }
+
+/* line 19, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/body */
+a {
+  color: #3399CC;
+  text-decoration: none; }
+
+/* line 24, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/body */
+a:hover {
+  text-decoration: underline; }
+
+/* line 22, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/buttons */
+button, input[type="button"], input[type="submit"], input[type="reset"] {
+  border: none;
+  padding: 5px 7.5px;
+  font: 300 14px/150% 'Open Sans';
+  background-color: #999999;
+  color: #FFFFFF;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  margin: 0;
+  outline: none;
+  display: inline-block; }
+  /* line 40, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button:disabled, input[type="button"]:disabled, input[type="submit"]:disabled, input[type="reset"]:disabled {
+    background-color: #DDDDDD;
+    cursor: default; }
+  /* line 45, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button:not(:disabled):hover, input[type="button"]:not(:disabled):hover, input[type="submit"]:not(:disabled):hover, input[type="reset"]:not(:disabled):hover {
+    text-decoration: none; }
+  /* line 8, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button:not(:disabled), input[type="button"]:not(:disabled), input[type="submit"]:not(:disabled), input[type="reset"]:not(:disabled) {
+    background-color: #999999; }
+    /* line 11, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    button:not(:disabled):hover, input[type="button"]:not(:disabled):hover, input[type="submit"]:not(:disabled):hover, input[type="reset"]:not(:disabled):hover {
+      background-color: #666666; }
+    /* line 15, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    button:not(:disabled):focus, input[type="button"]:not(:disabled):focus, input[type="submit"]:not(:disabled):focus, input[type="reset"]:not(:disabled):focus {
+      box-shadow: inset 0 0 0 1px #999999, inset 0 0 0 2px rgba(255, 255, 255, 0.6); }
+    /* line 20, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    button:not(:disabled):active, input[type="button"]:not(:disabled):active, input[type="submit"]:not(:disabled):active, input[type="reset"]:not(:disabled):active {
+      box-shadow: inset 0 0 0 1px #999999, inset 0 0 0 2px rgba(51, 51, 51, 0.1); }
+
+/* line 8, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+button:first-of-type:not(:disabled), input[type="button"]:first-of-type:not(:disabled), input[type="submit"]:not(:disabled) {
+  background-color: #99CC00; }
+  /* line 11, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button:first-of-type:not(:disabled):hover, input[type="button"]:first-of-type:not(:disabled):hover, input[type="submit"]:not(:disabled):hover {
+    background-color: #739900; }
+  /* line 15, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button:first-of-type:not(:disabled):focus, input[type="button"]:first-of-type:not(:disabled):focus, input[type="submit"]:not(:disabled):focus {
+    box-shadow: inset 0 0 0 1px #99CC00, inset 0 0 0 2px rgba(255, 255, 255, 0.6); }
+  /* line 20, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button:first-of-type:not(:disabled):active, input[type="button"]:first-of-type:not(:disabled):active, input[type="submit"]:not(:disabled):active {
+    box-shadow: inset 0 0 0 1px #99CC00, inset 0 0 0 2px rgba(51, 51, 51, 0.1); }
+
+/* line 8, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+button[type="reset"]:not(:disabled), input[type="reset"]:not(:disabled) {
+  background-color: #D70014; }
+  /* line 11, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button[type="reset"]:not(:disabled):hover, input[type="reset"]:not(:disabled):hover {
+    background-color: #a4000f; }
+  /* line 15, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button[type="reset"]:not(:disabled):focus, input[type="reset"]:not(:disabled):focus {
+    box-shadow: inset 0 0 0 1px #D70014, inset 0 0 0 2px rgba(255, 255, 255, 0.6); }
+  /* line 20, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+  button[type="reset"]:not(:disabled):active, input[type="reset"]:not(:disabled):active {
+    box-shadow: inset 0 0 0 1px #D70014, inset 0 0 0 2px rgba(51, 51, 51, 0.1); }
+
+/* line 3, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+select {
+  font: 300 14px/150% 'Open Sans';
+  color: #666666;
+  outline: none;
+  border: 1px solid #DDDDDD;
+  background-color: #FFFFFF;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  min-height: 2em;
+  padding: 0 7.5px;
+  vertical-align: middle; }
+  /* line 16, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+  select:not(:disabled):hover {
+    border-color: #99CC00; }
+  /* line 20, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+  select:not(:disabled):focus {
+    border-color: #3399CC; }
+  /* line 24, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+  select:disabled {
+    border-color: #EFEFEF;
+    color: #DDDDDD;
+    background-image: none; }
+  /* line 30, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+  select * {
+    background-color: #FFFFFF;
+    color: #666666; }
+
+/* line 36, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMSIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDIxIDMyIj4KPGc+CjwvZz4KCTxwYXRoIGQ9Ik0xOS4xOTYgMTMuMTQzcTAgMC4yMzItMC4xNzkgMC40MTFsLTguMzIxIDguMzIxcS0wLjE3OSAwLjE3OS0wLjQxMSAwLjE3OXQtMC40MTEtMC4xNzlsLTguMzIxLTguMzIxcS0wLjE3OS0wLjE3OS0wLjE3OS0wLjQxMXQwLjE3OS0wLjQxMWwwLjg5My0wLjg5M3EwLjE3OS0wLjE3OSAwLjQxMS0wLjE3OXQwLjQxMSAwLjE3OWw3LjAxOCA3LjAxOCA3LjAxOC03LjAxOHEwLjE3OS0wLjE3OSAwLjQxMS0wLjE3OXQwLjQxMSAwLjE3OWwwLjg5MyAwLjg5M3EwLjE3OSAwLjE3OSAwLjE3OSAwLjQxMXoiIGZpbGw9IiMwMDAwMDAiIC8+Cjwvc3ZnPgo=');
+  background-repeat: no-repeat;
+  background-position: right 7.5px top 50%;
+  background-size: 1em;
+  padding-right: 30px; }
+
+@-moz-document url-prefix() {
+  /* line 48, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+    padding: 3px 15px 0 7.5px; }
+
+  /* line 54, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/select */
+  select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #666666; } }
+
+/* line 4, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/inputs */
+input[type="text"], input[type="password"], input[type="number"], input[type="date"], textarea {
+  font: 300 14px/150% 'Open Sans';
+  font-size: 1em;
+  color: #666666;
+  outline: none;
+  border: 1px solid #DDDDDD;
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  min-height: 2em;
+  padding: 0 7.5px;
+  vertical-align: middle;
+  resize: none; }
+  /* line 18, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/inputs */
+  input[type="text"]:not(:disabled):hover, input[type="password"]:not(:disabled):hover, input[type="number"]:not(:disabled):hover, input[type="date"]:not(:disabled):hover, textarea:not(:disabled):hover {
+    border-color: #99CC00; }
+  /* line 22, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/inputs */
+  input[type="text"]:not(:disabled):focus, input[type="password"]:not(:disabled):focus, input[type="number"]:not(:disabled):focus, input[type="date"]:not(:disabled):focus, textarea:not(:disabled):focus {
+    border-color: #3399CC; }
+  /* line 26, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/inputs */
+  input[type="text"]:disabled, input[type="password"]:disabled, input[type="number"]:disabled, input[type="date"]:disabled, textarea:disabled {
+    border-color: #EFEFEF;
+    color: #DDDDDD; }
+    /* line 70, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    input[type="text"]:disabled::-webkit-input-placeholder, input[type="password"]:disabled::-webkit-input-placeholder, input[type="number"]:disabled::-webkit-input-placeholder, input[type="date"]:disabled::-webkit-input-placeholder, textarea:disabled::-webkit-input-placeholder {
+      color: #DDDDDD; }
+    /* line 71, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    input[type="text"]:disabled:-moz-placeholder, input[type="password"]:disabled:-moz-placeholder, input[type="number"]:disabled:-moz-placeholder, input[type="date"]:disabled:-moz-placeholder, textarea:disabled:-moz-placeholder {
+      color: #DDDDDD; }
+    /* line 72, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    input[type="text"]:disabled::-moz-placeholder, input[type="password"]:disabled::-moz-placeholder, input[type="number"]:disabled::-moz-placeholder, input[type="date"]:disabled::-moz-placeholder, textarea:disabled::-moz-placeholder {
+      color: #DDDDDD; }
+    /* line 73, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/mixins */
+    input[type="text"]:disabled:-ms-input-placeholder, input[type="password"]:disabled:-ms-input-placeholder, input[type="number"]:disabled:-ms-input-placeholder, input[type="date"]:disabled:-ms-input-placeholder, textarea:disabled:-ms-input-placeholder {
+      color: #DDDDDD; }
+
+/* line 5, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/headings */
+h1, h2, h3 {
+  line-height: 100%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  color: #333333; }
+
+/* line 12, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/headings */
+h1 {
+  font-size: 2em;
+  font-weight: 700; }
+
+/* line 17, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/headings */
+h2 {
+  font-size: 1.5em; }
+
+/* line 21, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/headings */
+h3 {
+  font-size: 1.25em; }
+
+/* line 25, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/headings */
+h1 > span {
+  font-weight: 700;
+  color: #999999;
+  font-size: 50%; }
+
+/* line 5, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/breadcrumbs */
+nav#breadcrumbs li {
+  display: inline;
+  color: #999999; }
+  /* line 8, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/breadcrumbs */
+  nav#breadcrumbs li:last-child {
+    cursor: default;
+    font-weight: 700; }
+/* line 13, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/breadcrumbs */
+nav#breadcrumbs li a {
+  cursor: pointer; }
+/* line 16, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/breadcrumbs */
+nav#breadcrumbs li:after {
+  font-family: FontAwesome;
+  content: ' \f054 ';
+  color: #DDDDDD; }
+/* line 21, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/breadcrumbs */
+nav#breadcrumbs li:last-child:after {
+  content: ''; }
+
+/* line 3, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/paragraph */
+p {
+  text-align: justify; }
+  /* line 6, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/paragraph */
+  p + p {
+    margin-top: 15px; }
+
+/* line 3, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/summary */
+summary {
+  cursor: pointer;
+  padding-left: 7.5px; }
+  /* line 7, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/summary */
+  summary:focus {
+    outline: none; }
+
+/* line 3, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/table */
+thead {
+  font-weight: 700;
+  background-color: #EFEFEF;
+  border-bottom: 1px solid #DDDDDD;
+  text-align: left; }
+
+/* line 11, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/table */
+td, th {
+  padding: 10px; }
+
+/* line 16, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/table */
+th, td {
+  vertical-align: top; }
+
+/* line 20, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/table */
+tr {
+  border-bottom: 1px solid #DDDDDD; }
+
+/* line 4, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+form dl {
+  overflow: auto; }
+/* line 8, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+form dt, form dd {
+  display: inline-block;
+  float: left; }
+/* line 14, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+form dt + dd + dt, form dd + dt + dd {
+  margin-top: 7.5px; }
+/* line 18, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+form dt {
+  width: 25%; }
+/* line 22, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+form dd {
+  width: 75%; }
+  /* line 25, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+  form dd input[type="text"], form dd input[type="password"], form dd input[type="number"], form dd input[type="date"], form dd textarea {
+    width: 100%; }
+
+/* line 32, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+fieldset.actions {
+  direction: rtl; }
+/* line 36, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+fieldset + fieldset {
+  margin-top: 15px; }
+/* line 40, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/elements/form */
+fieldset legend {
+  font-size: 1.5em;
+  line-height: 150%;
+  margin-bottom: 15px; }
+
+/* line 3, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/seeds.scss */
+article {
+  width: 80%;
+  margin: 15px auto; }
+  /* line 7, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/seeds.scss */
+  article > section {
+    margin-bottom: 75px; }
+    /* line 10, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/seeds.scss */
+    article > section > h1 {
+      border-bottom: 1px inset;
+      text-align: center; }
+
+/* line 17, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/seeds.scss */
+#color-palette {
+  text-align: center; }
+  /* line 20, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/seeds.scss */
+  #color-palette li {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+    margin: 15px; }
+
+/* line 32, /Users/samuel.choi/Documents/code/angular-seed-project/app/modules/rl_seeds/seeds.scss */
+form {
+  width: 50%;
+  min-width: 500px;
+  margin: 0 auto; }
+

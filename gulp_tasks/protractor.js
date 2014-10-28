@@ -19,7 +19,7 @@ function runSelenium(callback) {
 }
 
 function runElementExplorer() {
-  var url = process.env.URL || 'http://localhost:4000/#/campaign/713896';
+  var url = process.env.URL || 'http://localhost:4000/#/1581451';
   elementExplorer = child.spawn('/bin/sh', ['-c', 'node_modules/' +
     'protractor/bin/elementexplorer.js ' + url
   ], { stdio: 'inherit' }).on('exit', process.exit);

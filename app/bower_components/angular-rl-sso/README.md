@@ -2,14 +2,16 @@
 Add SSO support to your Angular (1.2+) app.  This is not a stand-alone SSO solution; you will need a server-side component to complete your app's SSO integration.
 
 ### Client Setup (Angular)
-1. Install this module `bower install angular-rl-sso --save`
+1. Install this module `bower install --save ssh://git@stash.lax.reachlocal.com/cpi/angular-rl-sso.git`
 2. Include this module as a dependancy in your project `angular.module('rl.myApp', ['rl.sso'])`
 
 ### Server Setup (Rack/Rails)
-Install the REST SSO gem
+See the [rl-rack-sso project](https://stash.lax.reachlocal.com/projects/CPI/repos/rack-rl-sso/browse) for details on installing and configuring the Gem.
 
 ### Server Setup (Generic)
 If you need to setup your own REST SSO server integration, here's a quick guide.
+
+![image](https://stash.lax.reachlocal.com/projects/CPI/repos/rack-rl-sso/browse/rl-sso-annotated.png?at=master&raw)
 
 #### 401 Responses
 **Given** a client does not have a valid JWT token for your app  

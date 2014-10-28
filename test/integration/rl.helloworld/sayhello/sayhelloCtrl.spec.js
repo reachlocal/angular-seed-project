@@ -4,11 +4,8 @@ describe('SayHello Controller', function () {
   var $scope;
 
   beforeEach(function () {
-    // Load pre-computed locales to prevent l10n system from lazy-loading them
-    localeFixture();
-
     // Load the module we're testing
-    module('rl.helloworld.sayhello.SayhelloCtrl');
+    module('rl.helloworld');
   });
 
   function injectController() {
