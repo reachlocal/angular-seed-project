@@ -1,14 +1,23 @@
 var gulp = require('gulp');
 var all = require('./support').streams;
 var paths = require('./support').paths;
+var merge = require('event-stream').merge;
 
-// Stylesheets =================================================================
+// bowerJavascripts ============================================================ 
 
-gulp.task('build:stylesheets', function () {
-  return all.stylesheets().pipe(gulp.dest(paths.dist + '/public'));
+gulp.task('build:bowerJavascripts', function () {
+  return all.bowerscripts()
+    .pipe(gulp.dest(paths.dist + '/public'));
 });
 
-// Javascripts =================================================================
+// Stylesheets ================================================================= 
+
+gulp.task('build:stylesheets', function () {
+  return merge(all.stylesheets(), all.bowerstylesheets())
+    .pipe(gulp.dest(paths.dist + '/public'));
+});
+
+// Javascripts ================================================================= 
 
 gulp.task('build:javascripts', ['build:javascripts:templates'], function () {
   return all.javascripts().pipe(gulp.dest(paths.dist + '/public'));
@@ -17,41 +26,63 @@ gulp.task('build:javascripts', ['build:javascripts:templates'], function () {
 // Templates ===================================================================
 
 gulp.task('build:javascripts:templates', function () {
-  return all.templates().pipe(gulp.dest(paths.dist + '/public'));
+  return all.templates().pipe(gulp.dest(paths.dist + '/public/modules'));
 });
 
 // Index =======================================================================
 
 gulp.task('build:inject:index', function () {
   var inject = require('gulp-inject');
-  var merge = require('event-stream').merge;
-  var allStreams = merge(
-    all.javascripts(),
-    all.templates(),
-    all.stylesheets()
-  );
+  var ignoreList = [ '/app', '/app', '/dist/public'];
+  var javascripts = all.javascripts(),
+    bowerJavascripts = all.bowerscripts(),
+    templates = all.templates(),
+    stylesheets = all.stylesheets(),
+    bowerStylesheets = all.bowerstylesheets();
 
   return gulp.src(paths.index)
-    .pipe(inject(allStreams, {
-      ignorePath: [ '/app/modules', 'app/bower_components', '/dist/public' ],
-      addPrefix: '/public'}))
+    .pipe(inject(bowerJavascripts, {
+      name: 'bower',
+      ignorePath: ignoreList,
+      addPrefix: '/public'
+    }))
+    .pipe(inject(stylesheets, {
+      ignorePath: ignoreList,
+      addPrefix: '/public'
+    }))
+    .pipe(inject(bowerStylesheets, {
+      name: 'bower',
+      ignorePath: ignoreList,
+      addPrefix: '/public'
+    }))
+    .pipe(inject(templates, {
+      name: 'templates',
+      ignorePath: ignoreList,
+      addPrefix: '/public'
+    }))
+    .pipe(inject(merge(stylesheets, javascripts), {
+      ignorePath: ignoreList,
+      addPrefix: '/public'
+    }))
     .pipe(gulp.dest(paths.dist));
+
 });
 
 // Statics =====================================================================
 
 gulp.task('build:statics', function () {
-  return gulp.src(paths.statics.concat(['!' + paths.index ]), {base: paths.app})
+  var statics = paths.statics;
+  return gulp.src(statics, {base: paths.app})
     .pipe(gulp.dest(paths.dist));
 });
 
 // I18N ========================================================================
 
 gulp.task('build:i18n', function () {
-  gulp.src('app/bower_components/angular-i18n/*.js')
+  var i18nFilters = gulp.src('app/bower_components/angular-i18n/*.js')
     .pipe(gulp.dest(paths.dist + '/bower_components/angular-i18n'));
-
-  return all.translations().pipe(gulp.dest(paths.dist + '/l10n'));
+  var l10nTranslations = all.translations().pipe(gulp.dest(paths.dist + '/l10n'));
+  return merge(i18nFilters, l10nTranslations);
 });
 
 // Styleguide ==================================================================
@@ -72,12 +103,13 @@ gulp.task('clean', function () {
 gulp.task('build', function (done) {
   return require('run-sequence')(
     'clean',
-    'build:statics',
-    'build:inject:index',
+    'build:i18n',
+    'build:bowerJavascripts',
     'build:javascripts',
     'build:stylesheets',
-    'build:i18n',
     'build:styleguide',
+    'build:statics',
+    'build:inject:index',
     done
   );
 });

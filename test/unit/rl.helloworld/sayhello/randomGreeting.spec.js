@@ -3,11 +3,8 @@ describe('RandomGreeting Service', function () {
   var service;
 
   beforeEach(function () {
-    // Load pre-computed locales to prevent l10n system from lazy-loading them
-    localeFixture();
-
     // Load the module we're testing
-    module('rl.helloworld.sayhello.RandomGreeting');
+    module('rl.helloworld');
 
     // Inject our service so we can test it
     inject(function (RandomGreeting) {

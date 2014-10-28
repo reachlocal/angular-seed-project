@@ -10,39 +10,6 @@
  **/
 angular.module('rl.sso', ['http-auth-interceptor'])
 
-  // Attach authentication to the body of the page
-  .directive('body', function () {
-    var directive = { restrict: 'E' };
-
-    // Append the login iframe to the body of the page. Only display it if a login is needed.
-    directive.compile = function (element) {
-      var template = angular.element('<iframe id="authFrame" ng-if="realm" ng-src="{{ realm }}" scrolling="no"></iframe>');
-      element.append(template);
-    };
-
-    // http-interceptro will fire an 'event:auth-loginRequired' event upon 401 - handle it
-    directive.controller = function ($scope, $window, authService) {
-      $scope.$on('event:auth-loginRequired', function (event, response) {
-        $scope.realm = $scope.realm || response.data.realm;
-      });
-
-      $window.addEventListener('message', function (event) {
-        if (event.data.type !== 'token') return;
-
-        var token = event.data.value;
-        $window.sessionStorage.setItem('token', token);
-        authService.loginConfirmed(dataFrom(token));
-        delete $scope.realm;
-      }, false);
-
-      function dataFrom(token) { // Spec: http://goo.gl/i3eTMS
-        return JSON.parse($window.atob(token.split('.')[1]));
-      }
-    };
-
-    return directive;
-  })
-
   // Add the auth token to the Authorization head of every REST request
   .factory('authTokenInterceptor', function ($window) {
     return { request: function (config) {
@@ -56,4 +23,41 @@ angular.module('rl.sso', ['http-auth-interceptor'])
     // Allow angular to open an iFrame to any reachlocal domain
     $sceDelegateProvider.resourceUrlWhitelist(['https://*.reachlocal.com/**', 'self']);
     $httpProvider.interceptors.push('authTokenInterceptor');
+  })
+
+  .run(function ($rootScope, $document, $window, authService) {
+    var iframe,
+      findParent = function () {
+        return angular.element(document.getElementsByTagName('body')[0]);
+      },
+      createIframe = function (realm) {
+        // hold it so we can remove it from the dom later
+        iframe = angular.element('<iframe id="authFrame" src="' + realm + '" scrolling="no"></iframe>');
+        return iframe;
+      },
+      removeIframe = function () {
+        iframe.remove();
+        iframe = null;
+      },
+      noIframeVisible = function() {
+        return iframe == null; // iframe is null or undefined
+      };
+
+    $rootScope.$on('event:auth-loginRequired', function (event, response) {
+      if (noIframeVisible()) {
+        findParent().append(createIframe(response.data.realm));
+      }
+    });
+
+    $window.addEventListener('message', function (event) {
+      if (event.data.type !== 'token') return;
+      var token = event.data.value;
+      $window.sessionStorage.setItem('token', token);
+      authService.loginConfirmed(dataFrom(token));
+      removeIframe();
+    }, false);
+
+    function dataFrom(token) { // Spec: http://goo.gl/i3eTMS
+      return JSON.parse($window.atob(token.split('.')[1]));
+    }
   });

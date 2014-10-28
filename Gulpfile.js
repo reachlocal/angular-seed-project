@@ -4,11 +4,18 @@
  */
 try {
   var gulp = require('gulp');
+  var gutil = require('gulp-util');
+
+  // Add a task to render the output
+  var taskListing = require('gulp-task-listing');
+  gulp.task('help', taskListing.withFilters(null, '_'));
+
   var seq = require('run-sequence');
   require('require-dir')('./gulp_tasks');
 
   gulp.task('default', function gulpDefault(done) {
     seq(
+      'help',
       'lint:failhard',
       'build',
       'test',
@@ -17,36 +24,15 @@ try {
     );
   });
 
-  gulp.task('pre-commit', function preCommit(done) {
-    seq(
-      'lint:failhard',
-      'build',
-      'test:fail_on_skipped',
-      'test:unit',
-      'test:integration',
-      done
-    );
-  });
-
-  gulp.task('pre-push', function prePush(done) {
-    seq(
-      'lint:failhard',
-      'build',
-      'test:fail_on_skipped',
-      //'test:cucumber-stub',
-      done
-    );
-  });
-
   gulp.task('ci', function gulpDefault(done) {
+    gutil.env.ci = true;
     var seq = require('run-sequence');
     seq(
       'build',
       'test:fail_on_skipped',
       'lint:failhard',
       'test:unit',
-      'test:integration',
-      //'test:cucumber-ci',
+      // 'test:cucumber-ci',
       done
     );
   });
