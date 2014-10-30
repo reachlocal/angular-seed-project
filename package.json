@@ -37,6 +37,9 @@
     "karma-jasmine": "^0.1.5",
     "karma-junit-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^0.1.4",
+    "lodash": "^2.4.1",
+    "lodash._objecttypes": "^2.4.1",
+    "lodash._reinterpolate": "^2.4.1",
     "main-bower-files": "https://registry.npmjs.org/main-bower-files/-/main-bower-files-1.0.2.tgz",
     "protractor": "<0.24.0",
     "q": "^1.0.1",
@@ -44,9 +47,8 @@
     "run-sequence": "^0.3.6",
     "shelljs": "^0.2.6",
     "stream-series": "^0.1.0",
-    "underscore": "^1.6.0"
-  },
-  "devDependencies": {
+    "strip-ansi": "^0.3.0",
+    "underscore": "^1.6.0",
     "gulp-task-listing": "^0.3.0"
   }
 }
