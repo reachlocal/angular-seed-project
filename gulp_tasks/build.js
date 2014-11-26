@@ -7,33 +7,33 @@ var merge = require('event-stream').merge;
 
 gulp.task('build:bowerJavascripts', function () {
   return all.bowerscripts()
-    .pipe(gulp.dest(paths.dist + '/public'));
+    .pipe(gulp.dest(paths.dist));
 });
 
 // Stylesheets ================================================================= 
 
 gulp.task('build:stylesheets', function () {
   return merge(all.stylesheets(), all.bowerstylesheets())
-    .pipe(gulp.dest(paths.dist + '/public'));
+    .pipe(gulp.dest(paths.dist));
 });
 
 // Javascripts ================================================================= 
 
 gulp.task('build:javascripts', ['build:javascripts:templates'], function () {
-  return all.javascripts().pipe(gulp.dest(paths.dist + '/public'));
+  return all.javascripts().pipe(gulp.dest(paths.dist));
 });
 
 // Templates ===================================================================
 
 gulp.task('build:javascripts:templates', function () {
-  return all.templates().pipe(gulp.dest(paths.dist + '/public/modules'));
+  return all.templates().pipe(gulp.dest(paths.dist + '/modules'));
 });
 
 // Index =======================================================================
 
 gulp.task('build:inject:index', function () {
   var inject = require('gulp-inject');
-  var ignoreList = [ '/app', '/app', '/dist/public'];
+  var ignoreList = [ '/app', '/app', '/dist'];
   var javascripts = all.javascripts(),
     bowerJavascripts = all.bowerscripts(),
     templates = all.templates(),
@@ -44,25 +44,25 @@ gulp.task('build:inject:index', function () {
     .pipe(inject(bowerJavascripts, {
       name: 'bower',
       ignorePath: ignoreList,
-      addPrefix: '/public'
+      addRootSlash: false
     }))
     .pipe(inject(stylesheets, {
       ignorePath: ignoreList,
-      addPrefix: '/public'
+      addRootSlash: false
     }))
     .pipe(inject(bowerStylesheets, {
       name: 'bower',
       ignorePath: ignoreList,
-      addPrefix: '/public'
+      addRootSlash: false
     }))
     .pipe(inject(templates, {
       name: 'templates',
       ignorePath: ignoreList,
-      addPrefix: '/public'
+      addRootSlash: false
     }))
     .pipe(inject(merge(stylesheets, javascripts), {
       ignorePath: ignoreList,
-      addPrefix: '/public'
+      addRootSlash: false
     }))
     .pipe(gulp.dest(paths.dist));
 
