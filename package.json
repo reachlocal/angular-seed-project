@@ -2,7 +2,7 @@
   "name": "rl-angular-seed-project",
   "version": "0.0.2",
   "description": "Default angular project for ReachLocal",
-  "repository": "git@stash.lax.reachlocal.com/cpi/angular-seed-project.gi",
+  "repository": "git@github.com:reachlocal/angular-seed-project.git",
   "scripts": {
     "test": "make test"
   },

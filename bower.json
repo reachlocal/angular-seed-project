@@ -21,8 +21,8 @@
     "angular-animate": "1.2.16",
     "angular-nested-module": "~0.0.0",
     "logifill-details": "kapitancho/logifill-details",
-    "angular-rl-sso": "ssh://git@stash.lax.reachlocal.com/cpi/angular-rl-sso.git#~0.0.3",
-    "angular-rl-translate": "ssh://git@stash.lax.reachlocal.com/cpi/angular-rl-translate.git",
+    "angular-rl-sso": "git@github.com:reachlocal/angular-rl-sso.git#~0.0.3",
+    "angular-rl-translate": "git@github.com:reachlocal/angular-rl-translate.git",
     "fontawesome": "~4.0.3"
   },
   "devDependencies": {
