@@ -1,5 +1,5 @@
 GEM
-  remote: http://gems/
+  remote: https://11xSH6D5S-Q4xJmgnzTv@gem.fury.io/reachlocal/
   remote: https://rubygems.org/
   specs:
     capistrano (3.1.0)
